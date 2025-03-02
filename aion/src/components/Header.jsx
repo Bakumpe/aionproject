@@ -37,10 +37,12 @@ const Header = () => {
     <header className="header">
       <div className="header-container">
         <div className="nav-wrapper">
-          <div className="logoSpace">
-            <img src={AionLogo} alt="Aion Logo" className="logo-image" />
-            <span className="logo-text">Aion Housing</span>
-          </div>
+          <Link to="/" className="logoSpaceLink">
+            <div className="logoSpace">
+              <img src={AionLogo} alt="Aion Logo" className="logo-image" />
+              <span className="logo-text">Aion</span>
+            </div>
+          </Link>
 
           {/* Mobile Menu Button */}
           <button className="mobile-menu-button" onClick={toggleMenu}>
@@ -49,7 +51,7 @@ const Header = () => {
 
           {/* Main Navigation - Desktop */}
           <nav className={`main-nav ${isMobileMenuOpen ? "mobile-open" : ""}`}>
-            <Link to="/" className="nav-link" onClick={closeMobileMenu}>
+            <Link to="/home" className="nav-link" onClick={closeMobileMenu}>
               <Home className="icon" />
               Home
             </Link>

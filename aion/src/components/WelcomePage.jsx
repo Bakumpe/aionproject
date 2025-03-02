@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import "../styles/welcomePage.css";
 import config from "../.config";
 import { Search } from "lucide-react";
+import SubHeading from "./SubHeading";
 
 function WelcomePage() {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -13,13 +14,20 @@ function WelcomePage() {
   const [type, setType] = useState("all");
   const [isSearching, setIsSearching] = useState(false);
 
-  const myDisplayList = ["Perfect Home", "Real Estate", "Dream Home"];
+  const myDisplayList = [
+    "Perfect Home",
+    "Real Estate",
+    "Dream Home",
+    "Dream Car",
+    "Perfect Venue",
+    "Dream Work Space",
+  ];
   const navigate = useNavigate();
 
   useEffect(() => {
     const intervalId = setInterval(() => {
       setCurrentIndex((prevIndex) => (prevIndex + 1) % myDisplayList.length);
-    }, 2000);
+    }, 3000);
 
     return () => clearInterval(intervalId);
   }, [myDisplayList.length]);
@@ -46,10 +54,11 @@ function WelcomePage() {
   };
 
   return (
+    <>
     <div className="welcomePage">
       <div className="myDisplayList">
-        <p className="myDisplayList-1">Aion Finds Your</p> 
-        <p>{myDisplayList[currentIndex]}</p>
+        <p className="myDisplayList-1">Aion Finds Your</p>
+        <p className="myDisplayList-2">{myDisplayList[currentIndex]}</p>
       </div>
 
       <Search
@@ -117,17 +126,12 @@ function WelcomePage() {
           </div>
         </div>
       )}
-
-      {/* <div className="results">
-        {properties.map((property) => (
-          <div key={property.id} className="property">
-            <h3>{property.title}</h3>
-            <p>{property.description}</p>
-          </div>
-        ))}
-      </div> */}
     </div>
+    <div>
+      <SubHeading />
+    </div>
+    </>
   );
-};
+}
 
 export default WelcomePage;

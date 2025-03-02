@@ -19,4 +19,9 @@
     overflow: hidden;
     background-color: rgb(173, 173, 226);
 }
+.property-results h1{
+    padding: 10px;
+ text-align: center;
+ background-color: rgb(173, 173, 226);
+}
 

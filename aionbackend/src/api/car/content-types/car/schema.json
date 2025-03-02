@@ -1,0 +1,118 @@
+{
+  "kind": "collectionType",
+  "collectionName": "cars",
+  "info": {
+    "singularName": "car",
+    "pluralName": "cars",
+    "displayName": "Car",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "Name": {
+      "type": "string"
+    },
+    "Budget": {
+      "type": "biginteger"
+    },
+    "TypeofCar": {
+      "type": "enumeration",
+      "enum": [
+        "Car:",
+        "Sedan",
+        "Hatchback",
+        "SUV",
+        "Coupe",
+        "Convertible",
+        "Truck",
+        "Minivan",
+        "Electric Car",
+        "Hybrid",
+        "Sports Car",
+        "Luxury Car",
+        "Crossover",
+        "Station Wagon",
+        "Muscle Car",
+        "Supercar",
+        "Hypercar",
+        "Microcar",
+        "Off-Road Vehicle",
+        "Hybrid Plug-In Car"
+      ]
+    },
+    "FuelType": {
+      "type": "enumeration",
+      "enum": [
+        "Fuel:",
+        "Gasoline (Petrol)",
+        "Diesel",
+        "Electricity",
+        "Hybrid",
+        "Plug-In Hybrid",
+        "Hydrogen"
+      ]
+    },
+    "Fuelefficiency": {
+      "type": "string"
+    },
+    "horsepower": {
+      "type": "biginteger"
+    },
+    "speed": {
+      "type": "biginteger"
+    },
+    "FuelEfficiency": {
+      "type": "biginteger"
+    },
+    "Transmission": {
+      "type": "enumeration",
+      "enum": [
+        "Ex:",
+        "Manual",
+        "Automatic",
+        "CVT"
+      ]
+    },
+    "SafetyFeatures": {
+      "type": "text"
+    },
+    "InteriorAndComfort": {
+      "type": "text"
+    },
+    "CargoSpace": {
+      "type": "enumeration",
+      "enum": [
+        "Ex:",
+        "Big Cargo Space",
+        "Trunk Big Size",
+        "Trunk Medium Size",
+        "Trunk Small Size",
+        "Car Space"
+      ]
+    },
+    "ReliabilityAndMaintenance": {
+      "type": "string"
+    },
+    "ResaleValue": {
+      "type": "integer"
+    },
+    "WarrantyAndAfterSalesService": {
+      "type": "text"
+    },
+    "CarImage": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": true
+    },
+    "images": {
+      "type": "json"
+    }
+  }
+}

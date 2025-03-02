@@ -406,6 +406,95 @@ export interface ApiBrockerBrocker extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiCarCar extends Struct.CollectionTypeSchema {
+  collectionName: 'cars';
+  info: {
+    description: '';
+    displayName: 'Car';
+    pluralName: 'cars';
+    singularName: 'car';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    Budget: Schema.Attribute.BigInteger;
+    CargoSpace: Schema.Attribute.Enumeration<
+      [
+        'Ex:',
+        'Big Cargo Space',
+        'Trunk Big Size',
+        'Trunk Medium Size',
+        'Trunk Small Size',
+        'Car Space',
+      ]
+    >;
+    CarImage: Schema.Attribute.Media<
+      'images' | 'files' | 'videos' | 'audios',
+      true
+    >;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    Fuelefficiency: Schema.Attribute.String;
+    FuelEfficiency: Schema.Attribute.BigInteger;
+    FuelType: Schema.Attribute.Enumeration<
+      [
+        'Fuel:',
+        'Gasoline (Petrol)',
+        'Diesel',
+        'Electricity',
+        'Hybrid',
+        'Plug-In Hybrid',
+        'Hydrogen',
+      ]
+    >;
+    horsepower: Schema.Attribute.BigInteger;
+    images: Schema.Attribute.JSON;
+    InteriorAndComfort: Schema.Attribute.Text;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<'oneToMany', 'api::car.car'> &
+      Schema.Attribute.Private;
+    Name: Schema.Attribute.String;
+    publishedAt: Schema.Attribute.DateTime;
+    ReliabilityAndMaintenance: Schema.Attribute.String;
+    ResaleValue: Schema.Attribute.Integer;
+    SafetyFeatures: Schema.Attribute.Text;
+    speed: Schema.Attribute.BigInteger;
+    Transmission: Schema.Attribute.Enumeration<
+      ['Ex:', 'Manual', 'Automatic', 'CVT']
+    >;
+    TypeofCar: Schema.Attribute.Enumeration<
+      [
+        'Car:',
+        'Sedan',
+        'Hatchback',
+        'SUV',
+        'Coupe',
+        'Convertible',
+        'Truck',
+        'Minivan',
+        'Electric Car',
+        'Hybrid',
+        'Sports Car',
+        'Luxury Car',
+        'Crossover',
+        'Station Wagon',
+        'Muscle Car',
+        'Supercar',
+        'Hypercar',
+        'Microcar',
+        'Off-Road Vehicle',
+        'Hybrid Plug-In Car',
+      ]
+    >;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    WarrantyAndAfterSalesService: Schema.Attribute.Text;
+  };
+}
+
 export interface ApiPropertyProperty extends Struct.CollectionTypeSchema {
   collectionName: 'properties';
   info: {
@@ -980,6 +1069,7 @@ declare module '@strapi/strapi' {
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'admin::user': AdminUser;
       'api::brocker.brocker': ApiBrockerBrocker;
+      'api::car.car': ApiCarCar;
       'api::property.property': ApiPropertyProperty;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;

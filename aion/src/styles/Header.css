@@ -11,11 +11,20 @@
 .nav-wrapper{
 
 }
+.logoSpaceLink{
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 25px;
+}
 .logoSpace{
   display: flex;
   align-items: center;
   gap: 10px;
   border-bottom: 2px solid grey;
+  cursor: pointer;
+}
+.logoSpace:hover{
+  background-color: aquamarine;
 }
 .logoSpace img{
   width: 40px;

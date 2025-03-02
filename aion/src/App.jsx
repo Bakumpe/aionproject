@@ -19,6 +19,7 @@ import Login from "./forms/Login";
 import { UserProvider } from "./context/UserContext";
 import Relocation from "./pages/Relocation";
 import { PropertyProvider } from "./context/PropertyContext";
+import MyIndexPage from "./index/Index";
 
 function App() {
   return (
@@ -26,7 +27,8 @@ function App() {
       <UserProvider>
         <PropertyProvider>
           <Routes>
-            <Route path="/" element={<Home />} />
+            <Route path="/" element={<MyIndexPage />} />
+            <Route path="/home" element={<Home />} />
             <Route path="/loginRegister" element={<Login />} />
             <Route path="/properties/:id" element={<PropertyPage />} />
             <Route element={<ProtectedRoute />}>

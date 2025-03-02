@@ -18,46 +18,77 @@ const SubHeading = () => {
       <div className="propertyHead1">Featured Properties</div>
       <div className="propertyHead2">Recommended For You</div>
       <div className="propertyHead3">
-        <div className="viewAll">
-          <Link to={"/"}  onClick={() => setCategory("view-all")}>
-            View All
-          </Link>
-        </div>
-        <div className="apartment">
-          <Link to={"/"} onClick={() => setCategory("Apartment")}>
-            ECEG
-          </Link>
-        </div>
-        <div className="apartment">
-          <Link to={"/"} onClick={() => setCategory("Apartment")}>
-            Apartments
-          </Link>
-        </div>
-        <div className="apartment">
-          <Link to={"/"}  onClick={() => setCategory("Standalone")}>
-            Stand Alone
-          </Link>
-        </div>
-        <div className="apartment">
-          <Link to={"/"} onClick={() => setCategory("Villa")}>
-            Villa
-          </Link>
-        </div>
-        <div className="apartment">
-          <Link to={"/"} onClick={() => setCategory("Office")}>
-            Office
-          </Link>
-        </div>
-        <div className="apartment">
-          <Link to={"/"} onClick={() => setCategory("Shops")}>
-            Shops
-          </Link>
-        </div>
-        <div className="apartment">
-          <Link to={"/"} onClick={() => setCategory("ArcadeSpace")}>
-            Arcade Space
-          </Link>
-        </div>
+        <Link
+          to={"/"}
+          onClick={() => setCategory("view-all")}
+          className="viewAll"
+        >
+          View All
+        </Link>
+
+        <Link
+          to={"/"}
+          onClick={() => setCategory("Apartment")}
+          className="apartment"
+        >
+          ECEG
+        </Link>
+
+        <Link
+          to={"/"}
+          onClick={() => setCategory("Apartment")}
+          className="apartment"
+        >
+          Apartments
+        </Link>
+
+        <Link
+          to={"/"}
+          onClick={() => setCategory("Standalone")}
+          className="apartment"
+        >
+          Cars
+        </Link>
+
+        <Link
+          to={"/"}
+          onClick={() => setCategory("Villa")}
+          className="apartment"
+        >
+          Villa
+        </Link>
+
+        <Link
+          to={"/"}
+          onClick={() => setCategory("Office")}
+          className="apartment"
+        >
+          Office
+        </Link>
+
+        <Link
+          to={"/"}
+          onClick={() => setCategory("Shops")}
+          className="apartment"
+        >
+          Shops
+        </Link>
+
+        <Link
+          to={"/"}
+          onClick={() => setCategory("ArcadeSpace")}
+          className="apartment"
+        >
+          Arcade Space
+        </Link>
+
+        <Link
+          to={"/"}
+          onClick={() => setCategory("ArcadeSpace")}
+          className="apartment"
+        >
+          Stand Alone
+        </Link>
       </div>
       {properties.length > 0 && (
         <div className="propertyList">

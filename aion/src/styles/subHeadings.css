@@ -16,52 +16,35 @@
 .propertyHead3{
     margin-top: 40px;
     margin-bottom: 60px;
-    display: flex;
+    display: grid;
+    grid-template-columns: auto auto auto;
     align-items: center;
     cursor: pointer;
     gap: 20px;
+    width: 95%;
 }
 .viewAll{
-    background: rgb(201, 47, 47);
+    text-align: center;
+    background: rgb(241, 16, 16);
     color: aliceblue;
     padding: 15px;
     border-radius: 5px;
-}
-.viewAll a{
     text-decoration: none;
-    color: aliceblue;
-    padding: 15px;
+    font-size: 18px;
 }
-.viewAll a:active,
-.viewAll a:focus{
-    color: rgb(210, 203, 203);
+.viewAll:hover, .apartment:hover{
+    background-color: rgb(79, 128, 6);
+    color: aliceblue;
 }
 .apartment{
     text-align: center;
     background: rgb(237, 240, 242);
     padding: 15px;
     border-radius: 5px;
-}
-.apartment:active,
-.apartment:focus{
-    background: rgb(47, 201, 80);
-    color: aliceblue;
-    
-}
-
-.apartment a {
-    padding: 15px;
     text-decoration: none;
-    color: rgb(31, 28, 28);
-  }
-  
-  .apartment a:active,
-  .apartment a:focus {
-    color: rgb(185, 186, 197);
-    background: rgb(47, 201, 80);
-    color: aliceblue;
-    border-radius: 5px;
-  }
+    font-size: 18px;
+    color: black;
+}
   
 @media  screen and (max-width:1024px) {
     .viewAll{
