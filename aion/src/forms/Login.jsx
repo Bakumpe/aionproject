@@ -1,0 +1,145 @@
+import React, { useContext, useState } from "react";
+import { Button, TextInput, PasswordInput } from "@mantine/core";
+import { useNavigate } from "react-router-dom";
+import "../styles/login.css";
+import { UserContext } from "../context/UserContext";
+import config from "../.config"
+
+function Login() {
+  const { initializeUser } = useContext(UserContext);
+  const [formType, setFormType] = useState("login");
+  const [message, setMessage] = useState(null);
+  const navigate = useNavigate();
+
+  const register = async (event) => {
+    event.preventDefault();
+    setMessage(null);
+    const formData = new FormData(event.target);
+    const jsonData = Object.fromEntries(formData);
+
+    console.log("Data being sent:", jsonData); // Log the data being sent for debugging
+
+    const reqOptions = {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(jsonData),
+    };
+
+    try {
+      const req = await fetch(
+        `${config.apiUrl}/api/auth/local/register`,
+        reqOptions
+      );
+      const res = await req.json();
+      console.log("Server response:", res);
+
+      if (res.error) {
+        setMessage(res.error.message);
+        return;
+      }
+
+      if (res.jwt && res.user) {
+        setMessage("Successful Registration.");
+        await initializeUser(jsonData.email, jsonData.password); // Initialize user with provided credentials
+        navigate("/");
+      }
+    } catch (error) {
+      // console.error("Request failed:", error);
+      alert("Request failed:", error);
+      setMessage("An error occurred. Please try again.");
+    }
+  };
+
+  const login = async (event) => {
+    event.preventDefault();
+    setMessage(null);
+    const formData = new FormData(event.target);
+    const jsonData = Object.fromEntries(formData);
+
+    // console.log("Data being sent:", jsonData); // Log the data being sent for debugging
+
+    const reqOptions = {
+      method: "POST",  // Changed from "GET" to "POST"
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(jsonData),
+    };
+
+    try {
+      const req = await fetch(
+        `${config.apiUrl}/api/auth/local`,
+        reqOptions
+      );
+      const res = await req.json();
+      // console.log("Server response:", res);
+
+      if (res.error) {
+        setMessage(res.error.message);
+        return;
+      }
+
+      if (res.jwt && res.user) {
+        setMessage("Successful Login.");
+        await initializeUser(jsonData.identifier, jsonData.password); // Initialize user with provided credentials
+        navigate("/");
+      }
+    } catch (error) {
+      // console.error("Request failed:", error);
+      setMessage("An error occurred. Please try again.");
+    }
+};
+
+  const toggleFormType = () => {
+    setFormType((prevType) => (prevType === "login" ? "register" : "login"));
+    setMessage(null);
+  };
+
+  return (
+    <div className="form">
+      {message && <p className="errorMessage">{message}</p>}
+      <form onSubmit={formType === "login" ? login : register}>
+        <h1>{formType === "login" ? "Login" : "Register"}</h1>
+        {formType === "register" && (
+          <>
+            <TextInput
+              label="Username"
+              placeholder="Your username"
+              name="username"
+              className="textInput"
+            />
+            <br />
+          </>
+        )}
+        <TextInput
+          type="email"
+          label="Email"
+          placeholder="your@email.com"
+          name={formType === "login" ? "identifier" : "email"}
+          className="textInput"
+        />
+        <br />
+        <TextInput
+          type="password"
+          label="Password"
+          placeholder="Your password"
+          name="password"
+          className="textInput"
+        />
+        <br />
+        <div className="group1">
+          <Button type="submit">
+            {formType === "login" ? "Login" : "Register"}
+          </Button>
+          <Button variant="light" onClick={toggleFormType}>
+            {formType === "login" ? "Switch to Register" : "Switch to Login"}
+          </Button>
+        </div>
+      </form>
+    </div>
+  );
+}
+
+export default Login;

@@ -1,0 +1,74 @@
+.terms-container {
+    padding: 20px;
+    max-width: 800px;
+    margin: auto;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    z-index: 1000;
+  }
+  
+  .terms-container h1 {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .terms-container h2 {
+    margin-top: 20px;
+    color: #2c3e50;
+  }
+  
+  .terms-container p {
+    margin-bottom: 15px;
+    line-height: 1.6;
+  }
+  .terms-section {
+    margin-top: 20px;
+  }
+  
+  .terms-section label {
+    display: flex;
+    align-items: center;
+  }
+  
+  .terms-section input[type="checkbox"] {
+    margin-right: 10px;
+  }
+  .terms-modal {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    right: auto;
+    bottom: auto;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+    background: rgb(191, 192, 197);
+    padding: 20px;
+    border-radius: 8px;
+    width: 80%;
+    height: 80%;
+    max-width: 800px;
+    overflow: hidden;
+    overflow-y: auto;
+    z-index: 1000;
+  }
+  
+  .terms-overlay {
+    background-color: rgba(0, 0, 0, 0.75);
+  }
+  .terms-modal button {
+    background-color: blue;  
+    color: white;  
+    font-size: 18px;  
+    padding: 10px 20px;  
+    border: none;  
+    border-radius: 5px;  
+    cursor: pointer;  
+  }
+  
+  .terms-modal button:hover {
+    background-color: darkblue;  /* Changes the button color on hover to a darker blue */
+  }
+  .terms-modal button:active {
+    background-color: darkblue;  /* Changes the button color when the button is clicked */
+  }  
+  

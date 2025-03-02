@@ -1,0 +1,46 @@
+{
+  "kind": "collectionType",
+  "collectionName": "brockers",
+  "info": {
+    "singularName": "brocker",
+    "pluralName": "brockers",
+    "displayName": "Brocker"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "Country": {
+      "type": "string"
+    },
+    "District": {
+      "type": "string"
+    },
+    "Subcounty": {
+      "type": "string"
+    },
+    "Zone": {
+      "type": "string"
+    },
+    "Village": {
+      "type": "string"
+    },
+    "NextOfKin": {
+      "type": "string"
+    },
+    "NextOfKinContact": {
+      "type": "biginteger"
+    },
+    "UserId": {
+      "type": "biginteger"
+    },
+    "County": {
+      "type": "string"
+    },
+    "admin_user": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "admin::user"
+    }
+  }
+}

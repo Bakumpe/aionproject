@@ -1,0 +1,78 @@
+{
+  "kind": "collectionType",
+  "collectionName": "properties",
+  "info": {
+    "singularName": "property",
+    "pluralName": "properties",
+    "displayName": "Property",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "PropertyName": {
+      "type": "string"
+    },
+    "PropertyCategory": {
+      "type": "enumeration",
+      "enum": [
+        "Home:",
+        "Apartment",
+        "Stand Alone",
+        "Villa",
+        "Studio House",
+        "Arcade Small Room",
+        "ECEG",
+        "Flat Building",
+        "Rental Space"
+      ]
+    },
+    "NumberOfBedRooms": {
+      "type": "integer"
+    },
+    "PriceTag": {
+      "type": "biginteger"
+    },
+    "NumberOfUnitsForNeighbors": {
+      "type": "biginteger"
+    },
+    "Amenities": {
+      "type": "text"
+    },
+    "photo": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": true
+    },
+    "Location": {
+      "type": "string"
+    },
+    "NumberOfBathrooms": {
+      "type": "integer"
+    },
+    "Description": {
+      "type": "text"
+    },
+    "Garage": {
+      "type": "integer"
+    },
+    "HouseSize": {
+      "type": "biginteger"
+    },
+    "LandSize": {
+      "type": "biginteger"
+    },
+    "YearBuilt": {
+      "type": "date"
+    },
+    "PhotoUrl": {
+      "type": "json"
+    }
+  }
+}

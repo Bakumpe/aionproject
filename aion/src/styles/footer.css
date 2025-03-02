@@ -1,0 +1,187 @@
+.footer{
+ width: 100%;
+ overflow: hidden;
+}
+
+.aionLogo {
+  width: 100%;
+}
+
+.aionLogo img {
+  width: 30px;
+  height: 30px;
+}
+.aionLogo1 {
+  display: flex;
+  align-items: center;
+  padding-left: 10px;
+  gap: 10px;
+}
+
+.pngImages {
+  margin-top: 20px;
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  justify-content: space-around;
+}
+.pngImages img {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  z-index: 1000;
+}
+.pngImages img:hover{
+  transform: scale(1.2);
+}
+
+.section2{
+  width: 100%;
+}
+.section2-1 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-left: 25px;
+  width: 100%;
+}
+.section2-1-1{
+  width: 100%;
+}
+.locationFooter {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 10px;
+  width: 100%;
+}
+.locationFooter img {
+  width: 20px;
+  background-color: #d0c7c7;
+}
+.linksFooter{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.linkCategory{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+.linkCategory a{
+  text-decoration: none;
+  font-size: 13px;
+  padding: 5px;
+  width: 100%;
+}
+.linkCategory p{
+  border-bottom: 2px solid grey;
+  width: 100%;
+}
+
+.rightsReserved{
+  display: flex;
+  align-items: center;
+  font-size: 10px;
+}
+.rightsReserved img{
+ width: 15px;
+}
+
+@media (max-width: 768px){
+  .footer {
+    height: 100vh;
+
+  }
+
+  .aionLogo {
+    display: flex;
+    flex-direction: column;
+    height: 110px;
+    border-bottom: 2px solid gray;
+    gap: 1px;
+    color: rgb(199, 211, 221);
+    font-size: 15px;
+  }
+  
+  .aionLogo img {
+    width: 30px;
+    height: 30px;
+  }
+  .aionLogo1 {
+    display: flex;
+    align-items: center;
+    padding-left: 0;
+    gap: 10px;
+    z-index: 1000;
+  }
+  .aionLogo1 h1{
+    z-index: 1000;
+  }
+  .pngImages {
+    padding-right: 0;
+    display: flex;
+    align-items: center;
+    gap: 30px;
+  }
+  
+  .pngImages img:hover{
+    transform: scale(1.2);
+    background-color: #f7f5f5;
+  }
+  .section2 {
+    z-index: 1000;
+  }
+  .section2-1 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 20px;
+    margin-left: 20px;
+    color: rgb(249, 249, 249);
+  }
+  .locationFooter {
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    font-size: 15px;
+  }
+  .locationFooter img {
+    width: 30px;
+    background-color: #f7f5f5;
+  }
+  .linksFooter{
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-evenly;
+    width: 100%;
+  }
+  .linkCategory{
+    display: flex;
+    flex-direction: column;
+  }
+  .linkCategory a{
+    margin-top: 20px;
+    text-decoration: none;
+    color: #f7f5f5;
+    font-size: 13px;
+  }
+  .rightsReserved{
+    margin-top: 30px;
+    margin-left: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    z-index: 1000;
+    color: #bdbfc4;
+  }
+  .rightsReserved img{
+   width: 30px;
+   background-color: #8d8e91;
+  }
+}

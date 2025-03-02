@@ -1,0 +1,83 @@
+
+.propertyListing {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  list-style: none;
+  gap: 20px;
+}
+.propertyListing li {
+  padding: 5px;
+  width: 250px;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  background-color: rgba(200, 200, 200, 0.6);
+  border-radius: 15px;
+}
+.myImages img {
+  width: 100%;
+  height: 200px;
+  transition: transform 0.2s ease-in-out, opacity 0.2s ease-in-out;
+}
+
+.myImages img:hover {
+  transform: scale(1.05); /* Adjust the scaling factor as needed */
+  opacity: 0.6;
+}
+
+.propertyName {
+    border-bottom: 1px solid grey;
+}
+.location {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+.location img {
+  width: 20px;
+  height: 20px;
+}
+.specifications {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+}
+.specifications img {
+  width: 25px;
+  height: 25px;
+}
+.specifications-1 {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.amenities {
+  width: 100%;
+  overflow-wrap: break-word;
+}
+.amenities img {
+  width: 25px;
+  height: 25px;
+}
+.pagination{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    gap: 20px;
+}
+.pagination button{
+    padding: 10px;
+    background-color: #3d3df1;
+    border: none;
+    color: azure;
+    border-radius: 5px;
+    font-size: 15px;
+    width: 15%;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.pagination button:hover{
+    background-color: #2a2abf; /* Slightly darker blue for hover effect */
+    transform: scale(1.05); /* Slight zoom-in effect */
+    color: #ffffff; /* Make text color pure white */
+}

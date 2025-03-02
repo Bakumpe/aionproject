@@ -1,0 +1,86 @@
+.header{
+  display: flex;
+  flex-direction: column;
+  background-color: rgb(193, 196, 235);
+  height: 100vh;
+  overflow: hidden;
+}
+.header-container{
+
+}
+.nav-wrapper{
+
+}
+.logoSpace{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border-bottom: 2px solid grey;
+}
+.logoSpace img{
+  width: 40px;
+}
+.mobile-menu-button{
+  display: none;
+}
+.main-nav{
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.user-dropdown, .auth-button{
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  border-top: 2px solid grey;
+}
+.nav-link{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  color: black;
+}
+.dropdown-item{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  color: black;
+}
+.myProfile{
+ display: flex;
+ flex-direction: column;
+ gap: 10px;
+ margin-top: 20px;
+ margin-bottom: 20px; 
+}
+.logout-button{
+  padding: 7px;
+  display: flex;
+  align-items: center;
+  position: relative;
+  top: 10px;
+  background-color: rgb(119, 145, 241);
+  border: none;
+  gap: 30px;
+  box-shadow: 1px 5px 5px rgb(193, 196, 235);
+}
+.logout-button:hover{
+  background-color: red;
+  color: aliceblue;
+}
+.auth-button {
+  position: relative;
+  top: 40px;
+  font-size: 20px;
+  text-decoration: none;
+  background-color: red;
+  color: aliceblue;
+}
+.auth-button:hover{
+  background-color: greenyellow;
+  color: black;
+}

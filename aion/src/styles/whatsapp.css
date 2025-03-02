@@ -1,0 +1,51 @@
+.whatsap {
+  display: flex;
+  padding: 20px;
+  align-items: center;
+  position: fixed;
+  top: 85%;
+  left: 90%;
+  z-index: 2000;
+  cursor: pointer;
+  color: rgb(229, 236, 244);
+  gap: 7px;
+}
+.whatsap img {
+  width: 50px;
+}
+.whatsap img:hover {
+  transform: scale(1.1);
+  z-index: 2000;
+}
+.message {
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  height: 50px;
+  background-color: #18eb71;
+  border-radius: 10px;
+}
+@media (max-width: 768px) {
+  .whatsap {
+    display: flex;
+    padding: 20px;
+    align-items: center;
+    position: fixed;
+    top: 90%;
+    left: 80%;
+    z-index: 2000;
+    cursor: pointer;
+    color: rgb(229, 236, 244);
+    gap: 7px;
+  }
+  .whatsap {
+    padding: 10px;
+    gap: 10px;
+  }
+  .whatsap img {
+    width: 40px;
+  }
+  .message {
+    display: none;
+  }
+}

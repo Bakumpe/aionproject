@@ -1,0 +1,43 @@
+.blockerProfile{
+ width: 100%;
+ overflow: hidden;
+}
+.blockerTitle{
+font-size: 25px;
+font-weight: 700;
+color: black;
+z-index: 100;
+}
+
+.blockerForm{
+    padding: 20px;
+    background-image: url("../assets/apartment.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    position: relative;
+}
+
+.blockerForm::after{
+    content: "";
+    display: block;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(249, 244, 244, 0.8); /* Adjust the overlay color and opacity as needed */
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+}
+
+.myInput{
+    display: flex;
+    flex-direction: column;
+    z-index: 1000;
+}
+.handlefiles{
+    z-index: 1000;
+}
+.Button{
+    z-index: 1000;
+}

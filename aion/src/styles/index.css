@@ -1,0 +1,22 @@
+.indexPage {
+    display: grid;
+    grid-template-columns: 15% auto 15%;
+    overflow: hidden;
+    height: 97vh;
+}
+
+.navBar {
+    overflow: hidden; 
+    
+}
+
+.body {
+    background-color: rgba(236, 226, 226, 0.1);
+    overflow-y: auto;
+}
+
+.sideBar {
+    overflow: hidden;
+    background-color: rgb(173, 173, 226);
+}
+
