@@ -12,6 +12,12 @@ import {
   Star,
   Menu,
   X,
+  Car,
+  FanIcon,
+  Combine,
+  ServerIcon,
+  Phone,
+  Move,
 } from "lucide-react";
 import config from "../.config";
 
@@ -56,7 +62,7 @@ const Header = () => {
               Home
             </Link>
             <Link to="/eceg" className="nav-link" onClick={closeMobileMenu}>
-              <Building className="icon" />
+              <Combine className="icon" />
               Easy Come Easy Go
             </Link>
             <Link
@@ -64,16 +70,12 @@ const Header = () => {
               className="nav-link"
               onClick={closeMobileMenu}
             >
-              <Star className="icon" />
+              <FanIcon className="icon" />
               My Favorites
             </Link>
-            <Link
-              to="/recommendations"
-              className="nav-link"
-              onClick={closeMobileMenu}
-            >
-              <Star className="icon" />
-              Recommendations
+            <Link to="/cars" className="nav-link" onClick={closeMobileMenu}>
+              <Car className="icon" />
+              Vehicles
             </Link>
             <Link
               to="/propertySettings"
@@ -88,7 +90,7 @@ const Header = () => {
               className="nav-link"
               onClick={closeMobileMenu}
             >
-              <Star className="icon" />
+              <ServerIcon className="icon" />
               Our Services
             </Link>
             <Link
@@ -96,7 +98,7 @@ const Header = () => {
               className="nav-link"
               onClick={closeMobileMenu}
             >
-              <Star className="icon" />
+              <Phone className="icon" />
               Call Center
             </Link>
             <Link
@@ -104,7 +106,7 @@ const Header = () => {
               className="nav-link"
               onClick={closeMobileMenu}
             >
-              <Star className="icon" />
+              <Move className="icon" />
               Relocation
             </Link>
             <Link to="/broker" className="nav-link" onClick={closeMobileMenu}>

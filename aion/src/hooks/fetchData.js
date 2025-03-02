@@ -3,6 +3,7 @@ import axios from "axios";
 
 const useFetchProperties = (url) => {
   const [properties, setProperties] = useState([]);
+  const [cars, setCars] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
@@ -11,6 +12,7 @@ const useFetchProperties = (url) => {
       try {
         const response = await axios.get(url);
         setProperties(response.data);
+        setCars(response.data);
       } catch (error) {
         setError(error);
       } finally {
@@ -21,7 +23,7 @@ const useFetchProperties = (url) => {
     fetchData();
   }, [url]);
 
-  return { properties, loading, error };
+  return { properties, loading, error, cars };
 };
 
 export default useFetchProperties;

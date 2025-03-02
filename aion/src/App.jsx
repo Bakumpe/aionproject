@@ -20,6 +20,7 @@ import { UserProvider } from "./context/UserContext";
 import Relocation from "./pages/Relocation";
 import { PropertyProvider } from "./context/PropertyContext";
 import MyIndexPage from "./index/Index";
+import Cars from "./cars/Cars";
 
 function App() {
   return (
@@ -33,6 +34,7 @@ function App() {
             <Route path="/properties/:id" element={<PropertyPage />} />
             <Route element={<ProtectedRoute />}>
               <Route path="/relocation" element={<Relocation />} />
+              <Route path="/cars" element={<Cars />} />
               <Route path="/callCenter" element={<CallCustomerCare />} />
               <Route path="/profile" element={<Profile />} />
               <Route path="/ourServices" element={<OurServices />} />
