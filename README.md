@@ -12,4 +12,3 @@ Sure! Aion is a cutting-edge housing property application designed to streamline
 6. Collaborate Communicate Give feedBack.
 
 ### NB: This is still under development and more efforts are required
-
