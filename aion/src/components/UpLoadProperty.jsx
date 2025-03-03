@@ -1,6 +1,7 @@
 import React, { useContext, useState } from "react";
 import axios from "axios";
 import { UserContext } from "../context/UserContext";
+import config from "../.config"
 
 function UpLoadProperty() {
   const { user, token } = useContext(UserContext);
@@ -26,8 +27,7 @@ function UpLoadProperty() {
 
     try {
       const uploadResponse = await axios.post(
-        "http://localhost:1337/api/upload",
-        // "https://aionhousingstrapi.onrender.com/api/upload",
+        `${config.apiUrl}/api/upload`,
         formData,
         {
           headers: {
@@ -42,8 +42,7 @@ function UpLoadProperty() {
 
       // Update the property's PhotoUrls
       await axios.put(
-        `http://localhost:1337/api/properties${property.id}`,
-        // `https://aionhousingstrapi.onrender.com/api/properties${property.id}`,
+        `${config.apiUrl}${property.id}`,
         {
           photoUrls: photoUrls,
         },

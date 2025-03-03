@@ -1,4 +1,6 @@
 .move {
+  position: relative;
+  bottom: 25px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -14,7 +16,7 @@
   background-repeat: no-repeat;
   background-size: cover;
   width: 100%;
-  height: 100vh;
+  height: 50vh;
 }
 .moveSmarter::before {
   content: "";
@@ -33,7 +35,7 @@
 }
 .moveSmarter-1 {
   display: flex;
-  font-size: 80px;
+  font-size: 50px;
   flex-direction: column;
   align-items: center;
   color: rgb(247, 243, 243);
@@ -41,8 +43,8 @@
 }
 .contactUs {
   width: 250px;
-  height: 50px;
-  font-size: 25px;
+  height: 30px;
+  font-size: 18px;
   background-color: aliceblue;
   color: rgb(101, 89, 89);
   display: flex;
@@ -57,12 +59,12 @@
 }
 .moving {
   position: relative;
-  top: -70px;
+  top: 10px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 70%;
-  height: 150px;
+  width: 100%;
+  height: 35px;
   background-color: rgb(184, 204, 204);
   color: rgb(52, 64, 70);
   font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
@@ -71,15 +73,14 @@
   box-shadow: 1px 1px 10px rgb(101, 89, 89);
 }
 .moving p {
-  font-size: 40px;
+  font-size: 20px;
   color: rgb(56, 61, 65);
 }
 .moving1 {
-  margin-top: 20px;
-  padding: 10px;
   display: flex;
-  font-size: 25px;
-  gap: 30px;
+  align-items: center;
+  font-size: 18px;
+  gap:40px;
   color: rgb(56, 61, 65);
 }
 .moving2 {
@@ -98,13 +99,13 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 70%;
-  background-color: rgba(80, 97, 111, 0.3);
+  width: 100%;
+  background-color: rgba(85, 123, 103, 0.7);
   font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
   color: rgb(37, 42, 46);
 }
 .movingDetails .heading {
-  margin-top: 10px;
+  margin-top: 30px;
   margin-bottom: 10px;
   font-size: 30px;
 }

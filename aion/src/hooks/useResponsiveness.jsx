@@ -5,7 +5,7 @@ const useResponsivePropertiesPerPage = () => {
 
   useEffect(() => {
     const handleResize = () => {
-      if (window.innerWidth < 768) {
+      if (window.innerWidth < 769) {
         setPropertiesPerPage(2);
       } else {
         setPropertiesPerPage(6);

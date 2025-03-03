@@ -12,7 +12,7 @@ const PropertyResults = () => {
     <>
       {/* <WelcomePage /> */}
       <div className="property-results">
-        <h1>Search Results</h1>
+        <h1 className="searchResult">Search Results</h1>
         <ul className="propertyListing">
           {properties.length > 0 ? (
             properties.map((property) => (

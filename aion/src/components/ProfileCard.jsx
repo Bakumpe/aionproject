@@ -2,11 +2,9 @@ import React, { useContext, useState } from "react";
 import { UserContext } from "../context/UserContext";
 import "../styles/profileCard.css";
 import { useNavigate } from "react-router-dom";
-// import UpLoadAvatar from "./UpLoadAvatar"; 
-// import config from "../.config";
-import Aion from "../assets/apartment.jpg"
 
-export const ProfileCard = () => {
+
+function ProfileCard(){
   const { user } = useContext(UserContext); // Access the token from the context
   const navigate = useNavigate();
   // const [avatarUrl, setAvatarUrl] = useState(user ? user.avatarUrl : ""); 
@@ -18,24 +16,8 @@ export const ProfileCard = () => {
     return null;
   }
 
-  // const handleAvatarClick = () => {
-  //   setIsUploadVisible(!isUploadVisible);
-  // };
-
   return (
     <div className="upc">
-      <div className="gradient">
-        <img src={Aion} alt="Logo" />
-      </div>
-      {/* <div className="profileDown">
-        <div className="avatarsImage" onClick={handleAvatarClick}>
-          <img
-            src={`${config.apiUrl}${avatarUrl}`}
-            alt="Avatar"
-          />
-        </div>
-      </div> */}
-
       <div className="profileDetails">
         <div className="name">
           <p>First Name:</p>
@@ -86,3 +68,4 @@ export const ProfileCard = () => {
     </div>
   );
 };
+export default ProfileCard;

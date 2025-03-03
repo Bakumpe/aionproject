@@ -12,7 +12,11 @@ function CallCustomerCare() {
           <Header />
         </div>
         <div className="body">
-          <div>
+        <div className="bodyTitle">
+            {" "}
+            <p>Customer Center</p>
+          </div>
+          <div className="customerCare">
             <h1>Customer Care</h1>
           </div>
         </div>

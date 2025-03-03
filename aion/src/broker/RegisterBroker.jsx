@@ -11,9 +11,6 @@ Modal.setAppElement("#root"); // Add this to avoid screen readers focusing on el
 
 function RegisterBroker({ setIsRegisteredBroker }) {
   const { user } = useContext(UserContext);
-  const { data: brokerData } = useFetchProperties(
-    `/brokers?UserId=${user?.id}`
-  );
   const [brokerFormData, setBrokerFormData] = useState({
     UserId: user?.id || "",
     Country: "",
@@ -61,17 +58,13 @@ function RegisterBroker({ setIsRegisteredBroker }) {
     }
   };
 
-  if (brokerData && brokerData.length > 0 && brokerData[0].UserId) {
-    return <p>You are already registered as a broker.</p>;
-  }
-
   return (
     <>
       <form class="register-form">
         <h1>Register As Broker To Proceed</h1>
         <div className="myInputs">
           <div>
-            <label  className="myInputs-1">
+            <label className="myInputs-1">
               Country:
               <input
                 type="text"
@@ -167,20 +160,24 @@ function RegisterBroker({ setIsRegisteredBroker }) {
           </div>
 
           <div class="terms-section">
-          <label onClick={() => setModalIsOpen(true)} class="terms-link">
-            Terms and Conditions
-          </label>
-          <label>
-            <input
-              type="checkbox"
-              checked={agreeToTerms}
-              onChange={(e) => setAgreeToTerms(e.target.checked)}
-            />
-            I agree to the terms and conditions
-          </label>
+            <label onClick={() => setModalIsOpen(true)} class="terms-link">
+              Terms and Conditions
+            </label>
+            <label>
+              <input
+                type="checkbox"
+                checked={agreeToTerms}
+                onChange={(e) => setAgreeToTerms(e.target.checked)}
+              />
+              I agree to the terms and conditions
+            </label>
+          </div>
         </div>
-        </div>
-        <button type="button" onClick={handleRegister} className="register-button">
+        <button
+          type="button"
+          onClick={handleRegister}
+          className="register-button"
+        >
           Register
         </button>
       </form>

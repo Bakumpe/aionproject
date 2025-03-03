@@ -1,27 +1,73 @@
+:root{
+    --primary-color: rgb(2, 2, 24);
+    --secondary-color: #2a2abf;
+}
 .indexPage {
-    display: grid;
-    grid-template-columns: 15% auto 15%;
-    overflow: hidden;
-    height: 97vh;
+  display: grid;
+  grid-template-columns: 15% auto 15%;
+  overflow: hidden;
+  height: 97vh;
+  color: rgb(231, 234, 236);
 }
 
 .navBar {
-    overflow: hidden; 
-    
+  overflow: hidden;
+  height: 100vh;
+  background-color: var(--primary-color);
 }
 
 .body {
-    background-color: rgba(236, 226, 226, 0.1);
-    overflow-y: auto;
+  background-color: rgba(236, 226, 226, 0.1);
+  overflow-y: auto;
 }
 
 .sideBar {
+  display: block;
+  overflow: hidden;
+  background-color: var(--primary-color);
+}
+.property-results h1 {
+  padding: 10px;
+  text-align: center;
+  background-color: rgb(173, 173, 226);
+}
+.searchResult{
+  color: #01010e;
+}
+.customerCare{
+  color: #01010e;
+}
+.ourservice{
+  color: #01010e;
+}
+@media screen and (max-width: 768px) {
+  .indexPage {
+    display: flex;
+    grid-template-columns: 25% 75% ;
+    overflow: hidden;
+    height: 100vh;
+  }
+
+  .navBar {
+    overflow: hidden;
+    overflow-y: scroll;
+    width: 25%;
+  }
+
+  .body {
+    background-color: rgba(236, 226, 226, 0.1);
+    overflow-y: auto;
+    width: 75%;
+  }
+
+  .sideBar {
+    display: none;
     overflow: hidden;
     background-color: rgb(173, 173, 226);
-}
-.property-results h1{
+  }
+  .property-results h1 {
     padding: 10px;
- text-align: center;
- background-color: rgb(173, 173, 226);
+    text-align: center;
+    background-color: rgb(173, 173, 226);
+  }
 }
-

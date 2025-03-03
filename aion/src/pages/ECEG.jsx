@@ -12,6 +12,10 @@ function ECEG() {
           <Header />
         </div>
         <div className="body">
+          <div className="bodyTitle">
+            {" "}
+            <p>Easily Come In And Check Out Easily</p>
+          </div>
           <EasyComeEsyGo />
         </div>
         <div className="sideBar">

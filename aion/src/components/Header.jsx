@@ -19,7 +19,6 @@ import {
   Phone,
   Move,
 } from "lucide-react";
-import config from "../.config";
 
 const Header = () => {
   const { user } = useContext(UserContext);
@@ -75,31 +74,23 @@ const Header = () => {
             </Link>
             <Link to="/cars" className="nav-link" onClick={closeMobileMenu}>
               <Car className="icon" />
-              Vehicles
+              Transportation
             </Link>
-            <Link
+            {/* <Link
               to="/propertySettings"
               className="nav-link"
               onClick={closeMobileMenu}
             >
               <Building className="icon" />
               Property Settings
-            </Link>
+            </Link> */}
             <Link
               to="/ourServices"
               className="nav-link"
               onClick={closeMobileMenu}
             >
               <ServerIcon className="icon" />
-              Our Services
-            </Link>
-            <Link
-              to="/callCenter"
-              className="nav-link"
-              onClick={closeMobileMenu}
-            >
-              <Phone className="icon" />
-              Call Center
+              Service Providers
             </Link>
             <Link
               to="/relocation"
@@ -111,7 +102,15 @@ const Header = () => {
             </Link>
             <Link to="/broker" className="nav-link" onClick={closeMobileMenu}>
               <Star className="icon" />
-              Broker
+              Register Property
+            </Link>
+            <Link
+              to="/callCenter"
+              className="nav-link"
+              onClick={closeMobileMenu}
+            >
+              <Phone className="icon" />
+              Call Center
             </Link>
           </nav>
 

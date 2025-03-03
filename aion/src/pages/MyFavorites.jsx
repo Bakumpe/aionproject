@@ -12,6 +12,10 @@ function MyFavorites() {
           <Header />
         </div>
         <div className="body">
+        <div className="bodyTitle">
+            {" "}
+            <p>Find Your Perfect Property That Meets Your Needs</p>
+          </div>
           <PropertyResults />
         </div>
         <div className="sideBar">

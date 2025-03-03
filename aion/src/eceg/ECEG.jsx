@@ -39,10 +39,6 @@ function EasyComeEsyGo() {
 
   return (
     <>
-      <div className="ecegPage">
-        <h1>Easy come Easy Go</h1>
-      </div>
-
       <div className="unorderedList">
         <ul className="propertyListing">
           {currentProperties.map((property) => (

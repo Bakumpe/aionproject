@@ -62,62 +62,32 @@
 }
 
 @media screen and (max-width: 768px){
-    .properties{
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    }
     .propertyHead1{
-        padding: 10px;
-        font-size: 20px;
-        color: rgb(241, 58, 58);
+        padding-top: 10px;
+        font-size: 18px;
     }
     .propertyHead2{
-        font-size: 30px;
+        font-size: 25px;
         color: rgb(68, 70, 71);
     }
     .propertyHead3{
-        margin-top: 40px;
-        margin-bottom: 60px;
+        margin-top: 5px;
+        margin-bottom: 6px;
         display: grid;
-        grid-template-columns: auto auto auto auto;
-        gap: 10px;
-        font-size: 20px;
+        grid-template-columns: auto auto auto;
+        gap: 3px;
         cursor: pointer;
     }
     .viewAll{
-        background: rgb(201, 47, 47);
-        color: aliceblue;
         padding: 10px;
         border-radius: 5px;
+        font-size: 13px;
     }
     .apartment{
-        background: rgb(237, 240, 242);
         padding: 10px;
         border-radius: 5px;
-        text-align: center;
+        font-size: 13px;
     }
-    .apartment:active,
-    .apartment:focus{
-        background: rgb(47, 201, 80);
-        color: aliceblue;
-    }
-    
-    .apartment a {
-        padding: 10px;
-        text-decoration: none;
-        color: rgb(31, 28, 28);
-        
-      }
-      
-      .apartment a:active,
-      .apartment a:focus {
-        color: rgb(185, 186, 197);
-        background: rgb(47, 201, 80);
-        color: aliceblue;
-        border-radius: 5px;
-      }
       
 }
 @media screen and (max-width: 480px){

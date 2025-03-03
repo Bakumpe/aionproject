@@ -90,6 +90,7 @@ const SubHeading = () => {
           Stand Alone
         </Link>
       </div>
+      
       {properties.length > 0 && (
         <div className="propertyList">
           {properties.map((property) => (

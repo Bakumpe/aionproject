@@ -1,8 +1,7 @@
 import Footer from "../components/Footer";
 import Header from "../components/Header";
 import Whatsapp from "../components/Whatsapp";
-import FetchCars from "./FetchCars";
-import "./car.css"
+import "./car.css";
 
 function Cars() {
   return (
@@ -12,10 +11,11 @@ function Cars() {
           <Header />
         </div>
         <div className="body">
-          <h1 className="vehicleHead">Vehicles</h1>
-          <div>
-            <FetchCars />
+          <div className="bodyTitle">
+            {" "}
+            <p>Find Your Perfect Vehicle</p>
           </div>
+          <h1 className="ourservice">Cars For Hire</h1>
         </div>
         <div className="sideBar">
           <Footer />

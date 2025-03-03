@@ -37,16 +37,18 @@ function Relocation() {
           <Header />
         </div>
         <div className="body">
+        <div className="bodyTitle">
+            {" "}
+            <p>Relocate With Ease</p>
+          </div>
           <div className="move">
             <div className="moveSmarter">
               <div className="moveSmarter-1">
-                <p>Move Smarter</p>
-                <p>with AionMov</p>
+                <p>Move with AionMov</p>
                 <div className="contactUs">Contact Us</div>
               </div>
             </div>
             <div className="moving">
-              <p>Get You Moving</p>
               <div className="moving1">
                 <div
                   className="moving2"

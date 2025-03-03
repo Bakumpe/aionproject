@@ -21,33 +21,42 @@ import Relocation from "./pages/Relocation";
 import { PropertyProvider } from "./context/PropertyContext";
 import MyIndexPage from "./index/Index";
 import Cars from "./cars/Cars";
+import "./styles/index.css";
+import { CarProvider } from "./context/CarContext";
+// import MyCardForCar from "./cars/MyCardForCar";
 
 function App() {
   return (
     <MantineProvider>
       <UserProvider>
         <PropertyProvider>
-          <Routes>
-            <Route path="/" element={<MyIndexPage />} />
-            <Route path="/home" element={<Home />} />
-            <Route path="/loginRegister" element={<Login />} />
-            <Route path="/properties/:id" element={<PropertyPage />} />
-            <Route element={<ProtectedRoute />}>
-              <Route path="/relocation" element={<Relocation />} />
-              <Route path="/cars" element={<Cars />} />
-              <Route path="/callCenter" element={<CallCustomerCare />} />
-              <Route path="/profile" element={<Profile />} />
-              <Route path="/ourServices" element={<OurServices />} />
-              <Route path="/pricing" element={<Pricing />} />
-              <Route path="/broker" element={<Broker />} />
-              <Route path="/settings" element={<Settings />} />
-              <Route path="/aboutUs" element={<AboutUs />} />
-              <Route path="/myFavorites" element={<MyFavorites />} />
-              <Route path="/eceg" element={<ECEG />} />
-              <Route path="/propertySettings" element={<PropertySettings />} />
-              <Route path="/recommendations" element={<Recommendations />} />
-            </Route>
-          </Routes>
+          <CarProvider>
+            <Routes>
+              <Route path="/" element={<MyIndexPage />} />
+              <Route path="/home" element={<Home />} />
+              <Route path="/loginRegister" element={<Login />} />
+              <Route path="/properties/:id" element={<PropertyPage />} />
+              <Route element={<ProtectedRoute />}>
+                <Route path="/relocation" element={<Relocation />} />
+                <Route path="/cars" element={<Cars />} />
+                {/* <Route path="/car/:id" component={<MyCardForCar />} /> */}
+                <Route path="/callCenter" element={<CallCustomerCare />} />
+                <Route path="/profile" element={<Profile />} />
+                <Route path="/ourServices" element={<OurServices />} />
+                <Route path="/pricing" element={<Pricing />} />
+                <Route path="/broker" element={<Broker />} />
+                <Route path="/settings" element={<Settings />} />
+                <Route path="/aboutUs" element={<AboutUs />} />
+                <Route path="/myFavorites" element={<MyFavorites />} />
+                <Route path="/eceg" element={<ECEG />} />
+                <Route
+                  path="/propertySettings"
+                  element={<PropertySettings />}
+                />
+                <Route path="/recommendations" element={<Recommendations />} />
+              </Route>
+            </Routes>
+          </CarProvider>
         </PropertyProvider>
       </UserProvider>
     </MantineProvider>

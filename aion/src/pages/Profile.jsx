@@ -4,19 +4,23 @@ import "../styles/profileCard.css";
 import UpdateUser from "../components/UpdateUserData";
 import Footer from "../components/Footer";
 import Whatsapp from "../components/Whatsapp";
-import { ProfileCard } from "../components/ProfileCard";
+import ProfileCard from "../components/ProfileCard";
+import RegisterAsOwner from "../broker/RegisterAsOwner";
+import RegisterBroker from "../broker/RegisterBroker";
+import RegisterAsServiceProvider from "../broker/RegisterAsServiceProvider";
 
 function Profile() {
   const [isUpdateVisible, setIsUpdateVisible] = useState(false); // State for showing UpdateUser
   const [isDisabled, setIsDisabled] = useState(false);
+  const [cardTitle, setCardTitle] = useState("Your Details");
+  const [movingType, setMovingType] = useState("");
 
   useEffect(() => {
     const lastUpdate = localStorage.getItem("lastUpdate");
     if (lastUpdate) {
       const now = new Date();
       const lastUpdateDate = new Date(lastUpdate);
-      const diffInMilliseconds = now - lastUpdateDate;
-      const diffInDays = diffInMilliseconds / (1000 * 60 * 60 * 24);
+      const diffInDays = (now - lastUpdateDate) / (1000 * 60 * 60 * 24);
       if (diffInDays < 30) {
         setIsDisabled(true);
       }
@@ -31,6 +35,26 @@ function Profile() {
     }
   };
 
+  const handleCardType = (type) => {
+    setCardTitle(type);
+    setMovingType(type);
+  };
+
+  const renderCardComponent = () => {
+    switch (movingType) {
+      case "Profile Card":
+        return <ProfileCard />;
+      case "Property Owners Register":
+        return <RegisterAsOwner />;
+      case "Brokers Register":
+        return <RegisterBroker />;
+      case "Service Providers Register":
+        return <RegisterAsServiceProvider />;
+      default:
+        return null;
+    }
+  };
+
   return (
     <>
       <div className="indexPage">
@@ -38,19 +62,28 @@ function Profile() {
           <Header />
         </div>
         <div className="body">
-          <ProfileCard />
+          <div className="bodyTitle">
+            <p>Profile</p>
+          </div>
+          <div className="moving">
+            <div className="moving1">
+              {["Profile Card", "Property Owners Register", "Brokers Register", "Service Providers Register"].map((type) => (
+                <div key={type} className="moving2" onClick={() => handleCardType(type)}>
+                  {type}
+                </div>
+              ))}
+            </div>
+            <div className="movingDetails">
+              <div className="heading">{cardTitle}</div>
+              <div>{renderCardComponent()}</div>
+            </div>
+          </div>
         </div>
         <div className="sideBar">
           <Footer />
         </div>
       </div>
 
-      {/* <div className="myProfile">
-        <div className="updateProfile" onClick={handleUpdateClick}>
-          Update Profile
-        </div>
-        {isUpdateVisible && <UpdateUser />}{" "}
-      </div> */}
       <Whatsapp />
     </>
   );

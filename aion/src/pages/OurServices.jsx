@@ -3,7 +3,6 @@ import Header from "../components/Header";
 import Footer from "../components/Footer";
 import Whatsapp from "../components/Whatsapp";
 
-
 function OurServices() {
   return (
     <>
@@ -12,7 +11,11 @@ function OurServices() {
           <Header />
         </div>
         <div className="body">
-          <h1>Our Services</h1>
+          <div className="bodyTitle">
+            {" "}
+            <p>Contact Your Service Provider</p>
+          </div>
+          <h1 className="ourservice">Service Providers</h1>
         </div>
         <div className="sideBar">
           <Footer />

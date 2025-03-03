@@ -1,7 +1,4 @@
 .register-form{
-  background-color: rgba(198, 201, 221, 0.5);
-  width: 90%;
-  margin-left: 50px;
   color: black;
 }
 .register-form h1{
@@ -28,4 +25,10 @@
 .register-button{
   margin-top: 20px;
   margin-bottom: 20px;
+}
+.register-button:hover{
+  background-color: rgb(62, 138, 237);
+}
+.welcome-message{
+  color: rgb(2, 2, 17);
 }

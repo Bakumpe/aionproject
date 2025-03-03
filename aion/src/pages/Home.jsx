@@ -56,6 +56,10 @@ function FetchData() {
         </div>
 
         <div className="body">
+          <div className="bodyTitle">
+            {" "}
+            <p>Properties</p>
+          </div>
           <div className="unorderedList">
             <ul className="propertyListing">
               {currentProperties.map((property) => (

@@ -2,7 +2,7 @@ import React from "react";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import Whatsapp from "../components/Whatsapp";
-import "../styles/index.css";
+
 
 function AboutUs() {
   return (
@@ -12,6 +12,10 @@ function AboutUs() {
           <Header />
         </div>
         <div className="body">
+        <div className="bodyTitle">
+            {" "}
+            <p>Properties</p>
+          </div>
           <h1>About Us</h1>
         </div>
         <div className="sideBar">
