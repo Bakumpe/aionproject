@@ -1,7 +1,8 @@
-:root{
-    --primary-color: rgb(2, 2, 24);
-    --secondary-color: #2a2abf;
+:root {
+  --primary-color: rgb(2, 2, 24);
+  --secondary-color: #2a2abf;
 }
+
 .indexPage {
   display: grid;
   grid-template-columns: 15% auto 15%;
@@ -17,7 +18,7 @@
 }
 
 .body {
-  background-color: rgba(236, 226, 226, 0.1);
+  /* background-color: rgba(236, 226, 226, 0.1); */
   overflow-y: auto;
 }
 
@@ -26,24 +27,30 @@
   overflow: hidden;
   background-color: var(--primary-color);
 }
+
 .property-results h1 {
   padding: 10px;
   text-align: center;
   background-color: rgb(173, 173, 226);
 }
-.searchResult{
+
+.searchResult,
+.customerCare,
+.ourservice {
   color: #01010e;
 }
-.customerCare{
+
+.navBar .headerIcon {
+  display: none;
+}
+.noFound{
   color: #01010e;
 }
-.ourservice{
-  color: #01010e;
-}
+
 @media screen and (max-width: 768px) {
   .indexPage {
-    display: flex;
-    grid-template-columns: 25% 75% ;
+    display: grid;
+    grid-template-columns: 25% 75%;
     overflow: hidden;
     height: 100vh;
   }
@@ -65,8 +72,45 @@
     overflow: hidden;
     background-color: rgb(173, 173, 226);
   }
+
   .property-results h1 {
     padding: 10px;
+    text-align: center;
+    background-color: rgb(173, 173, 226);
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .indexPage {
+    display: grid;
+    grid-template-columns: none;
+    grid-template-rows: 10% 90% ;
+    /* overflow: hidden; */
+    height: 100vh;
+    overflow: auto;
+  }
+
+  .navBar {
+    overflow-y: scroll;
+    width: 100%;
+  }
+
+  .body {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+    overflow-y: auto;
+  }
+
+  .sideBar {
+    display: none;
+    overflow: hidden;
+    background-color: rgb(173, 173, 226);
+  }
+
+  .property-results h1 {
+    /* padding: 10px; */
     text-align: center;
     background-color: rgb(173, 173, 226);
   }

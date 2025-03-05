@@ -37,7 +37,7 @@ function Relocation() {
           <Header />
         </div>
         <div className="body">
-        <div className="bodyTitle">
+          <div className="bodyTitle">
             {" "}
             <p>Relocate With Ease</p>
           </div>
@@ -89,6 +89,7 @@ function Relocation() {
                   type="text"
                   label="Where are you moving from?"
                   placeholder="Location From"
+                  className="textRelocation"
                   {...form.getInputProps("locationFrom")}
                 />
 
@@ -96,8 +97,94 @@ function Relocation() {
                   type="text"
                   label="Where are you moving to?"
                   placeholder="Location To"
+                  className="textRelocation"
                   {...form.getInputProps("locationTo")}
                 />
+
+                {movingType === "International Moving" && (
+                  <>
+                    <TextInput
+                      type="text"
+                      label="Country of Origin"
+                      placeholder="Country of Origin"
+                      className="textRelocation"
+                      {...form.getInputProps("countryOfOrigin")}
+                    />
+                    <TextInput
+                      type="text"
+                      label="Destination Country"
+                      placeholder="Destination Country"
+                      className="textRelocation"
+                      {...form.getInputProps("destinationCountry")}
+                    />
+                  </>
+                )}
+
+                {movingType === "House Moving" && (
+                  <>
+                    <Textarea
+                      label="Describe the items to be moved"
+                      placeholder="Items description"
+                      className="textarea"
+                      {...form.getInputProps("itemsDescription")}
+                    />
+                    <TextInput
+                      type="number"
+                      label="Number of rooms"
+                      placeholder="Number of rooms"
+                      className="textRelocation"
+                      {...form.getInputProps("numberOfRooms")}
+                    />
+                  </>
+                )}
+
+                {movingType === "Office Moving" && (
+                  <>
+                    <TextInput
+                      type="text"
+                      label="Current Office Address"
+                      placeholder="Current Office Address"
+                      className="textRelocation"
+                      {...form.getInputProps("currentOfficeAddress")}
+                    />
+                    <TextInput
+                      type="text"
+                      label="New Office Address"
+                      placeholder="New Office Address"
+                      className="textRelocation"
+                      {...form.getInputProps("newOfficeAddress")}
+                    />
+                  </>
+                )}
+
+                {movingType === "Storage Moving" && (
+                  <>
+                    <TextInput
+                      type="text"
+                      label="Storage Location"
+                      placeholder="Storage Location"
+                      className="textRelocation"
+                      {...form.getInputProps("storageLocation")}
+                    />
+                    <Textarea
+                      label="Describe the items to be moved"
+                      placeholder="Items description"
+                      className="textarea"
+                      {...form.getInputProps("storageItemsDescription")}
+                    />
+                  </>
+                )}
+
+                {movingType === "Other" && (
+                  <>
+                    <Textarea
+                      label="Additional details"
+                      placeholder="Provide additional details"
+                      className="textarea"
+                      {...form.getInputProps("additionalDetails")}
+                    />
+                  </>
+                )}
 
                 <div className="selection">
                   <label htmlFor="pet-select">Do you have a pet?</label>
@@ -121,84 +208,9 @@ function Relocation() {
                     label="Pet's Name"
                     placeholder="Enter your pet's name"
                     value={petName}
+                    className="textRelocation"
                     onChange={(e) => setPetName(e.target.value)}
                   />
-                )}
-
-                {movingType === "International Moving" && (
-                  <>
-                    <TextInput
-                      type="text"
-                      label="Country of Origin"
-                      placeholder="Country of Origin"
-                      {...form.getInputProps("countryOfOrigin")}
-                    />
-                    <TextInput
-                      type="text"
-                      label="Destination Country"
-                      placeholder="Destination Country"
-                      {...form.getInputProps("destinationCountry")}
-                    />
-                  </>
-                )}
-
-                {movingType === "House Moving" && (
-                  <>
-                    <Textarea
-                      label="Describe the items to be moved"
-                      placeholder="Items description"
-                      {...form.getInputProps("itemsDescription")}
-                    />
-                    <TextInput
-                      type="number"
-                      label="Number of rooms"
-                      placeholder="Number of rooms"
-                      {...form.getInputProps("numberOfRooms")}
-                    />
-                  </>
-                )}
-
-                {movingType === "Office Moving" && (
-                  <>
-                    <TextInput
-                      type="text"
-                      label="Current Office Address"
-                      placeholder="Current Office Address"
-                      {...form.getInputProps("currentOfficeAddress")}
-                    />
-                    <TextInput
-                      type="text"
-                      label="New Office Address"
-                      placeholder="New Office Address"
-                      {...form.getInputProps("newOfficeAddress")}
-                    />
-                  </>
-                )}
-
-                {movingType === "Storage Moving" && (
-                  <>
-                    <TextInput
-                      type="text"
-                      label="Storage Location"
-                      placeholder="Storage Location"
-                      {...form.getInputProps("storageLocation")}
-                    />
-                    <Textarea
-                      label="Describe the items to be moved"
-                      placeholder="Items description"
-                      {...form.getInputProps("storageItemsDescription")}
-                    />
-                  </>
-                )}
-
-                {movingType === "Other" && (
-                  <>
-                    <Textarea
-                      label="Additional details"
-                      placeholder="Provide additional details"
-                      {...form.getInputProps("additionalDetails")}
-                    />
-                  </>
                 )}
 
                 <Button type="submit">Submit</Button>

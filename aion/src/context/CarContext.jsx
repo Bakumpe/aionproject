@@ -1,4 +1,4 @@
-// PropertyContext.js
+// CarContext.js
 import React, { createContext, useState, useCallback } from 'react';
 import axios from 'axios';
 import config from "../.config";
@@ -6,19 +6,20 @@ import config from "../.config";
 const CarContext = createContext();
 
 const CarProvider = ({ children }) => {
-  const [properties, setProperties] = useState([]);
+  const [cars, setCars] = useState([]);
 
-  const fetchProperties = useCallback(async () => {
+  const fetchCars = useCallback(async () => {
     try {
       const response = await axios.get(`${config.apiUrl}/api/cars?populate=*`);
-      setProperties(response.data);
+      setCars(response.data);
+      console.log(response.data)
     } catch (error) {
-      console.error('Error fetching properties', error);
+      console.error('Error fetching cars', error);
     }
   }, []);
 
   return (
-    <CarContext.Provider value={{ properties, fetchProperties }}>
+    <CarContext.Provider value={{ cars, fetchCars }}>
       {children}
     </CarContext.Provider>
   );

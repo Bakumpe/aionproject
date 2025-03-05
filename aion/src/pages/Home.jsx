@@ -60,7 +60,7 @@ function FetchData() {
             {" "}
             <p>Properties</p>
           </div>
-          <div className="unorderedList">
+          <div className="myUnorderedList">
             <ul className="propertyListing">
               {currentProperties.map((property) => (
                 <MyPropertyCard property={property} key={property.id} />

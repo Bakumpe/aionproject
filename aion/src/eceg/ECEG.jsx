@@ -40,7 +40,7 @@ function EasyComeEsyGo() {
   return (
     <>
       <div className="unorderedList">
-        <ul className="propertyListing">
+        <ul className="propertyList">
           {currentProperties.map((property) => (
             <MyPropertyCard property={property} />
           ))}

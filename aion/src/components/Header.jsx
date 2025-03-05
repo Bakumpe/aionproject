@@ -30,29 +30,31 @@ const Header = () => {
     navigate("/loginRegister");
   };
 
-  const closeMobileMenu = () => {
-    setIsMobileMenuOpen(false);
-  };
-
   const toggleMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
+  };
+
+  const closeMobileMenu = () => {
+    setIsMobileMenuOpen(false);
   };
 
   return (
     <header className="header">
       <div className="header-container">
         <div className="nav-wrapper">
-          <Link to="/" className="logoSpaceLink">
-            <div className="logoSpace">
-              <img src={AionLogo} alt="Aion Logo" className="logo-image" />
-              <span className="logo-text">Aion</span>
-            </div>
-          </Link>
+          <div className="nav-wrapping">
+            <Link to="/" className="logoSpaceLink">
+              <div className="logoSpace">
+                <img src={AionLogo} alt="Aion Logo" className="logo-image" />
+                <span className="logo-text">Aion</span>
+              </div>
+            </Link>
 
-          {/* Mobile Menu Button */}
-          <button className="mobile-menu-button" onClick={toggleMenu}>
-            {isMobileMenuOpen ? <X /> : <Menu />}
-          </button>
+            {/* Mobile Menu Button */}
+            <button className="mobile-menu-button" onClick={toggleMenu}>
+              {isMobileMenuOpen ? <X /> : <Menu />}
+            </button>
+          </div>
 
           {/* Main Navigation - Desktop */}
           <nav className={`main-nav ${isMobileMenuOpen ? "mobile-open" : ""}`}>
@@ -64,11 +66,7 @@ const Header = () => {
               <Combine className="icon" />
               Easy Come Easy Go
             </Link>
-            <Link
-              to="/myFavorites"
-              className="nav-link"
-              onClick={closeMobileMenu}
-            >
+            <Link to="/myFavorites" className="nav-link" onClick={closeMobileMenu}>
               <FanIcon className="icon" />
               My Favorites
             </Link>
@@ -76,27 +74,11 @@ const Header = () => {
               <Car className="icon" />
               Transportation
             </Link>
-            {/* <Link
-              to="/propertySettings"
-              className="nav-link"
-              onClick={closeMobileMenu}
-            >
-              <Building className="icon" />
-              Property Settings
-            </Link> */}
-            <Link
-              to="/ourServices"
-              className="nav-link"
-              onClick={closeMobileMenu}
-            >
+            <Link to="/ourServices" className="nav-link" onClick={closeMobileMenu}>
               <ServerIcon className="icon" />
               Service Providers
             </Link>
-            <Link
-              to="/relocation"
-              className="nav-link"
-              onClick={closeMobileMenu}
-            >
+            <Link to="/relocation" className="nav-link" onClick={closeMobileMenu}>
               <Move className="icon" />
               Relocation
             </Link>
@@ -104,37 +86,21 @@ const Header = () => {
               <Star className="icon" />
               Register Property
             </Link>
-            <Link
-              to="/callCenter"
-              className="nav-link"
-              onClick={closeMobileMenu}
-            >
+            <Link to="/callCenter" className="nav-link" onClick={closeMobileMenu}>
               <Phone className="icon" />
               Call Center
             </Link>
-          </nav>
 
-          {/* User Menu */}
-          <div
-            className={`user-section ${isMobileMenuOpen ? "mobile-open" : ""}`}
-          >
+            <div className={`user-section ${isMobileMenuOpen ? "mobile-open" : ""}`}>
             {user ? (
               <div className="user-menu">
                 <div className="user-dropdown">
                   <div className="myProfile">
-                    <Link
-                      to="/profile"
-                      className="dropdown-item"
-                      onClick={closeMobileMenu}
-                    >
+                    <Link to="/profile" className="dropdown-item" onClick={closeMobileMenu}>
                       <UserCircle className="icon" />
                       {user.username}
                     </Link>
-                    <Link
-                      to="/settings"
-                      className="dropdown-item"
-                      onClick={closeMobileMenu}
-                    >
+                    <Link to="/settings" className="dropdown-item" onClick={closeMobileMenu}>
                       <Settings className="icon" />
                       Settings
                     </Link>
@@ -147,15 +113,15 @@ const Header = () => {
                 </div>
               </div>
             ) : (
-              <Link
-                to="/loginRegister"
-                className="auth-button"
-                onClick={closeMobileMenu}
-              >
+              <Link to="/loginRegister" className="auth-button" onClick={closeMobileMenu}>
                 Login / Register
               </Link>
             )}
           </div>
+          </nav>
+
+          {/* User Menu */}
+          
         </div>
       </div>
     </header>

@@ -89,6 +89,30 @@ const SubHeading = () => {
         >
           Stand Alone
         </Link>
+
+        <Link
+          to={"/"}
+          onClick={() => setCategory("ArcadeSpace")}
+          className="apartment"
+        >
+          Service Providers
+        </Link>
+
+        <Link
+          to={"/"}
+          onClick={() => setCategory("ArcadeSpace")}
+          className="apartment"
+        >
+          Stand Alone
+        </Link>
+
+        <Link
+          to={"/"}
+          onClick={() => setCategory("ArcadeSpace")}
+          className="apartment"
+        >
+          Stand Alone
+        </Link>
       </div>
       
       {properties.length > 0 && (

@@ -15,7 +15,6 @@ function MyIndexPage() {
           <WelcomePage/>
         </div>
         <div className="sideBar">
-          {" "}
           <Footer />
         </div>
       </div>

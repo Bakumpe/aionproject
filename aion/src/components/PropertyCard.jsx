@@ -28,38 +28,43 @@ function displayPropertyPhotos(property) {
 
 function MyPropertyCard({ property }) {
   return (
-    <li key={property.id}>
-      <div className="PropertyCategory">
-        <p>{property.PropertyCategory}</p>
-      </div>
-      <Link to={`/properties/${property.id}`}>
-        {displayPropertyPhotos(property)}
-      </Link>
-
-      <p className="propertyName">{property.PropertyName}</p>
-
-      <div className="location">
-        <img src={LocationPng} alt="location" />
-        <p>{property.Location}</p>
-      </div>
-      <div className="specifications">
-        <div className="specifications-1">
-          <img src={Bed} alt="Bed" />
-          {property.NumberOfBedRooms}
+    <Link to={`/properties/${property.id}`}>
+      <li key={property.id}>
+        <div className="PropertyCategory">
+          <p>{property.PropertyCategory}</p>
         </div>
-        <div className="specifications-1">
-          <img src={Bathroom} alt="Bathroom" />
-          {property.NumberOfBathrooms}
+        <Link to={`/properties/${property.id}`}>
+          {displayPropertyPhotos(property)}
+        </Link>
+
+        <p className="propertyName">{property.PropertyName}</p>
+
+        <div className="specs">
+          <div className="location">
+            <img src={LocationPng} alt="location" />
+            <p>{property.Location}</p>
+          </div>
+          <div className="specifications">
+            <div className="specifications-1">
+              <img src={Bed} alt="Bed" />
+              {property.NumberOfBedRooms}
+            </div>
+            <div className="specifications-1">
+              <img src={Bathroom} alt="Bathroom" />
+              {property.NumberOfBathrooms}
+            </div>
+          </div>
+          <div className="amenities">
+            <img src={Amenities} alt="Amenitites" />
+            {property.Amenities}
+          </div>
         </div>
-      </div>
-      <div className="amenities">
-        <img src={Amenities} alt="Amenitites" />
-        {property.Amenities}
-      </div>
-      <div className="priceTag">
-        <p>Ugshs. {property.PriceTag} </p>
-      </div>
-    </li>
+
+        <div className="priceTag">
+          <p>Ugshs. {property.PriceTag} </p>
+        </div>
+      </li>
+    </Link>
   );
 }
 

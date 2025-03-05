@@ -1,9 +1,18 @@
+import React, { useContext, useEffect } from "react";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
 import Whatsapp from "../components/Whatsapp";
+import CarCard from "./CarCard";
+import { CarContext } from "../context/CarContext";
 import "./car.css";
 
 function Cars() {
+  const { cars, fetchCars } = useContext(CarContext);
+
+  useEffect(() => {
+    fetchCars();
+  }, [fetchCars]);
+
   return (
     <>
       <div className="indexPage">
@@ -12,10 +21,15 @@ function Cars() {
         </div>
         <div className="body">
           <div className="bodyTitle">
-            {" "}
-            <p>Find Your Perfect Vehicle</p>
+            <p>Cars For Hire</p>
           </div>
-          <h1 className="ourservice">Cars For Hire</h1>
+          <ul className="myCarList">
+            {cars.length === 0 ? (
+              <p>Loading cars...</p>
+            ) : (
+              cars.map((car, index) => <CarCard key={index} car={car} />)
+            )}
+          </ul>
         </div>
         <div className="sideBar">
           <Footer />

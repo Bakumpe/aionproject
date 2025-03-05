@@ -23,7 +23,8 @@ import MyIndexPage from "./index/Index";
 import Cars from "./cars/Cars";
 import "./styles/index.css";
 import { CarProvider } from "./context/CarContext";
-// import MyCardForCar from "./cars/MyCardForCar";
+import CarPage from "./cars/CarPage";
+
 
 function App() {
   return (
@@ -39,7 +40,7 @@ function App() {
               <Route element={<ProtectedRoute />}>
                 <Route path="/relocation" element={<Relocation />} />
                 <Route path="/cars" element={<Cars />} />
-                {/* <Route path="/car/:id" component={<MyCardForCar />} /> */}
+                <Route path="/cars/:id" element={<CarPage />} /> 
                 <Route path="/callCenter" element={<CallCustomerCare />} />
                 <Route path="/profile" element={<Profile />} />
                 <Route path="/ourServices" element={<OurServices />} />

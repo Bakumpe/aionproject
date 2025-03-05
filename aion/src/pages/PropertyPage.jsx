@@ -114,12 +114,57 @@ function PropertyPage() {
                 <div className="features">
                   <h2>Features</h2>
                   <div className="Bed">
-                    <img src={Bed} alt="Bed" />
-                    <h3>{NumberOfBedRooms}</h3>
-                    <img src={Bathroom} alt="Bathrooms" />
-                    <h3>{NumberOfBathrooms}</h3>
-                    <img src={LocationPng} alt="Location" />
-                    <h4>{Location}</h4>
+                    <div className="Bed-1">
+                      <img src={Bed} alt="Bed" />
+                      <h3>{NumberOfBedRooms}</h3>
+                    </div>
+
+                    <div className="Bed-1">
+                      <img src={Bathroom} alt="Bathrooms" />
+                      <h3>{NumberOfBathrooms}</h3>
+                    </div>
+
+                    <div className="Bed-1">
+                      <img src={House} alt="House" />
+                      <p>{property.id}</p>
+                    </div>
+
+                    <div className="Bed-1">
+                      <img src={Type} alt="House" />
+                      <p>{PropertyCategory}</p>
+                    </div>
+
+                    <div className="Bed-1">
+                      <img src={Bathroom} alt="House" />
+                      <p>{NumberOfBathrooms}</p>
+                    </div>
+
+                    <div className="Bed-1">
+                      <img src={Garages} alt="House" />
+                      <p>{Garage}</p>
+                    </div>
+
+                    <div className="Bed-1">
+                      <img src={Size} alt="House" />
+                      <p>{HouseSize} sq. ft.</p>
+                    </div>
+
+                    <div className="Bed-1">
+                      <img src={Land} alt="House" />
+                      <p>{LandSize} sq. ft.</p>
+                    </div>
+
+                    <div className="Bed-1">
+                      <img src={Year} alt="House" />
+                      <p>{YearBuilt}</p>
+                    </div>
+                  </div>
+                  <div className="loco">
+                    <h2>Location</h2>
+                    <div className="Bed-1">
+                      <img src={LocationPng} alt="Location" />
+                      <h4>{Location}</h4>
+                    </div>
                   </div>
                   <div className="amenities">
                     <h2>Amenities :</h2>
@@ -130,71 +175,6 @@ function PropertyPage() {
                   <div className="description">
                     <h2>Description</h2>
                     <p>{Description}</p>
-                  </div>
-                  <div className="overView">
-                    <div className="overViewGroup">
-                      <img src={House} alt="House" />
-                      <div>
-                        <p>ID :</p>
-                        <p>{property.id}</p>
-                      </div>
-                    </div>
-
-                    <div className="overViewGroup">
-                      <img src={Type} alt="House" />
-                      <div>
-                        <p>Type :</p>
-                        <p>{PropertyCategory}</p>
-                      </div>
-                    </div>
-
-                    <div className="overViewGroup">
-                      <img src={Bed} alt="House" />
-                      <div>
-                        <p>Bedrooms :</p>
-                        <p>{NumberOfBedRooms}</p>
-                      </div>
-                    </div>
-
-                    <div className="overViewGroup">
-                      <img src={Bathroom} alt="House" />
-                      <div>
-                        <p>Bathrooms :</p>
-                        <p>{NumberOfBathrooms}</p>
-                      </div>
-                    </div>
-
-                    <div className="overViewGroup">
-                      <img src={Garages} alt="House" />
-                      <div>
-                        <p>Garages :</p>
-                        <p>{Garage}</p>
-                      </div>
-                    </div>
-
-                    <div className="overViewGroup">
-                      <img src={Size} alt="House" />
-                      <div>
-                        <p>House Size :</p>
-                        <p>{HouseSize} sq. ft.</p>
-                      </div>
-                    </div>
-
-                    <div className="overViewGroup">
-                      <img src={Land} alt="House" />
-                      <div>
-                        <p>Land Size :</p>
-                        <p>{LandSize} sq. ft.</p>
-                      </div>
-                    </div>
-
-                    <div className="overViewGroup">
-                      <img src={Year} alt="House" />
-                      <div>
-                        <p>Year Built :</p>
-                        <p>{YearBuilt}</p>
-                      </div>
-                    </div>
                   </div>
                 </div>
               </div>

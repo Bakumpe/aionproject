@@ -127,7 +127,9 @@
 .selection {
   margin-bottom: 20px;
   display: flex;
-  width: 35%;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
 }
 .movingDetails form Textarea {
   margin-bottom: 20px;
@@ -180,6 +182,106 @@
     margin-bottom: 20px;
     display: block;
     width: 95%;
+  }
+  
+}
+
+@media screen and (max-width: 480px){
+  .move {
+    bottom: 0;
+  }
+  .moveSmarter {
+    height: 80vh;
+  }
+  .moveSmarter::before {
+    background-color: rgba(
+      83,
+      77,
+      77,
+      0.4
+    ); /* Change the opacity value as needed */
+  }
+  .moveSmarter-1 {
+    font-size: 30px;
+  }
+  .contactUs {
+    width: 250px;
+    height: 30px;
+  }
+  .moving {
+   width: 100%;
+   height: 85px;
+  }
+  .moving p {
+    font-size: 20px;
+    color: rgb(56, 61, 65);
+  }
+  .moving1 {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    font-size: 18px;
+    width: 100%;
+    gap: 10px;
+  }
+  
+  .moving2 {
+    width: 80%;
+    padding: 1px;
+    border-right: 2px solid gray;
+    cursor: pointer;
+    border-radius: 6px;
+    box-shadow: 0 0 0 0;
+    text-align: center;
+  }
+  .moving2:hover {
+    background-color: chartreuse;
+    box-shadow: 0 0 3px 0;
+  }
+  
+  .movingDetails {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    background-color: rgba(85, 123, 103, 0.7);
+    font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+    color: rgb(37, 42, 46);
+  }
+  .movingDetails .heading {
+    margin-top: 30px;
+    margin-bottom: 5px;
+    font-size: 20px;
+  }
+  .movingDetails form {
+    display: flex;
+    align-items: center;
+    width: 100%;
+  }
+  .custom-select{
+    width: 100%;
+  }
+  .textRelocation{
+    width: 100%;
+  }
+  .movingDetails form .custom-select {
+    padding: 1px;
+    width: 270px;
+    height: 40px;
+    font-size: 20px;
+  }
+  .selection {
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+  .movingDetails form Textarea {
+    margin-bottom: 20px;
+    width: 500px;
+  }
+  .textarea{
+    width: 100%;
+    padding: 10px;
   }
   
 }

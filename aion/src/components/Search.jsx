@@ -19,7 +19,7 @@ const PropertyResults = () => {
               <MyPropertyCard key={property.id} property={property} />
             ))
           ) : (
-            <p>No properties found</p>
+            <p className="noFound">No properties found</p>
           )}
         </ul>
       </div>

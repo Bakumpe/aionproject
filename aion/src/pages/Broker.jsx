@@ -20,15 +20,19 @@ function Broker() {
 
         <div className="body">
           <div className="welcome-message">
-            <h2>Welcome back, {user?.username}!</h2>{" "}
-            {/* Personalized welcome message */}
-            <p>We're glad to have you here.</p>
-            <p>
-              Please follow our community guidelines while registering
-              property for our esteemed customers.
-            </p>
+            <div className="welcomeMessage1">
+              <h2>Welcome back, {user?.username}!</h2>{" "}
+              {/* Personalized welcome message */}
+              <p>We're glad to have you here.</p>
+              <p>
+                Please follow our community guidelines while registering
+                property for our esteemed customers.
+              </p>
+            </div>
           </div>
-          <RegisterProperty />
+          <div className="registeringProperty">
+            <RegisterProperty />
+          </div>
         </div>
 
         <div className="sideBar">
