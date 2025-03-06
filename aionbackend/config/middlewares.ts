@@ -19,7 +19,7 @@ export default [
   {
     name: 'strapi::cors',
     config: {
-      origin: ['*'], // Allow all origins. You can specify allowed origins like ['http://example.com']
+      origin: ['https://aiongetaion.netlify.app'], // Allow all origins. You can specify allowed origins like ['http://example.com']
       methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
       headers: ['Content-Type', 'Authorization', 'Origin', 'Accept'],
     },
