@@ -1,7 +1,6 @@
 import React, { useContext, useState } from "react";
 import { Button, TextInput, PasswordInput } from "@mantine/core";
 import { useNavigate } from "react-router-dom";
-import "../styles/login.css";
 import { UserContext } from "../context/UserContext";
 import config from "../.config"
 
@@ -99,8 +98,7 @@ function Login() {
 
   return (
     <div className="form">
-      {message && <p className="errorMessage">{message}</p>}
-      <form onSubmit={formType === "login" ? login : register}>
+      <form onSubmit={formType === "login" ? login : register} className="formLogin">
         <h1>{formType === "login" ? "Login" : "Register"}</h1>
         {formType === "register" && (
           <>
@@ -137,6 +135,7 @@ function Login() {
             {formType === "login" ? "Switch to Register" : "Switch to Login"}
           </Button>
         </div>
+        {/* {message && <p className="errorMessage">{message}</p>} */}
       </form>
     </div>
   );

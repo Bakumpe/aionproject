@@ -1,11 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import AionLogo from "../assets/favicon_io/android-chrome-512x512.png";
-import "../styles/footer.css";
 import Facebook from "../assets/facebook.png";
 import Gmail from "../assets/gmail.png";
 import Instagram from "../assets/instagram.png";
-import Pinterest from "../assets/pinterest.png";
 import Youtube from "../assets/youtube.png";
 import Location from "../assets/location.png";
 import Call from "../assets/call.png";

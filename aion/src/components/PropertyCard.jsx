@@ -28,10 +28,11 @@ function displayPropertyPhotos(property) {
 
 function MyPropertyCard({ property }) {
   return (
-    <Link to={`/properties/${property.id}`}>
-      <li key={property.id}>
+    <Link to={`/properties/${property.id}`} className="linkToProperty">
+      <li key={property.id} className="listedItem">
         <div className="PropertyCategory">
           <p>{property.PropertyCategory}</p>
+          <p>Ugshs. {property.PriceTag} </p>
         </div>
         <Link to={`/properties/${property.id}`}>
           {displayPropertyPhotos(property)}
@@ -47,22 +48,20 @@ function MyPropertyCard({ property }) {
           <div className="specifications">
             <div className="specifications-1">
               <img src={Bed} alt="Bed" />
-              {property.NumberOfBedRooms}
+              <p>{property.NumberOfBedRooms}</p>
             </div>
             <div className="specifications-1">
               <img src={Bathroom} alt="Bathroom" />
-              {property.NumberOfBathrooms}
+              <p>{property.NumberOfBathrooms}</p>
             </div>
           </div>
           <div className="amenities">
             <img src={Amenities} alt="Amenitites" />
-            {property.Amenities}
+            <p>{property.Amenities}</p>
           </div>
         </div>
 
-        <div className="priceTag">
-          <p>Ugshs. {property.PriceTag} </p>
-        </div>
+        <div className="priceTag"></div>
       </li>
     </Link>
   );

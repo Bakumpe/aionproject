@@ -4,7 +4,6 @@ import useFetchProperties from "../hooks/fetchData";
 import config from "../.config";
 import TermsAndConditions from "./TermsAndConditions";
 import Modal from "react-modal"; // Import the Modal component
-import "../styles/broker.css";
 import axios from "axios";
 
 Modal.setAppElement("#root"); // Add this to avoid screen readers focusing on elements outside the modal

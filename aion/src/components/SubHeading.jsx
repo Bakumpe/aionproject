@@ -1,5 +1,4 @@
 import React, { useContext, useEffect, useState } from "react";
-import "../styles/subHeadings.css";
 import { PropertyContext } from "../context/PropertyContext";
 import { Link } from "react-router-dom";
 

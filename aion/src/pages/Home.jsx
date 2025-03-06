@@ -1,13 +1,11 @@
 import React, { useState } from "react";
 import useFetchProperties from "../hooks/fetchData";
 import Header from "../components/Header";
-import "../styles/propertyCard.css";
-import Footer from "../components/Footer";
+// import Footer from "../components/Footer";
 import Whatsapp from "../components/Whatsapp";
 import config from "../.config";
 import useResponsivePropertiesPerPage from "../hooks/useResponsiveness";
 import MyPropertyCard from "../components/PropertyCard";
-import "../styles/index.css";
 
 function FetchData() {
   const [currentPage, setCurrentPage] = useState(1);
@@ -63,7 +61,7 @@ function FetchData() {
           <div className="myUnorderedList">
             <ul className="propertyListing">
               {currentProperties.map((property) => (
-                <MyPropertyCard property={property} key={property.id} />
+                <MyPropertyCard property={property} />
               ))}
             </ul>
             <div className="pagination">
@@ -83,9 +81,9 @@ function FetchData() {
           </div>
         </div>
 
-        <div className="sideBar">
+        {/* <div className="sideBar">
           <Footer />
-        </div>
+        </div> */}
       </div>
 
       {/* <WelcomePage /> */}

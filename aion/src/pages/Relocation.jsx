@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import Header from "../components/Header";
-import Footer from "../components/Footer";
-import "../styles/relocation.css";
+// import Footer from "../components/Footer";
 import { Button, Group, Textarea, TextInput, Select } from "@mantine/core";
 import { useForm } from "@mantine/form";
 import Whatsapp from "../components/Whatsapp";
@@ -218,9 +217,9 @@ function Relocation() {
             </div>
           </div>
         </div>
-        <div className="sideBar">
+        {/* <div className="sideBar">
           <Footer />
-        </div>
+        </div> */}
       </div>
 
       <Whatsapp />

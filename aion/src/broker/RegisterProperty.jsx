@@ -1,7 +1,6 @@
 import React, { useContext, useState } from "react";
 import { UserContext } from "../context/UserContext";
 import axios from "axios";
-import "../styles/registerProperty.css";
 import config from "../.config";
 
 function RegisterProperty() {
@@ -22,7 +21,7 @@ function RegisterProperty() {
     YearBuilt: "",
     PhotoUrl: [], // Ensure PhotoUrl is an array to hold multiple URLs
   });
-  const [message, setMessage] = useState([]);
+  const [message, setMessage] = useState("");
   const [file, setFile] = useState([]);
 
   const handleChange = (e) => {
@@ -64,7 +63,7 @@ function RegisterProperty() {
       const photoUrls = uploadedFiles.map((file) => file.url); // Extract the URLs of the uploaded files
 
       const data = {
-        PropertyUniqueIdentifier: propertyData.PropertyUniqueIdentifier,
+        // PropertyUniqueIdentifier: propertyData.PropertyUniqueIdentifier,
         PropertyName: propertyData.PropertyName,
         PropertyCategory: propertyData.PropertyCategory,
         NumberOfBedRooms: propertyData.NumberOfBedRooms,
@@ -93,20 +92,18 @@ function RegisterProperty() {
           "Content-Type": "application/json",
           Authorization: `Bearer ${token}`, // Use the Bearer token here
         },
-        body: JSON.stringify({ data }), // Wrap the data object in a "data" property
+        body: JSON.stringify(data), // Send the data object as JSON
       });
 
       if (response.ok) {
         const result = await response.json();
-        setMessage(["Data posted successfully: " + JSON.stringify(result)]);
+        setMessage(`Data posted successfully: ${JSON.stringify(result)}`);
       } else {
         const errorResult = await response.json(); // Parse the error response
-        setMessage([
-          `Failed to post data: ${response.statusText} - ${errorResult.message}`,
-        ]);
+        setMessage(`Failed to post data: ${response.statusText} - ${errorResult.message}`);
       }
     } catch (error) {
-      setMessage(["An error occurred: " + error.message]);
+      setMessage(`An error occurred: ${error.message}`);
     }
   };
 
@@ -269,7 +266,7 @@ function RegisterProperty() {
             </div>
           </form>
 
-          {message && <p className="errorMessage">{message.join("\n")}</p>}
+          {message && <p className="errorMessage">{message}</p>}
         </div>
       </div>
     </>

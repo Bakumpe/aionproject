@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Header from "../components/Header";
-import Footer from "../components/Footer";
+// import Footer from "../components/Footer";
 import Whatsapp from "../components/Whatsapp";
 
 function AboutUs() {
@@ -25,9 +25,9 @@ function AboutUs() {
           </div>
           <h1>About Us</h1>
         </div>
-        <div className="sideBar">
+        {/* <div className="sideBar">
           <Footer />
-        </div>
+        </div> */}
       </div>
       <Whatsapp />
     </>

@@ -1,6 +1,6 @@
 import React from "react";
 import Header from "../components/Header";
-import Footer from "../components/Footer";
+// import Footer from "../components/Footer";
 import Whatsapp from "../components/Whatsapp";
 
 function PropertySettings() {
@@ -13,9 +13,9 @@ function PropertySettings() {
         <div className="body">
           <h1>Property Settings</h1>
         </div>
-        <div className="sideBar">
+        {/* <div className="sideBar">
           <Footer />
-        </div>
+        </div> */}
       </div>
 
       <Whatsapp />

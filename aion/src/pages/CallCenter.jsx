@@ -1,8 +1,7 @@
 import React from "react";
 import Header from "../components/Header";
-import Footer from "../components/Footer";
+// import Footer from "../components/Footer";
 import Whatsapp from "../components/Whatsapp";
-import "../styles/index.css"
 
 function CallCustomerCare() {
   return (
@@ -20,9 +19,9 @@ function CallCustomerCare() {
             <h1>Customer Care</h1>
           </div>
         </div>
-        <div className="sideBar">
+        {/* <div className="sideBar">
           <Footer />
-        </div>
+        </div> */}
       </div>
 
       <Whatsapp />

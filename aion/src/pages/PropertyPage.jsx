@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useContext } from "react";
 import { useParams } from "react-router-dom";
 import Header from "../components/Header";
-import "../styles/propertyPage.css";
 import LocationPng from "../assets/location.png";
 import Bed from "../assets/bed.png";
 import Bathroom from "../assets/bathroom.png";
@@ -11,9 +10,7 @@ import Garages from "../assets/garage.png";
 import Size from "../assets/size.png";
 import Land from "../assets/land.png";
 import Year from "../assets/year.png";
-import "../styles/form1.css";
-import Form1 from "../forms/Form1";
-import Footer from "../components/Footer";
+// import Footer from "../components/Footer";
 import { PropertyContext } from "../context/PropertyContext";
 import { UserContext } from "../context/UserContext";
 import config from "../.config";
@@ -21,7 +18,7 @@ import config from "../.config";
 function displayPropertyPhotos(property) {
   if (property.PhotoUrl && property.PhotoUrl.length > 0) {
     return (
-      <div className="myImages">
+      <div className="propertyImages">
         {property.PhotoUrl.map((url, index) => (
           <img
             key={index}
@@ -33,7 +30,7 @@ function displayPropertyPhotos(property) {
     );
   } else if (property.photo && property.photo.length > 0) {
     return (
-      <div className="myImages">
+      <div className="propertyImages">
         {property.photo.map((photo, index) => (
           <img
             key={index}
@@ -102,13 +99,16 @@ function PropertyPage() {
         <div className="body">
           <div>
             <div className="propertyDetails">
-              {displayPropertyPhotos(property)}
+              <div>
+                {displayPropertyPhotos(property)}
+              </div>
+
               <div className="propertyInformation">
                 <div className="propertyInformation-1">
-                  <h1>{PropertyName}</h1>
-                  <h3>
+                  <p>{PropertyName}</p>
+                  <p>
                     Ugshs. {PriceTag} <span>/Month</span>
-                  </h3>
+                  </p>
                 </div>
                 <br />
                 <div className="features">
@@ -160,30 +160,34 @@ function PropertyPage() {
                     </div>
                   </div>
                   <div className="loco">
-                    <h2>Location</h2>
                     <div className="Bed-1">
                       <img src={LocationPng} alt="Location" />
-                      <h4>{Location}</h4>
+                      <p>{Location}</p>
                     </div>
                   </div>
                   <div className="amenities">
-                    <h2>Amenities :</h2>
+                    <p>Amenities :</p>
                     <div className="amenities1">
                       <p>{Amenities}</p>
                     </div>
                   </div>
                   <div className="description">
-                    <h2>Description</h2>
+                    <p>Description</p>
                     <p>{Description}</p>
                   </div>
                 </div>
               </div>
+              <div className="aboutProperty">
+                <div className="aboutProperty-1">Contact Agent</div>
+                <div className="aboutProperty-1">Get Quotation</div>
+                <div className="aboutProperty-1">Submit Proposal</div>
+              </div>
             </div>
           </div>
         </div>
-        <div className="sideBar">
+        {/* <div className="sideBar">
           <Footer />
-        </div>
+        </div> */}
       </div>
 
       {/* <div className="form1">

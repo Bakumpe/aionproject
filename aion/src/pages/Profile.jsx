@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Header from "../components/Header";
-import "../styles/profileCard.css";
 import UpdateUser from "../components/UpdateUserData";
-import Footer from "../components/Footer";
+// import Footer from "../components/Footer";
 import Whatsapp from "../components/Whatsapp";
 import ProfileCard from "../components/ProfileCard";
 import RegisterAsOwner from "../broker/RegisterAsOwner";
@@ -79,9 +78,9 @@ function Profile() {
             </div>
           </div>
         </div>
-        <div className="sideBar">
+        {/* <div className="sideBar">
           <Footer />
-        </div>
+        </div> */}
       </div>
 
       <Whatsapp />

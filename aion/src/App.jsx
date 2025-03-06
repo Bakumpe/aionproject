@@ -21,10 +21,12 @@ import Relocation from "./pages/Relocation";
 import { PropertyProvider } from "./context/PropertyContext";
 import MyIndexPage from "./index/Index";
 import Cars from "./cars/Cars";
-import "./styles/index.css";
 import { CarProvider } from "./context/CarContext";
 import CarPage from "./cars/CarPage";
-
+import "../src/styles/index.css"
+import "../src/styles/components.css"
+import "../src/styles/pages.css"
+import "../src/styles/forms.css"
 
 function App() {
   return (

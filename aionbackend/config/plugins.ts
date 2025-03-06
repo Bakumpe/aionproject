@@ -1,7 +1,5 @@
 // export default () => ({});
 
-
-
 export default {
     // ...
     upload: {

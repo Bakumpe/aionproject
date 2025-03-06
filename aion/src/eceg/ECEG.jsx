@@ -1,7 +1,5 @@
 import React, { useState } from "react";
 import useFetchProperties from "../hooks/fetchData";
-import "../styles/home.css";
-import "../styles/eceg.css";
 import config from "../.config";
 import useResponsivePropertiesPerPage from "../hooks/useResponsiveness";
 import MyPropertyCard from "../components/PropertyCard";
@@ -39,8 +37,8 @@ function EasyComeEsyGo() {
 
   return (
     <>
-      <div className="unorderedList">
-        <ul className="propertyList">
+      <div className="ecegList">
+        <ul className="ecegPropertyList">
           {currentProperties.map((property) => (
             <MyPropertyCard property={property} />
           ))}

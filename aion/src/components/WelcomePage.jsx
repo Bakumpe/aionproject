@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import "../styles/welcomePage.css";
 import config from "../.config";
-import { Search } from "lucide-react";
 import SubHeading from "./SubHeading";
 
 function WelcomePage() {
@@ -12,7 +10,6 @@ function WelcomePage() {
   const [maxPrice, setMaxPrice] = useState("");
   const [location, setLocation] = useState("");
   const [type, setType] = useState("all");
-  const [isSearching, setIsSearching] = useState(false);
 
   const myDisplayList = [
     "Perfect Home",
@@ -49,87 +46,80 @@ function WelcomePage() {
     // navigate("/", { state: { properties: filteredProperties } });
   };
 
-  const showSearchBar = () => {
-    setIsSearching(!isSearching);
-  };
-
   return (
     <>
-    <div className="welcomePage">
-      <div className="myDisplayList">
-        <p className="myDisplayList-1">Aion Finds Your</p>
-        <p className="myDisplayList-2">{myDisplayList[currentIndex]}</p>
-      </div>
+      <div className="welcomePage">
+        <div className="myDisplayList">
+          <p className="myDisplayList-1">Aion Finds Your</p>
+          <p className="myDisplayList-2">{myDisplayList[currentIndex]}</p>
+        </div>
 
-      <Search
-        color="white"
-        size={48}
-        strokeWidth={2}
-        className="searchIcon"
-        onClick={showSearchBar}
-      />
-
-      {isSearching && (
         <div className="find">
-          <div className="search">
-            <label htmlFor="minPrice">Min Price</label>
-            <input
-              type="number"
-              id="minPrice"
-              placeholder="Enter Minimum Price"
-              value={minPrice}
-              onChange={(e) => setMinPrice(e.target.value)}
-            />
+          <div className="findFields">
+            <div className="search">
+              <label htmlFor="minPrice">Min Price</label>
+              <input
+                type="number"
+                id="minPrice"
+                placeholder="Enter Minimum Price"
+                value={minPrice}
+                onChange={(e) => setMinPrice(e.target.value)}
+              />
+            </div>
+            <div className="search">
+              <label htmlFor="maxPrice">Max Price</label>
+              <input
+                type="number"
+                id="maxPrice"
+                placeholder="Enter Maximum Price"
+                value={maxPrice}
+                onChange={(e) => setMaxPrice(e.target.value)}
+              />
+            </div>
+            <div className="search">
+              <label htmlFor="location">Location</label>
+              <input
+                type="text"
+                id="location"
+                placeholder="Search Location"
+                value={location}
+                onChange={(e) => setLocation(e.target.value)}
+              />
+            </div>
+            <div className="search">
+              <label htmlFor="type">Type</label>
+              <select
+                name="select"
+                id="select"
+                value={type}
+                onChange={(e) => setType(e.target.value)}
+              >
+                <option value="all">All</option>
+                <option value="apartment">Apartment</option>
+                <option value="stand alone">Stand Alone</option>
+                <option value="studio">Studio</option>
+                <option value="villa">Villa</option>
+                <option value="office">Office</option>
+                <option value="shops">Shops</option>
+                <option value="arcade space">Arcade Space</option>
+              </select>
+            </div>
           </div>
-          <div className="search">
-            <label htmlFor="maxPrice">Max Price</label>
-            <input
-              type="number"
-              id="maxPrice"
-              placeholder="Enter Maximum Price"
-              value={maxPrice}
-              onChange={(e) => setMaxPrice(e.target.value)}
-            />
-          </div>
-          <div className="search">
-            <label htmlFor="location">Location</label>
-            <input
-              type="text"
-              id="location"
-              placeholder="Search Location"
-              value={location}
-              onChange={(e) => setLocation(e.target.value)}
-            />
-          </div>
-          <div className="search">
-            <label htmlFor="type">Type</label>
-            <select
-              name="select"
-              id="select"
-              value={type}
-              onChange={(e) => setType(e.target.value)}
+
+          <div>
+            <button
+              type="button"
+              onClick={handleSearch}
+              className="searchButton"
             >
-              <option value="all">All</option>
-              <option value="apartment">Apartment</option>
-              <option value="stand alone">Stand Alone</option>
-              <option value="studio">Studio</option>
-              <option value="villa">Villa</option>
-              <option value="office">Office</option>
-              <option value="shops">Shops</option>
-              <option value="arcade space">Arcade Space</option>
-            </select>
-          </div>
-          <div className="searchButton">
-            <button type="button" onClick={handleSearch}>
               Search
             </button>
           </div>
         </div>
-      )}
-    </div>
-    <div>
-      <SubHeading />
-    </div>
+      </div>
+      {/* <div>
+        <SubHeading />
+      </div> */}
     </>
   );
 }

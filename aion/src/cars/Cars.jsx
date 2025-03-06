@@ -1,10 +1,9 @@
 import React, { useContext, useEffect } from "react";
-import Footer from "../components/Footer";
+// import Footer from "../components/Footer";
 import Header from "../components/Header";
 import Whatsapp from "../components/Whatsapp";
 import CarCard from "./CarCard";
 import { CarContext } from "../context/CarContext";
-import "./car.css";
 
 function Cars() {
   const { cars, fetchCars } = useContext(CarContext);
@@ -31,9 +30,9 @@ function Cars() {
             )}
           </ul>
         </div>
-        <div className="sideBar">
+        {/* <div className="sideBar">
           <Footer />
-        </div>
+        </div> */}
       </div>
       <Whatsapp />
     </>

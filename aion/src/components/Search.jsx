@@ -1,7 +1,5 @@
 import React from "react";
 import { useLocation } from "react-router-dom";
-import PropertyCard from "../components/PropertyCard"; // Import PropertyCard component
-import "../styles/index.css";
 import MyPropertyCard from "../components/PropertyCard";
 
 const PropertyResults = () => {

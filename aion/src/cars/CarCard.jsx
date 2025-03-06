@@ -1,7 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import config from "../.config";
-import "./car.css";
 
 function displayCarPhotos(car) {
   console.log(car.CarImage); // Debugging - Check CarImage data

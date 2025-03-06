@@ -1,6 +1,5 @@
 import React, { useContext, useState } from "react";
 import { UserContext } from "../context/UserContext";
-import "../styles/profileCard.css";
 import { useNavigate } from "react-router-dom";
 
 

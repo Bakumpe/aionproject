@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import { CarContext } from "../context/CarContext";
 import config from "../.config";
 import Header from "../components/Header";
-import Footer from "../components/Footer";
+// import Footer from "../components/Footer";
 import Whatsapp from "../components/Whatsapp";
 
 function displayCarPhotos(car) {
@@ -113,10 +113,10 @@ function CarPage() {
             </div>
           </div>
         </div>
-        <div className="sideBar">
+        {/* <div className="sideBar">
           {" "}
           <Footer />
-        </div>
+        </div> */}
       </div>
       <Whatsapp />
     </div>

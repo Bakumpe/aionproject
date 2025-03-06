@@ -1,7 +1,6 @@
 import React, { useContext, useState, useEffect } from "react";
 import { UserContext } from "../context/UserContext";
 import axios from "axios";
-import "../styles/updateuserdata.css";
 import config from "../.config"
 
 function UpdateUser() {
