@@ -1,38 +1,31 @@
 import React, { useContext, useEffect, useState } from "react";
+import { Link, NavLink } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import { CarContext } from "../context/CarContext";
 import config from "../.config";
 import Header from "../components/Header";
-// import Footer from "../components/Footer";
 import Whatsapp from "../components/Whatsapp";
 
 function displayCarPhotos(car) {
-  console.log(car.CarImage); // Debugging - Check CarImage data
+  const renderPhoto = (photo) => {
+    const isFullUrl = photo.startsWith("https://res.cloudinary.com");
+    return (
+      <div className="myCarCarImage" key={photo}>
+        {isFullUrl ? (
+          <NavLink to={photo}>
+            <img src={photo} alt="Car Image" />
+          </NavLink>
+        ) : (
+          <img src={`${config.apiUrl}${photo}`} alt="Car Image" />
+        )}
+      </div>
+    );
+  };
 
   if (car.CarImage && car.CarImage.length > 0) {
-    return (
-      <div className="myCarCarImage">
-        {car.CarImage.map((image, index) => (
-          <img
-            key={index}
-            src={`${config.apiUrl}${image.url}`} // Ensure you have the correct path
-            alt="Car Image"
-          />
-        ))}
-      </div>
-    );
+    return car.CarImage.map((image) => renderPhoto(image.url));
   } else if (car.images && car.images.length > 0) {
-    return (
-      <div className="myCarCarImage">
-        {car.images.map((photo, index) => (
-          <img
-            key={index}
-            src={`${config.apiUrl}${photo}`} // Ensure you have the correct path
-            alt="Car Image"
-          />
-        ))}
-      </div>
-    );
+    return car.images.map((image) => renderPhoto(image.url));
   } else {
     return <p>No photos available for this car.</p>;
   }
@@ -73,7 +66,10 @@ function CarPage() {
           </div>
           <div className="carCard">
             <h2>{car.name}</h2>
-            {displayCarPhotos(car)}
+            <div className="displayCarPhotos">
+              {displayCarPhotos(car)}
+            </div>
+
             <div className="carSpecificationCar">
               <div className="carSpecificationCar-1">
                 This <em>{car.TypeofCar}</em> is a remarkable vehicle that

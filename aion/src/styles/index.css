@@ -11,6 +11,7 @@
   --third-background-color: green;
   --third-background-hover-color: rgb(145, 180, 115);
   --forth-background-color: blue;
+  --fifth-background-color: aliceblue;
 }
 .indexPage {
   display: grid;

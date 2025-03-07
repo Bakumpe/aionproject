@@ -1,30 +1,41 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import LocationPng from "../assets/location.png";
 import Bed from "../assets/bed.png";
 import Bathroom from "../assets/bathroom.png";
 import Amenities from "../assets/amenities1.png";
 import config from "../.config";
 
+
 function displayPropertyPhotos(property) {
-  if (property.PhotoUrl && property.PhotoUrl.length > 0) {
-    const url = property.PhotoUrl[0]; // Display only the first photo
-    return (
-      <div className="myImages">
-        <img src={`${config.apiUrl}${url}`} alt="Property Image" />
-      </div>
-    );
+  let photo = null;
+  let isFullUrl = false;
+
+  if (property.photo && property.photo.length > 0) {
+    photo = property.photo[0].url;
+    isFullUrl = photo.startsWith("https://res.cloudinary.com");
   } else if (property.photo && property.photo.length > 0) {
-    const photo = property.photo[0]; // Display only the first photo
+    photo = property.photo[0].url;
+    isFullUrl = photo.startsWith("https://res.cloudinary.com");
+  }
+
+  if (photo) {
     return (
-      <div className="myImages">
-        <img src={`${config.apiUrl}${photo.url}`} alt="Property Image" />
+      <div className="propertyImages">
+        {isFullUrl ? (
+          <NavLink to={photo}>
+            <img src={photo} alt="Property Image" />
+          </NavLink>
+        ) : (
+          <img src={`${config.apiUrl}${photo}`} alt="Car Image" />
+        )}
       </div>
     );
   } else {
-    return <p>No photos available for this property.</p>;
+    return <p>No photos available for this car.</p>;
   }
 }
+
 
 function MyPropertyCard({ property }) {
   return (

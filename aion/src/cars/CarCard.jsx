@@ -1,62 +1,82 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import config from "../.config";
 
-function displayCarPhotos(car) {
-  console.log(car.CarImage); // Debugging - Check CarImage data
-
-  if (car.CarImage && car.CarImage.length > 0) {
-    const url = car.CarImage[0].url; // Ensure you have the correct path
-    console.log(`${config.apiUrl}${url}`); // Debugging - Check constructed URL
-
-    return (
-      <div className="myCarImage">
-        <img src={`${config.apiUrl}${url}`} alt="Car Image" />
-      </div>
-    );
-  } else if (car.images && car.images.length > 0) {
-    const photo = car.images[0]; // Display only the first image
-    return (
-      <div className="myCarImage">
-        <img src={`${config.apiUrl}${photo}`} alt="Car Image" />
-      </div>
-    );
-  } else {
-    return <p>No photos available for this car.</p>;
-  }
-}
-
 // function displayCarPhotos(car) {
-//   console.log(car.CarImage); // Debugging - Check CarImage data
+//   // console.log(car.CarImage); // Debugging - Check CarImage data
 
 //   if (car.CarImage && car.CarImage.length > 0) {
+//     const photo = car.CarImage[0].url; // Ensure you have the correct path
+//     // console.log(`${config.apiUrl}${url}`); // Debugging - Check constructed URL
 //     return (
 //       <div className="myCarImage">
-//         {car.CarImage.map((image, index) => (
-//           <img
-//             key={index}
-//             src={`${config.apiUrl}${image.url}`} // Ensure you have the correct path
-//             alt="Car Image"
-//           />
-//         ))}
+//         <img src={`${config.apiUrl}${photo}`} alt="Car Image" />
 //       </div>
 //     );
 //   } else if (car.images && car.images.length > 0) {
+//     const photo = car.images[0].url; // Display only the first image
 //     return (
 //       <div className="myCarImage">
-//         {car.images.map((photo, index) => (
-//           <img
-//             key={index}
-//             src={`${config.apiUrl}${photo}`} // Ensure you have the correct path
-//             alt="Car Image"
-//           />
-//         ))}
+//         <img src={`${config.apiUrl}${photo}`} alt="Car Image" />
 //       </div>
 //     );
 //   } else {
 //     return <p>No photos available for this car.</p>;
 //   }
 // }
+
+// function displayCarPhotos(car) {
+//   if (car.CarImage && car.CarImage.length > 0) {
+//     const photo = car.CarImage[0].url;
+//     return (
+//       <div className="myCarImage">
+//         <NavLink to={photo}>
+//           <img src={photo} alt="Car Image" />
+//         </NavLink>
+//       </div>
+//     );
+//   } else if (car.images && car.images.length > 0) {
+//     const photo = car.images[0].url;
+//     return (
+//       <div className="myCarImage">
+//         <NavLink to={photo}>
+//           <img src={photo} alt="Car Image" />
+//         </NavLink>
+//       </div>
+//     );
+//   } else {
+//     return <p>No photos available for this car.</p>;
+//   }
+// }
+
+function displayCarPhotos(car) {
+  let photo = null;
+  let isFullUrl = false;
+
+  if (car.CarImage && car.CarImage.length > 0) {
+    photo = car.CarImage[0].url;
+    isFullUrl = photo.startsWith("https://res.cloudinary.com");
+  } else if (car.images && car.images.length > 0) {
+    photo = car.images[0].url;
+    isFullUrl = photo.startsWith("https://res.cloudinary.com");
+  }
+
+  if (photo) {
+    return (
+      <div className="myCarImage">
+        {isFullUrl ? (
+          <NavLink to={photo}>
+            <img src={photo} alt="Car Image" />
+          </NavLink>
+        ) : (
+          <img src={`${config.apiUrl}${photo}`} alt="Car Image" />
+        )}
+      </div>
+    );
+  } else {
+    return <p>No photos available for this car.</p>;
+  }
+}
 
 function CarCard({ car }) {
   return (

@@ -14,36 +14,45 @@ import Year from "../assets/year.png";
 import { PropertyContext } from "../context/PropertyContext";
 import { UserContext } from "../context/UserContext";
 import config from "../.config";
+import { NavLink } from "react-router-dom";
 
 function displayPropertyPhotos(property) {
-  if (property.PhotoUrl && property.PhotoUrl.length > 0) {
+  let photos = [];
+  let isFullUrl = false;
+
+  if (property.photo && property.photo.length > 0) {
+    photos = property.photo.map((p) => {
+      return {
+        url: p.url,
+        isFullUrl: p.url.startsWith("https://res.cloudinary.com"),
+      };
+    });
+  }
+
+  if (photos.length > 0) {
     return (
-      <div className="propertyImages">
-        {property.PhotoUrl.map((url, index) => (
-          <img
-            key={index}
-            src={`${config.apiUrl}${url}`}
-            alt="Property Image"
-          />
-        ))}
-      </div>
-    );
-  } else if (property.photo && property.photo.length > 0) {
-    return (
-      <div className="propertyImages">
-        {property.photo.map((photo, index) => (
-          <img
-            key={index}
-            src={`${config.apiUrl}${photo.url}`}
-            alt="Property Image"
-          />
+      <div className="myPropertyImages">
+        {photos.map((photo, index) => (
+          <div key={index} className="myPropertyImages-1">
+            {photo.isFullUrl ? (
+              <NavLink to={photo.url}>
+                <img src={photo.url} alt={`Car Image ${index + 1}`} />
+              </NavLink>
+            ) : (
+              <img
+                src={`${config.apiUrl}${photo.url}`}
+                alt={`Car Image ${index + 1}`}
+              />
+            )}
+          </div>
         ))}
       </div>
     );
   } else {
-    return <p>No photos available for this property.</p>;
+    return <p>No photos available for this car.</p>;
   }
 }
+
 
 function PropertyPage() {
   const { id } = useParams();
