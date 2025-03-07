@@ -135,7 +135,7 @@ function Login() {
             {formType === "login" ? "Switch to Register" : "Switch to Login"}
           </Button>
         </div>
-        {/* {message && <p className="errorMessage">{message}</p>} */}
+        {message && <p className="errorMessage">{message}</p>}
       </form>
     </div>
   );
