@@ -90,13 +90,13 @@ function CarPage() {
               <div className="carSpecificationCar-1">
                 This <em>{car.TypeofCar}</em> not only excels in performance but
                 also offers exceptional
-                <em>{car.InteriorAndComfort}</em>, ensuring a comfortable and
+                <em>{car.InteriorAndComfort}</em> a good interior and comfort, ensuring a comfortable and
                 enjoyable ride. Known for its
-                <em>{car.ReliabilityAndMaintenance}</em>, it promises durability
+                <em>{car.ReliabilityAndMaintenance}</em> reliability and maintenance, it promises durability
                 and low maintenance costs, making it a reliable choice. With a
                 high <em>{car.ResaleValue}</em>, it retains value over time,
                 providing a great return on investment. The car also comes with
-                a comprehensive <em>{car.WarrantyAndAfterSalesService}</em>,
+                a comprehensive <em>{car.WarrantyAndAfterSalesService}</em> year warranty,
                 offering peace of mind and excellent support after purchase. All
                 these features are available within a budget of Ugshx.{" "}
                 <em>{car.Budget}</em>, making it a well-rounded and practical
