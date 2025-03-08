@@ -73,7 +73,7 @@ function CarPage() {
             <div className="carSpecificationCar">
               <div className="carSpecificationCar-1">
                 This <em>{car.TypeofCar}</em> is a remarkable vehicle that
-                stands out for its exceptional <em>{car.FuelEfficiency}</em>{" "}
+                stands out for its exceptional <em>{car.FuelEfficiency}</em> km/L{" "}
                 fuel efficiency and impressive {" "}<em>{car.horsepower}</em>
                 horsepower, ensuring a powerful yet economical drive. With a top
                 speed of <em>{car.speed}</em>km/hr, it offers thrilling performance
