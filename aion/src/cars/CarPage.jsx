@@ -74,8 +74,8 @@ function CarPage() {
               <div className="carSpecificationCar-1">
                 This <em>{car.TypeofCar}</em> is a remarkable vehicle that
                 stands out for its exceptional <em>{car.FuelEfficiency}</em> km/L{" "}
-                fuel efficiency and impressive {" "}<em>{car.horsepower}</em>
-                horsepower, ensuring a powerful yet economical drive. With a top
+                fuel efficiency and an impressive {" "}<em>{car.horsepower}</em>
+                  horsepower, ensuring a powerful yet economical drive. With a top
                 speed of <em>{car.speed}</em>km/hr, it offers thrilling performance
                 on the road. The <em>{car.Transmission}</em> transmission
                 guarantees a smooth and responsive driving experience. Safety is
@@ -99,12 +99,17 @@ function CarPage() {
                 a comprehensive <em>{car.WarrantyAndAfterSalesService}</em> year warranty,
                 offering peace of mind and excellent support after purchase. All
                 these features are available within a budget of Ugshx.{" "}
-                <em>{car.Budget}</em> /=, making it a well-rounded and practical
+                <em>{car.Budget}</em>/=, making it a well-rounded and practical
                 option for any discerning driver.
               </div>
 
               <div>
                 <h4>Reach Out For more information</h4>
+                <div className="aboutProperty">
+                <div className="aboutProperty-1">Contact Agent</div>
+                <div className="aboutProperty-1">Get Quotation</div>
+                <div className="aboutProperty-1">Submit Proposal</div>
+              </div>
               </div>
             </div>
           </div>
