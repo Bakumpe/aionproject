@@ -132,7 +132,7 @@ function Login() {
             {formType === "login" ? "Login" : "Register"}
           </Button>
           <Button variant="light" onClick={toggleFormType}>
-            {formType === "login" ? "Switch to Register" : "Switch to Login"}
+            {formType === "login" ? "Register" : "Login"}
           </Button>
         </div>
         {message && <p className="errorMessage">{message}</p>}
