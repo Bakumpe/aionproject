@@ -66,20 +66,19 @@ function CarPage() {
           </div>
           <div className="carCard">
             <h2>{car.name}</h2>
-            <div className="displayCarPhotos">
-              {displayCarPhotos(car)}
-            </div>
+            <div className="displayCarPhotos">{displayCarPhotos(car)}</div>
 
             <div className="carSpecificationCar">
               <div className="carSpecificationCar-1">
                 This <em>{car.TypeofCar}</em> is a remarkable vehicle that
-                stands out for its exceptional <em>{car.FuelEfficiency}</em> km/L{" "}
-                fuel efficiency and an impressive {" "}<em>{car.horsepower}</em>
-                  horsepower, ensuring a powerful yet economical drive. With a top
-                speed of <em>{car.speed}</em>km/hr, it offers thrilling performance
-                on the road. The <em>{car.Transmission}</em> transmission
-                guarantees a smooth and responsive driving experience. Safety is
-                a top priority, and this car is equipped with advanced
+                stands out for its exceptional <em>{car.FuelEfficiency}</em>{" "}
+                km/L fuel efficiency and an impressive <em>{car.horsepower}</em>
+                horsepower, ensuring a powerful yet economical drive. With a top
+                speed of <em>{car.speed}</em>km/hr, it offers thrilling
+                performance on the road. The <em>{car.Transmission}</em>{" "}
+                transmission guarantees a smooth and responsive driving
+                experience. Safety is a top priority, and this car is equipped
+                with advanced
                 <em>{car.SafetyFeatures}</em>. Additionally, the ample
                 <em>{car.CargoSpace}</em> cargo space provides practicality for
                 all your storage needs. Whether you’re commuting daily or
@@ -88,28 +87,29 @@ function CarPage() {
               </div>
 
               <div className="carSpecificationCar-1">
-                This{" "} <em>{car.TypeofCar}</em> not only excels in performance but
+                This <em>{car.TypeofCar}</em> not only excels in performance but
                 also offers exceptional
-                <em>{car.InteriorAndComfort}</em> a good interior and comfort, ensuring a comfortable and
-                enjoyable ride. Known for its{" "}
-                <em>{car.ReliabilityAndMaintenance}</em> reliability and maintenance, it promises durability
-                and low maintenance costs, making it a reliable choice. With a
-                high <em>{car.ResaleValue}</em>% resale value, it retains value over time,
-                providing a great return on investment. The car also comes with
-                a comprehensive <em>{car.WarrantyAndAfterSalesService}</em> year warranty,
-                offering peace of mind and excellent support after purchase. All
-                these features are available within a budget of Ugshx.{" "}
-                <em>{car.Budget}</em>/=, making it a well-rounded and practical
-                option for any discerning driver.
+                <em>{car.InteriorAndComfort}</em> a good interior and comfort,
+                ensuring a comfortable and enjoyable ride. Known for its{" "}
+                <em>{car.ReliabilityAndMaintenance}</em> reliability and
+                maintenance, it promises durability and low maintenance costs,
+                making it a reliable choice. With a high{" "}
+                <em>{car.ResaleValue}</em>% resale value, it retains value over
+                time, providing a great return on investment. The car also comes
+                with a comprehensive <em>{car.WarrantyAndAfterSalesService}</em>{" "}
+                year warranty, offering peace of mind and excellent support
+                after purchase. All these features are available within a budget
+                of Ugshx. <em>{car.Budget}</em>/=, making it a well-rounded and
+                practical option for any discerning driver.
               </div>
 
               <div>
                 <h4>Reach Out For more information</h4>
                 <div className="aboutProperty">
-                <div className="aboutProperty-1">Contact Agent</div>
-                <div className="aboutProperty-1">Get Quotation</div>
-                <div className="aboutProperty-1">Submit Proposal</div>
-              </div>
+                  <div className="aboutProperty-1">Contact Agent</div>
+                  <div className="aboutProperty-1">Get Quotation</div>
+                  <div className="aboutProperty-1">Submit Proposal</div>
+                </div>
               </div>
             </div>
           </div>
