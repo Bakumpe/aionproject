@@ -35,20 +35,21 @@
     z-index: 100;
     
   }
+
+  /**The Login / Registration Form**/
   form h1{
     font-size: 50px;
     z-index: 100;
     color: rgba(217, 220, 226, 0.8);
   }
   .formLogin {
-    width: 300px;
+    width: 60%;
     background-color: rgba(83, 103, 121, 0.7);
     padding: 20px; /* Add some padding for inner spacing */
     margin: 50px auto; /* Center the form and add vertical space */
     border-radius: 10px; /* Smooth the corners */
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4); /* Add a shadow to create the floating effect */
     color: white; /* Text color for better contrast */
-    width: 50%;
   }
   
   .formLogin input {
@@ -69,6 +70,7 @@
     align-items: center; /* Center the buttons vertically */
     gap: 10px; /* Space between the buttons */
     margin-top: 20px; /* Add some margin on top for spacing */
+    width: 100%;
   }
   
   .group1 button {
@@ -79,7 +81,7 @@
     color: white; /* Text color for better contrast */
     cursor: pointer; /* Change cursor on hover */
     transition: background-color 0.3s ease; /* Smooth transition for hover effect */
-    width: 300px;
+    width: 40%;
 }
   
   .group1 button:hover {
@@ -95,5 +97,35 @@
     background-color: #e2e6ea; /* Light button hover color */
   }
   
-  
+
+  /**This section controls the media screen not more than 768px**/
+  @media screen and (max-width:768px){
+    
+  }
+  @media screen and (max-width: 480px){
+    form h1{
+      font-size: 30px;
+      z-index: 100;
+      color: rgba(217, 220, 226, 0.8);
+    }
+    .formLogin {
+      width: 85%;
+    }
+    
+    .formLogin input {
+      width: 100%;
+    }
+    .textInput{
+      width: 70%;
+      font-size: 20px;
+    }
+    .group1 {
+      width: 100%;
+    }
+    
+    .group1 button {
+      width: 50%;
+  }
+    
+  }
   
