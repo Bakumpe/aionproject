@@ -682,17 +682,22 @@
 
   /**This section controls the car card and car page**/
   .myCarList {
-    margin-top: 70px;
+    margin-top: 60px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    width: 100%;
+    width: 90%;
     list-style: none;
     gap: 10px;
+    
   }
   .carListCar {
+    display: flex;
+    flex-direction: column;
     background-color: var(--fifth-background-color);
+    width: 90%;
+    margin-right: 50px;
   }
   .myCarImage img {
     width: 100%;
