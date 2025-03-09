@@ -16,6 +16,12 @@ function OurServices() {
             <p>Contact Your Service Provider</p>
           </div>
           <h1 className="ourservice">Service Providers</h1>
+          <div className="ourservice-1">
+            <div className="ourservice-1-1">AionMov</div>
+            <div className="ourservice-1-1">Cars For Rent</div>
+            <div className="ourservice-1-1">Brokers</div>
+            <div className="ourservice-1-1">Properties For sale</div>
+          </div>
         </div>
         {/* <div className="sideBar">
           <Footer />

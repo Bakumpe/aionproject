@@ -1,7 +1,7 @@
 import React, { useContext, useState } from "react";
 import axios from "axios";
 import { UserContext } from "../context/UserContext";
-import config from "../.config"
+import config from "../.config";
 
 function UpLoadProperty() {
   const { user, token } = useContext(UserContext);
@@ -22,7 +22,7 @@ function UpLoadProperty() {
       formData.append("files", files[i]);
     }
     formData.append("ref", "user"); // The name of the content type
-    formData.append("refId", Property.id); // The ID of the user
+    formData.append("refId", user.id); // The ID of the user
     formData.append("field", "photos"); // The name of the field in the content type
 
     try {
@@ -40,9 +40,9 @@ function UpLoadProperty() {
       const uploadedFiles = uploadResponse.data;
       const photoUrls = uploadedFiles.map((file) => file.url); // Extract the URLs of the uploaded files
 
-      // Update the property's PhotoUrls
+      // Update the property's photoUrls
       await axios.put(
-        `${config.apiUrl}${property.id}`,
+        `${config.apiUrl}/properties/${user.id}`,
         {
           photoUrls: photoUrls,
         },

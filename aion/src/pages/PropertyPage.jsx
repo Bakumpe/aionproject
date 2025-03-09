@@ -36,7 +36,7 @@ function displayPropertyPhotos(property) {
           <div key={index} className="myPropertyImages-1">
             {photo.isFullUrl ? (
               <NavLink to={photo.url}>
-                <img src={photo.url} alt={`Car Image ${index + 1}`} />
+                <img src={photo.url} alt={`Property Image ${index + 1}`} />
               </NavLink>
             ) : (
               <img
@@ -125,12 +125,12 @@ function PropertyPage() {
                   <div className="Bed">
                     <div className="Bed-1">
                       <img src={Bed} alt="Bed" />
-                      <h3>{NumberOfBedRooms}</h3>
+                      <p>{NumberOfBedRooms}</p>
                     </div>
 
                     <div className="Bed-1">
                       <img src={Bathroom} alt="Bathrooms" />
-                      <h3>{NumberOfBathrooms}</h3>
+                      <p>{NumberOfBathrooms}</p>
                     </div>
 
                     <div className="Bed-1">

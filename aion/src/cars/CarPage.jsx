@@ -106,9 +106,9 @@ function CarPage() {
               <div>
                 <h4>Reach Out For more information</h4>
                 <div className="aboutProperty">
-                  <div className="aboutProperty-1">Contact Agent</div>
-                  <div className="aboutProperty-1">Get Quotation</div>
-                  <div className="aboutProperty-1">Submit Proposal</div>
+                  <div className="aboutProperty-1">Buy</div>
+                  <div className="aboutProperty-1">Rent</div>
+                  <div className="aboutProperty-1">Quotation</div>
                 </div>
               </div>
             </div>

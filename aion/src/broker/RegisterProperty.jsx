@@ -22,7 +22,7 @@ function RegisterProperty() {
     PhotoUrl: [], // Ensure PhotoUrl is an array to hold multiple URLs
   });
   const [message, setMessage] = useState("");
-  const [file, setFile] = useState([]);
+  const [files, setFiles] = useState([]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -33,14 +33,14 @@ function RegisterProperty() {
   };
 
   const handleFileChange = (event) => {
-    setFile(event.target.files);
+    setFiles(event.target.files);
   };
 
   const uploadAndSubmit = async (e) => {
     e.preventDefault();
     const formData = new FormData();
-    for (let i = 0; i < file.length; i++) {
-      formData.append("files", file[i]);
+    for (let i = 0; i < files.length; i++) {
+      formData.append("files", files[i]);
     }
     formData.append("ref", "user"); // The name of the content type
     formData.append("refId", user.id); // The ID of the user
@@ -63,7 +63,6 @@ function RegisterProperty() {
       const photoUrls = uploadedFiles.map((file) => file.url); // Extract the URLs of the uploaded files
 
       const data = {
-        // PropertyUniqueIdentifier: propertyData.PropertyUniqueIdentifier,
         PropertyName: propertyData.PropertyName,
         PropertyCategory: propertyData.PropertyCategory,
         NumberOfBedRooms: propertyData.NumberOfBedRooms,
@@ -77,7 +76,7 @@ function RegisterProperty() {
         HouseSize: propertyData.HouseSize,
         LandSize: propertyData.LandSize,
         YearBuilt: propertyData.YearBuilt,
-        PhotoUrl: photoUrls,
+        PhotoUrl: photoUrls, // Use the extracted photo URLs
       };
 
       if (!token) {
@@ -255,10 +254,10 @@ function RegisterProperty() {
                 />
               </div>
 
-              <div className="handlefiles ">
-              <p>Choose not more than 3 Property Photos</p>
-              <input type="file" multiple onChange={handleFileChange} />
-            </div>
+              <div className="handlefiles">
+                <p>Choose not more than 3 Property Photos</p>
+                <input type="file" multiple onChange={handleFileChange} />
+              </div>
             </div>
 
             <div className="Button">

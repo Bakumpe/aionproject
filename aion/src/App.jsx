@@ -27,6 +27,7 @@ import "../src/styles/index.css"
 import "../src/styles/components.css"
 import "../src/styles/pages.css"
 import "../src/styles/forms.css"
+import Rent from "./pages/Rent";
 
 function App() {
   return (
@@ -52,6 +53,7 @@ function App() {
                 <Route path="/aboutUs" element={<AboutUs />} />
                 <Route path="/myFavorites" element={<MyFavorites />} />
                 <Route path="/eceg" element={<ECEG />} />
+                <Route path="/rent/:id" element={<Rent />}/>
                 <Route
                   path="/propertySettings"
                   element={<PropertySettings />}

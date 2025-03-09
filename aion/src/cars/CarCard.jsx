@@ -99,6 +99,10 @@ function CarCard({ car }) {
         <p>
           <strong>Fuel Efficiency:</strong> {car.FuelEfficiency} km/L
         </p>
+        <div className="buyRentOptions">
+          <div className="buyRentOptions-1">Rent</div>
+          <div className="buyRentOptions-1">Buy</div>
+        </div>
       </div>
     </li>
   );

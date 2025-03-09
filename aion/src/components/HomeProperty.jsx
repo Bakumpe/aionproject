@@ -41,7 +41,7 @@ function HomeProperty() {
       <div className="myUnorderedList">
         <ul className="propertyListing">
           {currentProperties.length === 0 ? (
-            <p className="laodinga">Loading...</p>
+            <p className="loadinga">Loading...</p>
           ) : (
             currentProperties.map((property) => (
               <MyPropertyCard key={property.id} property={property} />

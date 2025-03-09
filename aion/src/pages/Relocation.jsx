@@ -57,9 +57,9 @@ function Relocation() {
                 </div>
                 <div
                   className="moving2"
-                  onClick={() => handleMovingTypeClick("House Moving")}
+                  onClick={() => handleMovingTypeClick("Home Moving")}
                 >
-                  Domestic Moving
+                  Home Moving
                 </div>
                 <div
                   className="moving2"
@@ -100,7 +100,7 @@ function Relocation() {
                   {...form.getInputProps("locationTo")}
                 />
 
-                {movingType === "International Moving" && (
+                {movingType === "National Moving" && (
                   <>
                     <TextInput
                       type="text"
@@ -116,14 +116,20 @@ function Relocation() {
                       className="textRelocation"
                       {...form.getInputProps("destinationCountry")}
                     />
+                    <Textarea
+                      label="Describe the items to be moved"
+                      placeholder="List your Items"
+                      className="textarea"
+                      {...form.getInputProps("itemsDescription")}
+                    />
                   </>
                 )}
 
-                {movingType === "House Moving" && (
+                {movingType === "Home Moving" && (
                   <>
                     <Textarea
                       label="Describe the items to be moved"
-                      placeholder="Items description"
+                      placeholder="List your Items"
                       className="textarea"
                       {...form.getInputProps("itemsDescription")}
                     />
@@ -153,6 +159,12 @@ function Relocation() {
                       className="textRelocation"
                       {...form.getInputProps("newOfficeAddress")}
                     />
+                    <Textarea
+                      label="Describe the items to be moved"
+                      placeholder="List your Items"
+                      className="textarea"
+                      {...form.getInputProps("itemsDescription")}
+                    />
                   </>
                 )}
 
@@ -167,7 +179,7 @@ function Relocation() {
                     />
                     <Textarea
                       label="Describe the items to be moved"
-                      placeholder="Items description"
+                      placeholder="List your Items"
                       className="textarea"
                       {...form.getInputProps("storageItemsDescription")}
                     />
@@ -178,7 +190,7 @@ function Relocation() {
                   <>
                     <Textarea
                       label="Additional details"
-                      placeholder="Provide additional details"
+                      placeholder="List your Items"
                       className="textarea"
                       {...form.getInputProps("additionalDetails")}
                     />
@@ -211,9 +223,8 @@ function Relocation() {
                     onChange={(e) => setPetName(e.target.value)}
                   />
                 )}
-
-                <Button type="submit">Submit</Button>
               </form>
+              <Button type="submit" className="relocationButton">Submit</Button>
             </div>
           </div>
         </div>

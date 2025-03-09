@@ -6,7 +6,6 @@ import Bathroom from "../assets/bathroom.png";
 import Amenities from "../assets/amenities1.png";
 import config from "../.config";
 
-
 function displayPropertyPhotos(property) {
   let photo = null;
   let isFullUrl = false;
@@ -27,7 +26,7 @@ function displayPropertyPhotos(property) {
             <img src={photo} alt="Property Image" />
           </NavLink>
         ) : (
-          <img src={`${config.apiUrl}${photo}`} alt="Car Image" />
+          <img src={`${config.apiUrl}${photo}`} alt="Property Image" />
         )}
       </div>
     );
@@ -36,19 +35,17 @@ function displayPropertyPhotos(property) {
   }
 }
 
-
 function MyPropertyCard({ property }) {
   return (
-    <Link to={`/properties/${property.id}`} className="linkToProperty">
-      <li key={property.id} className="listedItem">
-        <div className="PropertyCategory">
-          <p>{property.PropertyCategory}</p>
-          <p>Ugshs. {property.PriceTag} </p>
-        </div>
-        <Link to={`/properties/${property.id}`}>
-          {displayPropertyPhotos(property)}
-        </Link>
-
+    <li key={property.id} className="listedItem">
+      <div className="PropertyCategory">
+        <p>{property.PropertyCategory}</p>
+        <p>Ugshs. {property.PriceTag} </p>
+      </div>
+      <Link to={`/properties/${property.id}`}>
+        {displayPropertyPhotos(property)}
+      </Link>
+      <Link to={`/properties/${property.id}`}>
         <p className="propertyName">{property.PropertyName}</p>
 
         <div className="specs">
@@ -71,10 +68,12 @@ function MyPropertyCard({ property }) {
             <p>{property.Amenities}</p>
           </div>
         </div>
-
-        <div className="priceTag"></div>
-      </li>
-    </Link>
+      </Link>
+      <div className="buyRentOptions">
+        <div className="buyRentOptions-1">Rent</div>
+        <div className="buyRentOptions-1">Buy</div>
+      </div>
+    </li>
   );
 }
 
