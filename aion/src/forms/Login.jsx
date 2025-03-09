@@ -1,22 +1,23 @@
 import React, { useContext, useState } from "react";
-import { Button, TextInput, PasswordInput } from "@mantine/core";
-import { useNavigate } from "react-router-dom";
+import { Button, TextInput } from "@mantine/core";
+import { useNavigate, useLocation } from "react-router-dom";
 import { UserContext } from "../context/UserContext";
-import config from "../.config"
+import config from "../.config";
 
 function Login() {
   const { initializeUser } = useContext(UserContext);
   const [formType, setFormType] = useState("login");
   const [message, setMessage] = useState(null);
   const navigate = useNavigate();
+  const location = useLocation();
+
+  const from = location.state?.from?.pathname || "/";
 
   const register = async (event) => {
     event.preventDefault();
     setMessage(null);
     const formData = new FormData(event.target);
     const jsonData = Object.fromEntries(formData);
-
-    console.log("Data being sent:", jsonData); // Log the data being sent for debugging
 
     const reqOptions = {
       method: "POST",
@@ -32,7 +33,6 @@ function Login() {
         reqOptions
       );
       const res = await req.json();
-      console.log("Server response:", res);
 
       if (res.error) {
         setMessage(res.error.message);
@@ -41,11 +41,10 @@ function Login() {
 
       if (res.jwt && res.user) {
         setMessage("Successful Registration.");
-        await initializeUser(jsonData.email, jsonData.password); // Initialize user with provided credentials
-        navigate("/");
+        await initializeUser(jsonData.email, jsonData.password);
+        navigate(from, { replace: true });
       }
     } catch (error) {
-      // console.error("Request failed:", error);
       alert("Request failed:", error);
       setMessage("An error occurred. Please try again.");
     }
@@ -57,10 +56,8 @@ function Login() {
     const formData = new FormData(event.target);
     const jsonData = Object.fromEntries(formData);
 
-    // console.log("Data being sent:", jsonData); // Log the data being sent for debugging
-
     const reqOptions = {
-      method: "POST",  // Changed from "GET" to "POST"
+      method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
@@ -68,12 +65,8 @@ function Login() {
     };
 
     try {
-      const req = await fetch(
-        `${config.apiUrl}/api/auth/local`,
-        reqOptions
-      );
+      const req = await fetch(`${config.apiUrl}/api/auth/local`, reqOptions);
       const res = await req.json();
-      // console.log("Server response:", res);
 
       if (res.error) {
         setMessage(res.error.message);
@@ -82,14 +75,13 @@ function Login() {
 
       if (res.jwt && res.user) {
         setMessage("Successful Login.");
-        await initializeUser(jsonData.identifier, jsonData.password); // Initialize user with provided credentials
-        navigate("/");
+        await initializeUser(jsonData.identifier, jsonData.password);
+        navigate(from, { replace: true });
       }
     } catch (error) {
-      // console.error("Request failed:", error);
       setMessage("An error occurred. Please try again.");
     }
-};
+  };
 
   const toggleFormType = () => {
     setFormType((prevType) => (prevType === "login" ? "register" : "login"));
@@ -98,7 +90,10 @@ function Login() {
 
   return (
     <div className="form">
-      <form onSubmit={formType === "login" ? login : register} className="formLogin">
+      <form
+        onSubmit={formType === "login" ? login : register}
+        className="formLogin"
+      >
         <h1>{formType === "login" ? "Login" : "Register"}</h1>
         {formType === "register" && (
           <>

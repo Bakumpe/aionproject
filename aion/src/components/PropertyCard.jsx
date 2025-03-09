@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import LocationPng from "../assets/location.png";
 import Bed from "../assets/bed.png";
 import Bathroom from "../assets/bathroom.png";
@@ -31,11 +31,17 @@ function displayPropertyPhotos(property) {
       </div>
     );
   } else {
-    return <p>No photos available for this car.</p>;
+    return <p>No photos available for this property.</p>;
   }
 }
 
 function MyPropertyCard({ property }) {
+  const navigate = useNavigate();
+
+  const handleRentClick = () => {
+    navigate(`/rent`, { state: { property } });
+  };
+
   return (
     <li key={property.id} className="listedItem">
       <div className="PropertyCategory">
@@ -70,7 +76,7 @@ function MyPropertyCard({ property }) {
         </div>
       </Link>
       <div className="buyRentOptions">
-        <div className="buyRentOptions-1">Rent</div>
+        <div className="buyRentOptions-1" onClick={handleRentClick}>Rent</div>
         <div className="buyRentOptions-1">Buy</div>
       </div>
     </li>

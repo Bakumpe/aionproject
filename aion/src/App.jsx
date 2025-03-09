@@ -27,7 +27,8 @@ import "../src/styles/index.css"
 import "../src/styles/components.css"
 import "../src/styles/pages.css"
 import "../src/styles/forms.css"
-import Rent from "./pages/Rent";
+import RentProperty from "./pages/RentProperty";
+
 
 function App() {
   return (
@@ -53,7 +54,7 @@ function App() {
                 <Route path="/aboutUs" element={<AboutUs />} />
                 <Route path="/myFavorites" element={<MyFavorites />} />
                 <Route path="/eceg" element={<ECEG />} />
-                <Route path="/rent/:id" element={<Rent />}/>
+                <Route path="/rent" element={<RentProperty />}/>
                 <Route
                   path="/propertySettings"
                   element={<PropertySettings />}

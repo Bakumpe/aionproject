@@ -545,6 +545,7 @@ export interface ApiPropertyProperty extends Struct.CollectionTypeSchema {
       ]
     >;
     PropertyName: Schema.Attribute.String;
+    PropertyOwner: Schema.Attribute.String;
     publishedAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &

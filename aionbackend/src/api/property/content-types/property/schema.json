@@ -41,14 +41,15 @@
       "type": "text"
     },
     "photo": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
       "allowedTypes": [
         "images",
         "files",
         "videos",
         "audios"
-      ],
-      "type": "media",
-      "multiple": true
+      ]
     },
     "Location": {
       "type": "string"
@@ -73,6 +74,9 @@
     },
     "PhotoUrl": {
       "type": "json"
+    },
+    "PropertyOwner": {
+      "type": "string"
     }
   }
 }
