@@ -131,7 +131,8 @@ function RegisterProperty() {
                   value={propertyData.PropertyCategory}
                   onChange={handleChange}
                 >
-                  <option value="">Select a category</option>
+                  
+                  <option value="" >Select a category</option>
                   <option value="Apartment">Apartment</option>
                   <option value="Stand Alone">Stand Alone</option>
                   <option value="Villa">Villa</option>

@@ -34,31 +34,32 @@ function HomeProperty() {
   };
 
   const startIndex = (currentPage - 1) * propertiesPerPage;
-  const currentProperties = properties.slice(startIndex, startIndex + propertiesPerPage);
+  const currentProperties = properties.slice(
+    startIndex,
+    startIndex + propertiesPerPage
+  );
 
   return (
     <>
-      <div className="myUnorderedList">
-        <ul className="propertyListing">
-          {currentProperties.length === 0 ? (
-            <p className="loadinga">Loading...</p>
-          ) : (
-            currentProperties.map((property) => (
-              <MyPropertyCard key={property.id} property={property} />
-            ))
-          )}
-        </ul>
-        <div className="pagination">
-          <button onClick={handlePrevious} disabled={currentPage === 1}>
-            Previous
-          </button>
-          <p>
-            Page {currentPage} of {totalPages}
-          </p>
-          <button onClick={handleNext} disabled={currentPage === totalPages}>
-            Next
-          </button>
-        </div>
+      <ul className="propertyListing">
+        {currentProperties.length === 0 ? (
+          <p className="loadinga">Loading...</p>
+        ) : (
+          currentProperties.map((property) => (
+            <MyPropertyCard key={property.id} property={property} />
+          ))
+        )}
+      </ul>
+      <div className="pagination">
+        <button onClick={handlePrevious} disabled={currentPage === 1}>
+          Previous
+        </button>
+        <p>
+          Page {currentPage} of {totalPages}
+        </p>
+        <button onClick={handleNext} disabled={currentPage === totalPages}>
+          Next
+        </button>
       </div>
     </>
   );

@@ -3,7 +3,7 @@ import Header from "../components/Header";
 import Whatsapp from "../components/Whatsapp";
 import HomeProperty from "../components/HomeProperty";
 
-function FetchData() {  
+function FetchData() {
   return (
     <>
       <div className="indexPage">
@@ -16,7 +16,9 @@ function FetchData() {
             {" "}
             <p>Properties</p>
           </div>
-          <HomeProperty />
+          <div className="myUnorderedList">
+            <HomeProperty />
+          </div>
         </div>
       </div>
 
