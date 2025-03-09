@@ -719,6 +719,9 @@
     gap: 10px;
     border: none;
   }
+  .search input:focus {
+    transform: scaleX(1);
+  }
   .search input,
   .search select {
     height: 35px;
