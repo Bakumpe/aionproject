@@ -50,7 +50,7 @@ function Rent() {
       // Mock owner details, replace with real data fetching logic
       const owner = {
         name: location.state.property.PropertyOwner || 'Unknown Owner',
-        contact: "john.doe@example.com",
+        contact: "",
       };
       setOwnerDetails(owner);
     }

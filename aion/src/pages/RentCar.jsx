@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Header from "../components/Header";
 import Whatsapp from "../components/Whatsapp";
-import Rent from "../components/Rent";
+import RentCar from "../components/RentCar";
 
 function RentProperty() {
   return (
@@ -16,7 +16,7 @@ function RentProperty() {
             {" "}
             <p>Rent Details</p>
           </div>
-          <Rent />/
+          <RentCar />
         </div>
       </div>
 

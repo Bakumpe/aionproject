@@ -41,6 +41,7 @@
   font-size: 20px;
   padding-left: 10%;
   color: var(--secondary-text-color);
+  z-index: 2000;
 }
 
 

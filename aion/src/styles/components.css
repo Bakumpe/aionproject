@@ -197,9 +197,9 @@
   box-shadow: 2px 0 3px gray;
   border-radius: 5px;
   list-style: none;
-  color: var(--primary-textcolor-color); 
+  color: var(--primary-textcolor-color);
 }
-.listedItem a{
+.listedItem a {
   text-decoration: none;
   color: var(--primary-textcolor-color);
 }
@@ -299,10 +299,8 @@
 
 /**Propety Page**/
 .propertyDetails {
-  
 }
 .propertyImages {
- 
 }
 
 .propertyImages img {
@@ -369,7 +367,7 @@
   border-right: 1px solid grey;
 }
 .aboutProperty-1:hover {
-  background-color: var( --forth-background-color);
+  background-color: var(--forth-background-color);
   color: var(--forth-text-color);
 }
 
@@ -389,7 +387,25 @@
   width: 100%;
   height: 200px;
 }
-
+.myCarRentImages {
+  margin-top: 80px;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+.myCarRentImages-1 img {
+  width: 330px;
+  height: 250px;
+}
+.rentCarDetails {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  width: 100%;
+}
+.carOwnerDetails {
+  margin-bottom: 90px;
+}
 /***This section designs the car page**/
 .carCard {
   margin-top: 80px;
@@ -412,14 +428,14 @@
 .carSpecificationCar-1 em {
   font-weight: 700;
 }
-.buyRentOptions{
+.buyRentOptions {
   margin-bottom: 10px;
   display: flex;
   align-items: center;
   justify-content: space-around;
   width: 100%;
 }
-.buyRentOptions-1{
+.buyRentOptions-1 {
   margin-bottom: 10px;
   display: flex;
   align-items: center;
@@ -433,20 +449,20 @@
   text-decoration: none;
   cursor: pointer;
 }
-.buyRentOptions-1:hover{
+.buyRentOptions-1:hover {
   background-color: var(--forth-background-color);
   color: var(--forth-text-color);
 }
 /**Our services Space**/
-.ourservice{
+.ourservice {
   margin-top: 70px;
 }
-.ourservice-1{
+.ourservice-1 {
   display: flex;
   align-items: center;
   justify-content: space-around;
 }
-.ourservice-1-1{
+.ourservice-1-1 {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -455,6 +471,7 @@
   background-color: var(--secondary-background-color);
   cursor: pointer;
   color: var(--secondary-text-color);
+  text-decoration: none;
 }
 
 /**Relocation Services**/
@@ -519,16 +536,16 @@
 .contactUs:hover {
   background-color: chartreuse;
 }
-.moving{
- width: 100%;
+.moving {
+  width: 100%;
 }
-.moving1{
+.moving1 {
   margin-top: 20px;
   margin-bottom: 20px;
   display: flex;
   justify-content: space-around;
 }
-.moving2{
+.moving2 {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -539,7 +556,7 @@
   color: var(--secondary-text-color);
 }
 
-.movingDetails{
+.movingDetails {
   margin-bottom: 50px;
   padding: 15px;
   display: flex;
@@ -553,14 +570,14 @@
   border: 1px solid aliceblue;
   box-shadow: 5px 3px 4px aliceblue;
 }
-.movingDetails .heading{
+.movingDetails .heading {
   margin-top: 20px;
   margin-bottom: 20px;
   border-bottom: 2px solid gray;
   font-size: 25px;
   font-weight: 600;
 }
-.movingDetails form{
+.movingDetails form {
   display: grid;
   grid-template-columns: auto auto;
   align-items: center;
@@ -568,7 +585,7 @@
   margin-bottom: 20px;
   color: var(--primary-textcolor-color);
 }
-.relocationButton{
+.relocationButton {
   margin: 30px;
   display: flex;
   align-items: center;
@@ -587,63 +604,192 @@
   color: var(--primary-textcolor-color);
 }
 
-.textRelocation input{
+.textRelocation input {
   margin-top: 20px;
   width: 200px;
   height: 30px;
   border: none;
 }
-.textRelocation input:focus{
+.textRelocation input:focus {
   outline: none;
   border: none;
 }
-.custom-select{
+.custom-select {
   display: flex;
   width: 57%;
   height: 30px;
   border: none;
 }
-.custom-select:focus{
+.custom-select:focus {
   outline: none;
   border: none;
 }
-.textarea{
+.textarea {
   width: 100%;
 }
-.textarea Textarea{
+.textarea Textarea {
   width: 57%;
   height: 50px;
   border: none;
 }
-.textarea:focus{
+.textarea:focus {
   outline: none;
   border: none;
 }
 
-
-
 /**Rent details**/
 
-.rent{
+.rent {
   margin-top: 80px;
 }
 
-.rent-1{
+.rent-1 {
   display: flex;
   align-items: center;
   justify-content: space-around;
 }
-.ownerDetails{
+.ownerDetails {
   margin-top: -90px;
 }
-.specs-1{
+.specs-1 {
   display: flex;
   gap: 20px;
-  
 }
-.specs-1-1{
+.specs-1-1 {
   font-style: italic;
   font-weight: 600;
+}
+/*Broker Page**/
+.welcome-message {
+  margin-top: 65px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  background-image: url("../assets/relocation.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 100%;
+  height: 40vh;
+}
+.welcome-message::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(
+    83,
+    77,
+    77,
+    0.5
+  ); /* Change the opacity value as needed */
+  z-index: 1;
+}
+.welcomeMessage1 {
+  padding: 10px;
+  font-size: 20px;
+  text-align: center;
+  color: var(--forth-text-color);
+  z-index: 100;
+  background-color: rgba(5, 11, 16, 0.6);
+}
+
+.register-button-group {
+  margin-top: 30px;
+  margin-bottom: 30px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+.register-button-group button {
+  width: 30%;
+  height: 60px;
+  background-color: var(--secondary-background-color);
+  color: var(--secondary-text-color);
+  text-decoration: none;
+  cursor: pointer;
+  border: none;
+}
+.register-button-group button:focus{
+  outline: none;
+  border: none;
+}
+.register-button-group button:hover {
+  background-color: var(--forth-background-color);
+  color: var(--forth-text-color);
+}
+/**Registering Property**/
+.registerPropertyAndCars {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 70px;
+}
+.registeringProperty {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+}
+.registeringProperty-1 {
+  padding: 10px;
+  width: 45%;
+  text-align: justify;
+  background-color: var(--fifth-background-color);
+}
+.registeringProperty-1 h4 {
+  border-bottom: 1px solid grey;
+}
+.registeringProperty-1 button {
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  border: none;
+  width: 40%;
+  height: 30px;
+  background-color: var(--secondary-background-color);
+  color: var(--secondary-text-color);
+  text-decoration: none;
+  cursor: pointer;
+}
+.registeringProperty-1 button:hover {
+  background-color: var(--forth-background-color);
+  color: var(--forth-text-color);
+}
+
+/**Profile***/
+.profile{
+  margin-top: 90px;
+  margin-bottom: 70px;
+}
+.profile1{
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 20px;
+}
+.profile2{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20%;
+  height: 40px;
+  cursor: pointer;
+  background-color: var(--secondary-background-color);
+  color: var(--third-text-color);
+}
+
+
+
+
+/**Media Querry**/
+.mediaquery{
+
 }
 @media screen and (max-width: 768px) {
 }
@@ -749,18 +895,18 @@
     margin-right: 20px;
     gap: 30px;
   }
-  
+
   /**This Section Controls the property Page**/
-  .myPropertyImages{
+  .myPropertyImages {
     margin-top: 5px;
     width: 100%;
   }
-  .myPropertyImages-1{
+  .myPropertyImages-1 {
     width: 100%;
     overflow: hidden;
     overflow-x: auto;
   }
-  .myPropertyImages-1 img{
+  .myPropertyImages-1 img {
     height: 100px;
   }
   .propertyInformation img {
@@ -827,7 +973,6 @@
     width: 90%;
     list-style: none;
     gap: 10px;
-    
   }
   .carListCar {
     display: flex;
@@ -863,7 +1008,7 @@
     width: 300px;
     height: 200px;
   }
-  .carSpecificationCar-1{
+  .carSpecificationCar-1 {
     width: 95%;
     padding: 10px;
     text-align: justify;
@@ -872,12 +1017,35 @@
     font-weight: 700;
   }
 
+  /**Car rent*/
+  .myCarRentImages {
+    margin-top: 70px;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    flex-direction: column;
+  }
+  .myCarRentImages-1 img {
+    width: 100%;
+    height: 200px;
+  }
+  .rentCarDetails {
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    justify-content: left;
+    width: 100%;
+  }
+  .carOwnerDetails {
+    margin-bottom: 1px;
+  }
+
   /**Relocation Services**/
   .move {
     margin-top: 50px;
     width: 100%;
   }
-  
+
   .moveSmarter-1 {
     font-size: 30px;
   }
@@ -886,87 +1054,84 @@
     height: 30px;
     font-size: 18px;
   }
-  .moving{
-   width: 100%;
+  .moving {
+    width: 100%;
   }
-  .moving1{
+  .moving1 {
     margin-top: 10px;
     margin-bottom: 10px;
   }
-  
-  .movingDetails{
+
+  .movingDetails {
     margin-bottom: 30px;
     padding: 5px;
     width: 90%;
     font-size: 18px;
   }
-  .movingDetails .heading{
+  .movingDetails .heading {
     margin-top: 7px;
     margin-bottom: 8px;
     font-size: 20px;
     font-weight: 600;
   }
-  .movingDetails form{
+  .movingDetails form {
     display: flex;
     align-items: center;
     gap: 10px;
     margin-bottom: 10px;
     color: var(--primary-textcolor-color);
   }
-  .relocationButton{
+  .relocationButton {
     margin: 10px;
     gap: 20px;
     width: 50%;
     height: 40px;
   }
-  
-  .textRelocation input{
+
+  .textRelocation input {
     margin-top: 1px;
     width: 100%;
     height: 30px;
   }
-  .custom-select{
+  .custom-select {
     width: 100%;
   }
-  .textarea{
+  .textarea {
     width: 60%;
   }
-  .textarea Textarea{
+  .textarea Textarea {
     width: 100%;
     height: 50px;
   }
-  
 
   /*Rent Property**/
-  .rent{
+  .rent {
     margin-top: 50px;
   }
-  
-  .rent-1{
+
+  .rent-1 {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-around;
   }
-  .ownerDetails{
+  .ownerDetails {
     margin-top: 1px;
   }
-  .specs-1{
+  .specs-1 {
     display: flex;
     gap: 10px;
-    
   }
-  .specs-1-1{
+  .specs-1-1 {
     font-style: italic;
     font-weight: 600;
   }
 
   /**Search Results*/
-  .property-results{
+  .property-results {
     margin-top: 60px;
   }
-  .propertyListing{
-
+  .propertyListing {
   }
   .pagination {
     display: flex;
@@ -976,9 +1141,70 @@
     gap: 10px;
     margin-bottom: 20px;
   }
-  
+
   .pagination button {
     width: 100px;
     height: 40px;
+  }
+
+  /**Broker space*/
+  .welcome-message {
+    margin-top: 50px;
+  }
+  .welcomeMessage1 {
+    padding: 10px;
+    font-size: 16px;
+    background-color: rgba(5, 11, 16, 0.3);
+  }
+  
+  .register-button-group {
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+  .register-button-group button {
+    width: 45%;
+    height: 40px;
+  }
+  
+  /**Registering Property**/
+  .registerPropertyAndCars {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 70px;
+    width: 100%;
+  }
+  .registeringProperty {
+    display: block;
+    justify-content: space-around;
+    width: 100%;
+  }
+  .registeringProperty-1 {
+    padding: 10px;
+    width: 95%;
+    text-align: justify;
+    background-color: var(--fifth-background-color);
+    margin-bottom: 5px;
+  }
+  .registeringProperty-1 h4 {
+    border-bottom: 1px solid grey;
+  }
+  .registeringProperty-1 button {
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    border: none;
+    width: 40%;
+    height: 30px;
+    background-color: var(--secondary-background-color);
+    color: var(--secondary-text-color);
+    text-decoration: none;
+    cursor: pointer;
+  }
+  .registeringProperty-1 button:hover {
+    background-color: var(--forth-background-color);
+    color: var(--forth-text-color);
   }
 }

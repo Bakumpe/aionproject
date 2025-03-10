@@ -1,5 +1,5 @@
 import React from "react";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import config from "../.config";
 
 // function displayCarPhotos(car) {
@@ -79,6 +79,11 @@ function displayCarPhotos(car) {
 }
 
 function CarCard({ car }) {
+  const navigate = useNavigate();
+
+  const handleRentClick = () => {
+    navigate(`/rentcar`, { state: { car } });
+  };
   return (
     <li key={car.id} className="carListCar">
       <Link to={`/cars/${car.id}`}>{displayCarPhotos(car)}</Link>
@@ -100,7 +105,9 @@ function CarCard({ car }) {
           <strong>Fuel Efficiency:</strong> {car.FuelEfficiency} km/L
         </p>
         <div className="buyRentOptions">
-          <div className="buyRentOptions-1">Rent</div>
+          <div className="buyRentOptions-1" onClick={handleRentClick}>
+            Rent
+          </div>
           <div className="buyRentOptions-1">Buy</div>
         </div>
       </div>

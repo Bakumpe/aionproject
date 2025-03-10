@@ -64,10 +64,10 @@ function Profile() {
           <div className="bodyTitle">
             <p>Profile</p>
           </div>
-          <div className="moving">
-            <div className="moving1">
+          <div className="profile">
+            <div className="profile1">
               {["Profile Card", "Property Owners Register", "Brokers Register", "Service Providers Register"].map((type) => (
-                <div key={type} className="moving2" onClick={() => handleCardType(type)}>
+                <div key={type} className="profile2" onClick={() => handleCardType(type)}>
                   {type}
                 </div>
               ))}

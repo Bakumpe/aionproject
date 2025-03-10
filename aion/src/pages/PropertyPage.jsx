@@ -14,7 +14,7 @@ import Year from "../assets/year.png";
 import { PropertyContext } from "../context/PropertyContext";
 import { UserContext } from "../context/UserContext";
 import config from "../.config";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 
 function displayPropertyPhotos(property) {
   let photos = [];
@@ -60,6 +60,13 @@ function PropertyPage() {
   const { properties, fetchProperties } = useContext(PropertyContext); // Use PropertyContext
 
   const [property, setProperty] = useState(null);
+
+  const navigate = useNavigate();
+
+  const handleRentClick = () => {
+    navigate(`/rent`, { state: { property } });
+  };
+
 
   useEffect(() => {
     // Example usage of context data and methods
@@ -188,8 +195,8 @@ function PropertyPage() {
               </div>
               <div className="aboutProperty">
                 <div className="aboutProperty-1">Contact Agent</div>
-                <div className="aboutProperty-1">Get Quotation</div>
-                <div className="aboutProperty-1">Submit Proposal</div>
+                <div className="aboutProperty-1">Buy</div>
+                <div className="aboutProperty-1" onClick={handleRentClick}>Rent</div>
               </div>
             </div>
           </div>

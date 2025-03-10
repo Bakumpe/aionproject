@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import Header from "../components/Header";
 // import Footer from "../components/Footer";
 import Whatsapp from "../components/Whatsapp";
@@ -7,6 +7,7 @@ import { UserContext } from "../context/UserContext";
 
 function Broker() {
   const { user } = useContext(UserContext);
+  const [showForm, setShowForm] = useState(null);
 
   return (
     <>
@@ -16,25 +17,34 @@ function Broker() {
         </div>
 
         <div className="body">
+          <div className="bodyTitle">
+            {" "}
+            <p>Welcome, {user?.username}!</p>
+          </div>
           <div className="welcome-message">
             <div className="welcomeMessage1">
-              <h2>Welcome back, {user?.username}!</h2>{" "}
-              {/* Personalized welcome message */}
-              <p>We're glad to have you here.</p>
+              <p>We're thrilled to have you join our community.</p>
               <p>
-                Please follow our community guidelines while registering
-                property for our esteemed customers.
+                Looking for a place to rent or sell your car? You're in the
+                right place!
               </p>
+              <p>Let's get started on finding the perfect match for you.</p>
             </div>
           </div>
+          <div className="register-button-group">
+            <button onClick={() => setShowForm("property")}>
+              Register Property
+            </button>
+            <button onClick={() => setShowForm("car")}>Register Car</button>
+          </div>
           <div className="registeringProperty">
-            <RegisterProperty />
+            {showForm && <RegisterProperty type={showForm} />}
           </div>
         </div>
 
-        {/* <div className="sideBar">
-          <Footer />
-        </div> */}
+        <div className="footer">
+          <p>Need assistance? Contact us anytime!</p>
+        </div>
       </div>
 
       <Whatsapp />

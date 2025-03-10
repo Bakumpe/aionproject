@@ -1,6 +1,6 @@
 import React from "react";
 import Header from "../components/Header";
-// import Footer from "../components/Footer";
+import { Link } from "react-router-dom";
 import Whatsapp from "../components/Whatsapp";
 
 function OurServices() {
@@ -17,10 +17,10 @@ function OurServices() {
           </div>
           <h1 className="ourservice">Service Providers</h1>
           <div className="ourservice-1">
-            <div className="ourservice-1-1">AionMov</div>
-            <div className="ourservice-1-1">Cars For Rent</div>
-            <div className="ourservice-1-1">Brokers</div>
-            <div className="ourservice-1-1">Properties For sale</div>
+            <div className="ourservice-1-1">Event Planners/Co-ordinators</div>
+            <div className="ourservice-1-1">Personal Care and Wellness</div>
+            <div className="ourservice-1-1">Home and Lifestyle Services</div>
+            <div className="ourservice-1-1">Senior Care and Assistance</div>
           </div>
         </div>
         {/* <div className="sideBar">

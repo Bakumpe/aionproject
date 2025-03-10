@@ -28,6 +28,7 @@ import "../src/styles/components.css"
 import "../src/styles/pages.css"
 import "../src/styles/forms.css"
 import RentProperty from "./pages/RentProperty";
+import RentCar from "./pages/RentCar";
 
 
 function App() {
@@ -55,6 +56,7 @@ function App() {
                 <Route path="/myFavorites" element={<MyFavorites />} />
                 <Route path="/eceg" element={<ECEG />} />
                 <Route path="/rent" element={<RentProperty />}/>
+                <Route path="/rentcar" element={<RentCar />}/>
                 <Route
                   path="/propertySettings"
                   element={<PropertySettings />}
