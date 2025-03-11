@@ -88,9 +88,9 @@ function CarCard({ car }) {
     <li key={car.id} className="carListCar">
       <Link to={`/cars/${car.id}`}>{displayCarPhotos(car)}</Link>
       <div className="propertyName">
-          <p>{car.Name}</p>
-          <p className="statusCode">{car.StatusCode}</p>
-        </div>
+        <h3>{car.Name}</h3>
+        <p className="statusCode">{car.StatusCode}</p>
+      </div>
       <div className="carSpecifications">
         <p>
           <strong>Type of Car:</strong> {car.TypeofCar}
