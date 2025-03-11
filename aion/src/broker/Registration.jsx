@@ -1,4 +1,6 @@
 import React from "react";
+import RegisterProperty from "./RegisterProperty";
+import { Link } from "react-router-dom";
 
 function Registration({ type }) {
   return (
@@ -26,7 +28,10 @@ function Registration({ type }) {
                 Contact Information: Provide contact details for interested
                 renters to reach out.
               </p>
-              <button>Register Property</button>
+              <Link to={"/registerproperty"}>
+                {" "}
+                <button>Register Property</button>
+              </Link>
             </div>
 
             <div className="registeringProperty-1">
@@ -49,7 +54,10 @@ function Registration({ type }) {
                 Contact Information: Provide contact details for interested
                 buyers to reach out.
               </p>
-              <button>Register Property</button>
+              <Link to={"/registerproperty"}>
+                {" "}
+                <button>Register Property</button>
+              </Link>
             </div>
           </div>
         </div>
@@ -75,7 +83,10 @@ function Registration({ type }) {
                 Contact Information: Provide contact details for interested
                 renters to reach out.
               </p>
-              <button>Register Car</button>
+              <Link to={"/registercar"}>
+                {" "}
+                <button>Register Car</button>
+              </Link>
             </div>
             <div className="registeringProperty-1">
               <h4>Register Car For Sale</h4>
@@ -96,7 +107,10 @@ function Registration({ type }) {
                 Contact Information: Provide contact details for interested
                 buyers to reach out.
               </p>
-              <button>Register Car</button>
+              <Link to={"/registercar"}>
+                {" "}
+                <button>Register Car</button>
+              </Link>
             </div>
           </div>
         </div>
@@ -123,7 +137,10 @@ function Registration({ type }) {
                 Contact Information: Provide contact details for interested
                 clients to reach out.
               </p>
-              <button>Register Service</button>
+              <Link to={"/registerservice"}>
+                {" "}
+                <button>Register Service</button>
+              </Link>
             </div>
           </div>
         </div>

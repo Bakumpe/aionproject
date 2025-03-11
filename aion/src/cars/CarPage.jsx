@@ -65,9 +65,11 @@ function CarPage() {
             <p>Find Your Car That Meet</p>
           </div>
           <div className="carCard">
-            <h2>{car.name}</h2>
             <div className="displayCarPhotos">{displayCarPhotos(car)}</div>
-
+            <div className="propertyName">
+              <h3>{car.Name}</h3>
+              <p className="statusCode">{car.StatusCode}</p>
+            </div>
             <div className="carSpecificationCar">
               <div className="carSpecificationCar-1">
                 This <em>{car.TypeofCar}</em> is a remarkable vehicle that

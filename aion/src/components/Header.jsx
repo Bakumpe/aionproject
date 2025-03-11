@@ -69,7 +69,7 @@ const Header = () => {
         </Link>
         <Link to="/cars" className="nav-link" onClick={closeMobileMenu}>
           <Car className="icon" />
-          Transportation
+          Cars
         </Link>
         <Link to="/ourServices" className="nav-link" onClick={closeMobileMenu}>
           <ServerIcon className="icon" />

@@ -29,6 +29,9 @@ import "../src/styles/pages.css"
 import "../src/styles/forms.css"
 import RentProperty from "./pages/RentProperty";
 import RentCar from "./pages/RentCar";
+import RegisterProperty from "./broker/RegisterProperty";
+import RegisterCar from "./broker/RegisterCar";
+import RegisterService from "./broker/RegisterService";
 
 
 function App() {
@@ -57,6 +60,9 @@ function App() {
                 <Route path="/eceg" element={<ECEG />} />
                 <Route path="/rent" element={<RentProperty />}/>
                 <Route path="/rentcar" element={<RentCar />}/>
+                <Route path="/registerproperty" element={<RegisterProperty />}/>
+                <Route path="/registercar" element={<RegisterCar />}/>
+                <Route path="/registerservice" element={<RegisterService />}/>
                 <Route
                   path="/propertySettings"
                   element={<PropertySettings />}
