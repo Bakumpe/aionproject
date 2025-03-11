@@ -473,6 +473,7 @@
   cursor: pointer;
   color: var(--secondary-text-color);
   text-decoration: none;
+  text-align: center;
 }
 .ourservice-1-1:hover{
   background-color: var(--forth-background-color);
