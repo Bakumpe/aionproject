@@ -1,76 +1,103 @@
 import React, { useContext, useState } from "react";
 import Header from "../components/Header";
 import Whatsapp from "../components/Whatsapp";
-import { useLocation } from "react-router-dom";
 import { UserContext } from "../context/UserContext";
 import config from "../.config";
+import axios from "axios";
 
 function RegisterProperty() {
   const { user, token } = useContext(UserContext);
-  const location = useLocation();
-  const initialType = location.state?.type || "For Rent"; // Default to "For Rent" if type is not provided
-
-  const [formData, setFormData] = useState({
+  const [propertyData, setPropertyData] = useState({
     PropertyName: "",
     PropertyCategory: "",
     NumberOfBedRooms: 0,
     PriceTag: 0,
     NumberOfUnitsForNeighbors: 0,
     Amenities: "",
-    photo: null,
     Location: "",
     NumberOfBathrooms: 0,
     Description: "",
-    Garage: "",
+    Garage: 0,
     HouseSize: 0,
     LandSize: 0,
     YearBuilt: "",
-    PhotoUrl: [],
+    PhotoUrl: [], // Ensure PhotoUrl is an array to hold multiple URLs
     PropertyOwner: "",
-    StatusCode: initialType,
+    StatusCode: "For Rent",
   });
+
+  const [message, setMessage] = useState("");
+  const [files, setFiles] = useState([]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData((prevData) => ({ ...prevData, [name]: value }));
+    setPropertyData((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }));
   };
 
-  const handleFileChange = (e) => {
-    setFormData((prevData) => ({ ...prevData, PhotoUrl: e.target.files }));
+  const handleFileChange = (event) => {
+    setFiles(event.target.files);
   };
 
-  const handleSubmit = async (e) => {
+  const uploadAndSubmit = async (e) => {
     e.preventDefault();
-    const form = new FormData();
-    for (const key in formData) {
-      if (key === "PhotoUrl") {
-        for (const file of formData.PhotoUrl) {
-          form.append("files.PhotoUrl", file);
-        }
-      } else {
-        form.append(key, formData[key]);
-      }
-    }
 
-    console.log("User Token:", token); // Log the token for debugging
+    const formData = new FormData();
+    for (let i = 0; i < files.length; i++) {
+      formData.append("files", files[i]);
+    }
+    formData.append("ref", "user"); // The name of the content type
+    formData.append("refId", user.id); // The ID of the user
+    formData.append("field", "photos");
 
     try {
-      const api = `${config.apiUrl}/api/properties`;
-      const response = await fetch(api, {
+      // Upload files to server
+      const uploadResponse = await axios.post(
+        `${config.apiUrl}/api/upload`,
+        formData,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+
+      const uploadedFiles = uploadResponse.data;
+      const photoUrls = uploadedFiles.map((file) => file.url); // Extract the URLs of the uploaded files
+
+      // Prepare property data with photo URLs
+      const data = {
+        ...propertyData,
+        PhotoUrl: photoUrls,
+      };
+
+      if (!token) {
+        setMessage("Failed to obtain token");
+        return;
+      }
+
+      // Post property data
+      const response = await fetch(`${config.apiUrl}/api/properties`, {
         method: "POST",
         headers: {
-          Authorization: `Bearer ${user.token}`, // Pass authentication token
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`, // Use the Bearer token here
         },
-        body: form,
+        body: JSON.stringify({ data }), // Wrap the data object in a "data" property
       });
 
       if (response.ok) {
-        console.log("Property registered successfully");
+        const result = await response.json();
+        setMessage("Data posted successfully: " + JSON.stringify(result));
       } else {
-        console.log("Failed to register property");
+        const errorResult = await response.json(); // Parse the error response
+        setMessage(`Failed to post data: ${response.statusText} - ${errorResult.message}`);
       }
     } catch (error) {
-      console.error("Error:", error);
+      setMessage("An error occurred: " + error.message);
     }
   };
 
@@ -86,12 +113,12 @@ function RegisterProperty() {
             <p>Register Property</p>
           </div>
 
-          <form className="registerForm" onSubmit={handleSubmit}>
+          <form className="registerForm" onSubmit={uploadAndSubmit}>
             <div>
               <label>Type:</label>
               <select
                 name="StatusCode"
-                value={formData.StatusCode}
+                value={propertyData.StatusCode}
                 onChange={handleChange}
               >
                 <option value="For Rent">For Rent</option>
@@ -104,7 +131,7 @@ function RegisterProperty() {
               <input
                 type="text"
                 name="PropertyName"
-                value={formData.PropertyName}
+                value={propertyData.PropertyName}
                 onChange={handleChange}
                 required
               />
@@ -114,7 +141,7 @@ function RegisterProperty() {
               <label>Property Category:</label>
               <select
                 name="PropertyCategory"
-                value={formData.PropertyCategory}
+                value={propertyData.PropertyCategory}
                 onChange={handleChange}
                 required
               >
@@ -135,7 +162,7 @@ function RegisterProperty() {
               <input
                 type="number"
                 name="NumberOfBedRooms"
-                value={formData.NumberOfBedRooms}
+                value={propertyData.NumberOfBedRooms}
                 onChange={handleChange}
                 required
               />
@@ -146,7 +173,7 @@ function RegisterProperty() {
               <input
                 type="number"
                 name="PriceTag"
-                value={formData.PriceTag}
+                value={propertyData.PriceTag}
                 onChange={handleChange}
                 required
               />
@@ -157,7 +184,7 @@ function RegisterProperty() {
               <input
                 type="number"
                 name="NumberOfUnitsForNeighbors"
-                value={formData.NumberOfUnitsForNeighbors}
+                value={propertyData.NumberOfUnitsForNeighbors}
                 onChange={handleChange}
                 required
               />
@@ -168,7 +195,7 @@ function RegisterProperty() {
               <input
                 type="text"
                 name="Amenities"
-                value={formData.Amenities}
+                value={propertyData.Amenities}
                 onChange={handleChange}
                 required
               />
@@ -179,7 +206,7 @@ function RegisterProperty() {
               <input
                 type="text"
                 name="Location"
-                value={formData.Location}
+                value={propertyData.Location}
                 onChange={handleChange}
                 required
               />
@@ -190,7 +217,7 @@ function RegisterProperty() {
               <input
                 type="number"
                 name="NumberOfBathrooms"
-                value={formData.NumberOfBathrooms}
+                value={propertyData.NumberOfBathrooms}
                 onChange={handleChange}
                 required
               />
@@ -200,7 +227,7 @@ function RegisterProperty() {
               <label>Description:</label>
               <textarea
                 name="Description"
-                value={formData.Description}
+                value={propertyData.Description}
                 onChange={handleChange}
                 required
               />
@@ -209,9 +236,9 @@ function RegisterProperty() {
             <div>
               <label>Garage:</label>
               <input
-                type="text"
+                type="number"
                 name="Garage"
-                value={formData.Garage}
+                value={propertyData.Garage}
                 onChange={handleChange}
                 required
               />
@@ -222,7 +249,7 @@ function RegisterProperty() {
               <input
                 type="number"
                 name="HouseSize"
-                value={formData.HouseSize}
+                value={propertyData.HouseSize}
                 onChange={handleChange}
                 required
               />
@@ -233,7 +260,7 @@ function RegisterProperty() {
               <input
                 type="number"
                 name="LandSize"
-                value={formData.LandSize}
+                value={propertyData.LandSize}
                 onChange={handleChange}
                 required
               />
@@ -244,7 +271,7 @@ function RegisterProperty() {
               <input
                 type="text"
                 name="YearBuilt"
-                value={formData.YearBuilt}
+                value={propertyData.YearBuilt}
                 onChange={handleChange}
                 required
               />
@@ -266,7 +293,7 @@ function RegisterProperty() {
               <input
                 type="text"
                 name="PropertyOwner"
-                value={formData.PropertyOwner}
+                value={propertyData.PropertyOwner}
                 onChange={handleChange}
                 required
               />
