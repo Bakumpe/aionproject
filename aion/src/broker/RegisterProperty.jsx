@@ -43,7 +43,7 @@ function RegisterProperty() {
 
   const uploadAndSubmit = async (e) => {
     e.preventDefault();
-
+  
     const formData = new FormData();
     for (let i = 0; i < files.length; i++) {
       formData.append("files", files[i]);
@@ -51,7 +51,7 @@ function RegisterProperty() {
     formData.append("ref", "user"); // The name of the content type
     formData.append("refId", user.id); // The ID of the user
     formData.append("field", "photos");
-
+  
     try {
       // Upload files to server
       const uploadResponse = await axios.post(
@@ -64,21 +64,21 @@ function RegisterProperty() {
           },
         }
       );
-
+  
       const uploadedFiles = uploadResponse.data;
       const photoUrls = uploadedFiles.map((file) => file.url); // Extract the URLs of the uploaded files
-
+  
       // Prepare property data with photo URLs
       const data = {
         ...propertyData,
         PhotoUrl: photoUrls,
       };
-
+  
       if (!token) {
         setMessage("Failed to obtain token");
         return;
       }
-
+  
       // Post property data
       const response = await fetch(`${config.apiUrl}/api/properties`, {
         method: "POST",
@@ -88,7 +88,7 @@ function RegisterProperty() {
         },
         body: JSON.stringify({ data }), // Wrap the data object in a "data" property
       });
-
+  
       if (response.ok) {
         const result = await response.json();
         setMessage("Data posted successfully: " + JSON.stringify(result));
@@ -100,6 +100,7 @@ function RegisterProperty() {
       setMessage("An error occurred: " + error.message);
     }
   };
+  
 
   return (
     <>

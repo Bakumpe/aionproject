@@ -52,7 +52,7 @@ export default [
       contentSecurityPolicy: {
         useDefaults: true,
         directives: {
-          'connect-src': ["'self'", 'https:'],
+          'connect-src': ["'self'", 'https:'], // Make sure to include all required endpoints
           'img-src': ["'self'", 'data:', 'blob:', 'res.cloudinary.com'],
           'media-src': ["'self'", 'data:', 'blob:', 'res.cloudinary.com'],
           upgradeInsecureRequests: null,
@@ -63,7 +63,8 @@ export default [
   {
     name: 'strapi::cors',
     config: {
-      origin: ['https://aiongetaion.netlify.app', 'http://localhost:5173'], // Allow all origins. You can specify allowed origins like ['http://example.com']
+      // origin: ['https://aiongetaion.netlify.app', 'http://localhost:5173'], // Allow specific origins
+      origin: '*', // Allow specific origins
       methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
       headers: ['Content-Type', 'Authorization', 'Origin', 'Accept'],
     },
@@ -85,7 +86,6 @@ export default [
   'strapi::favicon',
   'strapi::public',
 ];
-
 
 
 
