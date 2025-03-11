@@ -63,8 +63,8 @@ export default [
   {
     name: 'strapi::cors',
     config: {
-      // origin: ['https://aiongetaion.netlify.app', 'http://localhost:5173'], // Allow specific origins
-      origin: '*', // Allow specific origins
+      origin: ['https://aiongetaion.netlify.app', 'http://localhost:5173'],
+      // origin: '*', // Allow specific origins
       methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
       headers: ['Content-Type', 'Authorization', 'Origin', 'Accept'],
     },
