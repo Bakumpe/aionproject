@@ -2,8 +2,8 @@ import React, { useContext, useState } from "react";
 import Header from "../components/Header";
 // import Footer from "../components/Footer";
 import Whatsapp from "../components/Whatsapp";
-import RegisterProperty from "../broker/RegisterProperty";
 import { UserContext } from "../context/UserContext";
+import Registration from "../broker/Registration";
 
 function Broker() {
   const { user } = useContext(UserContext);
@@ -49,7 +49,7 @@ function Broker() {
             </button>
           </div>
           <div className="registeringProperty">
-            {showForm && <RegisterProperty type={showForm} />}
+            {showForm && <Registration type={showForm} />}
           </div>
         </div>
 

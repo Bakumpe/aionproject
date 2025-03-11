@@ -52,7 +52,10 @@ function MyPropertyCard({ property }) {
         {displayPropertyPhotos(property)}
       </Link>
       <Link to={`/properties/${property.id}`}>
-        <p className="propertyName">{property.PropertyName}</p>
+        <div className="propertyName">
+          <p>{property.PropertyName}</p>
+          <p>{property.StatusCode}</p>
+        </div>
 
         <div className="specs">
           <div className="location">
@@ -76,7 +79,9 @@ function MyPropertyCard({ property }) {
         </div>
       </Link>
       <div className="buyRentOptions">
-        <div className="buyRentOptions-1" onClick={handleRentClick}>Rent</div>
+        <div className="buyRentOptions-1" onClick={handleRentClick}>
+          Rent
+        </div>
         <div className="buyRentOptions-1">Buy</div>
       </div>
     </li>

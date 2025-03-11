@@ -77,6 +77,15 @@
     },
     "PropertyOwner": {
       "type": "string"
+    },
+    "StatusCode": {
+      "type": "enumeration",
+      "enum": [
+        "Ex:",
+        "For Rent Monthly",
+        "For Sale",
+        "Easy Come"
+      ]
     }
   }
 }
