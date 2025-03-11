@@ -120,7 +120,8 @@
       "enum": [
         "Ex:",
         "For Hire",
-        "For Sale"
+        "For Sale",
+        "Luxury"
       ]
     }
   }

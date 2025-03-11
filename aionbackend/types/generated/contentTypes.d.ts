@@ -461,7 +461,9 @@ export interface ApiCarCar extends Struct.CollectionTypeSchema {
     ResaleValue: Schema.Attribute.Integer;
     SafetyFeatures: Schema.Attribute.Text;
     speed: Schema.Attribute.BigInteger;
-    StatusCode: Schema.Attribute.Enumeration<['Ex:', 'For Hire', 'For Sale']>;
+    StatusCode: Schema.Attribute.Enumeration<
+      ['Ex:', 'For Hire', 'For Sale', 'Luxury']
+    >;
     Transmission: Schema.Attribute.Enumeration<
       ['Ex:', 'Manual', 'Automatic', 'CVT']
     >;
