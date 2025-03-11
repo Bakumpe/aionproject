@@ -851,7 +851,7 @@
     flex-direction: column;
     align-items: stretch;
     gap: 0.5rem;
-    z-index: 1000;
+    z-index: 4000;
     width: 50%;
   }
   .mobile-open {
