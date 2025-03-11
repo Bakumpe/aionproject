@@ -455,25 +455,29 @@
 }
 /**Our services Space**/
 .ourservice {
-  margin-top: 70px;
+  margin-top: 10px;
 }
 .ourservice-1 {
   display: flex;
   align-items: center;
   justify-content: space-around;
+  gap: 13px;
 }
 .ourservice-1-1 {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 200px;
+  width: 25%;
   height: 60px;
   background-color: var(--secondary-background-color);
   cursor: pointer;
   color: var(--secondary-text-color);
   text-decoration: none;
 }
-
+.ourservice-1-1:hover{
+  background-color: var(--forth-background-color);
+  color: var(--forth-text-color);
+}
 /**Relocation Services**/
 
 .move {
@@ -805,10 +809,10 @@
   text-decoration: none;
   color: var(--primary-textcolor-color);
 }
-.customerCare-1 img{
+.customerCare-1 img {
   width: 40px;
 }
-.customerCare-1-1{
+.customerCare-1-1 {
   width: 100%;
   display: flex;
   justify-content: space-evenly;
@@ -1240,7 +1244,24 @@
     padding: 5px;
     width: 100%;
   }
-  .customerCare-1 img{
+  .customerCare-1 img {
     width: 20px;
+  }
+
+  /**our service*/
+  .ourservice {
+    margin-top: 20px;
+    width: 100%;
+  }
+  .ourservice-1 {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    width: 100%;
+    gap: 10px;
+  }
+  .ourservice-1-1 {
+    width: 100%;
+    height: 40px;
   }
 }

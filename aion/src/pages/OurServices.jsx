@@ -3,10 +3,12 @@ import Header from "../components/Header";
 import { Link } from "react-router-dom";
 import Whatsapp from "../components/Whatsapp";
 import { UserContext } from "../context/UserContext";
+import { useMediaQuery } from "react-responsive";
 
 function OurServices() {
   const { user } = useContext(UserContext);
   const [showForm, setShowForm] = useState(null);
+  const isMobile = useMediaQuery({ query: "(max-width: 480px)" });
 
   return (
     <>
@@ -38,10 +40,18 @@ function OurServices() {
           </div>
           <h1 className="ourservice">Service Providers</h1>
           <div className="ourservice-1">
-            <div className="ourservice-1-1">Event Handlers</div>
-            <div className="ourservice-1-1">Personal Care and Wellness</div>
-            <div className="ourservice-1-1">Home and Lifestyle Services</div>
-            <div className="ourservice-1-1">Senior Care and Assistance</div>
+            <div className="ourservice-1-1">
+              {isMobile ? "Event" : "Event Handlers"}
+            </div>
+            <div className="ourservice-1-1">
+              {isMobile ? "My Care" : "Personal Care and Wellness"}
+            </div>
+            <div className="ourservice-1-1">
+              {isMobile ? "House Help" : "Home and Lifestyle Services"}
+            </div>
+            <div className="ourservice-1-1">
+              {isMobile ? "Shop" : "Restock Home Utilities"}
+            </div>
           </div>
         </div>
       </div>
