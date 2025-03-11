@@ -23,12 +23,20 @@ function Broker() {
           </div>
           <div className="welcome-message">
             <div className="welcomeMessage1">
-              <p>We're thrilled to have you join our community.</p>
+              <p>Welcome to our community! We're thrilled to have you here.</p>
               <p>
-                Looking for a place to rent or sell your car? You're in the
-                right place!
+                Whether you're looking to rent or sell your property, car, or
+                service, you've come to the right place. Our team is dedicated
+                to helping you every step of the way.
               </p>
-              <p>Let's get started on finding the perfect match for you.</p>
+              <p>
+                Let's get started on finding the perfect match for you. If you
+                need any assistance, our customer support team is here to help!
+              </p>
+              <p>
+                Feel free to reach out at any time. We're just a call or click
+                away.
+              </p>
             </div>
           </div>
           <div className="register-button-group">
@@ -36,6 +44,9 @@ function Broker() {
               Register Property
             </button>
             <button onClick={() => setShowForm("car")}>Register Car</button>
+            <button onClick={() => setShowForm("service")}>
+              Register Service
+            </button>
           </div>
           <div className="registeringProperty">
             {showForm && <RegisterProperty type={showForm} />}

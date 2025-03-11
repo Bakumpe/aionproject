@@ -85,7 +85,7 @@ const Header = () => {
         </Link>
         <Link to="/callCenter" className="nav-link" onClick={closeMobileMenu}>
           <Phone className="icon" />
-          Call Center
+          Customer Support
         </Link>
 
         <div

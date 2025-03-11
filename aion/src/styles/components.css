@@ -685,7 +685,7 @@
     83,
     77,
     77,
-    0.5
+    0.2
   ); /* Change the opacity value as needed */
   z-index: 1;
 }
@@ -695,7 +695,7 @@
   text-align: center;
   color: var(--forth-text-color);
   z-index: 100;
-  background-color: rgba(5, 11, 16, 0.6);
+  background-color: rgba(5, 11, 16, 0.4);
 }
 
 .register-button-group {
@@ -705,6 +705,7 @@
   display: flex;
   align-items: center;
   justify-content: space-evenly;
+  gap: 10px;
 }
 .register-button-group button {
   width: 30%;
@@ -715,7 +716,7 @@
   cursor: pointer;
   border: none;
 }
-.register-button-group button:focus{
+.register-button-group button:focus {
   outline: none;
   border: none;
 }
@@ -764,16 +765,16 @@
 }
 
 /**Profile***/
-.profile{
+.profile {
   margin-top: 90px;
   margin-bottom: 70px;
 }
-.profile1{
+.profile1 {
   display: flex;
   justify-content: space-around;
   margin-bottom: 20px;
 }
-.profile2{
+.profile2 {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -784,12 +785,36 @@
   color: var(--third-text-color);
 }
 
-
-
-
+/**Customer Support**/
+.customerCare {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 90px;
+  width: 100%;
+}
+.customerCare-1 {
+  margin-top: -90px;
+  margin-bottom: 80px;
+  padding: 10px;
+  width: 70%;
+  text-align: justify;
+  background-color: var(--fifth-background-color);
+}
+.customerCare-1 a {
+  text-decoration: none;
+  color: var(--primary-textcolor-color);
+}
+.customerCare-1 img{
+  width: 40px;
+}
+.customerCare-1-1{
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+}
 /**Media Querry**/
-.mediaquery{
-
+.mediaquery {
 }
 @media screen and (max-width: 768px) {
 }
@@ -1156,7 +1181,7 @@
     font-size: 16px;
     background-color: rgba(5, 11, 16, 0.3);
   }
-  
+
   .register-button-group {
     margin-top: 20px;
     margin-bottom: 20px;
@@ -1165,7 +1190,7 @@
     width: 45%;
     height: 40px;
   }
-  
+
   /**Registering Property**/
   .registerPropertyAndCars {
     display: flex;

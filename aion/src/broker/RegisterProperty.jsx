@@ -53,7 +53,7 @@ function RegisterProperty({ type }) {
             </div>
           </div>
         </div>
-      ) : (
+      ) : type === "car" ? (
         <div className="registerPropertyAndCars">
           <div className="registeringProperty">
             <div className="registeringProperty-1">
@@ -97,6 +97,33 @@ function RegisterProperty({ type }) {
                 buyers to reach out.
               </p>
               <button>Register Car</button>
+            </div>
+          </div>
+        </div>
+      ) : (
+        <div className="registerPropertyAndCars">
+          <div className="registeringProperty">
+            <div className="registeringProperty-1">
+              <h4>Register Service</h4>
+              <h5>Tips on how to Register</h5>
+              <p>
+                Service Details: Provide detailed information about the service,
+                including the type of service, description, and any unique
+                features.
+              </p>
+              <p>
+                Photos: Upload high-quality photos or any visual representations
+                related to the service to give potential clients a clear view.
+              </p>
+              <p>
+                Service Terms: Specify the pricing, terms, and any additional
+                fees or requirements.
+              </p>
+              <p>
+                Contact Information: Provide contact details for interested
+                clients to reach out.
+              </p>
+              <button>Register Service</button>
             </div>
           </div>
         </div>
