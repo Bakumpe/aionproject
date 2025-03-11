@@ -217,6 +217,15 @@
   width: 100%;
   overflow: hidden;
 }
+.statusCode{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40%;
+  border-radius: 15px;
+  background-color: var(--third-background-color);
+  color: var(--forth-text-color);
+}
 .specs img {
   width: 30px;
 }

@@ -13,6 +13,7 @@
   --forth-background-color: blue;
   --fifth-background-color: aliceblue;
   --sixth-text-color: rgb(13, 13, 14);
+  --seventh-text-color: rgb(102, 10, 10);
 }
 .indexPage {
   display: grid;

@@ -54,7 +54,7 @@ function MyPropertyCard({ property }) {
       <Link to={`/properties/${property.id}`}>
         <div className="propertyName">
           <p>{property.PropertyName}</p>
-          <p>{property.StatusCode}</p>
+          <p className="statusCode">{property.StatusCode}</p>
         </div>
 
         <div className="specs">
