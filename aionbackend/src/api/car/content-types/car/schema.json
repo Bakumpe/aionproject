@@ -102,17 +102,26 @@
       "type": "text"
     },
     "CarImage": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
       "allowedTypes": [
         "images",
         "files",
         "videos",
         "audios"
-      ],
-      "type": "media",
-      "multiple": true
+      ]
     },
     "images": {
       "type": "json"
+    },
+    "StatusCode": {
+      "type": "enumeration",
+      "enum": [
+        "Ex:",
+        "For Hire",
+        "For Sale"
+      ]
     }
   }
 }
