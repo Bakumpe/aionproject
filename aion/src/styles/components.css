@@ -1175,11 +1175,11 @@
   /**Broker space*/
   .welcome-message {
     margin-top: 50px;
-    height: 65vh;
+    height: 55vh;
   }
   .welcomeMessage1 {
     padding: 10px;
-    font-size: 14px;
+    font-size: 16px;
     background-color: rgba(5, 11, 16, 0.3);
   }
 
