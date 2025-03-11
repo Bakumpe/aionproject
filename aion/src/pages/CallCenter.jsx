@@ -3,10 +3,13 @@ import Header from "../components/Header";
 import Whatsapp from "../components/Whatsapp";
 import CustomerHelp from "../components/CustomerHelp";
 import { UserContext } from "../context/UserContext";
+import { useMediaQuery } from "react-responsive";
 
 function CallCustomerCare() {
   const { user } = useContext(UserContext);
   const [showForm, setShowForm] = useState(null);
+  const isMobile = useMediaQuery({ query: "(max-width: 480px)" });
+
   return (
     <>
       <div className="indexPage">
@@ -42,7 +45,7 @@ function CallCustomerCare() {
               Support Hours
             </button>
             <button onClick={() => setShowForm("faqs")}>
-              Frequently Asked Questions
+              {isMobile ? "FAQs" : "Frequently Asked Questions"}
             </button>
             <button onClick={() => setShowForm("Support resources")}>
               Support resources
