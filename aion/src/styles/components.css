@@ -221,7 +221,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 40%;
+  width: 50%;
   border-radius: 15px;
   background-color: var(--third-background-color);
   color: var(--forth-text-color);
