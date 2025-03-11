@@ -5,27 +5,41 @@
 import { factories } from '@strapi/strapi';
 
 export default factories.createCoreController('api::car.car', ({ strapi }) => ({
-  // Extend the default find method to fetch all properties
+  // Extend the default find method to fetch all cars
   async find(ctx) {
-    const cars = await strapi.entityService.findMany('api::car.car', {
-      populate: {
-        CarImage: true,
-      },
-    });
+    try {
+      const cars = await strapi.entityService.findMany('api::car.car', {
+        populate: {
+          CarImage: true,
+          images: true,
+        },
+      });
 
-    ctx.body = cars; // Send all cars
+      ctx.body = cars; // Send all cars
+    } catch (error) {
+      ctx.throw(500, 'Internal Server Error');
+    }
   },
 
-  // Extend the default findOne method to fetch a single property by ID
+  // Extend the default findOne method to fetch a single car by ID
   async findOne(ctx) {
-    const { id } = ctx.params;
-    const car = await strapi.entityService.findOne('api::car.car', id, {
-      populate: {
-        CarImage: true,
-      },
-    });
+    try {
+      const { id } = ctx.params;
+      const car = await strapi.entityService.findOne('api::car.car', id, {
+        populate: {
+          CarImage: true,
+          images: true,
+        },
+      });
 
-    ctx.body = car; // Send the single car as it is fetched from Strapi
+      if (!car) {
+        ctx.throw(404, 'Car Not Found');
+      }
+
+      ctx.body = car; // Send the single car as it is fetched from Strapi
+    } catch (error) {
+      ctx.throw(500, 'Internal Server Error');
+    }
   },
 
   // Extend other methods as needed...
