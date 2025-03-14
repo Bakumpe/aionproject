@@ -68,25 +68,6 @@ function PropertyDetails() {
     }
   }, [id, properties]);
 
-  if (loading) {
-    return (
-      <div className="loadingProperties">
-        <span className="spinner"></span> Loading property details...
-      </div>
-    );
-  }
-  if (error) {
-    return <div className="errorProperties">Error: {error}</div>;
-  }
-
-  if (properties.length === 0) {
-    return <div>No properties available to display.</div>;
-  }
-
-  if (!property) {
-    return <div>Property not found.</div>;
-  }
-
   const {
     propertyName,
     propertyCategory,
@@ -100,81 +81,96 @@ function PropertyDetails() {
     houseSize,
     landSize,
     yearBuilt,
-  } = property;
+  } = property || {};
 
   return (
     <div className="propertyDetails">
-      <div>{displayPropertyPhotos(property)}</div>
-      <div className="propertyInformation">
-        <div className="propertyInformation-1">
-          <div className="propertyName">
-            <p>{property.propertyName}</p>
-            <p className="statusCode">{property.statusCode}</p>
-            <p className="pricetag">Ugshs. {priceTag}</p>
-          </div>
+      {loading ? (
+        <div className="loadingProperties">
+          <span className="spinner"></span>
+          <span>Loading property details...</span>
         </div>
-        <br />
-        <div className="features">
-          <h2>Features</h2>
-          <div className="Bed">
-            <div className="Bed-1">
-              <img src={Bed} alt="Bed" />
-              <p>{numberOfBedRooms}</p>
+      ) : error ? (
+        <div className="errorProperties">Error: {error}</div>
+      ) : properties.length === 0 ? (
+        <div>No properties available to display.</div>
+      ) : !property ? (
+        <div>Property not found.</div>
+      ) : (
+        <>
+          <div>{displayPropertyPhotos(property)}</div>
+          <div className="propertyInformation">
+            <div className="propertyInformation-1">
+              <div className="propertyName">
+                <p>{propertyName}</p>
+                <p className="statusCode">{property.statusCode}</p>
+                <p className="pricetag">Ugshs. {priceTag}</p>
+              </div>
             </div>
-            <div className="Bed-1">
-              <img src={Bathroom} alt="Bathrooms" />
-              <p>{numberOfBathrooms}</p>
-            </div>
-            <div className="Bed-1">
-              <img src={House} alt="House" />
-              <p>{property.id}</p>
-            </div>
-            <div className="Bed-1">
-              <img src={Type} alt="Type" />
-              <p>{propertyCategory}</p>
-            </div>
-            <div className="Bed-1">
-              <img src={Garages} alt="Garage" />
-              <p>{garage}</p>
-            </div>
-            <div className="Bed-1">
-              <img src={Size} alt="Size" />
-              <p>{houseSize} sq. ft.</p>
-            </div>
-            <div className="Bed-1">
-              <img src={Land} alt="Land" />
-              <p>{landSize} sq. ft.</p>
-            </div>
-            <div className="Bed-1">
-              <img src={Year} alt="Year" />
-              <p>{yearBuilt}</p>
+            <br />
+            <div className="features">
+              <h2>Features</h2>
+              <div className="Bed">
+                <div className="Bed-1">
+                  <img src={Bed} alt="Bed" />
+                  <p>{numberOfBedRooms ?? "N/A"}</p>
+                </div>
+                <div className="Bed-1">
+                  <img src={Bathroom} alt="Bathrooms" />
+                  <p>{numberOfBathrooms ?? "N/A"}</p>
+                </div>
+                <div className="Bed-1">
+                  <img src={House} alt="House" />
+                  <p>{property.id}</p>
+                </div>
+                <div className="Bed-1">
+                  <img src={Type} alt="Type" />
+                  <p>{propertyCategory || "N/A"}</p>
+                </div>
+                <div className="Bed-1">
+                  <img src={Garages} alt="Garage" />
+                  <p>{garage ?? "N/A"}</p>
+                </div>
+                <div className="Bed-1">
+                  <img src={Size} alt="Size" />
+                  <p>{houseSize ? `${houseSize} sq. ft.` : "N/A"}</p>
+                </div>
+                <div className="Bed-1">
+                  <img src={Land} alt="Land" />
+                  <p>{landSize ? `${landSize} sq. ft.` : "N/A"}</p>
+                </div>
+                <div className="Bed-1">
+                  <img src={Year} alt="Year" />
+                  <p>{yearBuilt || "N/A"}</p>
+                </div>
+              </div>
+              <div className="loco">
+                <div className="Bed-1">
+                  <img src={LocationPng} alt="Location" />
+                  <p>{location || "N/A"}</p>
+                </div>
+              </div>
+              <div className="amenities">
+                <p>Amenities:</p>
+                <div className="amenities1">
+                  <p>{amenities || "None specified"}</p>
+                </div>
+              </div>
+              <div className="description">
+                <p>Description</p>
+                <p>{description || "No description available"}</p>
+              </div>
             </div>
           </div>
-          <div className="loco">
-            <div className="Bed-1">
-              <img src={LocationPng} alt="Location" />
-              <p>{location}</p>
+          <div className="aboutProperty">
+            <div className="aboutProperty-1">Contact Agent</div>
+            <div className="aboutProperty-1">Buy</div>
+            <div className="aboutProperty-1" onClick={handleRentClick}>
+              Rent
             </div>
           </div>
-          <div className="amenities">
-            <p>Amenities:</p>
-            <div className="amenities1">
-              <p>{amenities}</p>
-            </div>
-          </div>
-          <div className="description">
-            <p>Description</p>
-            <p>{description}</p>
-          </div>
-        </div>
-      </div>
-      <div className="aboutProperty">
-        <div className="aboutProperty-1">Contact Agent</div>
-        <div className="aboutProperty-1">Buy</div>
-        <div className="aboutProperty-1" onClick={handleRentClick}>
-          Rent
-        </div>
-      </div>
+        </>
+      )}
     </div>
   );
 }
