@@ -41,7 +41,7 @@ function MyPropertyCard({ property }) {
   const navigate = useNavigate();
 
   const handleRentClick = () => {
-    navigate(`/rent`, { state: { property } });
+    navigate(`/properties/${property.id}`, { state: { property } });
   };
 
   return (

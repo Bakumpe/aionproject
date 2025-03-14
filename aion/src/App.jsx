@@ -27,11 +27,10 @@ import "../src/styles/index.css";
 import "../src/styles/components.css";
 import "../src/styles/pages.css";
 import "../src/styles/forms.css";
-import RentProperty from "./pages/RentProperty";
-import RentCar from "./pages/RentCar";
 import RegisterProperty from "./broker/RegisterProperty";
 import RegisterCar from "./broker/RegisterCar";
 import RegisterService from "./broker/RegisterService";
+import Services from "./pages/Services";
 
 function App() {
   return (
@@ -57,8 +56,8 @@ function App() {
                 <Route path="/aboutUs" element={<AboutUs />} />
                 <Route path="/myFavorites" element={<MyFavorites />} />
                 <Route path="/eceg" element={<ECEG />} />
-                <Route path="/rent" element={<RentProperty />} />
-                <Route path="/rentcar" element={<RentCar />} />
+                <Route path="/services" element={<Services />} />
+                <Route path="/events/:id" element={<Services />} />
                 <Route
                   path="/registerproperty"
                   element={<RegisterProperty />}

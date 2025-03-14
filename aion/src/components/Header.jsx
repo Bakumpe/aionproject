@@ -17,6 +17,7 @@ import {
   ServerIcon,
   Phone,
   Move,
+  Search,
 } from "lucide-react";
 
 const Header = () => {
@@ -44,6 +45,7 @@ const Header = () => {
           <div className="logoSpace">
             <img src={AionLogo} alt="Aion Logo" className="logo-image" />
             <p className="logo-text">Aion</p>
+            <Search />
           </div>
         </Link>
 
@@ -59,21 +61,17 @@ const Header = () => {
           <Home className="icon" />
           Find Property
         </Link>
-        <Link to="/eceg" className="nav-link" onClick={closeMobileMenu}>
-          <Combine className="icon" />
-          Easy Come 
-        </Link>
-        <Link to="/myFavorites" className="nav-link" onClick={closeMobileMenu}>
-          <FanIcon className="icon" />
-          My Favorites
-        </Link>
         <Link to="/cars" className="nav-link" onClick={closeMobileMenu}>
           <Car className="icon" />
-          Cars
+          Find Cars
         </Link>
-        <Link to="/ourServices" className="nav-link" onClick={closeMobileMenu}>
-          <ServerIcon className="icon" />
-          Service Providers
+        <Link to="/eceg" className="nav-link" onClick={closeMobileMenu}>
+          <Combine className="icon" />
+          Find Easy Sleep
+        </Link>
+        <Link to="/services" className="nav-link" onClick={closeMobileMenu}>
+          <Move className="icon" />
+          Find Service
         </Link>
         <Link to="/relocation" className="nav-link" onClick={closeMobileMenu}>
           <Move className="icon" />
@@ -82,6 +80,10 @@ const Header = () => {
         <Link to="/broker" className="nav-link" onClick={closeMobileMenu}>
           <Star className="icon" />
           Register Property
+        </Link>
+        <Link to="/ourServices" className="nav-link" onClick={closeMobileMenu}>
+          <ServerIcon className="icon" />
+          Register Service 
         </Link>
         <Link to="/callCenter" className="nav-link" onClick={closeMobileMenu}>
           <Phone className="icon" />

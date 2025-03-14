@@ -1,6 +1,6 @@
 import React, { useContext, useState } from "react";
 import Header from "../components/Header";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom"; // Changed to useNavigate
 import Whatsapp from "../components/Whatsapp";
 import { UserContext } from "../context/UserContext";
 import { useMediaQuery } from "react-responsive";
@@ -9,6 +9,11 @@ function OurServices() {
   const { user } = useContext(UserContext);
   const [showForm, setShowForm] = useState(null);
   const isMobile = useMediaQuery({ query: "(max-width: 480px)" });
+  const navigate = useNavigate(); // Initialize the hook
+
+  const handleregister = () => {
+    navigate("/registerservice");
+  };
 
   return (
     <>
@@ -39,19 +44,19 @@ function OurServices() {
             </div>
           </div>
           <h1 className="ourservice">Service Providers</h1>
-          <div className="ourservice-1">
-            <div className="ourservice-1-1">
+          <div className="register-button-group">
+            <button className="ourservice-1-1" onClick={handleregister}>
               {isMobile ? "Event" : "Event Handlers"}
-            </div>
-            <div className="ourservice-1-1">
+            </button>
+            <button className="ourservice-1-1" onClick={handleregister}>
               {isMobile ? "My Care" : "Personal Care and Wellness"}
-            </div>
-            <div className="ourservice-1-1">
+            </button>
+            <button className="ourservice-1-1" onClick={handleregister}>
               {isMobile ? "House Help" : "Home and Lifestyle Services"}
-            </div>
-            <div className="ourservice-1-1">
+            </button>
+            <button className="ourservice-1-1" onClick={handleregister}>
               {isMobile ? "Shop" : "Restock Home Utilities"}
-            </div>
+            </button>
           </div>
         </div>
       </div>

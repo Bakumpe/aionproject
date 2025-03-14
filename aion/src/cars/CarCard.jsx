@@ -30,11 +30,11 @@ function CarCard({ car }) {
   const navigate = useNavigate();
 
   const handleRentClick = () => {
-    navigate("/rentcar", { state: { car } });
+    navigate(`/cars/${car.id}`, { state: { car } });
   };
 
   const handleBuyClick = () => {
-    navigate("/buycar", { state: { car } });
+    navigate(`/cars/${car.id}`, { state: { car } });
   };
 
   return (

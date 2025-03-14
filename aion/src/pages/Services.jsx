@@ -1,9 +1,11 @@
 import React, { useState } from "react";
 import Header from "../components/Header";
 import Whatsapp from "../components/Whatsapp";
-import Rent from "../components/Rent";
+import ServiceProperty from "../components/ServiceProperty";
 
-function RentProperty() {
+function Events() {
+  console.log("FetchData rendered"); // Confirm component mounts
+
   return (
     <>
       <div className="indexPage">
@@ -13,10 +15,11 @@ function RentProperty() {
 
         <div className="body">
           <div className="bodyTitle">
-            {" "}
-            <p>Rent Details</p>
+            <p>Services</p>
           </div>
-          <Rent />/
+          <div className="myUnorderedList">
+            <ServiceProperty />
+          </div>
         </div>
       </div>
 
@@ -25,4 +28,4 @@ function RentProperty() {
   );
 }
 
-export default RentProperty;
+export default Events;

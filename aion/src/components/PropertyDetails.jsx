@@ -83,6 +83,17 @@ function PropertyDetails() {
     yearBuilt,
   } = property || {};
 
+  function handleCheckout() {
+    if (property && user) {
+      navigate("/payment", { state: { property, user } });
+    } else if (!user) {
+      navigate("/login", { state: { from: `/rent/${id}` } });
+    } else {
+      console.error("No property available for checkout");
+      // Optionally set an error state to display to the user
+    }
+  }
+
   return (
     <div className="propertyDetails">
       {loading ? (
@@ -162,12 +173,65 @@ function PropertyDetails() {
               </div>
             </div>
           </div>
-          <div className="aboutProperty">
-            <div className="aboutProperty-1">Contact Agent</div>
-            <div className="aboutProperty-1">Buy</div>
-            <div className="aboutProperty-1" onClick={handleRentClick}>
-              Rent
+          <div className="termsAndConditions">
+            <h2>Terms and Conditions</h2>
+            <ul>
+              <li>Rental payment is due on the 1st of each month.</li>
+              <li>
+                A security deposit equivalent to one month’s rent is required.
+              </li>
+              <li>
+                No pets allowed without prior approval from the property owner.
+              </li>
+              <li>Tenant is responsible for minor repairs and maintenance.</li>
+              <li>Termination requires 30 days’ written notice.</li>
+              <li>
+                Violation of terms may result in eviction and forfeiture of
+                deposit.
+              </li>
+            </ul>
+          </div>
+
+          <div className="agreement">
+            <h2>Rental Agreement</h2>
+            <p>By proceeding to checkout, you agree to the following:</p>
+            <ul>
+              <li>
+                I, the tenant, agree to rent the property located at {location}{" "}
+                for a monthly fee of Ugshs. {priceTag}.
+              </li>
+              <li>
+                The rental term begins upon payment confirmation and ends as per
+                the agreed termination notice.
+              </li>
+              <li>
+                I will adhere to all terms and conditions outlined above and
+                maintain the property in good condition.
+              </li>
+              <li>
+                Any disputes will be resolved through mediation before legal
+                action.
+              </li>
+            </ul>
+          </div>
+
+          <div className="checkout">
+            <div className="aboutProperty">
+              <div className="aboutProperty-1">Contact Agent</div>
+              <div
+                className="aboutProperty-1"
+                onClick={handleCheckout}
+                disabled={!user}
+              >
+                Proceed to Checkout
+              </div>
             </div>
+            {!user && (
+              <p className="loginPrompt">
+                Please <NavLink to="/login">log in</NavLink> to proceed with
+                payment.
+              </p>
+            )}
           </div>
         </>
       )}

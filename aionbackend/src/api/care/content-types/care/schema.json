@@ -1,0 +1,33 @@
+{
+  "kind": "collectionType",
+  "collectionName": "cares",
+  "info": {
+    "singularName": "care",
+    "pluralName": "cares",
+    "displayName": "Care"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "businessName": {
+      "type": "string"
+    },
+    "contact": {
+      "type": "biginteger"
+    },
+    "location": {
+      "type": "string"
+    },
+    "photos": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": true
+    }
+  }
+}

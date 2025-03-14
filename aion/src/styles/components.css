@@ -389,7 +389,7 @@
   display: block;
   width: 100%;
   height: auto;
-  min-height: 100px; /* Optional: Ensures a minimum height */
+  max-height: 200px; /* Optional: Ensures a minimum height */
   object-fit: cover; /* Optional: Crops image to fit */
   transition: transform 0.3s ease;
   cursor: pointer;
@@ -547,9 +547,13 @@
   width: 40%;
   height: 30px;
   background-color: var(--secondary-background-color);
-  color: var(--secondary-text-color);
+  color: var(--third-text-color);
   text-decoration: none;
   cursor: pointer;
+}
+.buyRentOptions-1 a{
+  text-decoration: none;
+  color: var(--forth-text-color);
 }
 .buyRentOptions-1:hover {
   background-color: var(--forth-background-color);
@@ -997,7 +1001,7 @@
   .myPropertyImages-1 {
     flex-shrink: 0;
     width: 100%;
-    max-width: 300px; /* Adjust based on your design */
+    max-width: 200px; /* Adjust based on your design */
     overflow: hidden; /* Contain scaled image */
   }
   
@@ -1005,7 +1009,7 @@
     display: block;
     width: 100%;
     height: auto;
-    min-height: 100px; /* Optional: Ensures a minimum height */
+    max-height: 300px; /* Optional: Ensures a minimum height */
     object-fit: cover; /* Optional: Crops image to fit */
     transition: transform 0.3s ease;
     cursor: pointer;
