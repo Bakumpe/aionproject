@@ -10,57 +10,67 @@ function HomeProperty() {
   const url = `${config.apiUrl}/api/properties?populate=*`;
   const { properties, loading, error } = useFetchProperties(url);
 
-  if (loading) return <p>Loading...</p>;
-  if (error) return <p>Error fetching data: {error.message}</p>;
+  console.log("Fetch Result:", { properties, loading, error });
 
-  console.log("Properties:", properties);
+  // Extract the data array from properties
+  const propertyList = properties?.data || [];
 
-  if (!Array.isArray(properties)) {
-    return <p>Data format error: expected an array of properties.</p>;
+  if (!Array.isArray(propertyList)) {
+    return <p>Unexpected data format. Please try again later.</p>;
   }
 
-  const totalPages = Math.ceil(properties.length / propertiesPerPage);
-
-  const handleNext = () => {
-    if (currentPage < totalPages) {
-      setCurrentPage(currentPage + 1);
-    }
-  };
-
-  const handlePrevious = () => {
-    if (currentPage > 1) {
-      setCurrentPage(currentPage - 1);
-    }
-  };
-
+  const totalPages = Math.ceil(propertyList.length / propertiesPerPage);
   const startIndex = (currentPage - 1) * propertiesPerPage;
-  const currentProperties = properties.slice(
+  const currentProperties = propertyList.slice(
     startIndex,
     startIndex + propertiesPerPage
   );
 
+  console.log("Pagination:", {
+    currentPage,
+    totalPages,
+    startIndex,
+    currentProperties,
+  });
+
+  const handleNext = () => {
+    if (currentPage < totalPages) setCurrentPage(currentPage + 1);
+  };
+
+  const handlePrevious = () => {
+    if (currentPage > 1) setCurrentPage(currentPage - 1);
+  };
+
   return (
     <>
-      <ul className="propertyListing">
-        {currentProperties.length === 0 ? (
-          <p className="loadinga">Loading...</p>
+      <ul className="propertyListing" style={{ minHeight: "200px" }}>
+        {loading ? (
+          <div className="loadingProperties">
+            <span className="spinner"></span> Loading properties...
+          </div>
+        ) : error ? (
+          <p>Error fetching properties: {error.message}</p>
+        ) : currentProperties.length === 0 ? (
+          <p>No properties available at the moment.</p>
         ) : (
           currentProperties.map((property) => (
             <MyPropertyCard key={property.id} property={property} />
           ))
         )}
       </ul>
-      <div className="pagination">
-        <button onClick={handlePrevious} disabled={currentPage === 1}>
-          Previous
-        </button>
-        <p>
-          Page {currentPage} of {totalPages}
-        </p>
-        <button onClick={handleNext} disabled={currentPage === totalPages}>
-          Next
-        </button>
-      </div>
+      {totalPages > 0 && !loading && (
+        <div className="pagination">
+          <button onClick={handlePrevious} disabled={currentPage === 1}>
+            Previous
+          </button>
+          <p>
+            Page {currentPage} of {totalPages}
+          </p>
+          <button onClick={handleNext} disabled={currentPage === totalPages}>
+            Next
+          </button>
+        </div>
+      )}
     </>
   );
 }

@@ -369,43 +369,6 @@ export interface AdminUser extends Struct.CollectionTypeSchema {
   };
 }
 
-export interface ApiBrockerBrocker extends Struct.CollectionTypeSchema {
-  collectionName: 'brockers';
-  info: {
-    displayName: 'Brocker';
-    pluralName: 'brockers';
-    singularName: 'brocker';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    admin_user: Schema.Attribute.Relation<'oneToOne', 'admin::user'>;
-    Country: Schema.Attribute.String;
-    County: Schema.Attribute.String;
-    createdAt: Schema.Attribute.DateTime;
-    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-    District: Schema.Attribute.String;
-    locale: Schema.Attribute.String & Schema.Attribute.Private;
-    localizations: Schema.Attribute.Relation<
-      'oneToMany',
-      'api::brocker.brocker'
-    > &
-      Schema.Attribute.Private;
-    NextOfKin: Schema.Attribute.String;
-    NextOfKinContact: Schema.Attribute.BigInteger;
-    publishedAt: Schema.Attribute.DateTime;
-    Subcounty: Schema.Attribute.String;
-    updatedAt: Schema.Attribute.DateTime;
-    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-    UserId: Schema.Attribute.BigInteger;
-    Village: Schema.Attribute.String;
-    Zone: Schema.Attribute.String;
-  };
-}
-
 export interface ApiCarCar extends Struct.CollectionTypeSchema {
   collectionName: 'cars';
   info: {
@@ -418,83 +381,36 @@ export interface ApiCarCar extends Struct.CollectionTypeSchema {
     draftAndPublish: true;
   };
   attributes: {
-    Budget: Schema.Attribute.BigInteger;
-    CargoSpace: Schema.Attribute.Enumeration<
-      [
-        'Ex:',
-        'Big Cargo Space',
-        'Trunk Big Size',
-        'Trunk Medium Size',
-        'Trunk Small Size',
-        'Car Space',
-      ]
-    >;
-    CarImage: Schema.Attribute.Media<
-      'images' | 'files' | 'videos' | 'audios',
-      true
-    >;
+    budget: Schema.Attribute.BigInteger;
+    cargoSpace: Schema.Attribute.String;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    Fuelefficiency: Schema.Attribute.String;
-    FuelEfficiency: Schema.Attribute.BigInteger;
-    FuelType: Schema.Attribute.Enumeration<
-      [
-        'Fuel:',
-        'Gasoline (Petrol)',
-        'Diesel',
-        'Electricity',
-        'Hybrid',
-        'Plug-In Hybrid',
-        'Hydrogen',
-      ]
-    >;
+    fuelefficiency: Schema.Attribute.String;
+    fuelEfficiency: Schema.Attribute.BigInteger;
+    fuelType: Schema.Attribute.String;
     horsepower: Schema.Attribute.BigInteger;
-    images: Schema.Attribute.JSON;
-    InteriorAndComfort: Schema.Attribute.Text;
+    interiorAndComfort: Schema.Attribute.String;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<'oneToMany', 'api::car.car'> &
       Schema.Attribute.Private;
-    Name: Schema.Attribute.String;
+    name: Schema.Attribute.String;
+    photos: Schema.Attribute.Media<
+      'images' | 'files' | 'videos' | 'audios',
+      true
+    >;
     publishedAt: Schema.Attribute.DateTime;
-    ReliabilityAndMaintenance: Schema.Attribute.String;
-    ResaleValue: Schema.Attribute.Integer;
-    SafetyFeatures: Schema.Attribute.Text;
+    reliabilityAndMaintenance: Schema.Attribute.String;
+    resaleValue: Schema.Attribute.Integer;
+    safetyFeatures: Schema.Attribute.String;
     speed: Schema.Attribute.BigInteger;
-    StatusCode: Schema.Attribute.Enumeration<
-      ['Ex:', 'For Hire', 'For Sale', 'Luxury']
-    >;
-    Transmission: Schema.Attribute.Enumeration<
-      ['Ex:', 'Manual', 'Automatic', 'CVT']
-    >;
-    TypeofCar: Schema.Attribute.Enumeration<
-      [
-        'Car:',
-        'Sedan',
-        'Hatchback',
-        'SUV',
-        'Coupe',
-        'Convertible',
-        'Truck',
-        'Minivan',
-        'Electric Car',
-        'Hybrid',
-        'Sports Car',
-        'Luxury Car',
-        'Crossover',
-        'Station Wagon',
-        'Muscle Car',
-        'Supercar',
-        'Hypercar',
-        'Microcar',
-        'Off-Road Vehicle',
-        'Hybrid Plug-In Car',
-      ]
-    >;
+    statusCode: Schema.Attribute.String;
+    transmission: Schema.Attribute.String;
+    typeofCar: Schema.Attribute.String;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    WarrantyAndAfterSalesService: Schema.Attribute.Text;
+    warrantyAndAfterSalesService: Schema.Attribute.String;
   };
 }
 
@@ -510,53 +426,38 @@ export interface ApiPropertyProperty extends Struct.CollectionTypeSchema {
     draftAndPublish: true;
   };
   attributes: {
-    Amenities: Schema.Attribute.Text;
+    amenities: Schema.Attribute.Text;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    Description: Schema.Attribute.Text;
-    Garage: Schema.Attribute.Integer;
-    HouseSize: Schema.Attribute.BigInteger;
-    LandSize: Schema.Attribute.BigInteger;
+    description: Schema.Attribute.Text;
+    garage: Schema.Attribute.Integer;
+    houseSize: Schema.Attribute.Integer;
+    landSize: Schema.Attribute.BigInteger;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
       'api::property.property'
     > &
       Schema.Attribute.Private;
-    Location: Schema.Attribute.String;
-    NumberOfBathrooms: Schema.Attribute.Integer;
-    NumberOfBedRooms: Schema.Attribute.Integer;
-    NumberOfUnitsForNeighbors: Schema.Attribute.BigInteger;
-    photo: Schema.Attribute.Media<
+    location: Schema.Attribute.String;
+    numberOfBathrooms: Schema.Attribute.Integer;
+    numberOfBedRooms: Schema.Attribute.Integer;
+    numberOfUnitsForNeighbors: Schema.Attribute.Integer;
+    photos: Schema.Attribute.Media<
       'images' | 'files' | 'videos' | 'audios',
       true
     >;
-    PhotoUrl: Schema.Attribute.JSON;
-    PriceTag: Schema.Attribute.BigInteger;
-    PropertyCategory: Schema.Attribute.Enumeration<
-      [
-        'Home:',
-        'Apartment',
-        'Stand Alone',
-        'Villa',
-        'Studio House',
-        'Arcade Small Room',
-        'ECEG',
-        'Flat Building',
-        'Rental Space',
-      ]
-    >;
-    PropertyName: Schema.Attribute.String;
-    PropertyOwner: Schema.Attribute.String;
+    priceTag: Schema.Attribute.BigInteger;
+    propertyCategory: Schema.Attribute.String;
+    propertyName: Schema.Attribute.String;
+    propertyOwner: Schema.Attribute.String;
     publishedAt: Schema.Attribute.DateTime;
-    StatusCode: Schema.Attribute.Enumeration<
-      ['Ex:', 'For Rent Monthly', 'For Sale', 'Easy Come']
-    >;
+    statusCode: Schema.Attribute.String;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    YearBuilt: Schema.Attribute.Date;
+    yearBuilt: Schema.Attribute.Date;
   };
 }
 
@@ -1015,36 +916,31 @@ export interface PluginUsersPermissionsUser
   };
   options: {
     draftAndPublish: false;
+    timestamps: true;
   };
   attributes: {
-    address: Schema.Attribute.String;
     blocked: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
     confirmationToken: Schema.Attribute.String & Schema.Attribute.Private;
     confirmed: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    dateOfBirth: Schema.Attribute.Date;
     email: Schema.Attribute.Email &
       Schema.Attribute.Required &
       Schema.Attribute.SetMinMaxLength<{
         minLength: 6;
       }>;
-    firstName: Schema.Attribute.String;
-    lastName: Schema.Attribute.String;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
       'plugin::users-permissions.user'
     > &
       Schema.Attribute.Private;
-    occupation: Schema.Attribute.String;
     password: Schema.Attribute.Password &
       Schema.Attribute.Private &
       Schema.Attribute.SetMinMaxLength<{
         minLength: 6;
       }>;
-    phoneNumber: Schema.Attribute.BigInteger;
     provider: Schema.Attribute.String;
     publishedAt: Schema.Attribute.DateTime;
     resetPasswordToken: Schema.Attribute.String & Schema.Attribute.Private;
@@ -1052,7 +948,6 @@ export interface PluginUsersPermissionsUser
       'manyToOne',
       'plugin::users-permissions.role'
     >;
-    sirName: Schema.Attribute.String;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -1075,7 +970,6 @@ declare module '@strapi/strapi' {
       'admin::transfer-token': AdminTransferToken;
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'admin::user': AdminUser;
-      'api::brocker.brocker': ApiBrockerBrocker;
       'api::car.car': ApiCarCar;
       'api::property.property': ApiPropertyProperty;
       'plugin::content-releases.release': PluginContentReleasesRelease;

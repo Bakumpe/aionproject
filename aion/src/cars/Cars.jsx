@@ -48,7 +48,9 @@ function Cars() {
           </div>
           <ul className="myCarList">
             {currentCars.length === 0 ? (
-              <p>Loading cars...</p>
+              <div className="loadingProperties">
+              <span className="spinner"></span> Loading Cars...
+            </div>
             ) : (
               currentCars.map((car, index) => <CarCard key={index} car={car} />)
             )}

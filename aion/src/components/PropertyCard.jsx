@@ -7,32 +7,34 @@ import Amenities from "../assets/amenities1.png";
 import config from "../.config";
 
 function displayPropertyPhotos(property) {
-  let photo = null;
-  let isFullUrl = false;
+  console.log("Property passed to displayPropertyPhotos:", property);
 
-  if (property.photo && property.photo.length > 0) {
-    photo = property.photo[0].url;
-    isFullUrl = photo.startsWith("https://res.cloudinary.com");
-  } else if (property.photo && property.photo.length > 0) {
-    photo = property.photo[0].url;
-    isFullUrl = photo.startsWith("https://res.cloudinary.com");
-  }
-
-  if (photo) {
-    return (
-      <div className="propertyImages">
-        {isFullUrl ? (
-          <NavLink to={photo}>
-            <img src={photo} alt="Property Image" />
-          </NavLink>
-        ) : (
-          <img src={`${config.apiUrl}${photo}`} alt="Property Image" />
-        )}
-      </div>
-    );
-  } else {
+  if (!property?.photos || !Array.isArray(property.photos) || property.photos.length === 0) {
+    console.log("No valid photos array found:", property?.photos);
     return <p>No photos available for this property.</p>;
   }
+
+  const firstPhoto = property.photos[0]?.url;
+  console.log("First photo URL:", firstPhoto);
+
+  if (!firstPhoto) {
+    console.log("First photo URL is missing or invalid");
+    return <p>No photos available for this property.</p>;
+  }
+
+  const isFullUrl = firstPhoto.startsWith("https://res.cloudinary.com");
+
+  return (
+    <div className="propertyImages">
+      {isFullUrl ? (
+        <NavLink to={firstPhoto}>
+          <img src={firstPhoto} alt="Property Image" />
+        </NavLink>
+      ) : (
+        <img src={`${config.apiUrl}${firstPhoto}`} alt="Property Image" />
+      )}
+    </div>
+  );
 }
 
 function MyPropertyCard({ property }) {
@@ -45,36 +47,36 @@ function MyPropertyCard({ property }) {
   return (
     <li key={property.id} className="listedItem">
       <div className="PropertyCategory">
-        <p>{property.PropertyCategory}</p>
-        <p>Ugshs. {property.PriceTag} </p>
+        <p>{property.propertyCategory}</p>
+        <p className="pricetag">Ugshs. {property.priceTag} </p>
       </div>
       <Link to={`/properties/${property.id}`}>
         {displayPropertyPhotos(property)}
       </Link>
       <Link to={`/properties/${property.id}`}>
         <div className="propertyName">
-          <p>{property.PropertyName}</p>
-          <p className="statusCode">{property.StatusCode}</p>
+          <p>{property.propertyName}</p>
+          <p className="statusCode">{property.statusCode}</p>
         </div>
 
         <div className="specs">
           <div className="location">
             <img src={LocationPng} alt="location" />
-            <p>{property.Location}</p>
+            <p>{property.location}</p>
           </div>
           <div className="specifications">
             <div className="specifications-1">
               <img src={Bed} alt="Bed" />
-              <p>{property.NumberOfBedRooms}</p>
+              <p>{property.numberOfBedRooms}</p>
             </div>
             <div className="specifications-1">
               <img src={Bathroom} alt="Bathroom" />
-              <p>{property.NumberOfBathrooms}</p>
+              <p>{property.numberOfBathrooms}</p>
             </div>
           </div>
           <div className="amenities">
             <img src={Amenities} alt="Amenitites" />
-            <p>{property.Amenities}</p>
+            <p>{property.amenities}</p>
           </div>
         </div>
       </Link>

@@ -11,36 +11,22 @@
     "draftAndPublish": true
   },
   "attributes": {
-    "PropertyName": {
+    "propertyName": {
       "type": "string"
     },
-    "PropertyCategory": {
-      "type": "enumeration",
-      "enum": [
-        "Home:",
-        "Apartment",
-        "Stand Alone",
-        "Villa",
-        "Studio House",
-        "Arcade Small Room",
-        "ECEG",
-        "Flat Building",
-        "Rental Space"
-      ]
-    },
-    "NumberOfBedRooms": {
+    "numberOfBedRooms": {
       "type": "integer"
     },
-    "PriceTag": {
+    "priceTag": {
       "type": "biginteger"
     },
-    "NumberOfUnitsForNeighbors": {
-      "type": "biginteger"
+    "numberOfUnitsForNeighbors": {
+      "type": "integer"
     },
-    "Amenities": {
+    "amenities": {
       "type": "text"
     },
-    "photo": {
+    "photos": {
       "type": "media",
       "multiple": true,
       "required": false,
@@ -51,41 +37,35 @@
         "audios"
       ]
     },
-    "Location": {
+    "location": {
       "type": "string"
     },
-    "NumberOfBathrooms": {
+    "numberOfBathrooms": {
       "type": "integer"
     },
-    "Description": {
+    "description": {
       "type": "text"
     },
-    "Garage": {
+    "garage": {
       "type": "integer"
     },
-    "HouseSize": {
+    "houseSize": {
+      "type": "integer"
+    },
+    "landSize": {
       "type": "biginteger"
     },
-    "LandSize": {
-      "type": "biginteger"
-    },
-    "YearBuilt": {
+    "yearBuilt": {
       "type": "date"
     },
-    "PhotoUrl": {
-      "type": "json"
-    },
-    "PropertyOwner": {
+    "propertyCategory": {
       "type": "string"
     },
-    "StatusCode": {
-      "type": "enumeration",
-      "enum": [
-        "Ex:",
-        "For Rent Monthly",
-        "For Sale",
-        "Easy Come"
-      ]
+    "propertyOwner": {
+      "type": "string"
+    },
+    "statusCode": {
+      "type": "string"
     }
   }
 }

@@ -11,50 +11,13 @@
     "draftAndPublish": true
   },
   "attributes": {
-    "Name": {
+    "name": {
       "type": "string"
     },
-    "Budget": {
+    "budget": {
       "type": "biginteger"
     },
-    "TypeofCar": {
-      "type": "enumeration",
-      "enum": [
-        "Car:",
-        "Sedan",
-        "Hatchback",
-        "SUV",
-        "Coupe",
-        "Convertible",
-        "Truck",
-        "Minivan",
-        "Electric Car",
-        "Hybrid",
-        "Sports Car",
-        "Luxury Car",
-        "Crossover",
-        "Station Wagon",
-        "Muscle Car",
-        "Supercar",
-        "Hypercar",
-        "Microcar",
-        "Off-Road Vehicle",
-        "Hybrid Plug-In Car"
-      ]
-    },
-    "FuelType": {
-      "type": "enumeration",
-      "enum": [
-        "Fuel:",
-        "Gasoline (Petrol)",
-        "Diesel",
-        "Electricity",
-        "Hybrid",
-        "Plug-In Hybrid",
-        "Hydrogen"
-      ]
-    },
-    "Fuelefficiency": {
+    "fuelefficiency": {
       "type": "string"
     },
     "horsepower": {
@@ -63,45 +26,37 @@
     "speed": {
       "type": "biginteger"
     },
-    "FuelEfficiency": {
+    "fuelEfficiency": {
       "type": "biginteger"
     },
-    "Transmission": {
-      "type": "enumeration",
-      "enum": [
-        "Ex:",
-        "Manual",
-        "Automatic",
-        "CVT"
-      ]
-    },
-    "SafetyFeatures": {
-      "type": "text"
-    },
-    "InteriorAndComfort": {
-      "type": "text"
-    },
-    "CargoSpace": {
-      "type": "enumeration",
-      "enum": [
-        "Ex:",
-        "Big Cargo Space",
-        "Trunk Big Size",
-        "Trunk Medium Size",
-        "Trunk Small Size",
-        "Car Space"
-      ]
-    },
-    "ReliabilityAndMaintenance": {
+    "typeofCar": {
       "type": "string"
     },
-    "ResaleValue": {
+    "fuelType": {
+      "type": "string"
+    },
+    "transmission": {
+      "type": "string"
+    },
+    "safetyFeatures": {
+      "type": "string"
+    },
+    "interiorAndComfort": {
+      "type": "string"
+    },
+    "cargoSpace": {
+      "type": "string"
+    },
+    "reliabilityAndMaintenance": {
+      "type": "string"
+    },
+    "resaleValue": {
       "type": "integer"
     },
-    "WarrantyAndAfterSalesService": {
-      "type": "text"
+    "warrantyAndAfterSalesService": {
+      "type": "string"
     },
-    "CarImage": {
+    "photos": {
       "type": "media",
       "multiple": true,
       "required": false,
@@ -112,17 +67,8 @@
         "audios"
       ]
     },
-    "images": {
-      "type": "json"
-    },
-    "StatusCode": {
-      "type": "enumeration",
-      "enum": [
-        "Ex:",
-        "For Hire",
-        "For Sale",
-        "Luxury"
-      ]
+    "statusCode": {
+      "type": "string"
     }
   }
 }

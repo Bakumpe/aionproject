@@ -7,27 +7,30 @@ import axios from "axios";
 
 function RegisterProperty() {
   const { user, token } = useContext(UserContext);
-  const [propertyData, setPropertyData] = useState({
-    PropertyName: "",
-    PropertyCategory: "",
-    NumberOfBedRooms: 0,
-    PriceTag: 0,
-    NumberOfUnitsForNeighbors: 0,
-    Amenities: "",
-    Location: "",
-    NumberOfBathrooms: 0,
-    Description: "",
-    Garage: 0,
-    HouseSize: 0,
-    LandSize: 0,
-    YearBuilt: "",
-    PhotoUrl: [], // Ensure PhotoUrl is an array to hold multiple URLs
-    PropertyOwner: "",
-    StatusCode: "For Rent",
-  });
 
+  const initialPropertyData = {
+    propertyName: "",
+    propertyCategory: "",
+    numberOfBedRooms: 0,
+    priceTag: "0", // Changed to string to match biginteger
+    numberOfUnitsForNeighbors: 0,
+    amenities: "",
+    location: "",
+    numberOfBathrooms: 0,
+    description: "",
+    garage: 0,
+    houseSize: 0,
+    landSize: "0", // Changed to string to match biginteger
+    yearBuilt: "",
+    photos: [],
+    propertyOwner: "",
+    statusCode: "for-rent",
+  };
+
+  const [propertyData, setPropertyData] = useState(initialPropertyData);
   const [message, setMessage] = useState("");
   const [files, setFiles] = useState([]);
+  const [uploading, setUploading] = useState(false);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -43,64 +46,79 @@ function RegisterProperty() {
 
   const uploadAndSubmit = async (e) => {
     e.preventDefault();
-  
-    const formData = new FormData();
-    for (let i = 0; i < files.length; i++) {
-      formData.append("files", files[i]);
+
+    if (!token) {
+      setMessage("Authentication token is missing");
+      return;
     }
-    formData.append("ref", "user"); // The name of the content type
-    formData.append("refId", user.id); // The ID of the user
-    formData.append("field", "photos");
-  
+
+    // Photos are not required in the Strapi model, so we can proceed even if files.length === 0
+
+    setUploading(true);
+
     try {
-      // Upload files to server
-      const uploadResponse = await axios.post(
-        `${config.apiUrl}/api/upload`,
-        formData,
+      let uploadedPhotos = [];
+      if (files.length > 0) {
+        // Step 1: Upload files to Strapi (which uses Cloudinary)
+        const formData = new FormData();
+        Array.from(files).forEach((file) => {
+          formData.append("files", file);
+        });
+
+        const uploadResponse = await axios.post(
+          `${config.apiUrl}/api/upload`,
+          formData,
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+              "Content-Type": "multipart/form-data",
+            },
+          }
+        );
+
+        // Step 2: Get the uploaded file IDs
+        uploadedPhotos = uploadResponse.data.map((file) => file.id);
+      }
+
+      // Step 3: Prepare property data for Strapi
+      const propertyPayload = {
+        data: {
+          ...propertyData,
+          photos: uploadedPhotos, // Array of photo IDs (empty array if no files)
+          priceTag: propertyData.priceTag.toString(), // Ensure biginteger is sent as string
+          landSize: propertyData.landSize.toString(), // Ensure biginteger is sent as string
+          publishedAt: new Date().toISOString(), // Required for immediate publishing since draftAndPublish is true
+        },
+      };
+
+      // Step 4: Create property entry
+      const propertyResponse = await axios.post(
+        `${config.apiUrl}/api/properties`,
+        propertyPayload,
         {
           headers: {
-            "Content-Type": "multipart/form-data",
             Authorization: `Bearer ${token}`,
+            "Content-Type": "application/json",
           },
         }
       );
-  
-      const uploadedFiles = uploadResponse.data;
-      const photoUrls = uploadedFiles.map((file) => file.url); // Extract the URLs of the uploaded files
-  
-      // Prepare property data with photo URLs
-      const data = {
-        ...propertyData,
-        PhotoUrl: photoUrls,
-      };
-  
-      if (!token) {
-        setMessage("Failed to obtain token");
-        return;
-      }
-  
-      // Post property data
-      const response = await fetch(`${config.apiUrl}/api/properties`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`, // Use the Bearer token here
-        },
-        body: JSON.stringify({ data }), // Wrap the data object in a "data" property
-      });
-  
-      if (response.ok) {
-        const result = await response.json();
-        setMessage("Data posted successfully: " + JSON.stringify(result));
-      } else {
-        const errorResult = await response.json(); // Parse the error response
-        setMessage(`Failed to post data: ${response.statusText} - ${errorResult.message}`);
+
+      if (propertyResponse.status === 200) {
+        setMessage("Property registered successfully!");
+        setPropertyData(initialPropertyData);
+        setFiles([]);
+        e.target.reset(); // Reset form
       }
     } catch (error) {
-      setMessage("An error occurred: " + error.message);
+      console.error("Error:", error.response?.data || error);
+      setMessage(
+        "Error registering property: " +
+          (error.response?.data?.error?.message || error.message)
+      );
+    } finally {
+      setUploading(false);
     }
   };
-  
 
   return (
     <>
@@ -111,200 +129,195 @@ function RegisterProperty() {
 
         <div className="body">
           <div className="bodyTitle">
-            <p>Register Property</p>
+            <p>Register Your Property</p>
           </div>
 
           <form className="registerForm" onSubmit={uploadAndSubmit}>
-            <div>
+            <div className="inputSection">
               <label>Type:</label>
               <select
-                name="StatusCode"
-                value={propertyData.StatusCode}
+                name="statusCode"
+                value={propertyData.statusCode}
                 onChange={handleChange}
               >
-                <option value="For Rent">For Rent</option>
-                <option value="For Sale">For Sale</option>
+                <option value="for-rent">For Rent</option>
+                <option value="for-sale">For Sale</option>
               </select>
             </div>
 
-            <div>
+            <div className="inputSection">
               <label>Property Name:</label>
               <input
                 type="text"
-                name="PropertyName"
-                value={propertyData.PropertyName}
+                name="propertyName"
+                value={propertyData.propertyName}
                 onChange={handleChange}
                 required
               />
             </div>
 
-            <div>
+            <div className="inputSection">
               <label>Property Category:</label>
               <select
-                name="PropertyCategory"
-                value={propertyData.PropertyCategory}
+                name="propertyCategory"
+                value={propertyData.propertyCategory}
                 onChange={handleChange}
                 required
               >
                 <option value="">Select Category</option>
-                <option value="Apartment">Apartment</option>
-                <option value="Stand Alone">Stand Alone</option>
-                <option value="Villa">Villa</option>
-                <option value="Studio House">Studio House</option>
-                <option value="Arcade Small Room">Arcade Small Room</option>
-                <option value="ECEG">ECEG</option>
-                <option value="Flat Building">Flat Building</option>
-                <option value="Rental Space">Rental Space</option>
+                <option value="apartment">Apartment</option>
+                <option value="stand-alone">Stand Alone</option>
+                <option value="villa">Villa</option>
+                <option value="studio-house">Studio House</option>
+                <option value="eceg">ECEG</option>
+                <option value="flat-building">Flat Building</option>
+                <option value="business-space">Business Space</option>
               </select>
             </div>
 
-            <div>
+            <div className="inputSection">
               <label>Number of Bedrooms:</label>
               <input
                 type="number"
-                name="NumberOfBedRooms"
-                value={propertyData.NumberOfBedRooms}
+                name="numberOfBedRooms"
+                value={propertyData.numberOfBedRooms}
                 onChange={handleChange}
                 required
               />
             </div>
 
-            <div>
+            <div className="inputSection">
               <label>Price Tag:</label>
               <input
                 type="number"
-                name="PriceTag"
-                value={propertyData.PriceTag}
+                name="priceTag"
+                value={propertyData.priceTag}
                 onChange={handleChange}
                 required
               />
             </div>
 
-            <div>
+            <div className="inputSection">
               <label>Number of Units for Neighbors:</label>
               <input
                 type="number"
-                name="NumberOfUnitsForNeighbors"
-                value={propertyData.NumberOfUnitsForNeighbors}
+                name="numberOfUnitsForNeighbors"
+                value={propertyData.numberOfUnitsForNeighbors}
                 onChange={handleChange}
-                required
               />
             </div>
 
-            <div>
-              <label>Amenities:</label>
-              <input
-                type="text"
-                name="Amenities"
-                value={propertyData.Amenities}
-                onChange={handleChange}
-                required
-              />
-            </div>
-
-            <div>
-              <label>Location:</label>
-              <input
-                type="text"
-                name="Location"
-                value={propertyData.Location}
-                onChange={handleChange}
-                required
-              />
-            </div>
-
-            <div>
+            <div className="inputSection">
               <label>Number of Bathrooms:</label>
               <input
                 type="number"
-                name="NumberOfBathrooms"
-                value={propertyData.NumberOfBathrooms}
+                name="numberOfBathrooms"
+                value={propertyData.numberOfBathrooms}
+                onChange={handleChange}
+              />
+            </div>
+
+            <div className="inputSection">
+              <label>Location:</label>
+              <input
+                type="text"
+                name="location"
+                value={propertyData.location}
                 onChange={handleChange}
                 required
               />
             </div>
 
-            <div>
+            <div className="inputSection">
+              <label>Amenities:</label>
+              <textarea
+                name="amenities"
+                value={propertyData.amenities}
+                onChange={handleChange}
+              />
+            </div>
+
+            <div className="inputSection">
               <label>Description:</label>
               <textarea
-                name="Description"
-                value={propertyData.Description}
+                name="description"
+                value={propertyData.description}
                 onChange={handleChange}
-                required
               />
             </div>
 
-            <div>
+            <div className="inputSection">
               <label>Garage:</label>
               <input
                 type="number"
-                name="Garage"
-                value={propertyData.Garage}
+                name="garage"
+                value={propertyData.garage}
                 onChange={handleChange}
-                required
               />
             </div>
 
-            <div>
-              <label>House Size:</label>
+            <div className="inputSection">
+              <label>House Size (sqft):</label>
               <input
                 type="number"
-                name="HouseSize"
-                value={propertyData.HouseSize}
+                name="houseSize"
+                value={propertyData.houseSize}
                 onChange={handleChange}
-                required
               />
             </div>
 
-            <div>
-              <label>Land Size:</label>
+            <div className="inputSection">
+              <label>Land Size (sqft):</label>
               <input
                 type="number"
-                name="LandSize"
-                value={propertyData.LandSize}
+                name="landSize"
+                value={propertyData.landSize}
                 onChange={handleChange}
-                required
               />
             </div>
 
-            <div>
+            <div className="inputSection">
               <label>Year Built:</label>
               <input
-                type="text"
-                name="YearBuilt"
-                value={propertyData.YearBuilt}
+                type="date"
+                name="yearBuilt"
+                value={propertyData.yearBuilt}
                 onChange={handleChange}
-                required
               />
             </div>
 
-            <div>
-              <label>Photo:</label>
-              <input
-                type="file"
-                name="PhotoUrl"
-                onChange={handleFileChange}
-                required
-                multiple
-              />
-            </div>
-
-            <div>
+            <div className="inputSection">
               <label>Property Owner:</label>
               <input
                 type="text"
-                name="PropertyOwner"
-                value={propertyData.PropertyOwner}
+                name="propertyOwner"
+                value={propertyData.propertyOwner}
                 onChange={handleChange}
-                required
               />
             </div>
 
-            <button type="submit">Register Property</button>
+            <div className="inputSection">
+              <label>Photos:</label>
+              <input
+                type="file"
+                name="photos"
+                onChange={handleFileChange}
+                multiple
+                accept="image/*,video/*,audio/*,.pdf" // Matches allowedTypes in Strapi model
+              />
+            </div>
+            <button
+              type="submit"
+              disabled={uploading}
+              className="registerSubmitButton"
+            >
+              {uploading ? "Registering..." : "Register Property"}
+            </button>
           </form>
+
+          {message && <p className="message">{message}</p>}
         </div>
       </div>
-
       <Whatsapp />
     </>
   );

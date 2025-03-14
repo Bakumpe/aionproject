@@ -5,11 +5,17 @@ const useResponsivePropertiesPerPage = () => {
 
   useEffect(() => {
     const handleResize = () => {
-      if (window.innerWidth < 769) {
+      const width = window.innerWidth;
+
+      if (width <= 500) {
+        setPropertiesPerPage(1);
+      } else if (width <= 768) {
         setPropertiesPerPage(2);
+      } else if (width <= 2000) {
+        setPropertiesPerPage(3);
       } else {
-        setPropertiesPerPage(6);
-      } 
+        setPropertiesPerPage(6); // For width > 2000px
+      }
     };
 
     handleResize(); // Set initial value

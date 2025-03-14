@@ -23,16 +23,15 @@ import MyIndexPage from "./index/Index";
 import Cars from "./cars/Cars";
 import { CarProvider } from "./context/CarContext";
 import CarPage from "./cars/CarPage";
-import "../src/styles/index.css"
-import "../src/styles/components.css"
-import "../src/styles/pages.css"
-import "../src/styles/forms.css"
+import "../src/styles/index.css";
+import "../src/styles/components.css";
+import "../src/styles/pages.css";
+import "../src/styles/forms.css";
 import RentProperty from "./pages/RentProperty";
 import RentCar from "./pages/RentCar";
 import RegisterProperty from "./broker/RegisterProperty";
 import RegisterCar from "./broker/RegisterCar";
 import RegisterService from "./broker/RegisterService";
-
 
 function App() {
   return (
@@ -42,13 +41,13 @@ function App() {
           <CarProvider>
             <Routes>
               <Route path="/" element={<MyIndexPage />} />
-              <Route path="/home" element={<Home />} />
               <Route path="/loginRegister" element={<Login />} />
-              <Route path="/properties/:id" element={<PropertyPage />} />
               <Route element={<ProtectedRoute />}>
+                <Route path="/home" element={<Home />} />
+                <Route path="/properties/:id" element={<PropertyPage />} />
                 <Route path="/relocation" element={<Relocation />} />
                 <Route path="/cars" element={<Cars />} />
-                <Route path="/cars/:id" element={<CarPage />} /> 
+                <Route path="/cars/:id" element={<CarPage />} />
                 <Route path="/callCenter" element={<CallCustomerCare />} />
                 <Route path="/profile" element={<Profile />} />
                 <Route path="/ourServices" element={<OurServices />} />
@@ -58,11 +57,14 @@ function App() {
                 <Route path="/aboutUs" element={<AboutUs />} />
                 <Route path="/myFavorites" element={<MyFavorites />} />
                 <Route path="/eceg" element={<ECEG />} />
-                <Route path="/rent" element={<RentProperty />}/>
-                <Route path="/rentcar" element={<RentCar />}/>
-                <Route path="/registerproperty" element={<RegisterProperty />}/>
-                <Route path="/registercar" element={<RegisterCar />}/>
-                <Route path="/registerservice" element={<RegisterService />}/>
+                <Route path="/rent" element={<RentProperty />} />
+                <Route path="/rentcar" element={<RentCar />} />
+                <Route
+                  path="/registerproperty"
+                  element={<RegisterProperty />}
+                />
+                <Route path="/registercar" element={<RegisterCar />} />
+                <Route path="/registerservice" element={<RegisterService />} />
                 <Route
                   path="/propertySettings"
                   element={<PropertySettings />}

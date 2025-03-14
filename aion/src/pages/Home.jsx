@@ -4,6 +4,8 @@ import Whatsapp from "../components/Whatsapp";
 import HomeProperty from "../components/HomeProperty";
 
 function FetchData() {
+  console.log("FetchData rendered"); // Confirm component mounts
+
   return (
     <>
       <div className="indexPage">
@@ -13,7 +15,6 @@ function FetchData() {
 
         <div className="body">
           <div className="bodyTitle">
-            {" "}
             <p>Properties</p>
           </div>
           <div className="myUnorderedList">

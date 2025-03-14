@@ -2,116 +2,93 @@ import React from "react";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import config from "../.config";
 
-// function displayCarPhotos(car) {
-//   // console.log(car.CarImage); // Debugging - Check CarImage data
-
-//   if (car.CarImage && car.CarImage.length > 0) {
-//     const photo = car.CarImage[0].url; // Ensure you have the correct path
-//     // console.log(`${config.apiUrl}${url}`); // Debugging - Check constructed URL
-//     return (
-//       <div className="myCarImage">
-//         <img src={`${config.apiUrl}${photo}`} alt="Car Image" />
-//       </div>
-//     );
-//   } else if (car.images && car.images.length > 0) {
-//     const photo = car.images[0].url; // Display only the first image
-//     return (
-//       <div className="myCarImage">
-//         <img src={`${config.apiUrl}${photo}`} alt="Car Image" />
-//       </div>
-//     );
-//   } else {
-//     return <p>No photos available for this car.</p>;
-//   }
-// }
-
-// function displayCarPhotos(car) {
-//   if (car.CarImage && car.CarImage.length > 0) {
-//     const photo = car.CarImage[0].url;
-//     return (
-//       <div className="myCarImage">
-//         <NavLink to={photo}>
-//           <img src={photo} alt="Car Image" />
-//         </NavLink>
-//       </div>
-//     );
-//   } else if (car.images && car.images.length > 0) {
-//     const photo = car.images[0].url;
-//     return (
-//       <div className="myCarImage">
-//         <NavLink to={photo}>
-//           <img src={photo} alt="Car Image" />
-//         </NavLink>
-//       </div>
-//     );
-//   } else {
-//     return <p>No photos available for this car.</p>;
-//   }
-// }
-
 function displayCarPhotos(car) {
-  let photo = null;
-  let isFullUrl = false;
+  const photo = car.photos?.[0]?.url || null; // Removed car.images fallback if not needed
+  const isFullUrl = photo?.startsWith("https://res.cloudinary.com");
 
-  if (car.CarImage && car.CarImage.length > 0) {
-    photo = car.CarImage[0].url;
-    isFullUrl = photo.startsWith("https://res.cloudinary.com");
-  } else if (car.images && car.images.length > 0) {
-    photo = car.images[0].url;
-    isFullUrl = photo.startsWith("https://res.cloudinary.com");
-  }
-
-  if (photo) {
-    return (
-      <div className="myCarImage">
-        {isFullUrl ? (
-          <NavLink to={photo}>
-            <img src={photo} alt="Car Image" />
-          </NavLink>
-        ) : (
-          <img src={`${config.apiUrl}${photo}`} alt="Car Image" />
-        )}
-      </div>
-    );
-  } else {
+  if (!photo) {
     return <p>No photos available for this car.</p>;
   }
+
+  return (
+    <div className="myCarImage">
+      {isFullUrl ? (
+        <NavLink to={photo}>
+          <img src={photo} alt={`${car.name || "Unknown"} Car`} />
+        </NavLink>
+      ) : (
+        <img
+          src={`${config.apiUrl}${photo}`}
+          alt={`${car.name || "Unknown"} Car`}
+        />
+      )}
+    </div>
+  );
 }
 
 function CarCard({ car }) {
   const navigate = useNavigate();
 
   const handleRentClick = () => {
-    navigate(`/rentcar`, { state: { car } });
+    navigate("/rentcar", { state: { car } });
   };
+
+  const handleBuyClick = () => {
+    navigate("/buycar", { state: { car } });
+  };
+
   return (
     <li key={car.id} className="carListCar">
-      <Link to={`/cars/${car.id}`}>{displayCarPhotos(car)}</Link>
+      <div>
+        <p className="budget">
+          Ugshs. {car.budget ?? "N/A"} {/* Added label */}
+        </p>
+        <Link to={`/cars/${car.id}`}>{displayCarPhotos(car)}</Link>
+      </div>
+
       <div className="propertyName">
-        <h3>{car.Name}</h3>
-        <p className="statusCode">{car.StatusCode}</p>
+        <p>{car.name || "Unnamed Car"}</p>
+        <p className="statusCode">{car.statusCode || "N/A"}</p>
       </div>
       <div className="carSpecifications">
         <p>
-          <strong>Type of Car:</strong> {car.TypeofCar}
+          Type of Car: <strong>{car.typeofCar || "Unknown"}</strong>
         </p>
         <p>
-          <strong>Transmission:</strong> {car.Transmission}
+          Transmission: <strong>{car.transmission || "N/A"}</strong>
         </p>
         <p>
-          <strong>Fuel Type:</strong> {car.FuelType}
+          Fuel Type: <strong>{car.fuelType || "N/A"}</strong>
         </p>
         <p>
-          <strong>Horsepower:</strong> {car.horsepower} hp
+          Horsepower: <strong>{car.horsepower ?? "N/A"} hp</strong>
         </p>
         <p>
-          <strong>Fuel Efficiency:</strong> {car.FuelEfficiency} km/L
+          Fuel Efficiency: <strong>{car.fuelEfficiency ?? "N/A"} km/L</strong>
+        </p>
+        {/* Optional: Add more fields from RegisterCar if desired */}
+        <p>
+          Top Speed: <strong>{car.speed ?? "N/A"} km/hr</strong>
         </p>
         <div className="buyRentOptions">
-          <div className="buyRentOptions-1" onClick={handleRentClick}>
+          <div
+            className="buyRentOptions-1"
+            onClick={handleRentClick}
+            role="button"
+            tabIndex={0}
+            onKeyPress={(e) => e.key === "Enter" && handleRentClick()}
+          >
             Rent
           </div>
-          <div className="buyRentOptions-1">Buy</div>
+          <div
+            className="buyRentOptions-1"
+            onClick={handleBuyClick}
+            role="button"
+            tabIndex={0}
+            onKeyPress={(e) => e.key === "Enter" && handleBuyClick()}
+          >
+            Buy
+          </div>
         </div>
       </div>
     </li>
