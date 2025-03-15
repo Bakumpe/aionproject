@@ -413,6 +413,12 @@
   flex-direction: column;
   margin-top: -30px;
 }
+.features-1{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
 .Bed {
   display: grid;
   grid-template-columns: auto auto auto auto auto;
@@ -1294,6 +1300,7 @@ button:disabled {
     margin-top: -40px;
     margin-left: 4px;
   }
+  
   .Bed {
     margin-top: -35px;
     display: grid;

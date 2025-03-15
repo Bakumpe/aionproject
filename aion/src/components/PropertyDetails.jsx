@@ -49,12 +49,6 @@ function PropertyDetails() {
   const [property, setProperty] = useState(null);
   const navigate = useNavigate();
 
-  const handleRentClick = () => {
-    if (property) {
-      navigate(`/rent`, { state: { property } });
-    }
-  };
-
   useEffect(() => {
     if (properties.length === 0 && !loading) {
       fetchProperties();
@@ -114,13 +108,16 @@ function PropertyDetails() {
             <div className="propertyInformation-1">
               <div className="propertyName">
                 <p>{propertyName}</p>
-                <p className="statusCode">{property.statusCode}</p>
                 <p className="pricetag">Ugshs. {priceTag}</p>
               </div>
             </div>
             <br />
             <div className="features">
-              <h2>Features</h2>
+              <div className="features-1">
+                <h2>Features</h2>
+                <p className="statusCode">{property.statusCode}</p>
+              </div>
+
               <div className="Bed">
                 <div className="Bed-1">
                   <img src={Bed} alt="Bed" />
@@ -184,7 +181,7 @@ function PropertyDetails() {
             <h2>Renting or Buying Agreement</h2>
             <p>By proceeding to checkout, you agree to the following:</p>
             <ul>
-             <li>Implement Renting or Buying Agreement here</li>
+              <li>Implement Renting or Buying Agreement here</li>
             </ul>
           </div>
 
