@@ -40,9 +40,9 @@ function CarCard({ car }) {
   return (
     <li key={car.id} className="carListCar">
       <div>
-        <p className="budget">
-          Ugshs. {car.budget ?? "N/A"} {/* Added label */}
-        </p>
+        <div className="budget">
+         <p>Ugshs. {car.budget ?? "N/A"}</p>  {/* Added label */}
+        </div>
         <Link to={`/cars/${car.id}`}>{displayCarPhotos(car)}</Link>
       </div>
 
