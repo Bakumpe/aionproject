@@ -1161,10 +1161,12 @@ button:disabled {
   }
   .mobile-menu-button {
     display: block;
-    width: 40px;
+    /* width: 40px;
     height: 40px;
-    margin-right: 10px;   
+    margin-right: 10px;    */
+
   }
+  
   .logoSpaceLink {
     text-decoration: none;
     color: var(--secondary-text-color);

@@ -50,9 +50,11 @@ const Header = () => {
         </Link>
 
         {/* Mobile Menu Button */}
-        <button className="mobile-menu-button" onClick={toggleMenu}>
-          {isMobileMenuOpen ? <X /> : <Menu />}
-        </button>
+        <div className="mobile-menu-button">
+          <button  onClick={toggleMenu}>
+            {isMobileMenuOpen ? <X size={20}/> : <Menu size={20}/>}
+          </button>
+        </div>
       </div>
 
       {/* Main Navigation - Desktop */}
@@ -83,7 +85,7 @@ const Header = () => {
         </Link>
         <Link to="/ourServices" className="nav-link" onClick={closeMobileMenu}>
           <ServerIcon className="icon" />
-          Register Service 
+          Register Service
         </Link>
         <Link to="/callCenter" className="nav-link" onClick={closeMobileMenu}>
           <Phone className="icon" />
