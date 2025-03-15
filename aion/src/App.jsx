@@ -31,6 +31,7 @@ import RegisterProperty from "./broker/RegisterProperty";
 import RegisterCar from "./broker/RegisterCar";
 import RegisterService from "./broker/RegisterService";
 import Services from "./pages/Services";
+import Payment from "./pages/Payment";
 
 function App() {
   return (
@@ -57,7 +58,8 @@ function App() {
                 <Route path="/myFavorites" element={<MyFavorites />} />
                 <Route path="/eceg" element={<ECEG />} />
                 <Route path="/services" element={<Services />} />
-                <Route path="/events/:id" element={<Services />} />
+                <Route path="/services/:id" element={<Services />} />
+                <Route path="/payment" element={<Payment />} />
                 <Route
                   path="/registerproperty"
                   element={<RegisterProperty />}

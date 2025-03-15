@@ -41,12 +41,12 @@ function MyServiceCard({ event }) {
   const navigate = useNavigate();
 
   const handleRentClick = () => {
-    navigate(`/properties/${event.id}`, { state: { event } });
+    navigate(`/services/:id${event.id}`, { state: { event } });
   };
 
   return (
     <li key={event.id} className="listedItem">
-      <Link to={`/events/${event.id}`}>{displayPropertyPhotos(event)}</Link>
+      <Link to={`/services/${event.id}`}>{displayPropertyPhotos(event)}</Link>
       <p>{event.businessName}</p>
       <p>{event.contact}</p>
       <p>{event.location}</p>

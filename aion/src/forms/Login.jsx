@@ -8,6 +8,7 @@ function Login() {
   const { initializeUser } = useContext(UserContext);
   const [formType, setFormType] = useState("login");
   const [message, setMessage] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -16,6 +17,7 @@ function Login() {
   const register = async (event) => {
     event.preventDefault();
     setMessage(null);
+    setIsLoading(true);
     const formData = new FormData(event.target);
     const jsonData = Object.fromEntries(formData);
 
@@ -36,6 +38,7 @@ function Login() {
 
       if (res.error) {
         setMessage(res.error.message);
+        setIsLoading(false);
         return;
       }
 
@@ -47,12 +50,15 @@ function Login() {
     } catch (error) {
       alert("Request failed:", error);
       setMessage("An error occurred. Please try again.");
+    } finally {
+      setIsLoading(false);
     }
   };
 
   const login = async (event) => {
     event.preventDefault();
     setMessage(null);
+    setIsLoading(true);
     const formData = new FormData(event.target);
     const jsonData = Object.fromEntries(formData);
 
@@ -70,6 +76,7 @@ function Login() {
 
       if (res.error) {
         setMessage(res.error.message);
+        setIsLoading(false);
         return;
       }
 
@@ -80,6 +87,8 @@ function Login() {
       }
     } catch (error) {
       setMessage("An error occurred. Please try again.");
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -123,13 +132,16 @@ function Login() {
         />
         <br />
         <div className="group1">
-          <Button type="submit">
+          <Button type="submit" disabled={isLoading}>
             {formType === "login" ? "Login" : "Register"}
           </Button>
-          <Button variant="light" onClick={toggleFormType}>
+          <Button variant="light" onClick={toggleFormType} disabled={isLoading}>
             {formType === "login" ? "Register" : "Login"}
           </Button>
         </div>
+        {isLoading && (
+          <div className="spinner" />
+        )}
         {message && <p className="errorMessage">{message}</p>}
       </form>
     </div>

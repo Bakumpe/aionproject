@@ -176,42 +176,15 @@ function PropertyDetails() {
           <div className="termsAndConditions">
             <h2>Terms and Conditions</h2>
             <ul>
-              <li>Rental payment is due on the 1st of each month.</li>
-              <li>
-                A security deposit equivalent to one month’s rent is required.
-              </li>
-              <li>
-                No pets allowed without prior approval from the property owner.
-              </li>
-              <li>Tenant is responsible for minor repairs and maintenance.</li>
-              <li>Termination requires 30 days’ written notice.</li>
-              <li>
-                Violation of terms may result in eviction and forfeiture of
-                deposit.
-              </li>
+              <li>Implement Terms and Condition Logic here</li>
             </ul>
           </div>
 
           <div className="agreement">
-            <h2>Rental Agreement</h2>
+            <h2>Renting or Buying Agreement</h2>
             <p>By proceeding to checkout, you agree to the following:</p>
             <ul>
-              <li>
-                I, the tenant, agree to rent the property located at {location}{" "}
-                for a monthly fee of Ugshs. {priceTag}.
-              </li>
-              <li>
-                The rental term begins upon payment confirmation and ends as per
-                the agreed termination notice.
-              </li>
-              <li>
-                I will adhere to all terms and conditions outlined above and
-                maintain the property in good condition.
-              </li>
-              <li>
-                Any disputes will be resolved through mediation before legal
-                action.
-              </li>
+             <li>Implement Renting or Buying Agreement here</li>
             </ul>
           </div>
 
