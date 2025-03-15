@@ -1268,14 +1268,16 @@ button:disabled {
   }
 
   .myPropertyImages-1 {
+    display: flex;
     flex-shrink: 0;
     width: 100%;
     max-width: 300px; /* Adjust based on your design */
     overflow: hidden; /* Contain scaled image */
+    overflow-x: auto;
   }
 
   .myPropertyImages-1 img {
-    display: block;
+    /* display: block; */
     width: 100%;
     height: auto;
     min-height: 100px; /* Optional: Ensures a minimum height */
