@@ -1158,7 +1158,7 @@ button:disabled {
   .header {
     display: flex;
     flex-direction: column;
-    height: 8vh;
+    height: 12vh;
     background-color: var(--secondary-background-color);
   }
   .nav-wrapping {
