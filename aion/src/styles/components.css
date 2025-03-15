@@ -1158,7 +1158,7 @@ button:disabled {
   .header {
     display: flex;
     flex-direction: column;
-    height: 15vh;
+    height: 8vh;
     background-color: var(--secondary-background-color);
   }
   .nav-wrapping {
@@ -1167,9 +1167,6 @@ button:disabled {
   }
   .mobile-menu-button {
     display: block;
-    /* width: 40px;
-    height: 40px;
-    margin-right: 10px;    */
 
   }
   
