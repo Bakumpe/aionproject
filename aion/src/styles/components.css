@@ -173,7 +173,7 @@
 /**This section controls Home/Find Property PropertyCard section and Home Page**/
 
 /**This myUnorderedList is the main div that houses the property list and pagination**/
-.loadingProperties{
+.loadingProperties {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -205,7 +205,6 @@
   border-radius: 5px;
   list-style: none;
   color: var(--primary-textcolor-color);
-  
 }
 .listedItem a {
   text-decoration: none;
@@ -231,10 +230,10 @@
   overflow: hidden;
   border-bottom: 2px solid var(--secondary-background-color);
 }
-.pricetag{
+.pricetag {
   margin-right: 8px;
 }
-.statusCode{
+.statusCode {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -346,8 +345,12 @@
 }
 
 @keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 /**This Section controls the ECEG page**/
@@ -487,7 +490,7 @@
   width: 330px;
   height: 250px;
 }
-.budget{
+.budget {
   margin-top: -10px;
   display: flex;
   align-items: center;
@@ -497,7 +500,7 @@
   color: #cccccc;
   height: 30px;
 }
-.carSpecifications strong{
+.carSpecifications strong {
   text-transform: capitalize;
 }
 .rentCarDetails {
@@ -552,7 +555,7 @@
   text-decoration: none;
   cursor: pointer;
 }
-.buyRentOptions-1 a{
+.buyRentOptions-1 a {
   text-decoration: none;
   color: var(--forth-text-color);
 }
@@ -582,7 +585,7 @@
   text-decoration: none;
   text-align: center;
 }
-.ourservice-1-1:hover{
+.ourservice-1-1:hover {
   background-color: var(--forth-background-color);
   color: var(--forth-text-color);
 }
@@ -857,7 +860,7 @@
 .registeringProperty-1 h4 {
   border-bottom: 1px solid grey;
 }
-.registeringProperty-1 a{
+.registeringProperty-1 a {
   text-decoration: none;
 }
 .registeringProperty-1 button {
@@ -880,13 +883,6 @@
 }
 
 /**Registration Process**/
-.registerForm{
-  margin-top: 90px;
-  display: flex;
-  flex-direction: column;
-  color: var(--primary-textcolor-color);
-}
-
 
 /**Profile***/
 .profile {
@@ -939,26 +935,31 @@
 }
 
 /**Register Property***/
-.registerPropertyForm{
+.registerPropertyForm {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
-.registerForm{
+.registerForm {
+  margin-top: 90px;
   display: grid;
   grid-template-columns: auto auto;
   flex-direction: column;
   width: 100%;
   background-color: var(--fifth-background-color);
+  color: var(--primary-textcolor-color);
 }
-.inputSection{
+
+.inputSection {
   padding: 10px;
   display: flex;
 }
-.inputSection label{
+.inputSection label {
   width: 45%;
 }
-.inputSection input, .inputSection select, .inputSection textarea{
+.inputSection input,
+.inputSection select,
+.inputSection textarea {
   width: 50%;
 }
 .registerSubmitButton {
@@ -1068,14 +1069,14 @@ button:disabled {
     overflow-x: auto; /* Scroll if images overflow */
     gap: 10px; /* Optional: Space between images */
   }
-  
+
   .myPropertyImages-1 {
     flex-shrink: 0;
     width: 100%;
     max-width: 200px; /* Adjust based on your design */
     overflow: hidden; /* Contain scaled image */
   }
-  
+
   .myPropertyImages-1 img {
     display: block;
     width: 100%;
@@ -1085,7 +1086,7 @@ button:disabled {
     transition: transform 0.3s ease;
     cursor: pointer;
   }
-  
+
   .myPropertyImages-1 img:hover {
     transform: scale(1.1);
   }
@@ -1142,10 +1143,7 @@ button:disabled {
     font-size: 13px;
     padding: 10px;
   }
-
 }
-
-
 
 /**Media Querry**/
 .mediaquery {
@@ -1154,7 +1152,7 @@ button:disabled {
   .header {
     display: flex;
     flex-direction: column;
-    height: 10vh;
+    height: 15vh;
     background-color: var(--secondary-background-color);
   }
   .nav-wrapping {
@@ -1164,8 +1162,8 @@ button:disabled {
   .mobile-menu-button {
     display: block;
     width: 40px;
-    height: 30px;
-    margin-right: 10px;
+    height: 40px;
+    margin-right: 10px;   
   }
   .logoSpaceLink {
     text-decoration: none;
@@ -1260,14 +1258,14 @@ button:disabled {
     overflow-x: auto; /* Scroll if images overflow */
     gap: 10px; /* Optional: Space between images */
   }
-  
+
   .myPropertyImages-1 {
     flex-shrink: 0;
     width: 100%;
     max-width: 300px; /* Adjust based on your design */
     overflow: hidden; /* Contain scaled image */
   }
-  
+
   .myPropertyImages-1 img {
     display: block;
     width: 100%;
@@ -1277,7 +1275,7 @@ button:disabled {
     transition: transform 0.3s ease;
     cursor: pointer;
   }
-  
+
   .myPropertyImages-1 img:hover {
     transform: scale(1.1);
   }
@@ -1540,6 +1538,31 @@ button:disabled {
   }
 
   /**Registering Property**/
+  .registerForm {
+    margin-top: 60px;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    background-color: var(--fifth-background-color);
+    color: var(--primary-textcolor-color);
+  }
+  .inputSection {
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+  }
+  .inputSection label {
+    width: 50%;
+    align-items: center;
+    justify-content: left;
+  }
+  .inputSection input,
+  .inputSection select,
+  .inputSection textarea {
+    width: 50%;
+  }
   .registerPropertyAndCars {
     display: flex;
     flex-direction: column;
