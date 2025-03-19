@@ -94,7 +94,7 @@ const SubHeading = () => {
           onClick={() => setCategory("ArcadeSpace")}
           className="apartment"
         >
-          Service Providers
+          Services
         </Link>
 
         <Link
@@ -102,7 +102,7 @@ const SubHeading = () => {
           onClick={() => setCategory("ArcadeSpace")}
           className="apartment"
         >
-          Stand Alone
+          Service Providers
         </Link>
 
         <Link
@@ -114,16 +114,6 @@ const SubHeading = () => {
         </Link>
       </div>
       
-      {properties.length > 0 && (
-        <div className="propertyList">
-          {properties.map((property) => (
-            <div key={property.id} className="propertyItem">
-              <h3>{property.name}</h3>
-              <p>{property.description}</p>
-            </div>
-          ))}
-        </div>
-      )}
     </div>
   );
 };

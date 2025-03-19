@@ -20,7 +20,6 @@ import { UserProvider } from "./context/UserContext";
 import Relocation from "./pages/Relocation";
 import { PropertyProvider } from "./context/PropertyContext";
 import MyIndexPage from "./index/Index";
-import Cars from "./cars/Cars";
 import { CarProvider } from "./context/CarContext";
 import CarPage from "./cars/CarPage";
 import "../src/styles/index.css";

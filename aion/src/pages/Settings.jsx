@@ -13,10 +13,6 @@ function Settings() {
         <div className="body">
           <h1 className="settings">Settings</h1>
         </div>
-        {/* <div className="sideBar">
-          {" "}
-          <Footer />
-        </div> */}
       </div>
 
       <Whatsapp />
