@@ -2,27 +2,27 @@ import React, { useState, useEffect, useContext } from "react";
 import { useParams, NavLink, useNavigate } from "react-router-dom";
 import LocationPng from "../assets/location.png";
 import config from "../.config";
-import { UserContext } from "../context/UserContext"; // Assuming you have this
-import { ServiceContext } from "../context/ServiceContext"; // You'll need to create this
+import { UserContext } from "../context/UserContext";
+import { ServiceContext } from "../context/ServiceContext";
 
-function displayServicePhotos(event) {
+function displayServicePhotos(service) {
   if (
-    !event?.photos ||
-    !Array.isArray(event.photos) ||
-    event.photos.length === 0
+    !service?.photos ||
+    !Array.isArray(service.photos) ||
+    service.photos.length === 0
   ) {
     return <p>No photos available for this service.</p>;
   }
 
-  const photos = event.photos.map((p) => ({
+  const photos = service.photos.map((p) => ({
     url: p.url,
     isFullUrl: p.url.startsWith("https://res.cloudinary.com"),
   }));
 
   return (
-    <div className="myServiceImages">
+    <div className="myPropertyImages">
       {photos.map((photo, index) => (
-        <div key={index} className="myServiceImages-1">
+        <div key={index} className="myPropertyImages-1">
           <img
             src={photo.isFullUrl ? photo.url : `${config.apiUrl}${photo.url}`}
             alt={`Service Image ${index + 1}`}
@@ -36,69 +36,72 @@ function displayServicePhotos(event) {
 function ServiceDetails() {
   const { id } = useParams();
   const { user } = useContext(UserContext);
-  const { event, fetchServices, loading, error } = useContext(ServiceContext); // You'll need to create this context
+  const { services, fetchServices, loading, error } = useContext(ServiceContext); // Changed 'event' to 'services'
   const [service, setService] = useState(null);
   const navigate = useNavigate();
 
-  const handleContactClick = () => {
-    if (event) {
-      navigate(`/contact`, { state: { service } });
-    }
-  };
-
   useEffect(() => {
-    if (event.length === 0 && !loading) {
+    if (services.length === 0 && !loading) {
       fetchServices();
     }
-  }, [event, fetchServices, loading]);
+  }, [services, fetchServices, loading]);
 
   useEffect(() => {
-    if (event.length > 0) {
-      const foundService = event.find((serv) => serv.id === parseInt(id));
+    if (services.length > 0) {
+      const foundService = services.find((serv) => serv.id === parseInt(id));
       setService(foundService || null);
     }
-  }, [id, event]);
+  }, [id, services]);
 
   const { businessName, contact, location, description } = service || {};
 
   function handleBooking() {
-    if (event && user) {
-      navigate("/booking", { state: { event, user } });
+    if (service && user) {
+      navigate("/booking", { state: { service, user } });
     } else if (!user) {
-      navigate("/login", { state: { from: `/events/${id}` } });
+      navigate("/login", { state: { from: `/service/${id}` } });
     } else {
       console.error("No service available for booking");
     }
   }
 
+  function handleContactClick() {
+    if (service) {
+      navigate("/contact", { state: { service } });
+    }
+  }
+
   return (
-    <div className="serviceDetails">
+    <div className="propertyDetails">
       {loading ? (
-        <div className="loadingServices">
+        <div className="loadingProperties">
           <span className="spinner"></span>
           <span>Loading service details...</span>
         </div>
       ) : error ? (
         <div className="errorServices">Error: {error}</div>
-      ) : services.length === 0 ? (
+      ) : services.length === 0 ? (  // Changed 'service' to 'services'
         <div>No services available to display.</div>
       ) : !service ? (
         <div>Service not found.</div>
       ) : (
         <>
           <div>{displayServicePhotos(service)}</div>
-          <div className="serviceInformation">
-            <div className="serviceInformation-1">
-              <div className="serviceName">
+          <div className="propertyInformation">
+            <div className="propertyInformation-1">
+              <div className="propertyName">
                 <p>{businessName}</p>
                 <p className="contact">{contact}</p>
               </div>
             </div>
             <br />
             <div className="features">
-              <h2>Service Details</h2>
-              <div className="loco">
-                <div className="serviceDetail-1">
+              <div className="features-1">
+                <h2>Service Details</h2>
+                {/* Add more service-specific fields here if needed */}
+              </div>
+              <div className="Bed">
+                <div className="Bed-1"> {/* Reusing Bed-1 class for consistency */}
                   <img src={LocationPng} alt="Location" />
                   <p>{location || "N/A"}</p>
                 </div>
@@ -109,7 +112,7 @@ function ServiceDetails() {
               </div>
             </div>
           </div>
-          
+
           <div className="termsAndConditions">
             <h2>Terms and Conditions</h2>
             <ul>
@@ -126,12 +129,15 @@ function ServiceDetails() {
           </div>
 
           <div className="checkout">
-            <div className="aboutService">
-              <div className="aboutService-1" onClick={handleContactClick}>
+            <div className="aboutProperty">
+              <div 
+                className="aboutProperty-1" 
+                onClick={handleContactClick}
+              >
                 Contact Provider
               </div>
               <div
-                className="aboutService-1"
+                className="aboutProperty-1"
                 onClick={handleBooking}
                 disabled={!user}
               >

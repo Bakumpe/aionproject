@@ -5,7 +5,7 @@ import config from "../.config";
 const ServiceContext = createContext();
 
 const ServiceProvider = ({ children }) => {
-  const [events, setEvents] = useState([]); // Initialized as an empty array for services
+  const [services, setServices] = useState([]); // Initialized as an empty array for services
   const [loading, setLoading] = useState(false); // Loading state
   const [error, setError] = useState(null);      // Error state
 
@@ -14,7 +14,7 @@ const ServiceProvider = ({ children }) => {
       setLoading(true); // Set loading to true before fetching
       setError(null);   // Clear any previous errors
       const response = await axios.get(`${config.apiUrl}/api/events?populate=*`);
-      setEvents(response.data.data); // Store the array inside `data`
+      setServices(response.data.data); // Store the array inside `data`
     } catch (error) {
       console.error('Error fetching services:', error);
       setError(error.message || 'Failed to fetch services');
@@ -24,7 +24,7 @@ const ServiceProvider = ({ children }) => {
   }, []);
 
   return (
-    <ServiceContext.Provider value={{ events, fetchServices, loading, error }}>
+    <ServiceContext.Provider value={{ services, fetchServices, loading, error }}>
       {children}
     </ServiceContext.Provider>
   );

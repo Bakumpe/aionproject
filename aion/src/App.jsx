@@ -32,6 +32,9 @@ import RegisterService from "./broker/RegisterService";
 import Services from "./pages/Services";
 import Payment from "./pages/Payment";
 import CarProperty from "./pages/CarProperty";
+import ServiceDetails from "./components/ServiceDetails";
+import { ServiceProvider } from "./context/ServiceContext";
+import ServicePage from "./pages/ServicePage";
 
 function App() {
   return (
@@ -39,6 +42,7 @@ function App() {
       <UserProvider>
         <PropertyProvider>
           <CarProvider>
+            <ServiceProvider>
             <Routes>
               <Route path="/" element={<MyIndexPage />} />
               <Route path="/loginRegister" element={<Login />} />
@@ -58,7 +62,7 @@ function App() {
                 <Route path="/myFavorites" element={<MyFavorites />} />
                 <Route path="/eceg" element={<ECEG />} />
                 <Route path="/services" element={<Services />} />
-                <Route path="/services/:id" element={<Services />} />
+                <Route path="/services/:id" element={<ServicePage />} />
                 <Route path="/payment" element={<Payment />} />
                 <Route
                   path="/registerproperty"
@@ -73,6 +77,7 @@ function App() {
                 <Route path="/recommendations" element={<Recommendations />} />
               </Route>
             </Routes>
+            </ServiceProvider>
           </CarProvider>
         </PropertyProvider>
       </UserProvider>

@@ -41,7 +41,7 @@ function MyServiceCard({ event }) {
   const navigate = useNavigate();
 
   const handleRentClick = () => {
-    navigate(`/services/:id${event.id}`, { state: { event } });
+    navigate(`/services/${event.id}`, { state: { event } });
   };
 
   return (
