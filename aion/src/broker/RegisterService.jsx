@@ -4,7 +4,7 @@ import Whatsapp from "../components/Whatsapp";
 import { UserContext } from "../context/UserContext";
 import config from "../.config";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 function RegisterService() {
   const { user, token } = useContext(UserContext);
@@ -118,6 +118,11 @@ function RegisterService() {
         <div className="body">
           <div className="bodyTitle">
             <p>Register Your Service</p>
+            <div>
+              <Link to="/search" className="searchme">
+                <div>Search For Properties</div>
+              </Link>
+            </div>
           </div>
 
           <form className="registerForm" onSubmit={uploadAndSubmit}>

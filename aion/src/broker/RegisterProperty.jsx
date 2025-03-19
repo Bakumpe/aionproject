@@ -4,6 +4,7 @@ import Whatsapp from "../components/Whatsapp";
 import { UserContext } from "../context/UserContext";
 import config from "../.config";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 function RegisterProperty() {
   const { user, token } = useContext(UserContext);
@@ -130,6 +131,11 @@ function RegisterProperty() {
         <div className="body">
           <div className="bodyTitle">
             <p>Register Your Property</p>
+            <div>
+              <Link to="/search" className="searchme">
+                <div>Search For Properties</div>
+              </Link>
+            </div>
           </div>
 
           <form className="registerForm" onSubmit={uploadAndSubmit}>

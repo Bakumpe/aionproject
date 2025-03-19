@@ -1,10 +1,9 @@
 import React, { useState } from "react";
 import Header from "../components/Header";
 import Whatsapp from "../components/Whatsapp";
-import ServiceProperty from "../components/ServiceProperty";
-import { Link } from "react-router-dom";
+import MultiCategorySearch from "./Search";
 
-function Events() {
+function SearchProperty() {
   console.log("FetchData rendered"); // Confirm component mounts
 
   return (
@@ -16,15 +15,10 @@ function Events() {
 
         <div className="body">
           <div className="bodyTitle">
-            <p>Services</p>
-            <div>
-              <Link to="/search" className="searchme">
-                <div>Search For Properties</div>
-              </Link>
-            </div>
+            <p>Search Properties, Cars and Services</p>
           </div>
           <div className="myUnorderedList">
-            <ServiceProperty />
+            <MultiCategorySearch />
           </div>
         </div>
       </div>
@@ -34,4 +28,4 @@ function Events() {
   );
 }
 
-export default Events;
+export default SearchProperty;

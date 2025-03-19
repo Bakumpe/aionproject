@@ -38,12 +38,12 @@
   position: fixed;
   display: flex;
   align-items: center;
-  width: 100%;
+  justify-content: space-around;
+  width: 82.5%;
   height: 40px;
   background-color: var(--secondary-background-color);
   text-align: left;
   font-size: 20px;
-  padding-left: 10%;
   color: var(--secondary-text-color);
   z-index: 2000;
 }

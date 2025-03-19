@@ -4,6 +4,7 @@ import Header from "../components/Header";
 import { Button, Group, Textarea, TextInput, Select } from "@mantine/core";
 import { useForm } from "@mantine/form";
 import Whatsapp from "../components/Whatsapp";
+import { Link } from "react-router-dom";
 
 function Relocation() {
   const [formTitle, setFormTitle] = useState("Moving Details");
@@ -39,6 +40,11 @@ function Relocation() {
           <div className="bodyTitle">
             {" "}
             <p>Relocate With Ease</p>
+            <div>
+              <Link to="/search" className="searchme">
+                <div>Search For Properties</div>
+              </Link>
+            </div>
           </div>
           <div className="move">
             <div className="moveSmarter">

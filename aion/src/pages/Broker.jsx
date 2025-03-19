@@ -4,6 +4,7 @@ import Header from "../components/Header";
 import Whatsapp from "../components/Whatsapp";
 import { UserContext } from "../context/UserContext";
 import Registration from "../broker/Registration";
+import { Link } from "react-router-dom";
 
 function Broker() {
   const { user } = useContext(UserContext);
@@ -20,6 +21,11 @@ function Broker() {
           <div className="bodyTitle">
             {" "}
             <p>Welcome, {user?.username}!</p>
+            <div>
+              <Link to="/search" className="searchme">
+                <div>Search For Properties</div>
+              </Link>
+            </div>
           </div>
           <div className="welcome-message">
             <div className="welcomeMessage1">

@@ -1236,6 +1236,7 @@ button:disabled {
   }
   
   .logoSpaceLink {
+    display: flex;
     text-decoration: none;
     color: var(--secondary-text-color);
   }

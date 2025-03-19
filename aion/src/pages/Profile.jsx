@@ -2,6 +2,7 @@ import React, { useState, useContext } from "react";
 import Header from "../components/Header";
 import Whatsapp from "../components/Whatsapp";
 import { UserContext } from "../context/UserContext";
+import { Link } from "react-router-dom";
 
 
 function Profile() {
@@ -38,6 +39,11 @@ function Profile() {
         <div className="bodyTitle">
             {" "}
             <p>Welcome, {user?.username}!</p>
+            <div>
+              <Link to="/search" className="searchme">
+                <div>Search For Properties</div>
+              </Link>
+            </div>
           </div>
           <div className="profile">
             <div className="profile1">

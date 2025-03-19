@@ -45,18 +45,16 @@ const Header = () => {
           <div className="logoSpace">
             <img src={AionLogo} alt="Aion Logo" className="logo-image" />
             <p className="logo-text">Aion</p>
-            <Search />
           </div>
         </Link>
-
         {/* Mobile Menu Button */}
         <div className="mobile-menu-button">
-          <button  onClick={toggleMenu}>
-            {isMobileMenuOpen ? <X size={20}/> : <Menu size={20}/>}
+          <button onClick={toggleMenu}>
+            {isMobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
           </button>
         </div>
       </div>
-
+      
       {/* Main Navigation - Desktop */}
       <nav className={`main-nav ${isMobileMenuOpen ? "mobile-open" : ""}`}>
         <Link to="/home" className="nav-link" onClick={closeMobileMenu}>

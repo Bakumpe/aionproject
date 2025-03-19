@@ -2,6 +2,7 @@ import React from "react";
 import Header from "../components/Header";
 import Whatsapp from "../components/Whatsapp";
 import ServiceDetails from "../components/ServiceDetails";
+import { Link } from "react-router-dom";
 
 function ServicePage() {
   return (
@@ -12,7 +13,12 @@ function ServicePage() {
         </div>
         <div className="body">
           <div className="bodyTitle">
-            <p>Property Details</p>
+            <p>Service Details</p>
+            <div>
+              <Link to="/search" className="searchme">
+                <div>Search For Properties</div>
+              </Link>
+            </div>
           </div>
           <ServiceDetails />
         </div>

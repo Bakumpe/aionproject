@@ -4,6 +4,7 @@ import Whatsapp from "../components/Whatsapp";
 import CustomerHelp from "../components/CustomerHelp";
 import { UserContext } from "../context/UserContext";
 import { useMediaQuery } from "react-responsive";
+import { Link } from "react-router-dom";
 
 function CallCustomerCare() {
   const { user } = useContext(UserContext);
@@ -19,6 +20,11 @@ function CallCustomerCare() {
         <div className="body">
           <div className="bodyTitle">
             <p>{user?.username}! Customer Support is Here For You</p>
+            <div>
+              <Link to="/search" className="searchme">
+                <div>Search For Properties</div>
+              </Link>
+            </div>
           </div>
           <div className="welcome-message">
             <div className="welcomeMessage1">

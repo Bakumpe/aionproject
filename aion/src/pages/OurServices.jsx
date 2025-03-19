@@ -24,6 +24,11 @@ function OurServices() {
         <div className="body">
           <div className="bodyTitle">
             <p>{user?.username}! Are you looking for a service?</p>
+            <div>
+              <Link to="/search" className="searchme">
+                <div>Search For Properties</div>
+              </Link>
+            </div>
           </div>
           <div className="welcome-message">
             <div className="welcomeMessage1">

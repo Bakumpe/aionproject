@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Header from "../components/Header";
 import Whatsapp from "../components/Whatsapp";
 import HomeProperty from "../components/HomeProperty";
+import { Link } from "react-router-dom";
 
 function FetchData() {
   console.log("FetchData rendered"); // Confirm component mounts
@@ -16,6 +17,11 @@ function FetchData() {
         <div className="body">
           <div className="bodyTitle">
             <p>Properties</p>
+            <div>
+              <Link to="/search" className="searchme">
+                <div>Search For Properties</div>
+              </Link>
+            </div>
           </div>
           <div className="myUnorderedList">
             <HomeProperty />

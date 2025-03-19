@@ -2,6 +2,7 @@ import React from "react";
 import Header from "../components/Header";
 // import Footer from "../components/Footer";
 import Whatsapp from "../components/Whatsapp";
+import { Link } from "react-router-dom";
 
 function Settings() {
   return (
@@ -11,7 +12,12 @@ function Settings() {
           <Header />
         </div>
         <div className="body">
-          <h1 className="settings">Settings</h1>
+          <p className="settings">Settings</p>
+          <div>
+              <Link to="/search" className="searchme">
+                <div>Search For Properties</div>
+              </Link>
+            </div>
         </div>
       </div>
 

@@ -35,6 +35,8 @@ import CarProperty from "./pages/CarProperty";
 import ServiceDetails from "./components/ServiceDetails";
 import { ServiceProvider } from "./context/ServiceContext";
 import ServicePage from "./pages/ServicePage";
+import MultiCategorySearch from "./components/Search";
+import SearchProperty from "./components/SearchProperty";
 
 function App() {
   return (
@@ -48,6 +50,7 @@ function App() {
               <Route path="/loginRegister" element={<Login />} />
               <Route element={<ProtectedRoute />}>
                 <Route path="/home" element={<Home />} />
+                <Route path="/search" element={<SearchProperty />} />
                 <Route path="/properties/:id" element={<PropertyPage />} />
                 <Route path="/relocation" element={<Relocation />} />
                 <Route path="/cars" element={<CarProperty />} />
