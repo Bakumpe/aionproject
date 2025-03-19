@@ -3,12 +3,13 @@
     align-items: center;
     text-decoration: none;
     height: 20px;
-    color: var(--secondary-text-color);
+    color: var(--primary-textcolor-color);
     background-color: aliceblue;
-    width: 200px;
+    width: 140px;
     height: 30px;
     border: none;
     border-radius: 10px;
+    font-size: 14px;
 }
 .multi-category-search {
     padding: 20px;

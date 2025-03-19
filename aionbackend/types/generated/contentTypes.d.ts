@@ -507,6 +507,44 @@ export interface ApiHomeHome extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiNotificationNotification
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'notifications';
+  info: {
+    displayName: 'Notification';
+    pluralName: 'notifications';
+    singularName: 'notification';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    isRead: Schema.Attribute.Boolean;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::notification.notification'
+    > &
+      Schema.Attribute.Private;
+    message: Schema.Attribute.String;
+    publishedAt: Schema.Attribute.DateTime;
+    relocation_client: Schema.Attribute.Relation<
+      'manyToOne',
+      'api::relocation-client.relocation-client'
+    >;
+    relocation_request: Schema.Attribute.Relation<
+      'manyToOne',
+      'api::relocation-request.relocation-request'
+    >;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiPropertyProperty extends Struct.CollectionTypeSchema {
   collectionName: 'properties';
   info: {
@@ -551,6 +589,95 @@ export interface ApiPropertyProperty extends Struct.CollectionTypeSchema {
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
     yearBuilt: Schema.Attribute.Date;
+  };
+}
+
+export interface ApiRelocationClientRelocationClient
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'relocation_clients';
+  info: {
+    description: '';
+    displayName: 'RelocationClient';
+    pluralName: 'relocation-clients';
+    singularName: 'relocation-client';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    email: Schema.Attribute.Email;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::relocation-client.relocation-client'
+    > &
+      Schema.Attribute.Private;
+    name: Schema.Attribute.String;
+    notifications: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::notification.notification'
+    >;
+    phone: Schema.Attribute.BigInteger;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiRelocationRequestRelocationRequest
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'relocation_requests';
+  info: {
+    description: '';
+    displayName: 'RelocationRequest';
+    pluralName: 'relocation-requests';
+    singularName: 'relocation-request';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    additionalDetails: Schema.Attribute.Text;
+    countryOfOrigin: Schema.Attribute.String;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    currentOfficeAddress: Schema.Attribute.String;
+    destinationCountry: Schema.Attribute.String;
+    hasPet: Schema.Attribute.String;
+    itemsDescription: Schema.Attribute.Text;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::relocation-request.relocation-request'
+    > &
+      Schema.Attribute.Private;
+    locationFrom: Schema.Attribute.String;
+    locationTo: Schema.Attribute.String;
+    movingDate: Schema.Attribute.Date;
+    newOfficeAddress: Schema.Attribute.String;
+    notifications: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::notification.notification'
+    >;
+    numberOfRooms: Schema.Attribute.Integer;
+    petName: Schema.Attribute.String;
+    photos: Schema.Attribute.Media<
+      'images' | 'files' | 'videos' | 'audios',
+      true
+    >;
+    publishedAt: Schema.Attribute.DateTime;
+    requestType: Schema.Attribute.String;
+    statusCode: Schema.Attribute.String;
+    storageItemsDescription: Schema.Attribute.Text;
+    storageLocation: Schema.Attribute.String;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
   };
 }
 
@@ -1033,6 +1160,7 @@ export interface PluginUsersPermissionsUser
       Schema.Attribute.SetMinMaxLength<{
         minLength: 6;
       }>;
+    phone: Schema.Attribute.BigInteger;
     provider: Schema.Attribute.String;
     publishedAt: Schema.Attribute.DateTime;
     resetPasswordToken: Schema.Attribute.String & Schema.Attribute.Private;
@@ -1066,7 +1194,10 @@ declare module '@strapi/strapi' {
       'api::care.care': ApiCareCare;
       'api::event.event': ApiEventEvent;
       'api::home.home': ApiHomeHome;
+      'api::notification.notification': ApiNotificationNotification;
       'api::property.property': ApiPropertyProperty;
+      'api::relocation-client.relocation-client': ApiRelocationClientRelocationClient;
+      'api::relocation-request.relocation-request': ApiRelocationRequestRelocationRequest;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;
       'plugin::i18n.locale': PluginI18NLocale;

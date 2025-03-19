@@ -1,0 +1,79 @@
+{
+  "kind": "collectionType",
+  "collectionName": "relocation_requests",
+  "info": {
+    "singularName": "relocation-request",
+    "pluralName": "relocation-requests",
+    "displayName": "RelocationRequest",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "requestType": {
+      "type": "string"
+    },
+    "locationFrom": {
+      "type": "string"
+    },
+    "locationTo": {
+      "type": "string"
+    },
+    "movingDate": {
+      "type": "date"
+    },
+    "countryOfOrigin": {
+      "type": "string"
+    },
+    "destinationCountry": {
+      "type": "string"
+    },
+    "itemsDescription": {
+      "type": "text"
+    },
+    "numberOfRooms": {
+      "type": "integer"
+    },
+    "currentOfficeAddress": {
+      "type": "string"
+    },
+    "newOfficeAddress": {
+      "type": "string"
+    },
+    "storageLocation": {
+      "type": "string"
+    },
+    "storageItemsDescription": {
+      "type": "text"
+    },
+    "additionalDetails": {
+      "type": "text"
+    },
+    "hasPet": {
+      "type": "string"
+    },
+    "petName": {
+      "type": "string"
+    },
+    "photos": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": true
+    },
+    "statusCode": {
+      "type": "string"
+    },
+    "notifications": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::notification.notification",
+      "mappedBy": "relocation_request"
+    }
+  }
+}

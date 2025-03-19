@@ -1,0 +1,32 @@
+{
+  "kind": "collectionType",
+  "collectionName": "notifications",
+  "info": {
+    "singularName": "notification",
+    "pluralName": "notifications",
+    "displayName": "Notification"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "message": {
+      "type": "string"
+    },
+    "isRead": {
+      "type": "boolean"
+    },
+    "relocation_request": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::relocation-request.relocation-request",
+      "inversedBy": "notifications"
+    },
+    "relocation_client": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::relocation-client.relocation-client",
+      "inversedBy": "notifications"
+    }
+  }
+}

@@ -113,6 +113,14 @@ function Login() {
               className="textInput"
             />
             <br />
+            <TextInput
+              type="tel"
+              label="Phone Number"
+              placeholder="Your phone number (optional)"
+              name="phone"
+              className="textInput"
+            />
+            <br />
           </>
         )}
         <TextInput
