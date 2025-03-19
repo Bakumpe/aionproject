@@ -1,37 +1,28 @@
-import React, { useState } from "react";
-import useFetchProperties from "../hooks/fetchData";
-import config from "../.config";
+import React, { useContext, useEffect, useState } from "react";
 import useResponsivePropertiesPerPage from "../hooks/useResponsiveness";
 import MyPropertyCard from "../components/PropertyCard";
+import { PropertyContext } from "../context/PropertyContext";
 
 function HomeProperty() {
+  const { properties, fetchProperties, loading, error } =
+    useContext(PropertyContext);
   const [currentPage, setCurrentPage] = useState(1);
   const propertiesPerPage = useResponsivePropertiesPerPage();
-  const url = `${config.apiUrl}/api/properties?populate=*`;
-  const { properties, loading, error } = useFetchProperties(url);
 
-  console.log("Fetch Result:", { properties, loading, error });
+  useEffect(() => {
+    fetchProperties();
+  }, [fetchProperties]);
 
-  // Extract the data array from properties
-  const propertyList = properties?.data || [];
-
-  if (!Array.isArray(propertyList)) {
+  if (!Array.isArray(properties)) {
     return <p>Unexpected data format. Please try again later.</p>;
   }
 
-  const totalPages = Math.ceil(propertyList.length / propertiesPerPage);
+  const totalPages = Math.ceil(properties.length / propertiesPerPage);
   const startIndex = (currentPage - 1) * propertiesPerPage;
-  const currentProperties = propertyList.slice(
+  const currentProperties = properties.slice(
     startIndex,
     startIndex + propertiesPerPage
   );
-
-  console.log("Pagination:", {
-    currentPage,
-    totalPages,
-    startIndex,
-    currentProperties,
-  });
 
   const handleNext = () => {
     if (currentPage < totalPages) setCurrentPage(currentPage + 1);

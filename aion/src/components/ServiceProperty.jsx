@@ -10,7 +10,7 @@ function ServiceProperty() {
   const url = `${config.apiUrl}/api/events?populate=*`;
   const { events, loading, error } = useFetchProperties(url);
 
-  console.log("Fetch Result:", { events, loading, error });
+  // console.log("Fetch Result:", { events, loading, error });
 
   // Extract the data array from properties
   const propertyList = events?.data || [];
@@ -26,12 +26,12 @@ function ServiceProperty() {
     startIndex + propertiesPerPage
   );
 
-  console.log("Pagination:", {
-    currentPage,
-    totalPages,
-    startIndex,
-    currentProperties,
-  });
+  // console.log("Pagination:", {
+  //   currentPage,
+  //   totalPages,
+  //   startIndex,
+  //   currentProperties,
+  // });
 
   const handleNext = () => {
     if (currentPage < totalPages) setCurrentPage(currentPage + 1);

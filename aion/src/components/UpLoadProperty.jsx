@@ -54,9 +54,9 @@ function UpLoadProperty() {
         }
       );
 
-      console.log("Photo URLs updated successfully:", photoUrls);
+      // console.log("Photo URLs updated successfully:", photoUrls);
     } catch (error) {
-      console.error("Error uploading photos or updating property:", error);
+      // console.error("Error uploading photos or updating property:", error);
       alert("Error uploading photos or updating property:", error);
     }
   };

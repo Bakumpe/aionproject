@@ -28,9 +28,9 @@ const CarProvider = ({ children }) => {
         ? response.data
         : response.data.data || [];
       setCars(data);
-      console.log("Fetched cars:", data);
+      // console.log("Fetched cars:", data);
     } catch (error) {
-      console.error("Error fetching cars:", error);
+      // console.error("Error fetching cars:", error);
       setError(
         error.response?.data?.error?.message || "Failed to fetch cars"
       );

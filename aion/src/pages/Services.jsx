@@ -5,7 +5,7 @@ import ServiceProperty from "../components/ServiceProperty";
 import { Link } from "react-router-dom";
 
 function Events() {
-  console.log("FetchData rendered"); // Confirm component mounts
+  // console.log("FetchData rendered"); // Confirm component mounts
 
   return (
     <>

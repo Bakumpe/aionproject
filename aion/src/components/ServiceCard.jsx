@@ -3,22 +3,22 @@ import { Link, NavLink, useNavigate } from "react-router-dom";
 import config from "../.config";
 
 function displayPropertyPhotos(event) {
-  console.log("Property passed to displayPropertyPhotos:", event);
+  // console.log("Property passed to displayPropertyPhotos:", event);
 
   if (
     !event?.photos ||
     !Array.isArray(event.photos) ||
     event.photos.length === 0
   ) {
-    console.log("No valid photos array found:", event?.photos);
+    // console.log("No valid photos array found:", event?.photos);
     return <p>No photos available for this property.</p>;
   }
 
   const firstPhoto = event.photos[0]?.url;
-  console.log("First photo URL:", firstPhoto);
+  // console.log("First photo URL:", firstPhoto);
 
   if (!firstPhoto) {
-    console.log("First photo URL is missing or invalid");
+    // console.log("First photo URL is missing or invalid");
     return <p>No photos available for this property.</p>;
   }
 

@@ -105,6 +105,10 @@ function RegisterProperty() {
       );
 
       if (propertyResponse.status === 200) {
+        // Add alert here for successful registration
+        alert("Success! Your property has been registered successfully!");
+
+        
         setMessage("Property registered successfully!");
         setPropertyData(initialPropertyData);
         setFiles([]);

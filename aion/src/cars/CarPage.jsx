@@ -53,7 +53,7 @@ function CarPage() {
   useEffect(() => {
     if (cars.length > 0) {
       const selectedCar = cars.find((c) => c.id === parseInt(id, 10));
-      console.log(selectedCar); // Debugging
+      // console.log(selectedCar); // Debugging
       setCar(selectedCar || null);
     }
   }, [cars, id]);

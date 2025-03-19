@@ -14,7 +14,7 @@ const UserProvider = ({ children }) => {
         identifier,
         password,
       });
-      console.log("Auth response:", response.data);
+      // console.log("Auth response:", response.data);
       if (response.status === 200 && response.data.jwt) {
         const jwtToken = response.data.jwt;
         setToken(jwtToken);
@@ -23,7 +23,7 @@ const UserProvider = ({ children }) => {
         throw new Error("Authentication failed");
       }
     } catch (error) {
-      console.error("Error fetching token", error);
+      // console.error("Error fetching token", error);
       return null;
     }
   }, []);
@@ -40,7 +40,8 @@ const UserProvider = ({ children }) => {
           });
           setUser(response.data);
         } catch (error) {
-          console.error("Error fetching user data", error);
+          // console.error("Error fetching user data", error);
+          alert("Error fetching user data", error);
         }
       }
     },

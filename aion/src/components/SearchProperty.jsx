@@ -4,7 +4,7 @@ import Whatsapp from "../components/Whatsapp";
 import MultiCategorySearch from "./Search";
 
 function SearchProperty() {
-  console.log("FetchData rendered"); // Confirm component mounts
+  // console.log("FetchData rendered"); // Confirm component mounts
 
   return (
     <>

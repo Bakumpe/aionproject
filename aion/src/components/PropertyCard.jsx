@@ -7,18 +7,18 @@ import Amenities from "../assets/amenities1.png";
 import config from "../.config";
 
 function displayPropertyPhotos(property) {
-  console.log("Property passed to displayPropertyPhotos:", property);
+  // console.log("Property passed to displayPropertyPhotos:", property);
 
   if (!property?.photos || !Array.isArray(property.photos) || property.photos.length === 0) {
-    console.log("No valid photos array found:", property?.photos);
+    // console.log("No valid photos array found:", property?.photos);
     return <p>No photos available for this property.</p>;
   }
 
   const firstPhoto = property.photos[0]?.url;
-  console.log("First photo URL:", firstPhoto);
+  // console.log("First photo URL:", firstPhoto);
 
   if (!firstPhoto) {
-    console.log("First photo URL is missing or invalid");
+    // console.log("First photo URL is missing or invalid");
     return <p>No photos available for this property.</p>;
   }
 
