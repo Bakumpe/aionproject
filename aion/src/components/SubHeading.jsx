@@ -26,7 +26,7 @@ const SubHeading = () => {
         </Link>
 
         <Link
-          to={"/"}
+          to={"/eceg"}
           onClick={() => setCategory("Apartment")}
           className="apartment"
         >
@@ -42,7 +42,7 @@ const SubHeading = () => {
         </Link>
 
         <Link
-          to={"/"}
+          to={"/cars"}
           onClick={() => setCategory("Standalone")}
           className="apartment"
         >
@@ -90,7 +90,7 @@ const SubHeading = () => {
         </Link>
 
         <Link
-          to={"/"}
+          to={"/services"}
           onClick={() => setCategory("ArcadeSpace")}
           className="apartment"
         >
