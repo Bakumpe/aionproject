@@ -32,6 +32,7 @@ import RegisterCar from "./broker/RegisterCar";
 import RegisterService from "./broker/RegisterService";
 import Services from "./pages/Services";
 import Payment from "./pages/Payment";
+import CarProperty from "./pages/CarProperty";
 
 function App() {
   return (
@@ -46,7 +47,7 @@ function App() {
                 <Route path="/home" element={<Home />} />
                 <Route path="/properties/:id" element={<PropertyPage />} />
                 <Route path="/relocation" element={<Relocation />} />
-                <Route path="/cars" element={<Cars />} />
+                <Route path="/cars" element={<CarProperty />} />
                 <Route path="/cars/:id" element={<CarPage />} />
                 <Route path="/callCenter" element={<CallCustomerCare />} />
                 <Route path="/profile" element={<Profile />} />

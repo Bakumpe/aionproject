@@ -1,6 +1,4 @@
 import React, { useContext, useEffect, useState } from "react";
-import Header from "../components/Header";
-import Whatsapp from "../components/Whatsapp";
 import CarCard from "./CarCard";
 import { CarContext } from "../context/CarContext";
 import useResponsivePropertiesPerPage from "../hooks/useResponsiveness";
@@ -9,7 +7,7 @@ function Cars() {
   const { cars, fetchCars } = useContext(CarContext);
   const [currentPage, setCurrentPage] = useState(1);
   const carsPerPage = useResponsivePropertiesPerPage();
-  
+
   useEffect(() => {
     fetchCars();
   }, [fetchCars]);
@@ -38,37 +36,26 @@ function Cars() {
 
   return (
     <>
-      <div className="indexPage">
-        <div className="navBar">
-          <Header />
-        </div>
-        <div className="body">
-          <div className="bodyTitle">
-            <p>Cars For Hire</p>
+      <ul className="propertyListing">
+        {currentCars.length === 0 ? (
+          <div className="loadingProperties">
+            <span className="spinner"></span> Loading Cars...
           </div>
-          <ul className="myCarList">
-            {currentCars.length === 0 ? (
-              <div className="loadingProperties">
-              <span className="spinner"></span> Loading Cars...
-            </div>
-            ) : (
-              currentCars.map((car, index) => <CarCard key={index} car={car} />)
-            )}
-          </ul>
-          <div className="pagination">
-            <button onClick={handlePrevious} disabled={currentPage === 1}>
-              Previous
-            </button>
-            <p>
-              Page {currentPage} of {totalPages}
-            </p>
-            <button onClick={handleNext} disabled={currentPage === totalPages}>
-              Next
-            </button>
-          </div>
-        </div>
+        ) : (
+          currentCars.map((car, index) => <CarCard key={index} car={car} />)
+        )}
+      </ul>
+      <div className="pagination">
+        <button onClick={handlePrevious} disabled={currentPage === 1}>
+          Previous
+        </button>
+        <p>
+          Page {currentPage} of {totalPages}
+        </p>
+        <button onClick={handleNext} disabled={currentPage === totalPages}>
+          Next
+        </button>
       </div>
-      <Whatsapp />
     </>
   );
 }

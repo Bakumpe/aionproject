@@ -13,9 +13,6 @@ function Pricing() {
         <div className="body">
           <h1>Pricing</h1>
         </div>
-        {/* <div className="sideBar">
-          <Footer />
-        </div> */}
       </div>
 
       <Whatsapp />

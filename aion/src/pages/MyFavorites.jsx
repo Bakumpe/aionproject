@@ -20,9 +20,6 @@ function MyFavorites() {
             <PropertyResults />
           </div>
         </div>
-        {/* <div className="sideBar">
-          <Footer />
-        </div> */}
       </div>
 
       <Whatsapp />

@@ -11,7 +11,7 @@ function displayCarPhotos(car) {
   }
 
   return (
-    <div className="myCarImage">
+    <div className="propertyImages">
       {isFullUrl ? (
         <NavLink to={photo}>
           <img src={photo} alt={`${car.name || "Unknown"} Car`} />
@@ -38,9 +38,9 @@ function CarCard({ car }) {
   };
 
   return (
-    <li key={car.id} className="carListCar">
+    <li key={car.id} className="listedItem">
       <div>
-        <div className="budget">
+        <div className="PropertyCategory">
          <p>Ugshs. {car.budget ?? "N/A"}</p>  {/* Added label */}
         </div>
         <Link to={`/cars/${car.id}`}>{displayCarPhotos(car)}</Link>
@@ -50,7 +50,7 @@ function CarCard({ car }) {
         <p>{car.name || "Unnamed Car"}</p>
         <p className="statusCode">{car.statusCode || "N/A"}</p>
       </div>
-      <div className="carSpecifications">
+      <div className="specs">
         <p>
           Type of Car: <strong>{car.typeofCar || "Unknown"}</strong>
         </p>
