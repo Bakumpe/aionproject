@@ -144,6 +144,7 @@
   display: grid;
   grid-template-columns: auto auto auto auto auto auto;
   align-items: center;
+  justify-content: center;
   cursor: pointer;
   gap: 20px;
 }
