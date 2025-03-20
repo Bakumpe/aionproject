@@ -9,25 +9,20 @@ import config from "../.config";
 import axios from "axios";
 
 function Relocation() {
-  // Accessing user and token from UserContext for authentication
   const { user, token } = useContext(UserContext);
-  // Hook to programmatically navigate to different routes
   const navigate = useNavigate();
-
-  // State management for form title, moving type, pet details, submission status, form data, files, and errors
-  const [formTitle, setFormTitle] = useState("Moving Details"); // Tracks the title displayed in the form
-  const [movingType, setMovingType] = useState(""); // Tracks selected moving type (e.g., "Home Moving")
-  const [pet, setPet] = useState(""); // Tracks if user has a pet ("yes" or "no")
-  const [petName, setPetName] = useState(""); // Tracks pet's name if applicable
-  const [isSubmitting, setIsSubmitting] = useState(false); // Tracks form submission status
+  const [formTitle, setFormTitle] = useState("Moving Details");
+  const [movingType, setMovingType] = useState("");
+  const [pet, setPet] = useState("");
+  const [petName, setPetName] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [formData, setFormData] = useState({
-    // Initial form data object with all fields empty
     locationFrom: "",
     locationTo: "",
     countryOfOrigin: "",
     destinationCountry: "",
     itemsDescription: "",
-    numberOfRooms: "",
+    numberOfRooms: 0,
     currentOfficeAddress: "",
     newOfficeAddress: "",
     storageLocation: "",
@@ -35,11 +30,10 @@ function Relocation() {
     additionalDetails: "",
     movingDate: "",
   });
-  const [files, setFiles] = useState([]); // Stores uploaded files (e.g., images, PDFs)
-  const [errors, setErrors] = useState({}); // Tracks validation errors
-  const fileInputRef = useRef(null); // Reference to file input for resetting
+  const [files, setFiles] = useState([]);
+  const [errors, setErrors] = useState({});
+  const fileInputRef = useRef(null);
 
-  // Defines fields to display based on moving type
   const movingTypeFields = {
     "National Moving": [
       { component: "input", label: "Country of Origin", name: "countryOfOrigin", type: "text" },
@@ -64,7 +58,6 @@ function Relocation() {
     ],
   };
 
-  // Maps moving types to API-compatible values
   const movingTypeMap = {
     "National Moving": "national",
     "Home Moving": "home",
@@ -73,37 +66,32 @@ function Relocation() {
     "Other": "other",
   };
 
-  // Handles clicking a moving type, updates form title and clears related error
   const handleMovingTypeClick = (type) => {
-    setFormTitle(type); // Sets form title to selected type
-    setMovingType(type); // Sets the moving type
-    setErrors((prev) => ({ ...prev, movingType: null })); // Clears moving type error
+    setFormTitle(type);
+    setMovingType(type);
+    setErrors((prev) => ({ ...prev, movingType: null }));
   };
 
-  // Validates required fields before submission
   const validateForm = () => {
     const newErrors = {};
     if (!formData.locationFrom) newErrors.locationFrom = "Location From is required";
     if (!formData.locationTo) newErrors.locationTo = "Location To is required";
     if (!formData.movingDate) newErrors.movingDate = "Please select a moving date";
     if (!movingType) newErrors.movingType = "Please select a moving type";
-    setErrors(newErrors); // Updates error state
-    return Object.keys(newErrors).length === 0; // Returns true if no errors
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
   };
 
-  // Updates form data and clears errors for changed fields
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-    setFormData((prev) => ({ ...prev, [name]: value })); // Updates form data
-    setErrors((prev) => ({ ...prev, [name]: null })); // Clears error for this field
+    setFormData((prev) => ({ ...prev, [name]: value }));
+    setErrors((prev) => ({ ...prev, [name]: null }));
   };
 
-  // Handles file input changes
   const handleFileChange = (e) => {
-    setFiles(e.target.files); // Stores selected files
+    setFiles(e.target.files);
   };
 
-  // Resets the form to initial state
   const resetForm = () => {
     setFormData({
       locationFrom: "",
@@ -111,7 +99,7 @@ function Relocation() {
       countryOfOrigin: "",
       destinationCountry: "",
       itemsDescription: "",
-      numberOfRooms: "",
+      numberOfRooms: 0,
       currentOfficeAddress: "",
       newOfficeAddress: "",
       storageLocation: "",
@@ -119,16 +107,15 @@ function Relocation() {
       additionalDetails: "",
       movingDate: "",
     });
-    setFiles([]); // Clears uploaded files
-    setMovingType(""); // Resets moving type
-    setFormTitle("Moving Details"); // Resets form title
-    setPet(""); // Resets pet selection
-    setPetName(""); // Resets pet name
-    setErrors({}); // Clears all errors
-    if (fileInputRef.current) fileInputRef.current.value = ""; // Resets file input
+    setFiles([]);
+    setMovingType("");
+    setFormTitle("Moving Details");
+    setPet("");
+    setPetName("");
+    setErrors({});
+    if (fileInputRef.current) fileInputRef.current.value = "";
   };
 
-  // Creates a client record in the backend
   const createClient = async () => {
     if (!token) throw new Error("Authentication required");
     try {
@@ -148,13 +135,13 @@ function Relocation() {
           },
         }
       );
-      return response.data.data.id; // Returns client ID
+      return response.data.data.id;
     } catch (error) {
       throw new Error(error.response?.data?.error?.message || "Failed to create client");
     }
   };
 
-  // Creates a notification for the relocation request
+
   const createNotification = async () => {
     try {
       const response = await axios.post(
@@ -172,18 +159,18 @@ function Relocation() {
           },
         }
       );
-      return response.data.data.id; // Returns notification ID
+      return response.data.data.id;
     } catch (error) {
       throw new Error(error.response?.data?.error?.message || "Failed to create notification");
     }
   };
 
-  // Uploads files to the backend and returns file IDs
+
   const uploadFiles = async () => {
-    if (files.length === 0) return []; // No files to upload
+    if (files.length === 0) return [];
     const formData = new FormData();
     Array.from(files).forEach((file) => {
-      formData.append("files", file); // Adds each file to FormData
+      formData.append("files", file);
     });
 
     const uploadResponse = await axios.post(`${config.apiUrl}/api/upload`, formData, {
@@ -193,57 +180,53 @@ function Relocation() {
       },
     });
 
-    return uploadResponse.data.map((file) => file.id); // Returns array of file IDs
+    return uploadResponse.data.map((file) => file.id);
   };
 
-  // Handles form submission
   const handleSubmit = async (e) => {
-    e.preventDefault(); // Prevents default form submission
+    e.preventDefault();
 
-    // Checks if user is authenticated
     if (!user || !token) {
       toast.error("Please log in to submit a relocation request");
-      navigate("/login"); // Redirects to login page
+      navigate("/login");
       return;
     }
 
-    if (!validateForm()) return; // Stops if validation fails
+    if (!validateForm()) return;
 
-    setIsSubmitting(true); // Disables submit button during submission
+    setIsSubmitting(true);
 
     try {
-      const clientId = await createClient(); // Creates client record
-      const uploadedFileIds = await uploadFiles(); // Uploads files
-      const notificationId = await createNotification(); // Creates notification
+      const clientId = await createClient();
+      const uploadedFileIds = await uploadFiles();
+      const notificationId = await createNotification();
 
-      // Prepares request data for submission
       const requestData = {
         data: {
           requestType: movingTypeMap[movingType] || movingType,
           locationFrom: formData.locationFrom,
           locationTo: formData.locationTo,
           movingDate: formData.movingDate,
-          countryOfOrigin: formData.countryOfOrigin || "",
-          destinationCountry: formData.destinationCountry || "",
-          itemsDescription: formData.itemsDescription || "",
-          numberOfRooms: parseInt(formData.numberOfRooms, 10) || "",
-          currentOfficeAddress: formData.currentOfficeAddress || "",
-          newOfficeAddress: formData.newOfficeAddress || "",
-          storageLocation: formData.storageLocation || "",
-          storageItemsDescription: formData.storageItemsDescription || "",
-          additionalDetails: formData.additionalDetails || "",
+          countryOfOrigin: formData.countryOfOrigin || "", // Always included, empty if not filled
+          destinationCountry: formData.destinationCountry || "", // Always included
+          itemsDescription: formData.itemsDescription || "", // Always included
+          numberOfRooms: parseInt(formData.numberOfRooms, 10) || 0, // Convert to number or empty string
+          currentOfficeAddress: formData.currentOfficeAddress || "", // Always included
+          newOfficeAddress: formData.newOfficeAddress || "", // Always included
+          storageLocation: formData.storageLocation || "", // Always included
+          storageItemsDescription: formData.storageItemsDescription || "", // Always included
+          additionalDetails: formData.additionalDetails || "", // Always included
           hasPet: pet === "yes",
-          petName: pet === "yes" ? petName : "",
+          petName: pet === "yes" ? petName : "", // Empty if no pet 
           statusCode: "pending",
           photos: uploadedFileIds,
-          client: clientId,
-          notifications: notificationId,
+          client: clientId, 
+          notification: notificationId // Adding the notification ID to the request
         },
       };
 
-      console.log("Submitting payload:", JSON.stringify(requestData, null, 2)); // Logs request data for debugging
+      console.log("Submitting payload:", JSON.stringify(requestData, null, 2));
 
-      // Submits the relocation request
       const response = await axios.post(
         `${config.apiUrl}/api/requests`,
         requestData,
@@ -256,31 +239,30 @@ function Relocation() {
       );
 
       if (response.status === 200) {
-        toast.success("Request submitted successfully!"); // Shows success message
-        resetForm(); // Resets form on success
+        toast.success("Request submitted successfully!");
+        resetForm();
       }
     } catch (error) {
-      console.error("Submission error:", error); // Logs error details
-      console.error("Error response:", error.response?.data);
-      toast.error(`Failed to submit request: ${error.response?.data?.error?.message || error.message}`); // Shows error message
+      console.error("Submission error:", error);
+      console.error("Error response:", error.response?.data); // Log full error details
+      toast.error(`Failed to submit request: ${error.response?.data?.error?.message || error.message}`);
     } finally {
-      setIsSubmitting(false); // Re-enables submit button
+      setIsSubmitting(false);
     }
   };
 
-  // Renders the component UI
   return (
     <>
       <div className="indexPage">
         <div className="navBar">
-          <Header /> {/* Renders navigation header */}
+          <Header />
         </div>
         <div className="body">
           <div className="bodyTitle">
             <p>Relocate With Ease</p>
             <div>
               <Link to="/search" className="searchme">
-                <div>Search For Properties</div> {/* Link to property search */}
+                <div>Search For Properties</div>
               </Link>
             </div>
           </div>
@@ -293,13 +275,12 @@ function Relocation() {
             </div>
             <div className="moving">
               <div className="moving1">
-                {/* Renders moving type options */}
                 {["National Moving", "Home Moving", "Office Moving", "Storage Moving", "Other"].map(
                   (type) => (
                     <div
                       key={type}
                       className="moving2"
-                      onClick={() => handleMovingTypeClick(type)} // Sets moving type on click
+                      onClick={() => handleMovingTypeClick(type)}
                     >
                       {type}
                     </div>
@@ -307,16 +288,16 @@ function Relocation() {
                 )}
               </div>
               {movingType === "" && errors.movingType && (
-                <span className="error">{errors.movingType}</span> // Shows error if no type selected
+                <span className="error">{errors.movingType}</span>
               )}
             </div>
             <div className="movingDetails">
-              <div className="heading">{formTitle}</div> {/* Displays dynamic form title */}
+              <div className="heading">{formTitle}</div>
               <form onSubmit={handleSubmit}>
                 {user ? (
                   <>
                     <div>
-                      <p>Welcome, {user.username} ({user.email})</p> {/* Welcomes logged-in user */}
+                      <p>Welcome, {user.username} ({user.email})</p>
                     </div>
                     <div>
                       <label htmlFor="locationFrom">Where are you moving from?</label>
@@ -355,12 +336,11 @@ function Relocation() {
                         value={formData.movingDate}
                         onChange={handleInputChange}
                         className="textRelocation"
-                        min={new Date().toISOString().split("T")[0]} // Ensures future dates only
+                        min={new Date().toISOString().split("T")[0]}
                         required
                       />
                       {errors.movingDate && <span className="error">{errors.movingDate}</span>}
                     </div>
-                    {/* Renders additional fields based on moving type */}
                     {movingType &&
                       movingTypeFields[movingType]?.map((field) => (
                         <div key={field.name}>
@@ -381,7 +361,7 @@ function Relocation() {
                               name={field.name}
                               value={formData[field.name]}
                               onChange={handleInputChange}
-                              className="textarea"
+                              className="textRelocation"
                               placeholder={field.label}
                             />
                           )}
@@ -393,7 +373,7 @@ function Relocation() {
                         id="pet-select"
                         className="custom-select"
                         value={pet}
-                        onChange={(e) => setPet(e.target.value)} // Updates pet selection
+                        onChange={(e) => setPet(e.target.value)}
                       >
                         <option value="" disabled>Select</option>
                         <option value="yes">Yes</option>
@@ -408,7 +388,7 @@ function Relocation() {
                           name="petName"
                           type="text"
                           value={petName}
-                          onChange={(e) => setPetName(e.target.value)} // Updates pet name
+                          onChange={(e) => setPetName(e.target.value)}
                           className="textRelocation"
                           placeholder="Enter your pet's name"
                         />
@@ -422,7 +402,7 @@ function Relocation() {
                         type="file"
                         multiple
                         accept="image/*,.pdf"
-                        onChange={handleFileChange} // Handles file selection
+                        onChange={handleFileChange}
                         className="fileInput"
                         ref={fileInputRef}
                       />
@@ -430,21 +410,21 @@ function Relocation() {
                     <button
                       type="submit"
                       className="relocationButton"
-                      disabled={isSubmitting} // Disables button during submission
+                      disabled={isSubmitting}
                     >
                       {isSubmitting ? "Submitting..." : "Submit"}
                     </button>
                   </>
                 ) : (
-                  <p>Please <Link to="/login">log in</Link> to submit a relocation request.</p> // Prompts login if not authenticated
+                  <p>Please <Link to="/login">log in</Link> to submit a relocation request.</p>
                 )}
               </form>
             </div>
           </div>
         </div>
       </div>
-      <Whatsapp /> {/* Renders WhatsApp component */}
-      <ToastContainer position="top-right" autoClose={5000} hideProgressBar={false} /> {/* Renders toast notifications */}
+      <Whatsapp />
+      <ToastContainer position="top-right" autoClose={5000} hideProgressBar={false} />
     </>
   );
 }
