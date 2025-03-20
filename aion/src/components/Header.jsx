@@ -67,7 +67,7 @@ const Header = () => {
         </Link>
         <Link to="/eceg" className="nav-link" onClick={closeMobileMenu}>
           <Combine className="icon" />
-          Find Easy Stay
+          Find Ezy Stay
         </Link>
         <Link to="/services" className="nav-link" onClick={closeMobileMenu}>
           <Move className="icon" />

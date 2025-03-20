@@ -30,7 +30,7 @@ const SubHeading = () => {
           onClick={() => setCategory("Apartment")}
           className="apartment"
         >
-          ECEG
+          Ezy Stay
         </Link>
 
         <Link
