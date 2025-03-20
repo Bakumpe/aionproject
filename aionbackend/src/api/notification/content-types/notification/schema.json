@@ -16,17 +16,17 @@
     "isRead": {
       "type": "boolean"
     },
-    "relocation_request": {
+    "client": {
       "type": "relation",
       "relation": "manyToOne",
-      "target": "api::relocation-request.relocation-request",
+      "target": "api::client.client",
       "inversedBy": "notifications"
     },
-    "relocation_client": {
+    "requests": {
       "type": "relation",
-      "relation": "manyToOne",
-      "target": "api::relocation-client.relocation-client",
-      "inversedBy": "notifications"
+      "relation": "oneToMany",
+      "target": "api::request.request",
+      "mappedBy": "notification"
     }
   }
 }

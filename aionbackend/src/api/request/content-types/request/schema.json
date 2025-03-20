@@ -1,10 +1,10 @@
 {
   "kind": "collectionType",
-  "collectionName": "relocation_requests",
+  "collectionName": "requests",
   "info": {
-    "singularName": "relocation-request",
-    "pluralName": "relocation-requests",
-    "displayName": "RelocationRequest",
+    "singularName": "request",
+    "pluralName": "requests",
+    "displayName": "Request",
     "description": ""
   },
   "options": {
@@ -30,7 +30,7 @@
       "type": "string"
     },
     "itemsDescription": {
-      "type": "text"
+      "type": "string"
     },
     "numberOfRooms": {
       "type": "integer"
@@ -45,35 +45,42 @@
       "type": "string"
     },
     "storageItemsDescription": {
-      "type": "text"
+      "type": "string"
     },
     "additionalDetails": {
-      "type": "text"
-    },
-    "hasPet": {
       "type": "string"
     },
     "petName": {
       "type": "string"
     },
+    "statusCode": {
+      "type": "string"
+    },
     "photos": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
       "allowedTypes": [
         "images",
         "files",
         "videos",
         "audios"
-      ],
-      "type": "media",
-      "multiple": true
+      ]
     },
-    "statusCode": {
-      "type": "string"
-    },
-    "notifications": {
+    "client": {
       "type": "relation",
-      "relation": "oneToMany",
+      "relation": "manyToOne",
+      "target": "api::client.client",
+      "inversedBy": "requests"
+    },
+    "notification": {
+      "type": "relation",
+      "relation": "manyToOne",
       "target": "api::notification.notification",
-      "mappedBy": "relocation_request"
+      "inversedBy": "requests"
+    },
+    "hasPet": {
+      "type": "boolean"
     }
   }
 }

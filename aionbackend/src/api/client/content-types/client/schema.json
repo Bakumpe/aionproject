@@ -1,10 +1,10 @@
 {
   "kind": "collectionType",
-  "collectionName": "relocation_clients",
+  "collectionName": "clients",
   "info": {
-    "singularName": "relocation-client",
-    "pluralName": "relocation-clients",
-    "displayName": "RelocationClient",
+    "singularName": "client",
+    "pluralName": "clients",
+    "displayName": "Client",
     "description": ""
   },
   "options": {
@@ -24,7 +24,13 @@
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::notification.notification",
-      "mappedBy": "relocation_client"
+      "mappedBy": "client"
+    },
+    "requests": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::request.request",
+      "mappedBy": "client"
     }
   }
 }
