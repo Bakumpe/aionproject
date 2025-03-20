@@ -5,6 +5,8 @@ import { UserContext } from "../context/UserContext";
 import config from "../.config";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function RegisterProperty() {
   const { user, token } = useContext(UserContext);
@@ -105,17 +107,16 @@ function RegisterProperty() {
       );
 
       if (propertyResponse.status === 200) {
-        // Add alert here for successful registration
-        alert("Success! Your property has been registered successfully!");
-
-        
+        // Replace alert with toast
+        toast.success("Success! Your property has been registered successfully!");
+      
         setMessage("Property registered successfully!");
         setPropertyData(initialPropertyData);
         setFiles([]);
         e.target.reset(); // Reset form
       }
     } catch (error) {
-      console.error("Error:", error.response?.data || error);
+      toast.error("Error:", error.response?.data || error);
       setMessage(
         "Error registering property: " +
           (error.response?.data?.error?.message || error.message)
@@ -179,7 +180,7 @@ function RegisterProperty() {
                 <option value="stand-alone">Stand Alone</option>
                 <option value="villa">Villa</option>
                 <option value="studio-house">Studio House</option>
-                <option value="eceg">ECEG</option>
+                <option value="ezy-stay">Ezy Stay</option>
                 <option value="flat-building">Flat Building</option>
                 <option value="business-space">Business Space</option>
               </select>
@@ -329,6 +330,7 @@ function RegisterProperty() {
         </div>
       </div>
       <Whatsapp />
+      <ToastContainer position="top-right" autoClose={5000} hideProgressBar={false} />
     </>
   );
 }
