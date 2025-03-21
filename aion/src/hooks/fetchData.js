@@ -5,6 +5,7 @@ const useFetchProperties = (url) => {
   const [properties, setProperties] = useState([]);
   const [cars, setCars] = useState([]);
   const [events, setEvents] = useState([]);
+  const [notifications, setNotifications] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
@@ -15,6 +16,7 @@ const useFetchProperties = (url) => {
         setProperties(response.data);
         setCars(response.data);
         setEvents(response.data);
+        setNotifications(response.data);
       } catch (error) {
         setError(error);
       } finally {
@@ -25,7 +27,7 @@ const useFetchProperties = (url) => {
     fetchData();
   }, [url]);
 
-  return { properties, loading, error, cars, events };
+  return { properties, loading, error, cars, events, notifications };
 };
 
 export default useFetchProperties;
