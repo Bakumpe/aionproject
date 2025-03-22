@@ -1,4 +1,5 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
+import { useLocation } from "react-router-dom"; // Add useLocation
 import Header from "../components/Header";
 import Whatsapp from "../components/Whatsapp";
 import { UserContext } from "../context/UserContext";
@@ -9,8 +10,16 @@ import Register from "../broker/Register";
 
 function Profile() {
   const { user } = useContext(UserContext);
+  const location = useLocation(); // Get location to access state
   const [cardTitle, setCardTitle] = useState("Your Details");
   const [activeSection, setActiveSection] = useState("Profile Card"); // Changed default
+
+  // Handle section change from navigation state
+  useEffect(() => {
+    if (location.state?.activeSection) {
+      handleSectionChange(location.state.activeSection);
+    }
+  }, [location.state]);
 
   const handleSectionChange = (section) => {
     switch (section) {

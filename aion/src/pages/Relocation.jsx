@@ -36,25 +36,75 @@ function Relocation() {
 
   const movingTypeFields = {
     "National Moving": [
-      { component: "input", label: "Country of Origin", name: "countryOfOrigin", type: "text" },
-      { component: "input", label: "Destination Country", name: "destinationCountry", type: "text" },
-      { component: "textarea", label: "Describe the items to be moved", name: "itemsDescription" },
+      {
+        component: "input",
+        label: "Country of Origin",
+        name: "countryOfOrigin",
+        type: "text",
+      },
+      {
+        component: "input",
+        label: "Destination Country",
+        name: "destinationCountry",
+        type: "text",
+      },
+      {
+        component: "textarea",
+        label: "Describe the items to be moved",
+        name: "itemsDescription",
+      },
     ],
     "Home Moving": [
-      { component: "textarea", label: "Describe the items to be moved", name: "itemsDescription" },
-      { component: "input", label: "Number of rooms", name: "numberOfRooms", type: "number" },
+      {
+        component: "textarea",
+        label: "Describe the items to be moved",
+        name: "itemsDescription",
+      },
+      {
+        component: "input",
+        label: "Number of rooms",
+        name: "numberOfRooms",
+        type: "number",
+      },
     ],
     "Office Moving": [
-      { component: "input", label: "Current Office Address", name: "currentOfficeAddress", type: "text" },
-      { component: "input", label: "New Office Address", name: "newOfficeAddress", type: "text" },
-      { component: "textarea", label: "Describe the items to be moved", name: "itemsDescription" },
+      {
+        component: "input",
+        label: "Current Office Address",
+        name: "currentOfficeAddress",
+        type: "text",
+      },
+      {
+        component: "input",
+        label: "New Office Address",
+        name: "newOfficeAddress",
+        type: "text",
+      },
+      {
+        component: "textarea",
+        label: "Describe the items to be moved",
+        name: "itemsDescription",
+      },
     ],
     "Storage Moving": [
-      { component: "input", label: "Storage Location", name: "storageLocation", type: "text" },
-      { component: "textarea", label: "Describe the items to be moved", name: "storageItemsDescription" },
+      {
+        component: "input",
+        label: "Storage Location",
+        name: "storageLocation",
+        type: "text",
+      },
+      {
+        component: "textarea",
+        label: "Describe the items to be moved",
+        name: "storageItemsDescription",
+      },
     ],
-    "Other": [
-      { component: "textarea", label: "Additional details", name: "additionalDetails" },
+    Other: [
+      {
+        component: "textarea",
+        label: "Additional details",
+        name: "additionalDetails",
+      },
     ],
   };
 
@@ -63,7 +113,7 @@ function Relocation() {
     "Home Moving": "home",
     "Office Moving": "office",
     "Storage Moving": "storage",
-    "Other": "other",
+    Other: "other",
   };
 
   const handleMovingTypeClick = (type) => {
@@ -74,9 +124,11 @@ function Relocation() {
 
   const validateForm = () => {
     const newErrors = {};
-    if (!formData.locationFrom) newErrors.locationFrom = "Location From is required";
+    if (!formData.locationFrom)
+      newErrors.locationFrom = "Location From is required";
     if (!formData.locationTo) newErrors.locationTo = "Location To is required";
-    if (!formData.movingDate) newErrors.movingDate = "Please select a moving date";
+    if (!formData.movingDate)
+      newErrors.movingDate = "Please select a moving date";
     if (!movingType) newErrors.movingType = "Please select a moving type";
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
@@ -137,10 +189,11 @@ function Relocation() {
       );
       return response.data.data.id;
     } catch (error) {
-      throw new Error(error.response?.data?.error?.message || "Failed to create client");
+      throw new Error(
+        error.response?.data?.error?.message || "Failed to create client"
+      );
     }
   };
-
 
   const createNotification = async () => {
     try {
@@ -148,7 +201,9 @@ function Relocation() {
         `${config.apiUrl}/api/notifications`,
         {
           data: {
-            message: "You have a new Request for relocation",
+            title: `New Relocation Request from ${user.username}`,
+            message: `A new relocation request has been submitted by ${user.username}. Moving from ${formData.locationFrom} to ${formData.locationTo} on ${formData.movingDate}.`,
+            sender: user.username,
             isRead: false,
           },
         },
@@ -161,10 +216,11 @@ function Relocation() {
       );
       return response.data.data.id;
     } catch (error) {
-      throw new Error(error.response?.data?.error?.message || "Failed to create notification");
+      throw new Error(
+        error.response?.data?.error?.message || "Failed to create notification"
+      );
     }
   };
-
 
   const uploadFiles = async () => {
     if (files.length === 0) return [];
@@ -173,12 +229,16 @@ function Relocation() {
       formData.append("files", file);
     });
 
-    const uploadResponse = await axios.post(`${config.apiUrl}/api/upload`, formData, {
-      headers: {
-        Authorization: `Bearer ${token}`,
-        "Content-Type": "multipart/form-data",
-      },
-    });
+    const uploadResponse = await axios.post(
+      `${config.apiUrl}/api/upload`,
+      formData,
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+          "Content-Type": "multipart/form-data",
+        },
+      }
+    );
 
     return uploadResponse.data.map((file) => file.id);
   };
@@ -217,11 +277,11 @@ function Relocation() {
           storageItemsDescription: formData.storageItemsDescription || "", // Always included
           additionalDetails: formData.additionalDetails || "", // Always included
           hasPet: pet === "yes",
-          petName: pet === "yes" ? petName : "", // Empty if no pet 
+          petName: pet === "yes" ? petName : "", // Empty if no pet
           statusCode: "pending",
           photos: uploadedFileIds,
-          client: clientId, 
-          notification: notificationId // Adding the notification ID to the request
+          client: clientId,
+          notification: notificationId, // Adding the notification ID to the request
         },
       };
 
@@ -245,7 +305,11 @@ function Relocation() {
     } catch (error) {
       console.error("Submission error:", error);
       console.error("Error response:", error.response?.data); // Log full error details
-      toast.error(`Failed to submit request: ${error.response?.data?.error?.message || error.message}`);
+      toast.error(
+        `Failed to submit request: ${
+          error.response?.data?.error?.message || error.message
+        }`
+      );
     } finally {
       setIsSubmitting(false);
     }
@@ -275,17 +339,21 @@ function Relocation() {
             </div>
             <div className="moving">
               <div className="moving1">
-                {["National Moving", "Home Moving", "Office Moving", "Storage Moving", "Other"].map(
-                  (type) => (
-                    <div
-                      key={type}
-                      className="moving2"
-                      onClick={() => handleMovingTypeClick(type)}
-                    >
-                      {type}
-                    </div>
-                  )
-                )}
+                {[
+                  "National Moving",
+                  "Home Moving",
+                  "Office Moving",
+                  "Storage Moving",
+                  "Other",
+                ].map((type) => (
+                  <div
+                    key={type}
+                    className="moving2"
+                    onClick={() => handleMovingTypeClick(type)}
+                  >
+                    {type}
+                  </div>
+                ))}
               </div>
               {movingType === "" && errors.movingType && (
                 <span className="error">{errors.movingType}</span>
@@ -297,10 +365,14 @@ function Relocation() {
                 {user ? (
                   <>
                     <div>
-                      <p>Welcome, {user.username} ({user.email})</p>
+                      <p>
+                        Welcome, {user.username} ({user.email})
+                      </p>
                     </div>
                     <div>
-                      <label htmlFor="locationFrom">Where are you moving from?</label>
+                      <label htmlFor="locationFrom">
+                        Where are you moving from?
+                      </label>
                       <input
                         id="locationFrom"
                         name="locationFrom"
@@ -311,10 +383,14 @@ function Relocation() {
                         placeholder="Location From"
                         required
                       />
-                      {errors.locationFrom && <span className="error">{errors.locationFrom}</span>}
+                      {errors.locationFrom && (
+                        <span className="error">{errors.locationFrom}</span>
+                      )}
                     </div>
                     <div>
-                      <label htmlFor="locationTo">Where are you moving to?</label>
+                      <label htmlFor="locationTo">
+                        Where are you moving to?
+                      </label>
                       <input
                         id="locationTo"
                         name="locationTo"
@@ -325,7 +401,9 @@ function Relocation() {
                         placeholder="Location To"
                         required
                       />
-                      {errors.locationTo && <span className="error">{errors.locationTo}</span>}
+                      {errors.locationTo && (
+                        <span className="error">{errors.locationTo}</span>
+                      )}
                     </div>
                     <div>
                       <label htmlFor="movingDate">Preferred Moving Date</label>
@@ -339,7 +417,9 @@ function Relocation() {
                         min={new Date().toISOString().split("T")[0]}
                         required
                       />
-                      {errors.movingDate && <span className="error">{errors.movingDate}</span>}
+                      {errors.movingDate && (
+                        <span className="error">{errors.movingDate}</span>
+                      )}
                     </div>
                     {movingType &&
                       movingTypeFields[movingType]?.map((field) => (
@@ -375,7 +455,9 @@ function Relocation() {
                         value={pet}
                         onChange={(e) => setPet(e.target.value)}
                       >
-                        <option value="" disabled>Select</option>
+                        <option value="" disabled>
+                          Select
+                        </option>
                         <option value="yes">Yes</option>
                         <option value="no">No</option>
                       </select>
@@ -395,7 +477,9 @@ function Relocation() {
                       </div>
                     )}
                     <div>
-                      <label htmlFor="files">Upload Inventory List or Photos</label>
+                      <label htmlFor="files">
+                        Upload Inventory List or Photos
+                      </label>
                       <input
                         id="files"
                         name="files"
@@ -416,7 +500,10 @@ function Relocation() {
                     </button>
                   </>
                 ) : (
-                  <p>Please <Link to="/login">log in</Link> to submit a relocation request.</p>
+                  <p>
+                    Please <Link to="/login">log in</Link> to submit a
+                    relocation request.
+                  </p>
                 )}
               </form>
             </div>
@@ -424,7 +511,11 @@ function Relocation() {
         </div>
       </div>
       <Whatsapp />
-      <ToastContainer position="top-right" autoClose={5000} hideProgressBar={false} />
+      <ToastContainer
+        position="top-right"
+        autoClose={5000}
+        hideProgressBar={false}
+      />
     </>
   );
 }

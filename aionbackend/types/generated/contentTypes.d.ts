@@ -448,7 +448,6 @@ export interface ApiCareCare extends Struct.CollectionTypeSchema {
 export interface ApiClientClient extends Struct.CollectionTypeSchema {
   collectionName: 'clients';
   info: {
-    description: '';
     displayName: 'Client';
     pluralName: 'clients';
     singularName: 'client';
@@ -468,13 +467,9 @@ export interface ApiClientClient extends Struct.CollectionTypeSchema {
     > &
       Schema.Attribute.Private;
     name: Schema.Attribute.String;
-    notifications: Schema.Attribute.Relation<
-      'oneToMany',
-      'api::notification.notification'
-    >;
     phone: Schema.Attribute.BigInteger;
     publishedAt: Schema.Attribute.DateTime;
-    requests: Schema.Attribute.Relation<'oneToMany', 'api::request.request'>;
+    request: Schema.Attribute.Relation<'oneToOne', 'api::request.request'>;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -555,7 +550,6 @@ export interface ApiNotificationNotification
     draftAndPublish: true;
   };
   attributes: {
-    client: Schema.Attribute.Relation<'manyToOne', 'api::client.client'>;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -566,9 +560,11 @@ export interface ApiNotificationNotification
       'api::notification.notification'
     > &
       Schema.Attribute.Private;
-    message: Schema.Attribute.String;
+    message: Schema.Attribute.Text;
     publishedAt: Schema.Attribute.DateTime;
-    requests: Schema.Attribute.Relation<'oneToMany', 'api::request.request'>;
+    request: Schema.Attribute.Relation<'oneToOne', 'api::request.request'>;
+    sender: Schema.Attribute.String;
+    title: Schema.Attribute.String;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -635,7 +631,7 @@ export interface ApiRequestRequest extends Struct.CollectionTypeSchema {
   };
   attributes: {
     additionalDetails: Schema.Attribute.String;
-    client: Schema.Attribute.Relation<'manyToOne', 'api::client.client'>;
+    client: Schema.Attribute.Relation<'oneToOne', 'api::client.client'>;
     countryOfOrigin: Schema.Attribute.String;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
@@ -655,7 +651,7 @@ export interface ApiRequestRequest extends Struct.CollectionTypeSchema {
     movingDate: Schema.Attribute.Date;
     newOfficeAddress: Schema.Attribute.String;
     notification: Schema.Attribute.Relation<
-      'manyToOne',
+      'oneToOne',
       'api::notification.notification'
     >;
     numberOfRooms: Schema.Attribute.Integer;

@@ -67,20 +67,20 @@
         "audios"
       ]
     },
+    "hasPet": {
+      "type": "boolean"
+    },
     "client": {
       "type": "relation",
-      "relation": "manyToOne",
+      "relation": "oneToOne",
       "target": "api::client.client",
-      "inversedBy": "requests"
+      "mappedBy": "request"
     },
     "notification": {
       "type": "relation",
-      "relation": "manyToOne",
+      "relation": "oneToOne",
       "target": "api::notification.notification",
-      "inversedBy": "requests"
-    },
-    "hasPet": {
-      "type": "boolean"
+      "mappedBy": "request"
     }
   }
 }

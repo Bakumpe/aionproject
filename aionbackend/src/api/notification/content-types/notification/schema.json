@@ -11,22 +11,22 @@
   },
   "attributes": {
     "message": {
-      "type": "string"
+      "type": "text"
     },
     "isRead": {
       "type": "boolean"
     },
-    "client": {
-      "type": "relation",
-      "relation": "manyToOne",
-      "target": "api::client.client",
-      "inversedBy": "notifications"
+    "title": {
+      "type": "string"
     },
-    "requests": {
+    "sender": {
+      "type": "string"
+    },
+    "request": {
       "type": "relation",
-      "relation": "oneToMany",
+      "relation": "oneToOne",
       "target": "api::request.request",
-      "mappedBy": "notification"
+      "inversedBy": "notification"
     }
   }
 }

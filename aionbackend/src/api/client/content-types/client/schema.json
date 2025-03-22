@@ -4,8 +4,7 @@
   "info": {
     "singularName": "client",
     "pluralName": "clients",
-    "displayName": "Client",
-    "description": ""
+    "displayName": "Client"
   },
   "options": {
     "draftAndPublish": true
@@ -20,17 +19,11 @@
     "phone": {
       "type": "biginteger"
     },
-    "notifications": {
+    "request": {
       "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::notification.notification",
-      "mappedBy": "client"
-    },
-    "requests": {
-      "type": "relation",
-      "relation": "oneToMany",
+      "relation": "oneToOne",
       "target": "api::request.request",
-      "mappedBy": "client"
+      "inversedBy": "client"
     }
   }
 }

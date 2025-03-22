@@ -18,6 +18,9 @@ import {
   Phone,
   Move,
   Search,
+  Server,
+  Fingerprint,
+  MessageCircle,
 } from "lucide-react";
 
 const Header = () => {
@@ -54,7 +57,7 @@ const Header = () => {
           </button>
         </div>
       </div>
-      
+
       {/* Main Navigation - Desktop */}
       <nav className={`main-nav ${isMobileMenuOpen ? "mobile-open" : ""}`}>
         <Link to="/home" className="nav-link" onClick={closeMobileMenu}>
@@ -70,7 +73,7 @@ const Header = () => {
           Find Ezy Stay
         </Link>
         <Link to="/services" className="nav-link" onClick={closeMobileMenu}>
-          <Move className="icon" />
+          <ServerIcon className="icon" />
           Find Service
         </Link>
         <Link to="/relocation" className="nav-link" onClick={closeMobileMenu}>
@@ -81,9 +84,18 @@ const Header = () => {
           <Star className="icon" />
           Register Property
         </Link>
-        <Link to="/ourServices" className="nav-link" onClick={closeMobileMenu}>
-          <ServerIcon className="icon" />
-          Register Service
+        {/* <Link to="/ourServices" className="nav-link" onClick={closeMobileMenu}>
+          <MessageCircle className="icon" />
+          Notifications
+        </Link> */}
+        <Link
+          to="/profile"
+          state={{ activeSection: "Notifications" }} // Pass state to indicate Notifications
+          className="nav-link"
+          onClick={closeMobileMenu}
+        >
+          <MessageCircle className="icon" />
+          Notifications
         </Link>
         <Link to="/callCenter" className="nav-link" onClick={closeMobileMenu}>
           <Phone className="icon" />
