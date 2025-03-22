@@ -1838,9 +1838,9 @@ button:disabled {
    
    .notification-details {
      position: absolute;
-     top: 10%;
+     top: 15%;
      right: 15px;
-     width: 90%;
+     width: 60%;
      height: 100%;
      background-color: #666;
      z-index: 3000;
