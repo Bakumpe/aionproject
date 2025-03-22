@@ -5,35 +5,8 @@ import axios from "axios";
 import config from "../.config";
 import PropTypes from "prop-types";
 
-const DisplayPropertyPhotos = ({ requests }) => {
-  if (!requests?.photos || !Array.isArray(requests.photos) || requests.photos.length === 0) {
-    return <p className="no-photos">No photos available for the request.</p>;
-  }
-
-  const photos = requests.photos.map((photo) => ({
-    url: photo.url,
-    isFullUrl: photo.url.startsWith("https://res.cloudinary.com"),
-  }));
-
-  return (
-    <div className="property-images">
-      {photos.map((photo, index) => (
-        <div key={`${photo.url}-${index}`} className="property-image-container">
-          <img
-            src={photo.isFullUrl ? photo.url : `${config.apiUrl}${photo.url}`}
-            alt={`Property ${index + 1}`}
-            loading="lazy"
-            onError={(e) => {
-              e.target.src = "/fallback-image.jpg";
-            }}
-          />
-        </div>
-      ))}
-    </div>
-  );
-};
-
-// Helper function to construct the sentence
+// Removed DisplayPropertyPhotos component entirely since we're not displaying photos
+// Helper function to construct the sentence remains unchanged
 const buildRequestSentence = (selectedRequest) => {
   const fields = [
     { key: "requestType", prefix: "Moving" },
@@ -43,7 +16,7 @@ const buildRequestSentence = (selectedRequest) => {
     { key: "countryOfOrigin", prefix: "originating from" },
     { key: "destinationCountry", prefix: "destined for" },
     { key: "itemsDescription", prefix: "with items including" },
-    { key: "numberOfRooms", prefix: "for", suffix: "rooms" }, // Added suffix
+    { key: "numberOfRooms", prefix: "for", suffix: "rooms" },
     { key: "currentOfficeAddress", prefix: "from the current office at" },
     { key: "newOfficeAddress", prefix: "to the new office at" },
     { key: "storageLocation", prefix: "with storage at" },
@@ -61,7 +34,6 @@ const buildRequestSentence = (selectedRequest) => {
     )
     .map((field) => {
       const value = selectedRequest[field.key];
-      // Append suffix if it exists, otherwise just use the value
       const formattedValue = field.suffix ? `${value} ${field.suffix}` : value;
       return `${field.prefix} ${formattedValue}`;
     });
@@ -73,7 +45,7 @@ const buildRequestSentence = (selectedRequest) => {
 
 const Notifications = () => {
   const { token } = useContext(UserContext);
-  const notificationUrl = `${config.apiUrl}/api/notifications?populate=*`; // Updated to populate photos
+  const notificationUrl = `${config.apiUrl}/api/notifications?populate=*`;
 
   const { notifications, loading, error } = useFetchProperties(notificationUrl, token);
 
@@ -174,13 +146,10 @@ const Notifications = () => {
 
       {selectedNotification && (
         <div className="notification-details">
-          <h3>{selectedNotification.title}</h3>
+          <h4>{selectedNotification.title}</h4>
           <p className="message">{selectedNotification.message}</p>
           {selectedRequest ? (
-            <>
-              <DisplayPropertyPhotos requests={selectedRequest} />
-              <p>{buildRequestSentence(selectedRequest)}</p> {/* Integrated sentence */}
-            </>
+            <p>{buildRequestSentence(selectedRequest)}</p>
           ) : (
             <p>No related request found.</p>
           )}
@@ -214,15 +183,6 @@ const Notifications = () => {
   );
 };
 
-DisplayPropertyPhotos.propTypes = {
-  requests: PropTypes.shape({
-    photos: PropTypes.arrayOf(
-      PropTypes.shape({
-        url: PropTypes.string.isRequired,
-      })
-    ),
-    requestType: PropTypes.string,
-  }),
-};
+// Removed PropTypes since DisplayPropertyPhotos component is removed
 
 export default Notifications;

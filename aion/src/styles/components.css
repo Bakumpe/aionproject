@@ -1837,13 +1837,17 @@ button:disabled {
    }
    
    .notification-details {
-     display: absolute;
-     flex-direction: column;
+     position: absolute;
+     top: 10%;
+     right: 15px;
+     width: 90%;
      height: 100%;
+     background-color: #666;
+     z-index: 3000;
    }
    
    .notification-details p {
-     
+     font-size: 15px;
    }
    
    .notification-actions {

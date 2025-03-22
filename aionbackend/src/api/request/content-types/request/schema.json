@@ -56,17 +56,6 @@
     "statusCode": {
       "type": "string"
     },
-    "photos": {
-      "type": "media",
-      "multiple": true,
-      "required": false,
-      "allowedTypes": [
-        "images",
-        "files",
-        "videos",
-        "audios"
-      ]
-    },
     "hasPet": {
       "type": "boolean"
     },

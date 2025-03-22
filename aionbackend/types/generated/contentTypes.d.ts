@@ -656,10 +656,6 @@ export interface ApiRequestRequest extends Struct.CollectionTypeSchema {
     >;
     numberOfRooms: Schema.Attribute.Integer;
     petName: Schema.Attribute.String;
-    photos: Schema.Attribute.Media<
-      'images' | 'files' | 'videos' | 'audios',
-      true
-    >;
     publishedAt: Schema.Attribute.DateTime;
     requestType: Schema.Attribute.String;
     statusCode: Schema.Attribute.String;

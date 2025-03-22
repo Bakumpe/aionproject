@@ -1,4 +1,4 @@
-import React, { useState, useRef, useContext } from "react";
+import React, { useState, useContext } from "react";
 import Header from "../components/Header";
 import Whatsapp from "../components/Whatsapp";
 import { Link, useNavigate } from "react-router-dom";
@@ -30,9 +30,7 @@ function Relocation() {
     additionalDetails: "",
     movingDate: "",
   });
-  const [files, setFiles] = useState([]);
   const [errors, setErrors] = useState({});
-  const fileInputRef = useRef(null);
 
   const movingTypeFields = {
     "National Moving": [
@@ -99,7 +97,7 @@ function Relocation() {
         name: "storageItemsDescription",
       },
     ],
-    Other: [
+    "Other": [
       {
         component: "textarea",
         label: "Additional details",
@@ -140,10 +138,6 @@ function Relocation() {
     setErrors((prev) => ({ ...prev, [name]: null }));
   };
 
-  const handleFileChange = (e) => {
-    setFiles(e.target.files);
-  };
-
   const resetForm = () => {
     setFormData({
       locationFrom: "",
@@ -159,13 +153,11 @@ function Relocation() {
       additionalDetails: "",
       movingDate: "",
     });
-    setFiles([]);
     setMovingType("");
     setFormTitle("Moving Details");
     setPet("");
     setPetName("");
     setErrors({});
-    if (fileInputRef.current) fileInputRef.current.value = "";
   };
 
   const createClient = async () => {
@@ -222,27 +214,6 @@ function Relocation() {
     }
   };
 
-  const uploadFiles = async () => {
-    if (files.length === 0) return [];
-    const formData = new FormData();
-    Array.from(files).forEach((file) => {
-      formData.append("files", file);
-    });
-
-    const uploadResponse = await axios.post(
-      `${config.apiUrl}/api/upload`,
-      formData,
-      {
-        headers: {
-          Authorization: `Bearer ${token}`,
-          "Content-Type": "multipart/form-data",
-        },
-      }
-    );
-
-    return uploadResponse.data.map((file) => file.id);
-  };
-
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -258,7 +229,6 @@ function Relocation() {
 
     try {
       const clientId = await createClient();
-      const uploadedFileIds = await uploadFiles();
       const notificationId = await createNotification();
 
       const requestData = {
@@ -267,21 +237,20 @@ function Relocation() {
           locationFrom: formData.locationFrom,
           locationTo: formData.locationTo,
           movingDate: formData.movingDate,
-          countryOfOrigin: formData.countryOfOrigin || "", // Always included, empty if not filled
-          destinationCountry: formData.destinationCountry || "", // Always included
-          itemsDescription: formData.itemsDescription || "", // Always included
-          numberOfRooms: parseInt(formData.numberOfRooms, 10) || 0, // Convert to number or empty string
-          currentOfficeAddress: formData.currentOfficeAddress || "", // Always included
-          newOfficeAddress: formData.newOfficeAddress || "", // Always included
-          storageLocation: formData.storageLocation || "", // Always included
-          storageItemsDescription: formData.storageItemsDescription || "", // Always included
-          additionalDetails: formData.additionalDetails || "", // Always included
+          countryOfOrigin: formData.countryOfOrigin || "",
+          destinationCountry: formData.destinationCountry || "",
+          itemsDescription: formData.itemsDescription || "",
+          numberOfRooms: parseInt(formData.numberOfRooms, 10) || 0,
+          currentOfficeAddress: formData.currentOfficeAddress || "",
+          newOfficeAddress: formData.newOfficeAddress || "",
+          storageLocation: formData.storageLocation || "",
+          storageItemsDescription: formData.storageItemsDescription || "",
+          additionalDetails: formData.additionalDetails || "",
           hasPet: pet === "yes",
-          petName: pet === "yes" ? petName : "", // Empty if no pet
+          petName: pet === "yes" ? petName : "",
           statusCode: "pending",
-          photos: uploadedFileIds,
           client: clientId,
-          notification: notificationId, // Adding the notification ID to the request
+          notification: notificationId,
         },
       };
 
@@ -304,7 +273,7 @@ function Relocation() {
       }
     } catch (error) {
       console.error("Submission error:", error);
-      console.error("Error response:", error.response?.data); // Log full error details
+      console.error("Error response:", error.response?.data);
       toast.error(
         `Failed to submit request: ${
           error.response?.data?.error?.message || error.message
@@ -476,21 +445,6 @@ function Relocation() {
                         />
                       </div>
                     )}
-                    <div>
-                      <label htmlFor="files">
-                        Upload Inventory List or Photos
-                      </label>
-                      <input
-                        id="files"
-                        name="files"
-                        type="file"
-                        multiple
-                        accept="image/*,.pdf"
-                        onChange={handleFileChange}
-                        className="fileInput"
-                        ref={fileInputRef}
-                      />
-                    </div>
                     <button
                       type="submit"
                       className="relocationButton"
