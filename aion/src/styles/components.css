@@ -1862,13 +1862,16 @@ button:disabled {
   .notification-details {
     position: absolute;
     top: 15%;
-    right: 15px;
+    right: 12px;
     width: 90%;
-    height: 70%;
-    background-color: #5f5d5d;
+    height: 80%;
+    background-color: hsla(0, 1%, 37%, 1);  /* 50% transparent */
     z-index: 3000;
-    box-shadow: 5px 5px 5px #cdc8c8;
+    box-shadow: 0 2px 1px #deb9b9;
     overflow: hidden;
+    overflow-y: auto;
+    border-radius: 10px;
+    padding: 5px;
   }
 
   .notification-details p {
