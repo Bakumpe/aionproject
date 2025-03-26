@@ -26,7 +26,6 @@ function CarProperty(){
           </div>
         </div>
       </div>
-
       <Whatsapp />
     </>
   )

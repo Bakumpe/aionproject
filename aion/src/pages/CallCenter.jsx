@@ -65,7 +65,6 @@ function CallCustomerCare() {
           <p>Need assistance? Contact us anytime!</p>
         </div>
       </div>
-
       <Whatsapp />
     </>
   );

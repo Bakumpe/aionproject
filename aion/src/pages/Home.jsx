@@ -5,7 +5,6 @@ import HomeProperty from "../components/HomeProperty";
 import { Link } from "react-router-dom";
 
 function FetchData() {
-  // console.log("FetchData rendered"); // Confirm component mounts
 
   return (
     <>
@@ -28,7 +27,6 @@ function FetchData() {
           </div>
         </div>
       </div>
-
       <Whatsapp />
     </>
   );

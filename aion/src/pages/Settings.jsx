@@ -1,6 +1,5 @@
 import React from "react";
 import Header from "../components/Header";
-// import Footer from "../components/Footer";
 import Whatsapp from "../components/Whatsapp";
 import { Link } from "react-router-dom";
 
@@ -20,7 +19,6 @@ function Settings() {
             </div>
         </div>
       </div>
-
       <Whatsapp />
     </>
   );

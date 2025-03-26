@@ -19,7 +19,6 @@ function Payment() {
           <ProceedPayment/>
         </div>
       </div>
-
       <Whatsapp />
     </>
   );

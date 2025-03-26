@@ -22,7 +22,6 @@ function SearchProperty() {
           </div>
         </div>
       </div>
-
       <Whatsapp />
     </>
   );

@@ -13,7 +13,6 @@ function Events() {
         <div className="navBar">
           <Header />
         </div>
-
         <div className="body">
           <div className="bodyTitle">
             <p>Services</p>
@@ -28,7 +27,6 @@ function Events() {
           </div>
         </div>
       </div>
-
       <Whatsapp />
     </>
   );

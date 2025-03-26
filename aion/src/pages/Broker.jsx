@@ -1,6 +1,5 @@
 import React, { useContext, useState } from "react";
 import Header from "../components/Header";
-// import Footer from "../components/Footer";
 import Whatsapp from "../components/Whatsapp";
 import { UserContext } from "../context/UserContext";
 import Registration from "../broker/Registration";
@@ -63,7 +62,6 @@ function Broker() {
           <p>Need assistance? Contact us anytime!</p>
         </div>
       </div>
-
       <Whatsapp />
     </>
   );
