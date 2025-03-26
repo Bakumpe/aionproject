@@ -1,7 +1,10 @@
-import React, { useState } from "react";
+import React, { use, useContext, useState } from "react";
+import axios from "axios";
+import useFetchProperties from "../hooks/fetchData";
+import config from "../.config";
+import { UserContext } from "../context/UserContext";
 
 function MultiCategorySearch() {
-  // State for selected category and search parameters
   const [selectedCategory, setSelectedCategory] = useState("");
   const [searchParams, setSearchParams] = useState({
     properties: { minCost: "", maxCost: "", location: "" },
@@ -9,11 +12,30 @@ function MultiCategorySearch() {
     services: { serviceType: "" },
   });
   const [searchResults, setSearchResults] = useState([]);
+  const {user, token} = useContext(UserContext);
+
+  // Replace with your actual Strapi API base URL and token if needed
+  const API_BASE_URL = `${config.apiUrl}`; // Update with your API URL
+  const API_TOKEN = token; // Optional, remove if not needed
+
+  // Fetch data using the custom hook for each endpoint
+  const { properties, loading: propLoading } = useFetchProperties(
+    `${API_BASE_URL}/properties`,
+    API_TOKEN
+  );
+  const { cars, loading: carsLoading } = useFetchProperties(
+    `${API_BASE_URL}/cars`,
+    API_TOKEN
+  );
+  const { events, loading: eventsLoading } = useFetchProperties(
+    `${API_BASE_URL}/events`,
+    API_TOKEN
+  );
 
   // Handle category selection
   const handleCategoryChange = (category) => {
     setSelectedCategory(category);
-    setSearchResults([]); // Clear previous results when category changes
+    setSearchResults([]);
   };
 
   // Handle input changes
@@ -28,29 +50,26 @@ function MultiCategorySearch() {
     }));
   };
 
-  // Simulated search function (replace with actual API calls)
+  // Updated search functions using Strapi data
   const performSearch = () => {
     let results = [];
     
     switch (selectedCategory) {
       case "properties":
-        // Simulated property search logic
-        results = mockPropertySearch(
+        results = propertySearch(
           searchParams.properties.minCost,
           searchParams.properties.maxCost,
           searchParams.properties.location
         );
         break;
       case "cars":
-        // Simulated car search logic
-        results = mockCarSearch(
+        results = carSearch(
           searchParams.cars.carType,
-          searchParams.cars.status
+          searchParams.cars.statusCode
         );
         break;
-      case "services":
-        // Simulated service search logic
-        results = mockServiceSearch(
+      case "services": // Using events instead of services
+        results = eventSearch(
           searchParams.services.serviceType
         );
         break;
@@ -61,54 +80,57 @@ function MultiCategorySearch() {
     setSearchResults(results);
   };
 
-  // Mock search functions (replace with real data fetching)
-  const mockPropertySearch = (minCost, maxCost, location) => {
-    const properties = [
-      { id: 1, name: "Luxury Villa", cost: 500000, location: "Nairobi" },
-      { id: 2, name: "Beach House", cost: 300000, location: "Mombasa" },
-    ];
+  // Search functions using fetched data
+  const propertySearch = (minCost, maxCost, location) => {
+    if (propLoading || !properties) return [];
     
     return properties.filter((prop) => {
+      const attributes = prop.attributes || {};
+      const cost = attributes.cost || 0;
+      const propLocation = attributes.location || "";
+      
       const matchesCost = 
-        (!minCost || prop.cost >= parseInt(minCost)) &&
-        (!maxCost || prop.cost <= parseInt(maxCost));
+        (!minCost || cost >= parseInt(minCost)) &&
+        (!maxCost || cost <= parseInt(maxCost));
       const matchesLocation = 
-        !location || prop.location.toLowerCase().includes(location.toLowerCase());
+        !location || propLocation.toLowerCase().includes(location.toLowerCase());
       return matchesCost && matchesLocation;
     });
   };
 
-  const mockCarSearch = (carType, status) => {
-    const cars = [
-      { id: 1, type: "SUV", status: "renting" },
-      { id: 2, type: "Sedan", status: "buying" },
-    ];
+  const carSearch = (carType, status) => {
+    if (carsLoading || !cars) return [];
     
     return cars.filter((car) => {
+      const attributes = car.attributes || {};
+      const type = attributes.type || "";
+      const carStatus = attributes.status || "";
+      
       const matchesType = 
-        !carType || car.type.toLowerCase().includes(carType.toLowerCase());
-      const matchesStatus = !status || car.status === status;
+        !carType || type.toLowerCase().includes(carType.toLowerCase());
+      const matchesStatus = !status || carStatus === status;
       return matchesType && matchesStatus;
     });
   };
 
-  const mockServiceSearch = (serviceType) => {
-    const services = [
-      { id: 1, type: "Cleaning" },
-      { id: 2, type: "Plumbing" },
-    ];
+  const eventSearch = (serviceType) => {
+    if (eventsLoading || !events) return [];
     
-    return services.filter((service) =>
-      !serviceType || service.type.toLowerCase().includes(serviceType.toLowerCase())
-    );
+    return events.filter((event) => {
+      const attributes = event.attributes || {};
+      const type = attributes.type || "";
+      
+      return !serviceType || 
+        type.toLowerCase().includes(serviceType.toLowerCase());
+    });
   };
 
-  // Render search fields based on category
+  // Render search fields (unchanged)
   const renderSearchFields = () => {
     switch (selectedCategory) {
       case "properties":
         return (
-          <div className="property-search-fields">
+          <div className="search-fields">
             <input
               type="number"
               name="minCost"
@@ -134,7 +156,7 @@ function MultiCategorySearch() {
         );
       case "cars":
         return (
-          <div className="car-search-fields">
+          <div className="search-fields">
             <input
               type="text"
               name="carType"
@@ -155,13 +177,13 @@ function MultiCategorySearch() {
         );
       case "services":
         return (
-          <div className="service-search-fields">
+          <div className="search-fields">
             <input
               type="text"
               name="serviceType"
               value={searchParams.services.serviceType}
               onChange={(e) => handleInputChange(e, "services")}
-              placeholder="Type of Service (e.g., Cleaning, Plumbing)"
+              placeholder="Type of Event"
             />
           </div>
         );
@@ -174,7 +196,6 @@ function MultiCategorySearch() {
     <div className="multi-category-search">
       <h2>Search Categories</h2>
       
-      {/* Category Selection */}
       <div className="category-buttons">
         <button
           onClick={() => handleCategoryChange("properties")}
@@ -192,19 +213,19 @@ function MultiCategorySearch() {
           onClick={() => handleCategoryChange("services")}
           className={selectedCategory === "services" ? "active" : ""}
         >
-          Services
+          Events
         </button>
       </div>
 
-      {/* Dynamic Search Fields */}
       {selectedCategory && (
         <div className="search-form">
           {renderSearchFields()}
-          <button onClick={performSearch}>Search</button>
+          <button onClick={performSearch} disabled={propLoading || carsLoading || eventsLoading}>
+            {propLoading || carsLoading || eventsLoading ? "Loading..." : "Search"}
+          </button>
         </div>
       )}
 
-      {/* Search Results */}
       {searchResults.length > 0 && (
         <div className="search-results">
           <h3>Results</h3>
@@ -212,13 +233,13 @@ function MultiCategorySearch() {
             {searchResults.map((item) => (
               <li key={item.id}>
                 {selectedCategory === "properties" && (
-                  `${item.name} - ${item.cost} - ${item.location}`
+                  `${item.attributes?.name || "Property"} - ${item.attributes?.cost || 0} - ${item.attributes?.location || "N/A"}`
                 )}
                 {selectedCategory === "cars" && (
-                  `${item.type} - ${item.status}`
+                  `${item.attributes?.type || "Car"} - ${item.attributes?.status || "N/A"}`
                 )}
                 {selectedCategory === "services" && (
-                  `${item.type}`
+                  `${item.attributes?.type || "Event"}`
                 )}
               </li>
             ))}

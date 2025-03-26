@@ -123,22 +123,22 @@
   margin-top: -20px;
 }
 /***Sub Heading***/
-.properties{
+.properties {
   display: flex;
   flex-direction: column;
   align-items: center;
-  font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
 }
-.propertyHead1{
+.propertyHead1 {
   padding: 10px;
   font-size: 20px;
   color: rgb(241, 58, 58);
 }
-.propertyHead2{
+.propertyHead2 {
   font-size: 50px;
   color: rgb(68, 70, 71);
 }
-.propertyHead3{
+.propertyHead3 {
   margin-top: 40px;
   margin-bottom: 60px;
   display: grid;
@@ -148,7 +148,7 @@
   cursor: pointer;
   gap: 20px;
 }
-.viewAll{
+.viewAll {
   background: rgb(201, 47, 47);
   color: aliceblue;
   padding: 15px;
@@ -158,10 +158,10 @@
   padding: 15px;
 }
 .viewAll:active,
-.viewAll:focus{
+.viewAll:focus {
   color: rgb(210, 203, 203);
 }
-.apartment{
+.apartment {
   text-align: center;
   background: rgb(237, 240, 242);
   padding: 15px;
@@ -171,13 +171,10 @@
   color: rgb(31, 28, 28);
 }
 .apartment:active,
-.apartment:focus{
+.apartment:focus {
   background: rgb(47, 201, 80);
   color: aliceblue;
-  
 }
-
-
 
 .find {
   display: flex;
@@ -469,7 +466,7 @@
   flex-direction: column;
   margin-top: -30px;
 }
-.features-1{
+.features-1 {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -525,7 +522,8 @@
 }
 
 /**This Section is Responsible for designing the car card**/
-.myCarList{}
+.myCarList {
+}
 .myCarList {
   margin-top: 50px;
   margin-right: 40px;
@@ -563,7 +561,7 @@
   background-color: var(--secondary-background-color);
   border-top-left-radius: 10px;
 }
-.budget p{
+.budget p {
   color: var(--secondary-text-color);
   margin-left: 10px;
 }
@@ -957,7 +955,7 @@
 /**Profile***/
 .profile {
   margin-top: 50px;
-  width:100%;
+  width: 100%;
 }
 .profile1 {
   display: flex;
@@ -975,11 +973,11 @@
   background-color: var(--secondary-background-color);
   color: var(--third-text-color);
 }
-.profile2:hover{
+.profile2:hover {
   background-color: var(--primary-background-hover-color);
   color: var(--primary-background-hover-text-color);
 }
-.profile3{
+.profile3 {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -989,7 +987,7 @@
   background-color: var(--secondary-background-color);
   color: var(--third-text-color);
 }
-.heading{
+.heading {
   text-align: center;
   height: 30px;
   font-size: 24px;
@@ -999,11 +997,11 @@
 /***Notification***/
 /* Notifications.css */
 .notifications-container {
- display: grid;
- grid-template-columns: 40% 58%;
- width: 90%;
- height: 69vh;
- gap: 20px;
+  display: grid;
+  grid-template-columns: 40% 58%;
+  width: 90%;
+  height: 69vh;
+  gap: 20px;
 }
 
 .notification-list {
@@ -1011,15 +1009,13 @@
 }
 
 .notification-item {
- border-bottom: 1px solid gray;
+  border-bottom: 1px solid gray;
 }
 
 .notification-item.read {
- 
 }
 
 .notification-item.unread {
-  
 }
 
 .notification-header {
@@ -1027,11 +1023,10 @@
   align-items: center;
   justify-content: space-between;
 }
-.notification-header em{
+.notification-header em {
   font-size: 14px;
 }
 .notification-item p {
-  
 }
 
 .notification-details {
@@ -1040,31 +1035,24 @@
   height: 100%;
   overflow: hidden;
   overflow-y: auto;
-
 }
 
 .notification-details p {
-  
 }
 
 .notification-actions {
   display: flex;
-  gap:5px;
+  gap: 5px;
 }
 
 .notification-actions button {
- 
 }
 
 .notification-actions button:first-child {
-  
 }
 
 .notification-actions .close-btn {
-  
 }
-
-
 
 /**Customer Support**/
 .customerCare {
@@ -1220,7 +1208,7 @@ button:disabled {
 }
 @media screen and (max-width: 768px) {
   /***Sub Heading****/
-  .propertyHead3{
+  .propertyHead3 {
     grid-template-columns: auto auto auto auto;
   }
   .propertyListing {
@@ -1326,9 +1314,8 @@ button:disabled {
   }
   .mobile-menu-button {
     display: block;
-
   }
-  
+
   .logoSpaceLink {
     display: flex;
     text-decoration: none;
@@ -1358,7 +1345,7 @@ button:disabled {
     height: 30px;
   }
   /***Sub Heading***/
-  .propertyHead3{
+  .propertyHead3 {
     margin-top: 20px;
     margin-bottom: 30px;
     display: grid;
@@ -1422,25 +1409,24 @@ button:disabled {
   }
 
   /**This Section Controls the property Page**/
-  .specs{
+  .specs {
     font-size: 14px;
   }
   .specs img {
     width: 20px;
   }
-  .listedItem{
+  .listedItem {
     font-size: 15px;
   }
   .PropertyCategory {
     height: 24px;
   }
   .propertyDetails {
-    
   }
   .propertyImages {
     width: 300px;
   }
-  
+
   .propertyImages img {
     width: 100%;
     height: 200px;
@@ -1488,7 +1474,7 @@ button:disabled {
     margin-top: -40px;
     margin-left: 4px;
   }
-  
+
   .Bed {
     margin-top: -35px;
     display: grid;
@@ -1848,7 +1834,7 @@ button:disabled {
     height: 40px;
     font-size: 13px;
   }
-  .heading{
+  .heading {
     text-align: center;
     height: 30px;
     font-size: 16px;
@@ -1863,50 +1849,77 @@ button:disabled {
     width: 90%;
     height: 69vh;
     gap: 20px;
-   }
-   
-   .notification-list {
-     overflow-y: auto;
-   }
-   
-   .notification-item {
+  }
+
+  .notification-list {
+    overflow-y: auto;
+  }
+
+  .notification-item {
     border-bottom: 1px solid gray;
-   }
-   
-   .notification-details {
-     position: absolute;
-     top: 15%;
-     right: 15px;
-     width: 90%;
-     height: 70%;
-     background-color: #666;
-     z-index: 3000;
-   }
-   
-   .notification-details p {
-     font-size: 15px;
-   }
-   
-   .notification-actions {
-     display: flex;
-     gap:5px;
-     font-size: 10px;
-     margin-bottom: 30px;
-   }
-   
-   .notification-actions button {
+  }
+
+  .notification-details {
+    position: absolute;
+    top: 15%;
+    right: 15px;
+    width: 90%;
+    height: 70%;
+    background-color: #666;
+    z-index: 3000;
+  }
+
+  .notification-details p {
+    font-size: 15px;
+  }
+
+  .notification-actions {
+    display: flex;
+    gap: 5px;
+    font-size: 10px;
+    margin-bottom: 30px;
+  }
+
+  .notification-actions button {
     height: 30px;
     font-size: 10px;
-   }
-   
-   .notification-actions button:first-child {
-     
-   }
-   
-   .notification-actions .close-btn {
-     
-   }
-   
-   
-}
+  }
 
+  .notification-actions button:first-child {
+  }
+
+  .notification-actions .close-btn {
+  }
+
+  /**Search**/
+  .multi-category-search {
+    width: 100%;
+  }
+  .category-buttons {
+    width: 100%;
+  }
+  .category-buttons button {
+    width: 10%;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .category-buttons button:hover {
+    background-color: var(--fith-background-color);
+    color: var(--primary-text-color);
+    border: 2px solid gray;
+  }
+  .search-form {
+    width: 100%;
+  }
+  .search-fields {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 30%;
+  }
+  .search-form button {
+    width: 10%;
+  }
+}
