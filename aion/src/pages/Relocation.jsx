@@ -309,10 +309,10 @@ function Relocation() {
             <div className="moving">
               <div className="moving1">
                 {[
-                  "National Moving",
-                  "Home Moving",
-                  "Office Moving",
-                  "Storage Moving",
+                  "Move National",
+                  "Move Home",
+                  "Move Office",
+                  "Move Store",
                   "Other",
                 ].map((type) => (
                   <div
@@ -420,7 +420,7 @@ function Relocation() {
                       <label htmlFor="pet-select">Do you have a pet?</label>
                       <select
                         id="pet-select"
-                        className="custom-select"
+                        className="textRelocation"
                         value={pet}
                         onChange={(e) => setPet(e.target.value)}
                       >
