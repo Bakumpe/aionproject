@@ -1865,8 +1865,10 @@ button:disabled {
     right: 15px;
     width: 90%;
     height: 70%;
-    background-color: #666;
+    background-color: #5f5d5d;
     z-index: 3000;
+    box-shadow: 5px 5px 5px #cdc8c8;
+    overflow: hidden;
   }
 
   .notification-details p {
