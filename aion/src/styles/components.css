@@ -1049,6 +1049,13 @@
 }
 
 .notification-actions button {
+  border: none;
+  background-color: var(--third-background-color);
+  color: var(--forth-text-color);
+  cursor: pointer;
+  padding: 5px;
+  font-size: 14px;
+  border-radius: 5px;
 }
 
 .notification-actions button:first-child {
