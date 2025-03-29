@@ -1,7 +1,3 @@
-Here’s a further refined version of your README.md. I’ve streamlined repetitive sections, improved consistency, enhanced the visual structure, and polished the language for clarity and professionalism. I’ve also removed redundancy (e.g., the duplicate "AionProject" section), fixed minor errors (like "intsall" → "install"), and ensured a cohesive flow. Placeholder `{__test_framework__}` has been replaced with a suggestion, assuming a common framework like Jest—feel free to adjust it.
-
----
-
 <div id="top">
 
 <div align="center">
