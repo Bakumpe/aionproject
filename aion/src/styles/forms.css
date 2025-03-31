@@ -30,7 +30,7 @@
     color: rgba(217, 220, 226, 0.8);
   }
   .errorMessage{
-    font-size: 25px;
+    font-size: 20px;
     color: rgb(164, 22, 22);
     z-index: 100;
     
@@ -38,7 +38,7 @@
 
   /**The Login / Registration Form**/
   form h1{
-    font-size: 50px;
+    font-size: 30px;
     z-index: 100;
     color: rgba(217, 220, 226, 0.8);
   }
@@ -46,7 +46,7 @@
     width: 60%;
     background-color: rgba(83, 103, 121, 0.7);
     padding: 20px; /* Add some padding for inner spacing */
-    margin: 50px auto; /* Center the form and add vertical space */
+    margin: 25px auto; /* Center the form and add vertical space */
     border-radius: 10px; /* Smooth the corners */
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4); /* Add a shadow to create the floating effect */
     color: white; /* Text color for better contrast */
@@ -54,15 +54,14 @@
   
   .formLogin input {
     width: 100%;
-    padding: 10px;
-    margin: 10px 0;
+    height: 30px;
     border: none;
     border-radius: 5px;
     background-color: rgba(255, 255, 255, 0.8); /* Add transparency to input background */
   }
   .textInput{
-    width: 70%;
-    font-size: 20px;
+    width: 40%;
+    font-size: 16px;
   }
   .group1 {
     display: flex;

@@ -104,7 +104,7 @@ Set up the project from source:
    ```sh
    npm install
    ```
-5. **Navigate to the backend aionbacked file:**
+5. **Navigate to the backend aionbackend file:**
     ```sh
     cd aionbackend
     ```

@@ -34,7 +34,7 @@ const SubHeading = () => {
         </Link>
 
         <Link
-          to={"/"}
+          to={"/apartment"}
           onClick={() => setCategory("Apartment")}
           className="apartment"
         >
@@ -50,7 +50,7 @@ const SubHeading = () => {
         </Link>
 
         <Link
-          to={"/"}
+          to={"/villa"}
           onClick={() => setCategory("Villa")}
           className="apartment"
         >
@@ -58,7 +58,7 @@ const SubHeading = () => {
         </Link>
 
         <Link
-          to={"/"}
+          to={"/office"}
           onClick={() => setCategory("Office")}
           className="apartment"
         >
@@ -66,7 +66,7 @@ const SubHeading = () => {
         </Link>
 
         <Link
-          to={"/"}
+          to={"/shop"}
           onClick={() => setCategory("Shops")}
           className="apartment"
         >
@@ -74,16 +74,16 @@ const SubHeading = () => {
         </Link>
 
         <Link
-          to={"/"}
-          onClick={() => setCategory("ArcadeSpace")}
+          to={"/arcade"}
+          onClick={() => setCategory("Arcade Space")}
           className="apartment"
         >
           Arcade Space
         </Link>
 
         <Link
-          to={"/"}
-          onClick={() => setCategory("ArcadeSpace")}
+          to={"/standalone"}
+          onClick={() => setCategory("Stand Alone")}
           className="apartment"
         >
           Stand Alone
@@ -91,23 +91,23 @@ const SubHeading = () => {
 
         <Link
           to={"/services"}
-          onClick={() => setCategory("ArcadeSpace")}
+          onClick={() => setCategory("Services")}
           className="apartment"
         >
           Services
         </Link>
 
         <Link
-          to={"/"}
-          onClick={() => setCategory("ArcadeSpace")}
+          to={"/services"}
+          onClick={() => setCategory("Service Providers")}
           className="apartment"
         >
           Service Providers
         </Link>
 
         <Link
-          to={"/"}
-          onClick={() => setCategory("ArcadeSpace")}
+          to={"/standalone"}
+          onClick={() => setCategory("Stand Alone")}
           className="apartment"
         >
           Stand Alone

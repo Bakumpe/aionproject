@@ -37,6 +37,12 @@ import { ServiceProvider } from "./context/ServiceContext";
 import ServicePage from "./pages/ServicePage";
 import MultiCategorySearch from "./components/Search";
 import SearchProperty from "./components/SearchProperty";
+import Apartment from "./recommendedPages/Apartment";
+import Villa from "./recommendedPages/Villa";
+import Office from "./recommendedPages/Office";
+import Shop from "./recommendedPages/Shop";
+import ArcadeSpace from "./recommendedPages/ArcadeSpace";
+import StandAlone from "./recommendedPages/StandAlone";
 
 function App() {
   return (
@@ -78,6 +84,12 @@ function App() {
                   element={<PropertySettings />}
                 />
                 <Route path="/recommendations" element={<Recommendations />} />
+                <Route path="/apartment" element={<Apartment />} />
+                <Route path="/villa" element={<Villa />} />
+                <Route path="/office" element={<Office />} />
+                <Route path="/shop" element={<Shop />} />
+                <Route path="/arcade" element={<ArcadeSpace />} />
+                <Route path="/standalone" element={<StandAlone />} />
               </Route>
             </Routes>
             </ServiceProvider>

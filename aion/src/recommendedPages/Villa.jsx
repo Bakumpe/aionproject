@@ -5,9 +5,9 @@ import HomeProperty from "../components/HomeProperty";
 import { Link } from "react-router-dom";
 import { PropertyContext } from "../context/PropertyContext";
 
-/****This component handles Ezy Stay houses */
+/****This component handles Villa houses */
 
-function ECEG() {
+function Villa() {
   const { properties, fetchProperties, loading } = useContext(PropertyContext);
 
   useEffect(() => {
@@ -16,7 +16,7 @@ function ECEG() {
 
   // Filter properties to only include "ezy-stay"
   const ezyStayProperties = properties.filter(
-    (property) => property?.propertyCategory === "ezy-stay"
+    (property) => property?.propertyCategory === "villa"
   );
 
   return (
@@ -27,7 +27,7 @@ function ECEG() {
         </div>
         <div className="body">
           <div className="bodyTitle">
-            <p>Ezy Stay</p>
+            <p>Villa</p>
             <div>
               <Link to="/search" className="searchme">
                 <div>Search For Properties</div>
@@ -50,4 +50,6 @@ function ECEG() {
   );
 }
 
-export default ECEG;
+export default Villa;
+// This code is a React component that displays a list of properties filtered by the "Villa" category. It uses the PropertyContext to fetch and manage property data, and includes a header and a WhatsApp component for user interaction.
+// The component uses the useEffect hook to fetch properties when it mounts, and conditionally renders a loading spinner or the list of properties based on the loading state. The component also includes a link to a search page for users to find other properties.
