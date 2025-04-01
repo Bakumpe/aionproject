@@ -18,7 +18,7 @@ const SubHeading = () => {
       <div className="propertyHead2">Recommended For You</div>
       <div className="propertyHead3">
         <Link
-          to={"/"}
+          to={"/viewall"}
           onClick={() => setCategory("view-all")}
           className="viewAll"
         >

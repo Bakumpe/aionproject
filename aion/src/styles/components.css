@@ -1213,6 +1213,21 @@ button:disabled {
   background: #6c757d;
   cursor: not-allowed;
 }
+/**View All**/
+.viewallSection{
+  margin-top: 50px;
+}
+.viewallSection-1{
+  margin-bottom: -30px;
+}
+.viewallCarList{
+  display: grid;
+  grid-template-columns: 32% 32% 32%;  
+  justify-content: space-between;
+}
+.viewallContentContainer{
+  margin-bottom: 50px;
+}
 /**Media Querry**/
 .mediaquery {
 }
@@ -1942,4 +1957,65 @@ button:disabled {
   .search-form button {
     width: 10%;
   }
+
+  /**View All**/
+  .properties {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  }
+  .propertyHead1 {
+    padding: 10px;
+    font-size: 20px;
+    color: rgb(241, 58, 58);
+  }
+  .propertyHead2 {
+    font-size: 30px;
+    color: rgb(68, 70, 71);
+  }
+  
+  .viewAll {
+    background: rgb(201, 47, 47);
+    color: aliceblue;
+    padding: 5px;
+    border-radius: 5px;
+    text-decoration: none;
+    color: aliceblue;
+  }
+  .viewAll:active,
+  .viewAll:focus {
+    color: rgb(210, 203, 203);
+  }
+  .apartment {
+    text-align: center;
+    background: rgb(237, 240, 242);
+    padding: 5px;
+    border-radius: 5px;
+    text-decoration: none;
+    color: rgb(31, 28, 28);
+  }
+  .apartment:active,
+  .apartment:focus {
+    background: rgb(47, 201, 80);
+    color: aliceblue;
+  }
+
+  /**View All**/
+.viewallSection{
+  margin-top: 30px;
+}
+.viewallSection-1{
+  margin-bottom: -30px;
+}
+.viewallCarList{
+  display: grid;
+  grid-template-columns: auto;  
+  justify-content: space-between;
+  gap: 10px ;
+}
+.viewallContentContainer{
+  margin-bottom: 50px;
+}
+  
 }

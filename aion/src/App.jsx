@@ -42,7 +42,8 @@ import Villa from "./recommendedPages/Villa";
 import Office from "./recommendedPages/Office";
 import Shop from "./recommendedPages/Shop";
 import ArcadeSpace from "./recommendedPages/ArcadeSpace";
-import StandAlone from "./recommendedPages/StandAlone";
+import StandAlone from "./recommendedPages/ViewAll";
+import ViewAll from "./recommendedPages/ViewAll";
 
 function App() {
   return (
@@ -90,6 +91,7 @@ function App() {
                 <Route path="/shop" element={<Shop />} />
                 <Route path="/arcade" element={<ArcadeSpace />} />
                 <Route path="/standalone" element={<StandAlone />} />
+                <Route path="/viewall" element={<ViewAll />} />
               </Route>
             </Routes>
             </ServiceProvider>
