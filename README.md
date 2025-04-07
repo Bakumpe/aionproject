@@ -2,14 +2,14 @@
 
 <div align="center">
 
-# AIONPROJECT
+# Aion
 
 *Empowering seamless connections for a better tomorrow.*
 
 <!-- BADGES -->
-<img src="https://img.shields.io/github/last-commit/Bakumpe/aionproject?style=flat&logo=git&logoColor=white&color=0080ff" alt="last-commit">
-<img src="https://img.shields.io/github/languages/top/Bakumpe/aionproject?style=flat&color=0080ff" alt="repo-top-language">
-<img src="https://img.shields.io/github/languages/count/Bakumpe/aionproject?style=flat&color=0080ff" alt="repo-language-count">
+<img src="https://img.shields.io/github/last-commit/Bakumpe/Aion?style=flat&logo=git&logoColor=white&color=0080ff" alt="last-commit">
+<img src="https://img.shields.io/github/languages/top/Bakumpe/Aion?style=flat&color=0080ff" alt="repo-top-language">
+<img src="https://img.shields.io/github/languages/count/Bakumpe/Aion?style=flat&color=0080ff" alt="repo-language-count">
 
 *Built with cutting-edge tools and technologies:*
 
@@ -44,7 +44,7 @@
 
 ## Overview
 
-AionProject is a modern web application designed to transform how businesses connect with clients. Bridging real estate owners, car dealers, transport agencies, and service providers, it delivers a seamless platform that enhances usability, strengthens relationships, and fuels growth in a competitive world.
+Aion is a modern web application designed to transform how businesses connect with clients. Bridging real estate owners, car dealers, transport agencies, and service providers, it delivers a seamless platform that enhances usability, strengthens relationships, and fuels growth in a competitive world.
 
 ### Key Features
 
@@ -68,7 +68,7 @@ AionProject is a modern web application designed to transform how businesses con
 
 ### Our Mission
 
-AionProject empowers businesses by fostering connections, streamlining operations, and elevating client interactions. We’re committed to helping you thrive—tell us what excites you about this project!
+Aion empowers businesses by fostering connections, streamlining operations, and elevating client interactions.
 
 ---
 
@@ -76,7 +76,7 @@ AionProject empowers businesses by fostering connections, streamlining operation
 
 ### Prerequisites
 
-To run AionProject, you’ll need:
+To run Aion, you’ll need:
 
 - **Programming Language:** JavaScript  
 - **Package Manager:** npm  
@@ -87,12 +87,12 @@ Set up the project from source:
 
 1. **Clone the repository:**
    ```sh
-   git clone https://github.com/Bakumpe/aionproject
+   git clone https://github.com/Bakumpe/Aion
    ```
 
 2. **Navigate to the project directory:**
    ```sh
-   cd aionproject
+   cd Aion
    ```
 
 3. **Navigate to the frontend aion file:**
@@ -123,7 +123,7 @@ npm start
 
 ### Testing
 
-AionProject uses [Jest](https://jestjs.io/) for testing. Run the test suite with:
+Aion uses [Jest](https://jestjs.io/) for testing. Run the test suite with:
 ```sh
 npm test
 ```
