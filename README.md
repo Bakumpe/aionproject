@@ -121,13 +121,6 @@ Launch the application with:
 npm start
 ```
 
-### Testing
-
-Aion uses [Jest](https://jestjs.io/) for testing. Run the test suite with:
-```sh
-npm test
-```
-
 ---
 
 <div align="left"><a href="#top">⬆ Back to Top</a></div>
