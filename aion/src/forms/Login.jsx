@@ -1,94 +1,72 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import { Button, TextInput } from "@mantine/core";
 import { useNavigate, useLocation } from "react-router-dom";
 import { UserContext } from "../context/UserContext";
 import config from "../.config";
 
 function Login() {
-  const { initializeUser } = useContext(UserContext);
+  const { initializeUser, user, isLoading, logout } = useContext(UserContext);
   const [formType, setFormType] = useState("login");
   const [message, setMessage] = useState(null);
-  const [isLoading, setIsLoading] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
 
   const from = location.state?.from?.pathname || "/";
 
+  useEffect(() => {
+    if (user && !isLoading) {
+      navigate(from, { replace: true });
+    }
+  }, [user, isLoading, navigate, from]);
+
   const register = async (event) => {
     event.preventDefault();
     setMessage(null);
-    setIsLoading(true);
+    setIsSubmitting(true);
     const formData = new FormData(event.target);
     const jsonData = Object.fromEntries(formData);
 
-    const reqOptions = {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(jsonData),
-    };
-
     try {
-      const req = await fetch(
-        `${config.apiUrl}/api/auth/local/register`,
-        reqOptions
-      );
+      const req = await fetch(`${config.apiUrl}/api/auth/local/register`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(jsonData),
+      });
       const res = await req.json();
 
       if (res.error) {
         setMessage(res.error.message);
-        setIsLoading(false);
         return;
       }
 
       if (res.jwt && res.user) {
         setMessage("Successful Registration.");
         await initializeUser(jsonData.email, jsonData.password);
-        navigate(from, { replace: true });
       }
     } catch (error) {
-      alert("Request failed:", error);
       setMessage("An error occurred. Please try again.");
     } finally {
-      setIsLoading(false);
+      setIsSubmitting(false);
     }
   };
 
   const login = async (event) => {
     event.preventDefault();
     setMessage(null);
-    setIsLoading(true);
+    setIsSubmitting(true);
     const formData = new FormData(event.target);
     const jsonData = Object.fromEntries(formData);
 
-    const reqOptions = {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(jsonData),
-    };
-
     try {
-      const req = await fetch(`${config.apiUrl}/api/auth/local`, reqOptions);
-      const res = await req.json();
-
-      if (res.error) {
-        setMessage(res.error.message);
-        setIsLoading(false);
-        return;
-      }
-
-      if (res.jwt && res.user) {
-        setMessage("Successful Login.");
-        await initializeUser(jsonData.identifier, jsonData.password);
-        navigate(from, { replace: true });
-      }
+      await initializeUser(jsonData.identifier, jsonData.password);
+      setMessage("Successful Login.");
     } catch (error) {
       setMessage("An error occurred. Please try again.");
     } finally {
-      setIsLoading(false);
+      setIsSubmitting(false);
     }
   };
 
@@ -96,6 +74,10 @@ function Login() {
     setFormType((prevType) => (prevType === "login" ? "register" : "login"));
     setMessage(null);
   };
+
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
 
   return (
     <div className="form">
@@ -105,14 +87,13 @@ function Login() {
       >
         <h1>{formType === "login" ? "Login" : "Register"}</h1>
         {formType === "register" && (
-          <>
-            <TextInput
-              label="Username"
-              placeholder="Your username"
-              name="username"
-              className="textInput"
-            />
-          </>
+          <TextInput
+            label="Username"
+            placeholder="Your username"
+            name="username"
+            className="textInput"
+            required
+          />
         )}
         <TextInput
           type="email"
@@ -120,6 +101,7 @@ function Login() {
           placeholder="your@email.com"
           name={formType === "login" ? "identifier" : "email"}
           className="textInput"
+          required
         />
         <br />
         <TextInput
@@ -128,19 +110,18 @@ function Login() {
           placeholder="Your password"
           name="password"
           className="textInput"
+          required
         />
         <br />
         <div className="group1">
-          <Button type="submit" disabled={isLoading}>
+          <Button type="submit" disabled={isSubmitting}>
             {formType === "login" ? "Login" : "Register"}
           </Button>
-          <Button variant="light" onClick={toggleFormType} disabled={isLoading}>
+          <Button variant="light" onClick={toggleFormType} disabled={isSubmitting}>
             {formType === "login" ? "Register" : "Login"}
           </Button>
         </div>
-        {isLoading && (
-          <div className="spinner" />
-        )}
+        {isSubmitting && <div className="spinner" />}
         {message && <p className="errorMessage">{message}</p>}
       </form>
     </div>
