@@ -426,6 +426,7 @@
   margin-top: 50px;
 }
 .propertyImages {
+  width: 100%;
 }
 
 .propertyImages img {
@@ -1257,9 +1258,10 @@ ul {
   padding: 0;
 }
 li {
-  width: 75%;
+  width: 90%;
   background: #fff;
   margin-bottom: 15px;
+  margin-left: 20px;
   padding: 15px;
   border-radius: 10px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
@@ -1519,7 +1521,7 @@ li span {
   .propertyDetails {
   }
   .propertyImages {
-    width: 300px;
+    width: 100%;
   }
 
   .propertyImages img {
