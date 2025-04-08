@@ -117,10 +117,21 @@ Set up the project from source:
 ### Usage
 
 Launch the application with:
-```sh
-npm start
-```
 
+***Check the aion frontend file in the src file look for:**
+    ```sh
+    .config
+    ```
+then check for the active url.
+
+**Navigate to the frontend aion file:**
+    ```sh
+    npm run dev
+    ```
+**Navigate to the backend aionbackend file:**
+    ```sh
+    npm run develop
+    ```
 ---
 
 <div align="left"><a href="#top">⬆ Back to Top</a></div>
