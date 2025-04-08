@@ -87,7 +87,7 @@ Set up the project from source:
 
 1. **Clone the repository:**
    ```sh
-   git clone https://github.com/Bakumpe/Aion
+   git clone https://github.com/Bakumpe/aionproject
    ```
 
 2. **Navigate to the project directory:**
