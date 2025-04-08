@@ -1266,20 +1266,21 @@ li {
   border-radius: 10px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
   transition: transform 0.2s ease;
+  text-transform: capitalize;
 }
 li:hover {
   transform: scale(1.02);
 }
 strong {
   color: #2a9d8f;
-  font-size: 1.2em;
+  font-size: 1em;
   display: block;
-  margin-bottom: 5px;
+  margin-bottom: 2px;
   position: relative;
 }
 strong::before {
   content: "✨ ";
-  font-size: 1.2em;
+  font-size: 1em;
 }
 li span {
   color: #264653;
@@ -1293,8 +1294,11 @@ li span {
   .main-nav {
     display: flex;
     flex-direction: column;
-    padding: 5px;
-    font-size: 15px;
+    padding: 1px;
+    font-size: 10px;
+    height: 100vh;
+    width: 100%;
+    overflow-y: auto;
   }
   /***Sub Heading****/
   .propertyHead3 {
@@ -1392,6 +1396,60 @@ li span {
     width: 200px;
     height: 30px;
     border: none;
+  }
+
+  .termsAndConditions {
+    width: 100%;
+    margin: 10px auto;
+    padding: 15px;
+    background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  }
+  .termsAndConditions h2 {
+    font-size: 1.5em;
+    color: #ff6f61;
+    text-align: center;
+    font-family: "Comic Sans MS", cursive, sans-serif;
+    margin-bottom: 10px;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+  }
+  ul {
+    display: grid;
+    grid-template-columns: auto auto;
+    list-style: none;
+    padding: 0;
+  }
+  li {
+    width: 80%;
+    background: #fff;
+    margin-bottom: 15px;
+    margin-left: 2px;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    transition: transform 0.2s ease;
+    text-transform: capitalize;
+    font-size: 0.8em;
+  }
+  li:hover {
+    transform: scale(1.02);
+  }
+  strong {
+    color: #2a9d8f;
+    font-size: 1em;
+    display: block;
+    margin-bottom: 2px;
+    position: relative;
+  }
+  strong::before {
+    content: "✨ ";
+    font-size: 1em;
+  }
+  li span {
+    color: #264653;
+    line-height: 1.5;
+    font-family: "Arial", sans-serif;
   }
 }
 
@@ -1531,17 +1589,23 @@ li span {
   .myPropertyImages {
     margin-top: 5px;
     width: 100%;
-    display: flex; /* Horizontal layout */
+    /* display: flex; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     overflow-x: auto; /* Scroll if images overflow */
     gap: 10px; /* Optional: Space between images */
   }
 
   .myPropertyImages-1 {
     display: flex;
+    flex-direction: column;
+    align-items: center;
     flex-shrink: 0;
     width: 100%;
     max-width: 300px; /* Adjust based on your design */
     overflow: hidden; /* Contain scaled image */
+
     overflow-x: auto;
   }
 
