@@ -118,17 +118,17 @@ Set up the project from source:
 
 Launch the application with:
 
-***Check the aion frontend file in the src file look for:**
+1. ***Check the aion frontend file in the src file look for:**
     ```sh
     .config
     ```
 then check for the active url.
 
-**Navigate to the frontend aion file:**
+1. **Navigate to the frontend aion file:**
     ```sh
     npm run dev
     ```
-**Navigate to the backend aionbackend file:**
+2. **Navigate to the backend aionbackend file:**
     ```sh
     npm run develop
     ```
