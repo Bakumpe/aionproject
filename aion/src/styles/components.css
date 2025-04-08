@@ -2167,17 +2167,33 @@ li span {
     margin-bottom: 50px;
   }
 
+  .termsAndConditions {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 90%;
+    margin: 10px auto;
+    padding: 20px;
+    background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  }
   .termsAndConditions h2 {
     font-size: 1.2em;
-    margin-bottom: 10px;
+    margin-bottom: 5px;
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
   }
   ul {
     display: flex;
     flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    grid-template-columns: auto;
     list-style: none;
     padding: 0;
   }
+  
   strong {
     font-size: 1em;
   }
