@@ -448,6 +448,7 @@ export interface ApiCareCare extends Struct.CollectionTypeSchema {
 export interface ApiClientClient extends Struct.CollectionTypeSchema {
   collectionName: 'clients';
   info: {
+    description: '';
     displayName: 'Client';
     pluralName: 'clients';
     singularName: 'client';
@@ -467,7 +468,6 @@ export interface ApiClientClient extends Struct.CollectionTypeSchema {
     > &
       Schema.Attribute.Private;
     name: Schema.Attribute.String;
-    phone: Schema.Attribute.BigInteger;
     publishedAt: Schema.Attribute.DateTime;
     request: Schema.Attribute.Relation<'oneToOne', 'api::request.request'>;
     updatedAt: Schema.Attribute.DateTime;

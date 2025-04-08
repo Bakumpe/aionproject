@@ -169,7 +169,7 @@ function Relocation() {
           data: {
             name: user.username,
             email: user.email,
-            phone: user.phone || "",
+            // phone: user.phone || "",
           },
         },
         {
@@ -254,7 +254,7 @@ function Relocation() {
         },
       };
 
-      console.log("Submitting payload:", JSON.stringify(requestData, null, 2));
+      // console.log("Submitting payload:", JSON.stringify(requestData, null, 2));
 
       const response = await axios.post(
         `${config.apiUrl}/api/requests`,

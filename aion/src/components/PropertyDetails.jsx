@@ -173,17 +173,81 @@ function PropertyDetails() {
           <div className="termsAndConditions">
             <h2>Terms and Conditions</h2>
             <ul>
-              <li>Implement Terms and Condition Logic here</li>
+              <li>
+                <strong>Compliance with Ugandan Land Laws:</strong> All tenancy
+                agreements shall adhere to the Land Act (Cap 227) of Uganda. The
+                landlord retains ownership rights, and tenants must respect
+                leasehold conditions as verified by the Ministry of Lands,
+                Housing, and Urban Development.
+              </li>
+              <li>
+                <strong>Compliance with Landlord’s Terms:</strong> Tenants must
+                strictly adhere to the landlord’s rules as outlined in the
+                tenancy agreement, including restrictions on subletting,
+                property modifications, or use for unlawful purposes, per the
+                Ugandan Contract Act (Cap 73).
+              </li>
+              <li>
+                <strong>Timely Payment:</strong> Rent shall be paid in Ugandan
+                Shillings (UGX) on or before the agreed due date (e.g., 5th of
+                each month). Late payments incur a penalty of 5% of the monthly
+                rent or the statutory interest rate under Ugandan law, whichever
+                is lower.
+              </li>
+              <li>
+                <strong>Cleanliness of the House:</strong> Tenants are
+                responsible for maintaining the interior cleanliness of the
+                property, including regular cleaning of floors, walls, and
+                fixtures. Failure to comply may result in deductions from the
+                security deposit upon exit.
+              </li>
+              <li>
+                <strong>Cleanliness of the Compound:</strong> Tenants must keep
+                the compound tidy, including proper disposal of waste and upkeep
+                of any shared gardens or pathways, in line with municipal
+                by-laws and landlord instructions.
+              </li>
+              <li>
+                <strong>Security of the Property:</strong> Tenants shall ensure
+                all doors, windows, and gates are locked when the property is
+                unoccupied. The landlord is not liable for losses due to tenant
+                negligence in securing the premises.
+              </li>
+              <li>
+                <strong>Vigilance:</strong> Tenants must remain vigilant and
+                report any suspicious activities or maintenance issues (e.g.,
+                structural damage, trespassing) to the landlord within 48 hours
+                to ensure the safety and integrity of the property.
+              </li>
+              <li>
+                <strong>Environmental Compliance:</strong> Tenants must comply
+                with the National Environment Act (2019) by avoiding activities
+                that harm the environment (e.g., illegal waste dumping) on the
+                property or its surroundings.
+              </li>
+              <li>
+                <strong>Termination Clause:</strong> The landlord may terminate
+                the tenancy with 30 days’ notice for breach of these terms
+                (e.g., non-payment, uncleanliness), as per the Ugandan Contract
+                Act. Tenants must vacate in an orderly manner, leaving the
+                property clean.
+              </li>
+              <li>
+                <strong>Dispute Resolution:</strong> Disputes between landlord
+                and tenant shall be resolved through mediation or arbitration in
+                Uganda, per the Arbitration and Conciliation Act (Cap 4), before
+                escalating to courts with jurisdiction in Uganda.
+              </li>
             </ul>
           </div>
 
-          <div className="agreement">
+          {/* <div className="agreement">
             <h2>Renting or Buying Agreement</h2>
             <p>By proceeding to checkout, you agree to the following:</p>
             <ul>
               <li>Implement Renting or Buying Agreement here</li>
             </ul>
-          </div>
+          </div> */}
 
           <div className="checkout">
             <div className="aboutProperty">

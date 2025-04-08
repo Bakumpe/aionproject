@@ -1237,6 +1237,13 @@ button:disabled {
 .mediaquery {
 }
 @media screen and (max-width: 768px) {
+  
+  .main-nav {
+    display: flex;
+    flex-direction: column;
+    padding: 5px;
+    font-size: 15px;
+  }
   /***Sub Heading****/
   .propertyHead3 {
     grid-template-columns: auto auto auto auto;
@@ -1325,6 +1332,14 @@ button:disabled {
   .aboutProperty-1 {
     font-size: 13px;
     padding: 10px;
+  }
+
+  .textRelocation {
+    display: flex;
+    flex-direction: column;
+    width: 200px;
+    height: 30px;
+    border: none;
   }
 }
 
