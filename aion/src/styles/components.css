@@ -398,7 +398,7 @@
 }
 
 /**Profile **/
-.name{
+.name {
   display: flex;
   gap: 10px;
 }
@@ -1219,25 +1219,75 @@ button:disabled {
   cursor: not-allowed;
 }
 /**View All**/
-.viewallSection{
+.viewallSection {
   margin-top: 50px;
 }
-.viewallSection-1{
+.viewallSection-1 {
   margin-bottom: -30px;
 }
-.viewallCarList{
+.viewallCarList {
   display: grid;
-  grid-template-columns: 32% 32% 32%;  
+  grid-template-columns: 32% 32% 32%;
   justify-content: space-between;
 }
-.viewallContentContainer{
+.viewallContentContainer {
   margin-bottom: 50px;
+}
+
+.termsAndConditions {
+  width: 100%;
+  margin: 20px auto;
+  padding: 20px;
+  background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
+  border-radius: 15px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+.termsAndConditions h2 {
+  font-size: 2.5em;
+  color: #ff6f61;
+  text-align: center;
+  font-family: "Comic Sans MS", cursive, sans-serif;
+  margin-bottom: 20px;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+}
+ul {
+  display: grid;
+  grid-template-columns: auto auto;
+  list-style: none;
+  padding: 0;
+}
+li {
+  width: 75%;
+  background: #fff;
+  margin-bottom: 15px;
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+  transition: transform 0.2s ease;
+}
+li:hover {
+  transform: scale(1.02);
+}
+strong {
+  color: #2a9d8f;
+  font-size: 1.2em;
+  display: block;
+  margin-bottom: 5px;
+  position: relative;
+}
+strong::before {
+  content: "✨ ";
+  font-size: 1.2em;
+}
+li span {
+  color: #264653;
+  line-height: 1.5;
+  font-family: "Arial", sans-serif;
 }
 /**Media Querry**/
 .mediaquery {
 }
 @media screen and (max-width: 768px) {
-  
   .main-nav {
     display: flex;
     flex-direction: column;
@@ -1983,7 +2033,8 @@ button:disabled {
     display: flex;
     flex-direction: column;
     align-items: center;
-    font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+    font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS",
+      sans-serif;
   }
   .propertyHead1 {
     padding: 10px;
@@ -1994,7 +2045,7 @@ button:disabled {
     font-size: 30px;
     color: rgb(68, 70, 71);
   }
-  
+
   .viewAll {
     background: rgb(201, 47, 47);
     color: aliceblue;
@@ -2024,7 +2075,7 @@ button:disabled {
   .spinner {
     display: inline-block;
     width: 20px;
-    height: 20px; 
+    height: 20px;
     border: 4px solid #f3f3f3;
     border-top: 4px solid #3498db;
     border-radius: 50%;
@@ -2034,20 +2085,34 @@ button:disabled {
   }
 
   /**View All**/
-.viewallSection{
-  margin-top: 30px;
-}
-.viewallSection-1{
-  margin-bottom: -30px;
-}
-.viewallCarList{
-  display: grid;
-  grid-template-columns: auto;  
-  justify-content: space-between;
-  gap: 10px ;
-}
-.viewallContentContainer{
-  margin-bottom: 50px;
-}
-  
+  .viewallSection {
+    margin-top: 30px;
+  }
+  .viewallSection-1 {
+    margin-bottom: -30px;
+  }
+  .viewallCarList {
+    display: grid;
+    grid-template-columns: auto;
+    justify-content: space-between;
+    gap: 10px;
+  }
+  .viewallContentContainer {
+    margin-bottom: 50px;
+  }
+
+  .termsAndConditions h2 {
+    font-size: 1.2em;
+    margin-bottom: 10px;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+  }
+  ul {
+    display: flex;
+    flex-direction: column;
+    list-style: none;
+    padding: 0;
+  }
+  strong {
+    font-size: 1em;
+  }
 }
