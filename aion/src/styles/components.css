@@ -1543,7 +1543,7 @@ li span {
   /**Home Section PropertyCard**/
   .propertyListing {
     margin-top: 55px;
-    margin-right: 40px;
+    margin-right: 5px;
     display: flex;
     flex-direction: column;
     align-items: center;
