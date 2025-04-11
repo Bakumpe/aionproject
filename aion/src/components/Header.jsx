@@ -12,25 +12,22 @@ import {
   Menu,
   X,
   Car,
-  FanIcon,
   Combine,
   ServerIcon,
   Phone,
   Move,
-  Search,
-  Server,
-  Fingerprint,
   MessageCircle,
 } from "lucide-react";
 
 const Header = () => {
-  const { user } = useContext(UserContext);
+  const { user, logout } = useContext(UserContext); // Added logout from UserContext
   const navigate = useNavigate();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const handleLogout = () => {
-    localStorage.clear();
-    navigate("/loginRegister");
+    logout(); // Call UserContext logout to clear cookie and state
+    navigate("/loginRegister", { replace: true }); // Navigate to login page
+    setIsMobileMenuOpen(false); // Close mobile menu on logout
   };
 
   const toggleMenu = () => {
@@ -52,7 +49,7 @@ const Header = () => {
         </Link>
         {/* Mobile Menu Button */}
         <div className="mobile-menu-button">
-          <button onClick={toggleMenu}>
+          <button onClick={toggleMenu} aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}>
             {isMobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
           </button>
         </div>
@@ -84,13 +81,9 @@ const Header = () => {
           <Star className="icon" />
           Register Property
         </Link>
-        {/* <Link to="/ourServices" className="nav-link" onClick={closeMobileMenu}>
-          <MessageCircle className="icon" />
-          Notifications
-        </Link> */}
         <Link
           to="/profile"
-          state={{ activeSection: "Notifications" }} // Pass state to indicate Notifications
+          state={{ activeSection: "Notifications" }}
           className="nav-link"
           onClick={closeMobileMenu}
         >
@@ -102,23 +95,20 @@ const Header = () => {
           Customer Support
         </Link>
 
-        <div
-          className={`user-section ${isMobileMenuOpen ? "mobile-open" : ""}`}
-        >
+        <div className={`user-section ${isMobileMenuOpen ? "mobile-open" : ""}`}>
           {user ? (
             <div className="user-menu">
               <div className="myProfile">
-                <Link
-                  to="/profile"
-                  className="nav-link"
-                  onClick={closeMobileMenu}
-                >
+                <Link to="/profile" className="nav-link" onClick={closeMobileMenu}>
                   <UserCircle className="icon" />
                   {user.username}
                 </Link>
               </div>
-
-              <button onClick={handleLogout} className="logout-button">
+              <button
+                onClick={handleLogout}
+                className="logout-button"
+                aria-label="Log out"
+              >
                 <LogOut className="icon" />
                 Logout
               </button>
@@ -134,8 +124,6 @@ const Header = () => {
           )}
         </div>
       </nav>
-
-      {/* User Menu */}
     </header>
   );
 };

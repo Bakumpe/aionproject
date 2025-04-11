@@ -1,21 +1,21 @@
 import React, { createContext, useState, useEffect, useCallback } from "react";
 import axios from "axios";
-import Cookies from "js-cookie"; // Import js-cookie
+import Cookies from "js-cookie";
 import config from "../.config";
 
 export const UserContext = createContext();
 
 export const UserProvider = ({ children }) => {
   const [user, setUser] = useState(null);
-  const [token, setToken] = useState(Cookies.get("jwtToken")); // Get token from cookie
+  const [token, setToken] = useState(Cookies.get("jwtToken") || null); // Initialize as null if no token
   const [isLoading, setIsLoading] = useState(true);
 
   // Cookie options for security
   const cookieOptions = {
-    expires: 7, // Token expires in 7 days
-    secure: true, // Only send over HTTPS
-    httpOnly: true, // Prevent JavaScript access
-    sameSite: "strict", // Prevent CSRF
+    expires: 7, // 7 days expiry
+    secure: process.env.NODE_ENV === "production", // HTTPS only in production
+    sameSite: "strict", // CSRF protection
+    // Note: httpOnly cannot be set client-side with js-cookie; requires server-side handling
   };
 
   // Fetch token from API
@@ -28,14 +28,14 @@ export const UserProvider = ({ children }) => {
 
       if (response.status === 200 && response.data.jwt) {
         const jwtToken = response.data.jwt;
-        Cookies.set("jwtToken", jwtToken, cookieOptions); // Store in cookie
+        Cookies.set("jwtToken", jwtToken, cookieOptions);
         setToken(jwtToken);
         return jwtToken;
       }
       throw new Error("Authentication failed");
     } catch (error) {
       console.error("Authentication error:", error.message);
-      return null;
+      throw error; // Rethrow to allow caller to handle
     }
   }, []);
 
@@ -47,12 +47,14 @@ export const UserProvider = ({ children }) => {
           Authorization: `Bearer ${jwtToken}`,
         },
       });
-      setUser(response.data);
-      return response.data;
+      const userData = response.data;
+      setUser(userData);
+      return userData;
     } catch (error) {
       console.error("Error fetching user data:", error.message);
-      Cookies.remove("jwtToken"); // Remove invalid token
+      Cookies.remove("jwtToken");
       setToken(null);
+      setUser(null);
       return null;
     }
   }, []);
@@ -60,9 +62,14 @@ export const UserProvider = ({ children }) => {
   // Initialize user with credentials
   const initializeUser = useCallback(
     async (identifier, password) => {
-      const jwtToken = await fetchToken(identifier, password);
-      if (jwtToken) {
-        await fetchUserData(jwtToken);
+      setIsLoading(true);
+      try {
+        const jwtToken = await fetchToken(identifier, password);
+        if (jwtToken) {
+          await fetchUserData(jwtToken);
+        }
+      } finally {
+        setIsLoading(false);
       }
     },
     [fetchToken, fetchUserData]
@@ -70,27 +77,28 @@ export const UserProvider = ({ children }) => {
 
   // Logout function
   const logout = useCallback(() => {
-    Cookies.remove("jwtToken"); // Remove token from cookie
+    Cookies.remove("jwtToken");
     setToken(null);
     setUser(null);
+    setIsLoading(false);
   }, []);
 
-  // Check for existing token on mount
+  // Verify token on mount
   useEffect(() => {
     const verifyStoredToken = async () => {
       const storedToken = Cookies.get("jwtToken");
-      if (storedToken && !user) {
+      if (storedToken && !user && !token) {
         setToken(storedToken);
         const userData = await fetchUserData(storedToken);
         if (!userData) {
-          logout(); // Clear invalid token
+          logout();
         }
       }
       setIsLoading(false);
     };
 
     verifyStoredToken();
-  }, [fetchUserData, logout]);
+  }, [fetchUserData, logout, user, token]);
 
   const contextValue = {
     user,

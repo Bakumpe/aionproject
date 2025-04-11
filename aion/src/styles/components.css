@@ -747,6 +747,7 @@
   color: var(--forth-text-color);
 }
 .movingDetails {
+  padding: 10px;
   margin-bottom: 50px;
   display: flex;
   flex-direction: column;
@@ -775,7 +776,7 @@
   color: var(--primary-textcolor-color);
   width: 100%;
 }
-.myRelocationButton {
+.relocationButton {
   display: flex;
   align-items: center;
   justify-content: center;

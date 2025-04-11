@@ -5,7 +5,7 @@ import { UserContext } from "../context/UserContext";
 import config from "../.config";
 
 function Login() {
-  const { initializeUser, user, isLoading, logout } = useContext(UserContext);
+  const { initializeUser, user, token, isLoading, logout } = useContext(UserContext);
   const [formType, setFormType] = useState("login");
   const [message, setMessage] = useState(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -14,11 +14,12 @@ function Login() {
 
   const from = location.state?.from?.pathname || "/";
 
+  // Redirect if user is authenticated
   useEffect(() => {
-    if (user && !isLoading) {
+    if (user && token && !isLoading) {
       navigate(from, { replace: true });
     }
-  }, [user, isLoading, navigate, from]);
+  }, [user, token, isLoading, navigate, from]);
 
   const register = async (event) => {
     event.preventDefault();
@@ -28,26 +29,29 @@ function Login() {
     const jsonData = Object.fromEntries(formData);
 
     try {
-      const req = await fetch(`${config.apiUrl}/api/auth/local/register`, {
+      const response = await fetch(`${config.apiUrl}/api/auth/local/register`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify(jsonData),
       });
-      const res = await req.json();
+      const res = await response.json();
 
       if (res.error) {
-        setMessage(res.error.message);
+        setMessage(res.error.message || "Registration failed.");
         return;
       }
 
       if (res.jwt && res.user) {
-        setMessage("Successful Registration.");
         await initializeUser(jsonData.email, jsonData.password);
+        setMessage("Successful Registration.");
+      } else {
+        setMessage("Registration failed. Please try again.");
       }
     } catch (error) {
       setMessage("An error occurred. Please try again.");
+      console.error("Registration error:", error);
     } finally {
       setIsSubmitting(false);
     }
@@ -64,7 +68,8 @@ function Login() {
       await initializeUser(jsonData.identifier, jsonData.password);
       setMessage("Successful Login.");
     } catch (error) {
-      setMessage("An error occurred. Please try again.");
+      setMessage("Invalid credentials or server error. Please try again.");
+      console.error("Login error:", error);
     } finally {
       setIsSubmitting(false);
     }
@@ -75,8 +80,13 @@ function Login() {
     setMessage(null);
   };
 
+  // Show loading state while initializing user context
   if (isLoading) {
-    return <div>Loading...</div>;
+    return (
+      <div className="form">
+        <div className="spinner"></div>
+      </div>
+    );
   }
 
   return (
@@ -117,11 +127,15 @@ function Login() {
           <Button type="submit" disabled={isSubmitting}>
             {formType === "login" ? "Login" : "Register"}
           </Button>
-          <Button variant="light" onClick={toggleFormType} disabled={isSubmitting}>
+          <Button
+            variant="light"
+            onClick={toggleFormType}
+            disabled={isSubmitting}
+          >
             {formType === "login" ? "Register" : "Login"}
           </Button>
         </div>
-        {isSubmitting && <div className="spinner" />}
+        {/* {isSubmitting && <div className="spinner"></div>} */}
         {message && <p className="errorMessage">{message}</p>}
       </form>
     </div>

@@ -2,11 +2,10 @@ import React, { useContext, useState } from "react";
 import { UserContext } from "../context/UserContext";
 import { useNavigate } from "react-router-dom";
 
-
-function ProfileCard(){
+function ProfileCard() {
   const { user } = useContext(UserContext); // Access the token from the context
   const navigate = useNavigate();
-  // const [avatarUrl, setAvatarUrl] = useState(user ? user.avatarUrl : ""); 
+  // const [avatarUrl, setAvatarUrl] = useState(user ? user.avatarUrl : "");
   const [isUploadVisible, setIsUploadVisible] = useState(false); // State for showing UpLoadAvatar
 
   if (!user) {
@@ -19,6 +18,12 @@ function ProfileCard(){
     <div className="upc">
       <div className="profileDetails">
         <div className="name">
+          <p>User Name:</p>
+          <p>
+            <em>{user.username}</em>
+          </p>
+        </div>
+        {/* <div className="name">
           <p>First Name:</p>
           <p>
             <em>{user.firstName}</em>
@@ -35,8 +40,8 @@ function ProfileCard(){
           <p>
             <em>{user.lastName}</em>
           </p>
-        </div>
-        <div className="name">
+        </div> */}
+        {/* <div className="name">
           <p>Date of Birth:</p>
           <p>
             <em>{user.dateOfBirth}</em>
@@ -47,14 +52,14 @@ function ProfileCard(){
           <p>
             <em>{user.phoneNumber}</em>
           </p>
-        </div>
+        </div> */}
         <div className="name">
           <p>Email:</p>
           <p>
             <em>{user.email}</em>
           </p>
         </div>
-        <div className="name">
+        {/* <div className="name">
           <p>Address:</p>
           <p>
             <em>{user.address}</em>
@@ -71,15 +76,13 @@ function ProfileCard(){
           <p>
             <em>{user.profileStatus}</em>
           </p>
-        </div>
+        </div> */}
       </div>
-      <div>
-        
-      </div>
+      <div></div>
       {/* {isUploadVisible && (
         <UpLoadAvatar setAvatarUrl={setAvatarUrl} /> 
       )} */}
     </div>
   );
-};
+}
 export default ProfileCard;
