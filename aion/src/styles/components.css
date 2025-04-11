@@ -1082,8 +1082,8 @@
 .customerCare-1 {
   margin-top: -90px;
   margin-bottom: 80px;
-  padding: 10px;
-  width: 70%;
+  padding: 5px;
+  width: 80%;
   text-align: justify;
   background-color: var(--fifth-background-color);
 }
@@ -1259,7 +1259,7 @@ ul {
   padding: 0;
 }
 li {
-  width: 90%;
+  width: 80%;
   background: #fff;
   margin-bottom: 15px;
   margin-left: 20px;

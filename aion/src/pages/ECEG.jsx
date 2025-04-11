@@ -34,17 +34,17 @@ function ECEG() {
               </Link>
             </div>
           </div>
-          
+          <ul>
             {loading ? (
               <div className="loadingProperties">
                 <span className="spinner"></span> Loading properties...
               </div>
             ) : (
               <div className="myUnorderedList">
-              <HomeProperty properties={ezyStayProperties} />
+                <HomeProperty properties={ezyStayProperties} />
               </div>
             )}
-          
+          </ul>
         </div>
       </div>
       <Whatsapp />
