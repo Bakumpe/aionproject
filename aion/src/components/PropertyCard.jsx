@@ -84,7 +84,7 @@ function MyPropertyCard({ property }) {
         <div className="buyRentOptions-1" onClick={handleRentClick}>
           Rent
         </div>
-        <div className="buyRentOptions-1">Buy</div>
+        <div className="buyRentOptions-1" onClick={handleRentClick}>Buy</div>
       </div>
     </li>
   );
